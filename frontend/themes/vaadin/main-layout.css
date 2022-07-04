@@ -1,0 +1,117 @@
+[slot='drawer'] {
+  background-image: linear-gradient(0deg, var(--lumo-shade-5pct), var(--lumo-shade-5pct));
+}
+
+[slot='drawer'] nav a {
+  text-decoration: none;
+  transition: color 140ms;
+}
+
+[slot='drawer'] nav a .la {
+  margin-top: calc(var(--lumo-space-xs) * 0.5);
+}
+
+[slot='drawer'] nav a::before {
+  border-radius: var(--lumo-border-radius);
+  bottom: calc(var(--lumo-space-xs) * 0.5);
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: calc(var(--lumo-space-xs) * 0.5);
+  transition: background-color 140ms;
+}
+
+[slot='drawer'] nav a[highlight] {
+  color: var(--lumo-primary-text-color);
+}
+
+[slot='drawer'] nav a[highlight]::before {
+  background-color: var(--lumo-primary-color-10pct);
+}
+
+[slot='drawer'] footer vaadin-context-menu {
+  align-items: center;
+  display: flex;
+}
+
+.menu-item-link {
+  display: flex;
+  margin-left: var(--lumo-space-s);
+  margin-right: var(--lumo-space-s);
+  padding: var(--lumo-space-s);
+  position: relative;
+  color: var(--lumo-secondary-text-color);
+}
+
+.menu-item-text {
+  font-weight: 500;
+  font-size: var(--lumo-font-size-s);
+}
+
+.menu-item-icon {
+  margin-inline-end: var(--lumo-space-s);
+  font-size: var(--lumo-font-size-l);
+}
+
+.view-title {
+  margin: 0;
+  font-size: var(--lumo-font-size-l);
+}
+
+.view-header {
+  align-items: center;
+  background-color: var(--lumo-base-color);
+  border-bottom: 1px solid;
+  border-color: var(--lumo-contrast-10pct);
+  box-sizing: border-box;
+  display: flex;
+  height: var(--lumo-size-xl);
+  width: 100%;
+}
+
+.view-toggle {
+  color: var(--lumo-secondary-text-color);
+}
+
+.app-name {
+  align-items: center;
+  display: flex;
+  height: var(--lumo-size-xl);
+  margin: 0;
+  padding-left: var(--lumo-space-m);
+  padding-right: var(--lumo-space-m);
+  font-size: var(--lumo-font-size-m);
+}
+
+.drawer-section {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  min-height: 100%;
+}
+
+.menu-item-container {
+  border-bottom: 1px solid;
+  border-color: var(--lumo-contrast-10pct);
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.navigation-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  align-items: center;
+  display: flex;
+  margin-bottom: var(--lumo-space-s);
+  margin-top: var(--lumo-space-s);
+  padding-left: var(--lumo-space-m);
+  padding-right: var(--lumo-space-m);
+  padding-bottom: var(--lumo-space-xs);
+  padding-top: var(--lumo-space-xs);
+}
