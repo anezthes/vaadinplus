@@ -1,0 +1,6 @@
+nav.breadcrumb li + li::before {
+    content: var(--lumo-icons-angle-right);
+    display: block;
+    font-family: 'lumo-icons';
+    margin: 0 var(--lumo-space-xs);
+}
