@@ -10,8 +10,7 @@ public enum FontSize {
 	LARGE(LumoUtility.FontSize.LARGE),
 	XLARGE(LumoUtility.FontSize.XLARGE),
 	XXLARGE(LumoUtility.FontSize.XXLARGE),
-	XXXLARGE(LumoUtility.FontSize.XXXLARGE),
-	;
+	XXXLARGE(LumoUtility.FontSize.XXXLARGE);
 
 	private final String className;
 

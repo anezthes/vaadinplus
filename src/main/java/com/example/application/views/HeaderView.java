@@ -11,6 +11,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
@@ -27,6 +28,11 @@ public class HeaderView extends Main {
 
 		add(new H2("Basic"));
 		Header header = new Header("Lorem ipsum", HeadingLevel.H3);
+		add(header);
+
+		add(new H2("Prefix"));
+		header = new Header("Lorem ipsum", HeadingLevel.H3);
+		header.setPrefix(createBackButton());
 		add(header);
 
 		add(new H2("Breadcrumb"));
@@ -81,6 +87,16 @@ public class HeaderView extends Main {
 		createUserExample();
 	}
 
+	private RouterLink createBackButton() {
+		Icon icon = VaadinIcon.ARROW_LEFT.create();
+		icon.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Width.MEDIUM);
+
+		RouterLink link = new RouterLink();
+		link.add(icon);
+		link.setRoute(HomeView.class);
+		return link;
+	}
+
 	private void createUserExample() {
 		Avatar avatar = new Avatar("John Smith");
 
@@ -91,7 +107,7 @@ public class HeaderView extends Main {
 
 		Header header = new Header("John Smith", HeadingLevel.H3);
 		header.setPrefix(avatar);
-		header.removeColumnGap();
+		header.getColumnLayout().removeGap();
 		header.setHeadingFontSize(FontSize.LARGE);
 		header.setDetails(details);
 		header.setActions(button);

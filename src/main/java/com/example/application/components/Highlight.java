@@ -1,5 +1,6 @@
 package com.example.application.components;
 
+import com.example.application.utilities.FontSize;
 import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasStyle;
@@ -10,6 +11,10 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class Highlight extends Layout {
 
+	// Style
+	private FontSize valueFontSize;
+
+	// Components
 	private Layout prefix;
 	private Layout column;
 	private Component label;
@@ -18,9 +23,7 @@ public class Highlight extends Layout {
 	private Layout suffix;
 
 	public Highlight(String label, String value) {
-		addClassNames(
-				LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.MEDIUM
-		);
+		addClassNames(LumoUtility.Padding.MEDIUM);
 		setAlignItems(FlexComponent.Alignment.CENTER);
 		setGap(Gap.MEDIUM);
 
@@ -31,10 +34,12 @@ public class Highlight extends Layout {
 		((HasStyle) this.label).addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
 		this.value = new Span(value);
-		((HasStyle) this.value).addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.FontWeight.MEDIUM);
+		((HasStyle) this.value).addClassNames(LumoUtility.FontWeight.MEDIUM);
+		setValueFontSize(FontSize.XLARGE);
 
 		this.details = new Layout();
-		this.details.setGap(Gap.MEDIUM);
+		this.details.setFlexWrap(FlexWrap.WRAP);
+		this.details.setColumnGap(Gap.MEDIUM);
 		this.details.setVisible(false);
 
 		this.column = new Layout(this.label, this.value, this.details);
@@ -48,7 +53,7 @@ public class Highlight extends Layout {
 	}
 
 	/**
-	 * Sets the suffix.
+	 * Sets the prefix.
 	 */
 	public void setPrefix(Component... components) {
 		this.prefix.removeAll();
@@ -57,7 +62,34 @@ public class Highlight extends Layout {
 	}
 
 	/**
-	 * Sets the prefix.
+	 * Sets the value's font size.
+	 */
+	public void setValueFontSize(FontSize fontSize) {
+		if (this.valueFontSize != null) {
+			((HasStyle) this.value).removeClassName(this.valueFontSize.getClassName());
+		}
+		((HasStyle) this.value).addClassNames(fontSize.getClassName());
+		this.valueFontSize = fontSize;
+	}
+
+	/**
+	 * Sets the details.
+	 */
+	public void setDetails(Component... components) {
+		this.details.removeAll();
+		this.details.add(components);
+		this.details.setVisible(components != null);
+	}
+
+	/**
+	 * Returns the details layout.
+	 */
+	public Layout getDetailsLayout() {
+		return this.details;
+	}
+
+	/**
+	 * Sets the suffix.
 	 */
 	public void setSuffix(Component... components) {
 		this.suffix.removeAll();

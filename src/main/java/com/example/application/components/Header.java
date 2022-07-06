@@ -45,7 +45,9 @@ public class Header extends Layout {
 		setHeadingFontSize(FontSize.XLARGE);
 
 		this.details = new Layout();
-		this.details.setGap(Gap.MEDIUM);
+		this.details.setFlexWrap(FlexWrap.WRAP);
+		this.details.setColumnGap(Gap.MEDIUM);
+		this.details.setRowGap(Gap.SMALL);
 		this.details.setVisible(false);
 
 		this.column = new Layout(this.breadcrumb, this.heading, this.details);
@@ -70,17 +72,19 @@ public class Header extends Layout {
 	}
 
 	/**
-	 * Sets the gap between components in the row layout.
+	 * Returns the row layout.
+	 * TODO: Needs better abstraction/naming.
 	 */
-	public void setRowGap(Gap gap) {
-		this.row.setGap(gap);
+	public Layout getRowLayout() {
+		return this.row;
 	}
 
 	/**
-	 * Removes the gap between components in the row layout.
+	 * Returns the column layout.
+	 * TODO: Needs better abstraction/naming.
 	 */
-	public void removeRowGap() {
-		this.row.removeGap();
+	public Layout getColumnLayout() {
+		return this.column;
 	}
 
 	/**
@@ -90,20 +94,6 @@ public class Header extends Layout {
 		this.prefix.removeAll();
 		this.prefix.add(components);
 		this.prefix.setVisible(components != null);
-	}
-
-	/**
-	 * Sets the gap between components in the column layout.
-	 */
-	public void setColumnGap(Gap gap) {
-		this.column.setGap(gap);
-	}
-
-	/**
-	 * Removes the gap between components in the column layout.
-	 */
-	public void removeColumnGap() {
-		this.column.removeGap();
 	}
 
 	/**
@@ -156,6 +146,13 @@ public class Header extends Layout {
 		}
 		((HasStyle) this.heading).addClassNames(fontSize.getClassName());
 		this.headingFontSize = fontSize;
+	}
+
+	/**
+	 * Returns the details layout.
+	 */
+	public Layout getDetails() {
+		return this.details;
 	}
 
 	/**
