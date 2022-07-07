@@ -36,10 +36,10 @@ public class Header extends Layout {
 		setFlexDirection(FlexDirection.COLUMN);
 
 		this.prefix = new Layout();
-		this.prefix.setVisible(false);
+		setPrefix(null);
 
 		this.breadcrumb = new Breadcrumb();
-		this.breadcrumb.setVisible(false);
+		setBreadcrumb(null);
 
 		setHeading(text, level);
 		setHeadingFontSize(FontSize.XLARGE);
@@ -48,7 +48,7 @@ public class Header extends Layout {
 		this.details.setFlexWrap(FlexWrap.WRAP);
 		this.details.setColumnGap(Gap.MEDIUM);
 		this.details.setRowGap(Gap.SMALL);
-		this.details.setVisible(false);
+		setDetails(null);
 
 		this.column = new Layout(this.breadcrumb, this.heading, this.details);
 		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
@@ -57,7 +57,7 @@ public class Header extends Layout {
 
 		this.actions = new Layout();
 		this.actions.setGap(Gap.SMALL);
-		this.actions.setVisible(false);
+		setActions(null);
 
 		this.row = new Layout(this.prefix, this.column, this.actions);
 		this.row.addClassNames(LumoUtility.Padding.MEDIUM);
@@ -66,7 +66,7 @@ public class Header extends Layout {
 		this.row.setGap(Gap.MEDIUM);
 
 		this.tabs = new Tabs();
-		this.tabs.setVisible(false);
+		setTabs(null);
 
 		add(this.row, this.tabs);
 	}
@@ -92,8 +92,14 @@ public class Header extends Layout {
 	 */
 	public void setPrefix(Component... components) {
 		this.prefix.removeAll();
-		this.prefix.add(components);
-		this.prefix.setVisible(components.length > 0);
+		if (components != null) {
+			for (Component component : components) {
+				if (component != null) {
+					this.prefix.add(component);
+				}
+			}
+		}
+		this.prefix.setVisible(this.prefix.getComponentCount() > 0);
 	}
 
 	/**
@@ -101,8 +107,14 @@ public class Header extends Layout {
 	 */
 	public void setBreadcrumb(Component... components) {
 		this.breadcrumb.removeAll();
-		this.breadcrumb.setItems(components);
-		this.breadcrumb.setVisible(components.length > 0);
+		if (components != null) {
+			for (Component component : components) {
+				if (component != null) {
+					this.breadcrumb.add(component);
+				}
+			}
+		}
+		this.breadcrumb.setVisible(this.breadcrumb.getComponentCount() > 0);
 	}
 
 	/**
@@ -161,8 +173,14 @@ public class Header extends Layout {
 	 */
 	public void setDetails(Component... components) {
 		this.details.removeAll();
-		this.details.add(components);
-		this.details.setVisible(components.length > 0);
+		if (components != null) {
+			for (Component component : components) {
+				if (component != null) {
+					this.details.add(component);
+				}
+			}
+		}
+		this.details.setVisible(this.details.getComponentCount() > 0);
 	}
 
 	/**
@@ -170,11 +188,20 @@ public class Header extends Layout {
 	 */
 	public void setTabs(Tab... tabs) {
 		this.tabs.removeAll();
-		this.tabs.add(tabs);
-		if (tabs.length > 0) {
-			removeClassNames(LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
+		if (tabs != null) {
+			for (Tab tab : tabs) {
+				if (tab != null) {
+					this.tabs.add(tab);
+				}
+			}
 		}
-		this.tabs.setVisible(tabs.length > 0);
+		if (this.tabs.getComponentCount() > 0) {
+			removeClassNames(LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
+			this.tabs.setVisible(true);
+		} else {
+			addClassNames(LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
+			this.tabs.setVisible(false);
+		}
 	}
 
 	/**
@@ -182,8 +209,14 @@ public class Header extends Layout {
 	 */
 	public void setActions(Component... components) {
 		this.actions.removeAll();
-		this.actions.add(components);
-		this.actions.setVisible(components.length > 0);
+		if (components != null) {
+			for (Component component : components) {
+				if (component != null) {
+					this.actions.add(component);
+				}
+			}
+		}
+		this.actions.setVisible(this.actions.getComponentCount() > 0);
 	}
 
 }

@@ -21,20 +21,21 @@ public class Breadcrumb extends Nav {
 				LumoUtility.Display.FLEX, LumoUtility.FontSize.SMALL, LumoUtility.ListStyleType.NONE,
 				LumoUtility.Margin.NONE, LumoUtility.Padding.NONE
 		);
-		this.add(list);
+		super.add(this.list);
 	}
 
 	public Breadcrumb(RouterLink... links) {
 		this();
-		setItems(links);
+		add(links);
 	}
 
 	public Breadcrumb(Anchor... anchors) {
 		this();
-		setItems(anchors);
+		add(anchors);
 	}
 
-	public void setItems(Component... components) {
+	@Override
+	public void add(Component... components) {
 		for (Component component : components) {
 			ListItem listItem = new ListItem(component);
 			listItem.addClassNames(LumoUtility.Display.FLEX);
@@ -42,4 +43,18 @@ public class Breadcrumb extends Nav {
 		}
 	}
 
+	@Override
+	public int getComponentCount() {
+		return Math.toIntExact(this.list.getChildren().count());
+	}
+
+	@Override
+	public void remove(Component... components) {
+		this.list.remove(components);
+	}
+
+	@Override
+	public void removeAll() {
+		this.list.removeAll();
+	}
 }
