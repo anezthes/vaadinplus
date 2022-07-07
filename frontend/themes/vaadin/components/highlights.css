@@ -1,15 +1,8 @@
-.highlights[theme~="border"] > *:not(:last-child) {
-    border-inline-end: 1px solid var(--lumo-contrast-10pct);
+.highlights[theme~="border"] {
+    background-image: linear-gradient(var(--lumo-contrast-10pct), var(--lumo-contrast-10pct));
+    gap: 1px;
 }
 
-.highlights[theme~="border"] > *:first-child {
-    border-end-end-radius: 0;
-    border-start-end-radius: 0;
-}
-.highlights[theme~="border"] > *:not(:first-child):not(:last-child) {
+.highlights[theme~="border"] > * {
     border-radius: 0;
-}
-.highlights[theme~="border"] > *:last-child {
-    border-end-start-radius: 0;
-    border-start-start-radius: 0;
 }

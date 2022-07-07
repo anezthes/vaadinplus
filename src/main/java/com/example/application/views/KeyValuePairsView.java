@@ -2,7 +2,6 @@ package com.example.application.views;
 
 import com.example.application.components.KeyValuePair;
 import com.example.application.components.KeyValuePairs;
-import com.example.application.utilities.Display;
 import com.example.application.utilities.GridColumnSpan;
 import com.example.application.utilities.GridColumns;
 import com.vaadin.flow.component.HasStyle;
@@ -32,19 +31,18 @@ public class KeyValuePairsView extends Main {
 
 		add(new H2("Vertical"));
 		pairs = createKeyValuePairs();
-		pairs.setLabelPosition(KeyValuePairs.LabelPosition.TOP);
+		pairs.setKeyPosition(KeyValuePair.KeyPosition.TOP);
 		add(pairs);
 
-		add(new H2("Grid"));
+		add(new H2("Column Span"));
 		pairs = createKeyValuePairs();
-		pairs.setDisplay(Display.GRID);
-		pairs.setGridColumns(GridColumns.COLUMNS_2);
-		pairs.setGridColumnSpan(
+		pairs.setColumns(GridColumns.COLUMNS_2);
+		pairs.setColumnSpan(
 				GridColumnSpan.COLUMN_SPAN_2,
 				// Just beautiful...
 				(HasStyle) pairs.getChildren().skip(2).findFirst().get()
 		);
-		pairs.setLabelPosition(KeyValuePairs.LabelPosition.TOP);
+		pairs.setKeyPosition(KeyValuePair.KeyPosition.TOP);
 		add(pairs);
 
 		add(new H2("Theme: Border"));

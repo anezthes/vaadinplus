@@ -1,16 +1,6 @@
 package com.example.application.views;
 
 
-import com.example.application.views.components.ComponentsView;
-import com.example.application.views.elements.ElementsView;
-import com.example.application.views.feedback.FeedbackView;
-import com.example.application.views.forms.FormsView;
-import com.example.application.views.layout.LayoutView;
-import com.example.application.views.lists.ListsView;
-import com.example.application.views.navigation.NavigationView;
-import com.example.application.views.overlays.OverlaysView;
-import com.example.application.views.pageexamples.PageExamplesView;
-import com.example.application.views.pagesections.PageSectionsView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -76,19 +66,10 @@ public class MainLayout extends AppLayout {
 
 	private MenuItemInfo[] createMenuItems() {
 		return new MenuItemInfo[]{
-				new MenuItemInfo("Components", "la la-file", ComponentsView.class),
-				new MenuItemInfo("Elements", "la la-file", ElementsView.class),
-				new MenuItemInfo("Feedback", "la la-file", FeedbackView.class),
-				new MenuItemInfo("Forms", "la la-file", FormsView.class),
 				new MenuItemInfo("Header", "la la-heading", HeaderView.class),
+				new MenuItemInfo("Statistics", "la la-lightbulb", HighlightsView.class),
 				new MenuItemInfo("Key-Value Pairs", "la la-key", KeyValuePairsView.class),
-				new MenuItemInfo("Layout", "la la-file", LayoutView.class),
-				new MenuItemInfo("Lists", "la la-file", ListsView.class),
-				new MenuItemInfo("Navigation", "la la-file", NavigationView.class),
-				new MenuItemInfo("Overlays", "la la-file", OverlaysView.class),
-				new MenuItemInfo("Page Examples", "la la-file", PageExamplesView.class),
-				new MenuItemInfo("Page Sections", "la la-file", PageSectionsView.class),
-				new MenuItemInfo("Statistics", "la la-chart-line", StatisticsView.class),
+				new MenuItemInfo("Lists", "la la-list", ListsView.class),
 		};
 	}
 

@@ -1,6 +1,8 @@
 package com.example.application.components;
 
-import com.example.application.utilities.*;
+import com.example.application.utilities.Breakpoint;
+import com.example.application.utilities.GridColumnSpan;
+import com.example.application.utilities.GridColumns;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Unit;
@@ -13,17 +15,18 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 
 	public static final String BORDER = "border";
 	public static final String STRIPES = "stripes";
-	private Display display;
-	private GridColumns gridColumns;
-	private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
+
+	private GridColumns columns;
+	private HashMap<HasStyle, GridColumnSpan> columnSpans;
 	private KeyValuePair[] pairs;
 
 	public KeyValuePairs(KeyValuePair... pairs) {
-		addClassNames("key-value-pairs", LumoUtility.Background.BASE, LumoUtility.Margin.NONE);
-		this.gridColumnSpans = new HashMap<>();
-
-		add(pairs);
+		addClassNames(
+				"key-value-pairs", LumoUtility.Background.BASE, LumoUtility.Display.GRID, LumoUtility.Margin.NONE
+		);
+		this.columnSpans = new HashMap<>();
 		this.pairs = pairs;
+		add(this.pairs);
 	}
 
 	/**
@@ -38,9 +41,11 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	}
 
 	/**
-	 * Sets the breakpoint.
+	 * Sets the breakpoint for when keys are positioned on top.
+	 * Only works with KeyPosition.SIDE. Otherwise, keys are always on top.
+	 * TODO: Improve API.
 	 */
-	public void setBreakpoint(FlexRowBreakpoint breakpoint) {
+	public void setBreakpoint(Breakpoint breakpoint) {
 		for (KeyValuePair pair : this.pairs) {
 			pair.setBreakpoint(breakpoint);
 		}
@@ -56,55 +61,40 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	}
 
 	/**
-	 * Sets the display property.
+	 * Sets the key position of each KeyValuePair.
 	 */
-	public void setDisplay(Display display) {
-		if (this.display != null) {
-			removeClassNames(this.display.getClassName());
-		}
-		addClassNames(display.getClassName());
-		this.display = display;
-	}
-
-	/**
-	 * Sets the label position of each KeyValuePair.
-	 */
-	public void setLabelPosition(LabelPosition position) {
+	public void setKeyPosition(KeyValuePair.KeyPosition keyPosition) {
 		for (KeyValuePair pair : this.pairs) {
-			pair.setFlexDirection(position.equals(LabelPosition.SIDE) ? FlexDirection.ROW : FlexDirection.COLUMN);
+			pair.setKeyPosition(keyPosition);
 		}
 	}
 
 	/**
-	 * Sets the number of grid columns.
-	 * Only works if display is set to grid.
+	 * Sets the number of columns.
 	 */
-	public void setGridColumns(GridColumns gridColumns) {
-		if (this.gridColumns != null) {
-			removeClassNames(this.gridColumns.getClassName());
+	public void setColumns(GridColumns columns) {
+		if (this.columns != null) {
+			removeClassNames(this.columns.getClassName());
 		}
-		addClassNames(gridColumns.getClassName());
-		this.gridColumns = gridColumns;
+		addClassNames(columns.getClassName());
+		this.columns = columns;
 	}
 
 	/**
-	 * Sets the grid column span for the given components.
+	 * Sets the column span for the given components.
 	 */
-	public void setGridColumnSpan(GridColumnSpan gridColumnSpan, HasStyle... components) {
+	public void setColumnSpan(GridColumnSpan columnSpan, HasStyle... components) {
 		for (HasStyle component : components) {
-			if (this.gridColumnSpans.get(component) != null) {
-				component.removeClassName(this.gridColumnSpans.get(component).getClassName());
+			if (this.columnSpans.get(component) != null) {
+				component.removeClassName(this.columnSpans.get(component).getClassName());
 			}
-			component.addClassNames(gridColumnSpan.getClassName());
-			this.gridColumnSpans.put(component, gridColumnSpan);
+			component.addClassNames(columnSpan.getClassName());
+			this.columnSpans.put(component, columnSpan);
 		}
 	}
 
 	/**
 	 * Sets the key width for each KeyValuePair.
-	 *
-	 * @param width
-	 * @param unit
 	 */
 	public void setKeyWidth(float width, Unit unit) {
 		for (KeyValuePair pair : this.pairs) {
@@ -113,7 +103,7 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	}
 
 	/**
-	 * Sets a light gray background color on every other KeyValuePair if true.
+	 * Sets a background color on every other KeyValuePair if true.
 	 */
 	public void setStripes(boolean stripes) {
 		if (stripes) {
@@ -121,10 +111,6 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 		} else {
 			removeThemeName(STRIPES);
 		}
-	}
-
-	public enum LabelPosition {
-		SIDE, TOP
 	}
 
 }

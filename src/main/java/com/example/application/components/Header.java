@@ -93,15 +93,16 @@ public class Header extends Layout {
 	public void setPrefix(Component... components) {
 		this.prefix.removeAll();
 		this.prefix.add(components);
-		this.prefix.setVisible(components != null);
+		this.prefix.setVisible(components.length > 0);
 	}
 
 	/**
 	 * Sets the content of the breadcrumb.
 	 */
 	public void setBreadcrumb(Component... components) {
+		this.breadcrumb.removeAll();
 		this.breadcrumb.setItems(components);
-		this.breadcrumb.setVisible(components != null);
+		this.breadcrumb.setVisible(components.length > 0);
 	}
 
 	/**
@@ -161,7 +162,7 @@ public class Header extends Layout {
 	public void setDetails(Component... components) {
 		this.details.removeAll();
 		this.details.add(components);
-		this.details.setVisible(components != null);
+		this.details.setVisible(components.length > 0);
 	}
 
 	/**
@@ -170,11 +171,10 @@ public class Header extends Layout {
 	public void setTabs(Tab... tabs) {
 		this.tabs.removeAll();
 		this.tabs.add(tabs);
-		this.tabs.setVisible(tabs != null);
-
-		if (tabs != null) {
+		if (tabs.length > 0) {
 			removeClassNames(LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
 		}
+		this.tabs.setVisible(tabs.length > 0);
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class Header extends Layout {
 	public void setActions(Component... components) {
 		this.actions.removeAll();
 		this.actions.add(components);
-		this.actions.setVisible(components != null);
+		this.actions.setVisible(components.length > 0);
 	}
 
 }

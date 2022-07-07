@@ -4,7 +4,6 @@ import com.example.application.components.Header;
 import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.HeadingLevel;
-import com.example.application.views.home.HomeView;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -65,7 +64,7 @@ public class HeaderView extends Main {
 		header.setActions(button, primaryButton);
 		add(header);
 
-		add(new H2("Breadcrumb, details, tabs & actions"));
+		add(new H2("Breadcrumb, Details, Tabs & Actions"));
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setBreadcrumb(
 				new RouterLink("Home", HomeView.class),
@@ -83,7 +82,7 @@ public class HeaderView extends Main {
 		header.setActions(button, primaryButton);
 		add(header);
 
-		add(new H2("User example"));
+		add(new H2("User Example"));
 		createUserExample();
 	}
 

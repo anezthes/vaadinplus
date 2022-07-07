@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Layout extends FlexLayout {
 
 	private Display display;
+	private com.example.application.utilities.FlexDirection flexDirection;
 	private GridColumns gridColumns;
 	private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
 
@@ -32,6 +33,20 @@ public class Layout extends FlexLayout {
 		}
 		addClassNames(display.getClassName());
 		this.display = display;
+	}
+
+	@Override
+	public void setFlexDirection(FlexDirection flexDirection) {
+		// Say "no" to inline styles! :)
+		setFlexDirection(com.example.application.utilities.FlexDirection.valueOf(flexDirection.name()));
+	}
+
+	private void setFlexDirection(com.example.application.utilities.FlexDirection flexDirection) {
+		if (this.flexDirection != null) {
+			removeClassNames(this.flexDirection.getClassName());
+		}
+		addClassNames(flexDirection.getClassName());
+		this.flexDirection = flexDirection;
 	}
 
 	public void setGridColumns(GridColumns gridColumns) {

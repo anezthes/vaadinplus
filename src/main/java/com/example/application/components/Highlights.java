@@ -1,5 +1,8 @@
 package com.example.application.components;
 
+import com.example.application.utilities.Breakpoint;
+import com.example.application.utilities.FlexRowBreakpoint;
+import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
@@ -7,13 +10,14 @@ public class Highlights extends Layout implements HasTheme {
 
 	public static final String BORDER = "border";
 
+	private FlexRowBreakpoint breakpoint;
+
 	public Highlights(Highlight... highlights) {
 		addClassNames(
-				"highlights", LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM,
-				LumoUtility.FlexDirection.COLUMN, LumoUtility.FlexDirection.Breakpoint.Small.ROW,
-				LumoUtility.Overflow.HIDDEN
+				"highlights", LumoUtility.Background.BASE, LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN
 		);
 		add(highlights);
+		setBreakpoint(Breakpoint.MEDIUM);
 		setFlexWrap(FlexWrap.WRAP);
 		setWidthFull();
 	}
@@ -26,4 +30,46 @@ public class Highlights extends Layout implements HasTheme {
 		super.add(highlights);
 	}
 
+	public void setBreakpoint(Breakpoint breakpoint) {
+		if (this.breakpoint != null) {
+			removeClassNames(this.breakpoint.getClassName());
+		}
+		addClassNames(breakpoint.getFlexRowBreakpoint().getClassName());
+		this.breakpoint = breakpoint.getFlexRowBreakpoint();
+	}
+
+	/**
+	 * Simulates a border between items.
+	 */
+	public void setBorder(boolean border) {
+		if (border) {
+			addThemeName(BORDER);
+		} else {
+			removeThemeName(BORDER);
+		}
+	}
+
+	@Override
+	public void setColumnGap(Gap gap) {
+		super.setColumnGap(gap);
+		removeClassNames(LumoUtility.Background.BASE);
+	}
+
+	@Override
+	public void removeColumnGap() {
+		super.removeColumnGap();
+		addClassNames(LumoUtility.Background.BASE);
+	}
+
+	@Override
+	public void setRowGap(Gap gap) {
+		super.setRowGap(gap);
+		removeClassNames(LumoUtility.Background.BASE);
+	}
+
+	@Override
+	public void removeRowGap() {
+		super.removeRowGap();
+		addClassNames(LumoUtility.Background.BASE);
+	}
 }

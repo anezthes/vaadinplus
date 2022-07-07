@@ -1,5 +1,6 @@
 package com.example.application.components;
 
+import com.example.application.utilities.Breakpoint;
 import com.example.application.utilities.FlexRowBreakpoint;
 import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.Component;
@@ -10,8 +11,8 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class KeyValuePair extends Layout {
 
-	private com.example.application.utilities.FlexDirection direction;
 	private FlexRowBreakpoint breakpoint;
+	private KeyPosition keyPosition;
 
 	private DescriptionList.Term key;
 	private DescriptionList.Description value;
@@ -37,17 +38,21 @@ public class KeyValuePair extends Layout {
 
 		addClassNames(LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL);
 		setAlignItems(Alignment.BASELINE);
-		setBreakpoint(FlexRowBreakpoint.MEDIUM);
+		setBreakpoint(Breakpoint.MEDIUM);
 		setColumnGap(Gap.MEDIUM);
-		setFlexDirection(com.example.application.utilities.FlexDirection.ROW);
+		setKeyPosition(KeyPosition.SIDE);
 		setKeyWidth(25, Unit.PERCENTAGE);
 	}
 
-	public void setBreakpoint(FlexRowBreakpoint breakpoint) {
+	/**
+	 * Determines when the key is positioned on top.
+	 * Only works with KeyPosition.SIDE. Otherwise, the key is always on top.
+	 */
+	public void setBreakpoint(Breakpoint breakpoint) {
 		if (this.breakpoint != null) {
 			removeClassNames(this.breakpoint.getClassName());
 		}
-		this.breakpoint = breakpoint;
+		this.breakpoint = breakpoint != null ? breakpoint.getFlexRowBreakpoint() : null;
 		updateClassNames();
 	}
 
@@ -55,11 +60,8 @@ public class KeyValuePair extends Layout {
 		setBreakpoint(null);
 	}
 
-	public void setFlexDirection(com.example.application.utilities.FlexDirection direction) {
-		if (this.direction != null) {
-			removeClassNames(this.direction.getClassName());
-		}
-		this.direction = direction;
+	public void setKeyPosition(KeyPosition keyPosition) {
+		this.keyPosition = keyPosition;
 		updateClassNames();
 	}
 
@@ -68,23 +70,27 @@ public class KeyValuePair extends Layout {
 	}
 
 	private void updateClassNames() {
-		if (this.direction != null) {
-			if (this.direction.equals(com.example.application.utilities.FlexDirection.ROW)) {
+		if (this.keyPosition != null) {
+			if (this.keyPosition.equals(KeyPosition.SIDE)) {
 				// If there's a breakpoint, we set the flex direction to column
 				// because our responsive styles are mobile-first.
 				if (this.breakpoint != null) {
-					addClassNames(LumoUtility.FlexDirection.COLUMN);
+					setFlexDirection(FlexDirection.COLUMN);
 					addClassNames(this.breakpoint.getClassName());
 				} else {
-					removeClassNames(LumoUtility.FlexDirection.COLUMN);
+					setFlexDirection(FlexDirection.ROW);
 				}
 			} else {
-				addClassNames(LumoUtility.FlexDirection.COLUMN);
+				setFlexDirection(FlexDirection.COLUMN);
 				if (this.breakpoint != null) {
 					removeClassNames(this.breakpoint.getClassName());
 				}
 			}
 		}
+	}
+
+	public enum KeyPosition {
+		SIDE, TOP
 	}
 
 }
