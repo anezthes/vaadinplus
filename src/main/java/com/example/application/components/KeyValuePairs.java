@@ -30,20 +30,8 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	}
 
 	/**
-	 * Sets a bottom border on each KeyValuePair if true.
-	 */
-	public void setBorder(boolean border) {
-		if (border) {
-			addThemeName(BORDER);
-		} else {
-			removeThemeName(BORDER);
-		}
-	}
-
-	/**
 	 * Sets the breakpoint for when keys are positioned on top.
 	 * Only works with KeyPosition.SIDE. Otherwise, keys are always on top.
-	 * TODO: Improve API.
 	 */
 	public void setBreakpoint(Breakpoint breakpoint) {
 		for (KeyValuePair pair : this.pairs) {
@@ -99,6 +87,17 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	public void setKeyWidth(float width, Unit unit) {
 		for (KeyValuePair pair : this.pairs) {
 			pair.setKeyWidth(width, unit);
+		}
+	}
+
+	/**
+	 * Sets a bottom border on each KeyValuePair if true.
+	 */
+	public void setBorder(boolean border) {
+		if (border) {
+			addThemeName(BORDER);
+		} else {
+			removeThemeName(BORDER);
 		}
 	}
 

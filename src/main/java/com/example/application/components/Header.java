@@ -47,7 +47,6 @@ public class Header extends Layout {
 		this.details = new Layout();
 		this.details.setFlexWrap(FlexWrap.WRAP);
 		this.details.setColumnGap(Gap.MEDIUM);
-		this.details.setRowGap(Gap.SMALL);
 		setDetails(null);
 
 		this.column = new Layout(this.breadcrumb, this.heading, this.details);
@@ -69,22 +68,6 @@ public class Header extends Layout {
 		setTabs(null);
 
 		add(this.row, this.tabs);
-	}
-
-	/**
-	 * Returns the row layout.
-	 * TODO: Needs better abstraction/naming.
-	 */
-	public Layout getRowLayout() {
-		return this.row;
-	}
-
-	/**
-	 * Returns the column layout.
-	 * TODO: Needs better abstraction/naming.
-	 */
-	public Layout getColumnLayout() {
-		return this.column;
 	}
 
 	/**
@@ -162,13 +145,6 @@ public class Header extends Layout {
 	}
 
 	/**
-	 * Returns the details layout.
-	 */
-	public Layout getDetails() {
-		return this.details;
-	}
-
-	/**
 	 * Sets the details.
 	 */
 	public void setDetails(Component... components) {
@@ -217,6 +193,13 @@ public class Header extends Layout {
 			}
 		}
 		this.actions.setVisible(this.actions.getComponentCount() > 0);
+	}
+
+	/**
+	 * Returns the column layout.
+	 */
+	public Layout getColumnLayout() {
+		return this.column;
 	}
 
 }

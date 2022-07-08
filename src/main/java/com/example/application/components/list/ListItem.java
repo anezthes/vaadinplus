@@ -1,16 +1,18 @@
-package com.example.application.components;
+package com.example.application.components.list;
 
-import com.example.application.utilities.ColumnGap;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.RowGap;
+import com.example.application.components.Layout;
+import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class ListItem extends com.vaadin.flow.component.html.ListItem {
 
 	// Style
+	private AlignItems alignItems;
+	private FlexDirection flexDirection;
 	private ColumnGap colGap;
 	private RowGap rowGap;
 
@@ -21,12 +23,39 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 	private Layout secondary;
 	private Layout suffix;
 
-	public ListItem(String primary, String secondary) {
-		this(null, new Text(primary), new Text(secondary), null);
+	public ListItem() {
+		addClassNames(
+				LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX,
+				LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
+		);
+		setAlignItems(AlignItems.CENTER);
+		setGap(Gap.MEDIUM);
+
+		this.prefix = new Layout();
+		this.prefix.setVisible(false);
+
+		this.primary = new Layout();
+		this.primary.setAlignItems(Alignment.CENTER);
+		this.primary.setGap(Gap.SMALL);
+		this.primary.setVisible(false);
+
+		this.secondary = new Layout();
+		this.secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+		this.secondary.setVisible(false);
+
+		this.column = new Layout(this.primary, this.secondary);
+		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+		this.column.setFlexGrow(1, this.column);
+
+		this.suffix = new Layout();
+		this.suffix.setGap(Gap.SMALL);
+		this.suffix.setVisible(false);
+
+		add(this.prefix, this.column, this.suffix);
 	}
 
-	public ListItem(Component primary, Component secondary) {
-		this(null, primary, secondary, null);
+	public ListItem(String primary, String secondary) {
+		this(null, new Text(primary), new Text(secondary), null);
 	}
 
 	public ListItem(Component prefix, String primary, String secondary) {
@@ -42,29 +71,11 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 	}
 
 	public ListItem(Component prefix, Component primary, Component secondary, Component suffix) {
-		addClassNames(
-				LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Gap.MEDIUM,
-				LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
-		);
-
-		this.prefix = new Layout();
+		this();
 		setPrefix(prefix);
-
-		this.primary = new Layout();
 		setPrimary(primary);
-
-		this.secondary = new Layout();
-		this.secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 		setSecondary(secondary);
-
-		this.column = new Layout(this.primary, this.secondary);
-		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-		this.column.setFlexGrow(1, this.column);
-
-		this.suffix = new Layout();
 		setSuffix(suffix);
-
-		add(this.prefix, this.column, this.suffix);
 	}
 
 	/**
@@ -100,6 +111,13 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 	/**
 	 * Sets the secondary content.
 	 */
+	public void setSecondary(String text) {
+		this.setSecondary(new Text(text));
+	}
+
+	/**
+	 * Sets the secondary content.
+	 */
 	public void setSecondary(Component... components) {
 		this.secondary.removeAll();
 		if (components != null) {
@@ -111,6 +129,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 		}
 		this.secondary.setVisible(this.secondary.getComponentCount() > 0);
 	}
+
 
 	/**
 	 * Sets the suffix.
@@ -125,6 +144,28 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 			}
 		}
 		this.suffix.setVisible(this.suffix.getComponentCount() > 0);
+	}
+
+	/**
+	 * Sets the item alignment.
+	 */
+	public void setAlignItems(AlignItems alignItems) {
+		if (this.alignItems != null) {
+			removeClassNames(this.alignItems.getClassName());
+		}
+		addClassNames(alignItems.getClassName());
+		this.alignItems = alignItems;
+	}
+
+	/**
+	 * Sets the flex direction.
+	 */
+	public void setFlexDirection(FlexDirection flexDirection) {
+		if (this.flexDirection != null) {
+			removeClassNames(this.flexDirection.getClassName());
+		}
+		addClassNames(flexDirection.getClassName());
+		this.flexDirection = flexDirection;
 	}
 
 	/**

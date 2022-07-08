@@ -51,7 +51,7 @@ public class HighlightsView extends Main {
 		add(createHighlightsWithSuffix());
 
 		add(new H2("Prefix, Details & Suffix"));
-		add(createHighlightsWithEverything());
+		add(createHighlightsWithPrefixDetailsSuffix());
 
 		add(new H2("Breakpoint"));
 		add(createHighlightsWithBreakpoint());
@@ -164,7 +164,7 @@ public class HighlightsView extends Main {
 		return link;
 	}
 
-	private Highlights createHighlightsWithEverything() {
+	private Highlights createHighlightsWithPrefixDetailsSuffix() {
 		Highlights highlights = new Highlights();
 
 		Highlight highlight = new Highlight(

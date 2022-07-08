@@ -106,13 +106,6 @@ public class Highlight extends Layout {
 	}
 
 	/**
-	 * Returns the details layout.
-	 */
-	public Layout getDetailsLayout() {
-		return this.details;
-	}
-
-	/**
 	 * Sets the suffix.
 	 */
 	public void setSuffix(Component... components) {

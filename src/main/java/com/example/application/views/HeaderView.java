@@ -82,7 +82,7 @@ public class HeaderView extends Main {
 		header.setActions(button, primaryButton);
 		add(header);
 
-		add(new H2("User Example"));
+		add(new H2("Example: User"));
 		createUserExample();
 	}
 
