@@ -293,10 +293,10 @@ public class ListsView extends Main {
 						VaadinIcon.TAG,
 						PERSON_2,
 						new Span(
-								new Text(" added "),
-								new Badge("bug", BadgeVariant.ERROR),
+								new Text(" added labels "),
+								new Badge("bug", BadgeVariant.ERROR, BadgeVariant.PILL),
 								new Text(" "),
-								new Badge("a11y", BadgeVariant.SUCCESS)
+								new Badge("a11y", BadgeVariant.SUCCESS, BadgeVariant.PILL)
 						),
 						"4d ago"
 				),

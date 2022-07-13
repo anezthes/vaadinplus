@@ -11,6 +11,7 @@ import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
@@ -217,6 +218,8 @@ public class HighlightsView extends Main {
 		Highlights highlights = createHighlights();
 
 		RadioButtonGroup<Breakpoint> rbc = new RadioButtonGroup<>("Breakpoint", Breakpoint.values());
+		rbc.addThemeVariants(RadioGroupVariant.LUMO_HELPER_ABOVE_FIELD);
+		rbc.setHelperText("Resize the browser to see the difference");
 		rbc.setItemLabelGenerator((ItemLabelGenerator<Breakpoint>) item -> {
 			String label;
 			switch (item) {
