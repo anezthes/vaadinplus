@@ -28,10 +28,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
 	private Layout content;
 
 	public ThreeLineListItem() {
-		addClassNames(
-				LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX,
-				LumoUtility.Padding.MEDIUM
-		);
+		addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Padding.MEDIUM);
 		setFlexDirection(FlexDirection.COLUMN);
 
 		this.prefix = new Layout();

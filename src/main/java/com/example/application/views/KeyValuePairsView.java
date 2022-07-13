@@ -18,7 +18,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 public class KeyValuePairsView extends Main {
 
 	public KeyValuePairsView() {
-		addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.MinHeight.FULL, LumoUtility.Padding.LARGE);
+		addClassNames(
+				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+		);
 
 		add(new H2("Horizontal with Breakpoint"));
 		KeyValuePairs pairs = createKeyValuePairs();

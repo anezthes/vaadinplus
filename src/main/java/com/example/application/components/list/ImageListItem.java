@@ -30,9 +30,7 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
 	}
 
 	public ImageListItem(Image image, Component primary, Component secondary, Component... actions) {
-		addClassNames(
-				LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX
-		);
+		addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX);
 		setFlexDirection(FlexDirection.COLUMN);
 
 		this.image = new Layout();

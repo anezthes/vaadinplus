@@ -1,5 +1,7 @@
-dl[theme~="border"] > *:not(:last-child) {
-    border-bottom: 1px solid var(--lumo-contrast-10pct);
+dl[theme~="border"] {
+    background-color: var(--lumo-base);
+    background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
+    gap: 1px;
 }
 
 dl[theme~="stripes"] > *:nth-child(odd) {

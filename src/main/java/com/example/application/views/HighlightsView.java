@@ -36,7 +36,9 @@ public class HighlightsView extends Main {
 	public static final String RATING_VALUE = "96.7%";
 
 	public HighlightsView() {
-		addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.MinHeight.FULL, LumoUtility.Padding.LARGE);
+		addClassNames(
+				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+		);
 
 		add(new H2("Basic"));
 		add(createHighlights());

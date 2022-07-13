@@ -1,8 +1,5 @@
 .highlights[theme~="border"] {
+    background-color: var(--lumo-base);
     background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
     gap: 1px;
-}
-
-.highlights[theme~="border"] > * {
-    border-radius: 0;
 }

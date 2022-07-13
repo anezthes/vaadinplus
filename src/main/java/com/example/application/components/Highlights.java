@@ -13,9 +13,7 @@ public class Highlights extends Layout implements HasTheme {
 	private FlexRowBreakpoint breakpoint;
 
 	public Highlights(Highlight... highlights) {
-		addClassNames(
-				"highlights", LumoUtility.Background.BASE, LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN
-		);
+		addClassNames("highlights", LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN);
 		add(highlights);
 		setBreakpoint(Breakpoint.MEDIUM);
 		setFlexWrap(FlexWrap.WRAP);

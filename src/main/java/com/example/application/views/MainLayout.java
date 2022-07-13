@@ -67,7 +67,7 @@ public class MainLayout extends AppLayout {
 	private MenuItemInfo[] createMenuItems() {
 		return new MenuItemInfo[]{
 				new MenuItemInfo("Header", "la la-heading", HeaderView.class),
-				new MenuItemInfo("Statistics", "la la-lightbulb", HighlightsView.class),
+				new MenuItemInfo("Highlights", "la la-lightbulb", HighlightsView.class),
 				new MenuItemInfo("Key-Value Pairs", "la la-key", KeyValuePairsView.class),
 				new MenuItemInfo("Lists", "la la-list", ListsView.class),
 		};

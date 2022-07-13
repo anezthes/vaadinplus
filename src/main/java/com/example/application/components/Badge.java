@@ -14,6 +14,11 @@ public class Badge extends Span implements HasTheme {
 		addThemeName("badge");
 	}
 
+	public Badge(String text, BadgeVariant... variants) {
+		this(text);
+		addThemeVariants(variants);
+	}
+
 	public void addThemeVariants(BadgeVariant... variants) {
 		getThemeNames().addAll(Stream.of(variants).map(BadgeVariant::getVariantName).collect(Collectors.toList()));
 	}

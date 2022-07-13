@@ -25,8 +25,8 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 
 	public ListItem() {
 		addClassNames(
-				LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX,
-				LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
+				LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Padding.Horizontal.MEDIUM,
+				LumoUtility.Padding.Vertical.SMALL, LumoUtility.Position.RELATIVE
 		);
 		setAlignItems(AlignItems.CENTER);
 		setGap(Gap.MEDIUM);
@@ -56,6 +56,10 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 
 	public ListItem(String primary, String secondary) {
 		this(null, new Text(primary), new Text(secondary), null);
+	}
+
+	public ListItem(Component primary, Component secondary) {
+		this(null, primary, secondary, null);
 	}
 
 	public ListItem(Component prefix, String primary, String secondary) {
@@ -107,6 +111,14 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 		}
 		this.primary.setVisible(this.primary.getComponentCount() > 0);
 	}
+
+	/**
+	 * Sets the primary content.
+	 */
+	public void setPrimary(String text) {
+		this.setPrimary(new Text(text));
+	}
+
 
 	/**
 	 * Sets the secondary content.

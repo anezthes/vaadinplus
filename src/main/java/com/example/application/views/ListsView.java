@@ -1,13 +1,10 @@
 package com.example.application.views;
 
 import com.example.application.components.Badge;
-import com.example.application.components.list.ImageListItem;
-import com.example.application.components.list.ListItem;
-import com.example.application.components.list.ThreeLineListItem;
-import com.example.application.components.list.UnorderedList;
-import com.example.application.utilities.BadgeVariant;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.LineClamp;
+import com.example.application.components.Tag;
+import com.example.application.components.list.*;
+import com.example.application.utilities.*;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarGroup;
@@ -46,7 +43,9 @@ public class ListsView extends Main {
 	public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 	public ListsView() {
-		addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.MinHeight.FULL, LumoUtility.Padding.LARGE);
+		addClassNames(
+				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+		);
 
 		add(new H2("Basic"));
 		add(createList());
@@ -63,11 +62,20 @@ public class ListsView extends Main {
 		add(new H2("Grid"));
 		add(createGridList());
 
-		add(new H2("Grid Image List"));
-		add(createGridImageList());
+		add(new H2("Example: Images"));
+		add(createImageList());
 
-		add(new H2("Three-Line List"));
-		add(createThreeLineList());
+		add(new H2("Example: Tasks"));
+		add(createTaskList());
+
+		add(new H2("Example: Version History"));
+		add(createVersionHistory());
+
+		add(new H2("Example: Notifications"));
+		add(createNotifications());
+
+		add(new H2("Example: Timeline"));
+		add(createTimeline());
 
 		add(new H2("Theme: Border"));
 		UnorderedList list = createList();
@@ -130,7 +138,7 @@ public class ListsView extends Main {
 		return list;
 	}
 
-	private UnorderedList createGridImageList() {
+	private UnorderedList createImageList() {
 		UnorderedList list = new UnorderedList();
 		list.setAutoFill(200, Unit.PIXELS);
 		list.setGap(Gap.MEDIUM);
@@ -196,7 +204,7 @@ public class ListsView extends Main {
 		return button;
 	}
 
-	private UnorderedList createThreeLineList() {
+	private UnorderedList createTaskList() {
 		UnorderedList list = new UnorderedList(
 				createTaskItem("Task 1", "Status", "Aug 8, 2022 ⋅ 7:30 PM"),
 				createTaskItem("Task 2", "Status", "Aug 9, 2022 ⋅ 2:00 PM"),
@@ -237,6 +245,67 @@ public class ListsView extends Main {
 				new AvatarGroupItem(PERSON_1),
 				new AvatarGroupItem(PERSON_2),
 				new AvatarGroupItem(PERSON_3)
+		);
+	}
+
+	private UnorderedList createVersionHistory() {
+		return new UnorderedList(
+				new ListItem(
+						new Text("Aug 24, 11:01 AM"),
+						new Tag(new Avatar(PERSON_1), PERSON_1)
+				),
+				new ListItem(
+						new Text("Aug 22, 6:20 PM"),
+						new Tag(new Avatar(PERSON_2), PERSON_2)
+				),
+				new ListItem(
+						new Text("Aug 22, 5:47 PM"),
+						new Tag(new Avatar(PERSON_3), PERSON_3)
+				)
+		);
+	}
+
+	private UnorderedList createNotifications() {
+		return new UnorderedList(
+				new NotificationListItem(
+						PERSON_1, "approved", "Invoice #7121", this.getClass(), "8m ago"
+				),
+				new NotificationListItem(
+						PERSON_2, "commented on", "Q4 Report", this.getClass(), "12m ago"
+				),
+				new NotificationListItem(
+						PERSON_3, "replied to", "your comment", this.getClass(), "1h ago"
+				)
+		);
+	}
+
+	private UnorderedList createTimeline() {
+		return new UnorderedList(
+				new TimelineListItem(
+						VaadinIcon.CHECK,
+						BackgroundColor.SUCCESS,
+						TextColor.SUCCESS_CONTRAST,
+						PERSON_1,
+						"marked issue as fixed",
+						"1d ago"
+				),
+				new TimelineListItem(
+						VaadinIcon.TAG,
+						PERSON_2,
+						new Span(
+								new Text(" added "),
+								new Badge("bug", BadgeVariant.ERROR),
+								new Text(" "),
+								new Badge("a11y", BadgeVariant.SUCCESS)
+						),
+						"4d ago"
+				),
+				new TimelineListItem(
+						VaadinIcon.PENCIL,
+						PERSON_3,
+						"changed the title",
+						"5d ago"
+				)
 		);
 	}
 

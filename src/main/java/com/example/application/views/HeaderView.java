@@ -23,7 +23,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 public class HeaderView extends Main {
 
 	public HeaderView() {
-		addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.MinHeight.FULL, LumoUtility.Padding.LARGE);
+		addClassNames(
+				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+		);
 
 		add(new H2("Basic"));
 		Header header = new Header("Lorem ipsum", HeadingLevel.H3);

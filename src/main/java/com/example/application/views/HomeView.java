@@ -11,7 +11,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 public class HomeView extends Main {
 
 	public HomeView() {
-		addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.MinHeight.FULL, LumoUtility.Padding.LARGE);
+		addClassNames(
+				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+		);
 
 		add(new Paragraph("Welcome to Vaadin+!"));
 

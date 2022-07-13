@@ -36,7 +36,9 @@ public class KeyValuePair extends Layout {
 
 		add(this.key, this.value);
 
-		addClassNames(LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL);
+		addClassNames(
+				LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
+		);
 		setAlignItems(Alignment.BASELINE);
 		setBreakpoint(Breakpoint.MEDIUM);
 		setColumnGap(Gap.MEDIUM);
