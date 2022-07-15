@@ -35,7 +35,9 @@ public class Highlight extends Layout {
 	}
 
 	public Highlight(Component prefix, String label, String value, Component suffix) {
-		addClassNames(LumoUtility.Background.BASE, LumoUtility.Padding.MEDIUM);
+		addClassNames(
+				LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
+		);
 		setAlignItems(FlexComponent.Alignment.CENTER);
 		setGap(Gap.MEDIUM);
 
@@ -55,6 +57,7 @@ public class Highlight extends Layout {
 		setDetails(null);
 
 		this.column = new Layout(this.label, this.value, this.details);
+		this.column.addClassNames(LumoUtility.Padding.Vertical.XSMALL);
 		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 		this.column.setFlexGrow(1, this.column);
 

@@ -3,7 +3,10 @@ package com.example.application.views;
 import com.example.application.components.Badge;
 import com.example.application.components.Tag;
 import com.example.application.components.list.*;
-import com.example.application.utilities.*;
+import com.example.application.utilities.BackgroundColor;
+import com.example.application.utilities.BadgeVariant;
+import com.example.application.utilities.Gap;
+import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -13,7 +16,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -28,18 +30,28 @@ public class ListsView extends Main {
 
 	public static final String PERSON_1 = "Ava Smith";
 	public static final String PERSON_1_EMAIL = "ava.smith@company.com";
+	public static final String PERSON_1_IMG = "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=160";
+
 	public static final String PERSON_2 = "Emma Johnson";
 	public static final String PERSON_2_EMAIL = "emma.johnson@company.com";
+	public static final String PERSON_2_IMG = "https://images.unsplash.com/photo-1553514029-1318c9127859?w=160";
+
 	public static final String PERSON_3 = "Mia Williams";
 	public static final String PERSON_3_EMAIL = "mia.williams@company.com";
+	public static final String PERSON_3_IMG = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160";
+
 	public static final String PERSON_4 = "Olivia Brown";
 	public static final String PERSON_4_EMAIL = "olivia.brown@company.com";
+
 	public static final String PERSON_5 = "Amelia Jones";
 	public static final String PERSON_5_EMAIL = "amelia.jones@company.com";
+
 	public static final String PERSON_6 = "Charlotte Miller";
 	public static final String PERSON_6_EMAIL = "charlotte.miller@company.com";
+
 	public static final String PERSON_7 = "Sophia Davis";
 	public static final String PERSON_7_EMAIL = "sophia.davis@company.com";
+
 	public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 	public ListsView() {
@@ -77,9 +89,9 @@ public class ListsView extends Main {
 		add(new H2("Example: Timeline"));
 		add(createTimeline());
 
-		add(new H2("Theme: Border"));
+		add(new H2("Theme: Dividers"));
 		UnorderedList list = createList();
-		list.setBorder(true);
+		list.setDividers(true);
 		add(list);
 	}
 
@@ -105,29 +117,29 @@ public class ListsView extends Main {
 
 	private UnorderedList createListWithSuffix() {
 		return new UnorderedList(
-				new ListItem(PERSON_1, PERSON_1_EMAIL, createLink(PERSON_1)),
-				new ListItem(PERSON_2, PERSON_2_EMAIL, createLink(PERSON_2)),
-				new ListItem(PERSON_3, PERSON_3_EMAIL, createLink(PERSON_3))
+				new ListItem(PERSON_1, PERSON_1_EMAIL, createSuffix(PERSON_1)),
+				new ListItem(PERSON_2, PERSON_2_EMAIL, createSuffix(PERSON_2)),
+				new ListItem(PERSON_3, PERSON_3_EMAIL, createSuffix(PERSON_3))
 		);
 	}
 
-	private RouterLink createLink(String label) {
+	private RouterLink createSuffix(String label) {
 		Icon icon = VaadinIcon.CHEVRON_RIGHT_SMALL.create();
-		icon.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Width.MEDIUM);
+		icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
-		RouterLink link = new RouterLink();
+		RouterLink link = new RouterLink("", HighlightsView.class);
 		link.add(icon);
+		link.addClassNames(LumoUtility.Display.FLEX, LumoUtility.Padding.SMALL);
 		link.getElement().setAttribute("aria-label", label);
 		link.getElement().setAttribute("title", label);
-		link.setRoute(ListsView.class);
 		return link;
 	}
 
 	private UnorderedList createListWithPrefixSuffix() {
 		return new UnorderedList(
-				new ListItem(new Avatar(PERSON_1), PERSON_1, PERSON_1_EMAIL, createLink(PERSON_1)),
-				new ListItem(new Avatar(PERSON_2), PERSON_2, PERSON_2_EMAIL, createLink(PERSON_2)),
-				new ListItem(new Avatar(PERSON_3), PERSON_3, PERSON_3_EMAIL, createLink(PERSON_3))
+				new ListItem(new Avatar(PERSON_1), PERSON_1, PERSON_1_EMAIL, createSuffix(PERSON_1)),
+				new ListItem(new Avatar(PERSON_2), PERSON_2, PERSON_2_EMAIL, createSuffix(PERSON_2)),
+				new ListItem(new Avatar(PERSON_3), PERSON_3, PERSON_3_EMAIL, createSuffix(PERSON_3))
 		);
 	}
 
@@ -205,7 +217,7 @@ public class ListsView extends Main {
 	}
 
 	private UnorderedList createTaskList() {
-		UnorderedList list = new UnorderedList(
+		return new UnorderedList(
 				createTaskItem("Task 1", "Status", "Aug 8, 2022 ⋅ 7:30 PM"),
 				createTaskItem("Task 2", "Status", "Aug 9, 2022 ⋅ 2:00 PM"),
 				createTaskItem("Task 3", "Status", "Aug 12, 2022 ⋅ 5:45 PM"),
@@ -213,30 +225,11 @@ public class ListsView extends Main {
 				createTaskItem("Task 5", "Status", "Aug 27, 2022 ⋅ 10:15 AM"),
 				createTaskItem("Task 6", "Status", "Aug 29, 2022 ⋅ 4:30 PM")
 		);
-		list.setBorder(true);
-		return list;
 	}
 
-	private ThreeLineListItem createTaskItem(String taskName, String taskStatus, String taskDate) {
-		Span name = new Span(taskName);
-		name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
-
-		Badge status = new Badge(taskStatus);
-		status.addThemeVariants(BadgeVariant.PILL);
-
-		AvatarGroup avatarGroup = createAvatarGroup();
-
-		Paragraph content = new Paragraph(LOREM_IPSUM);
-		content.addClassNames(LumoUtility.Margin.NONE);
-
-		ThreeLineListItem item = new ThreeLineListItem();
-		item.setGap(Gap.SMALL);
-
-		item.setPrimary(name, status);
-		item.setSecondary(taskDate);
-		item.setSuffix(avatarGroup, createLink(taskName));
-		item.setContent(content);
-		item.setContentLineClap(LineClamp.LINE_CLAMP_2);
+	private ThreeLineListItem createTaskItem(String name, String status, String date) {
+		TaskListItem item = new TaskListItem(name, status, LOREM_IPSUM, date);
+		item.setSuffix(createAvatarGroup(), createSuffix(name));
 		return item;
 	}
 
@@ -252,15 +245,15 @@ public class ListsView extends Main {
 		return new UnorderedList(
 				new ListItem(
 						new Text("Aug 24, 11:01 AM"),
-						new Tag(new Avatar(PERSON_1), PERSON_1)
+						new Tag(new Avatar(PERSON_1, PERSON_1_IMG), PERSON_1)
 				),
 				new ListItem(
 						new Text("Aug 22, 6:20 PM"),
-						new Tag(new Avatar(PERSON_2), PERSON_2)
+						new Tag(new Avatar(PERSON_2, PERSON_2_IMG), PERSON_2)
 				),
 				new ListItem(
 						new Text("Aug 22, 5:47 PM"),
-						new Tag(new Avatar(PERSON_3), PERSON_3)
+						new Tag(new Avatar(PERSON_3, PERSON_3_IMG), PERSON_3)
 				)
 		);
 	}
@@ -280,33 +273,35 @@ public class ListsView extends Main {
 	}
 
 	private UnorderedList createTimeline() {
-		return new UnorderedList(
-				new TimelineListItem(
-						VaadinIcon.CHECK,
-						BackgroundColor.SUCCESS,
-						TextColor.SUCCESS_CONTRAST,
-						PERSON_1,
-						"marked issue as fixed",
-						"1d ago"
-				),
-				new TimelineListItem(
-						VaadinIcon.TAG,
-						PERSON_2,
-						new Span(
-								new Text(" added labels "),
-								new Badge("bug", BadgeVariant.ERROR, BadgeVariant.PILL),
-								new Text(" "),
-								new Badge("a11y", BadgeVariant.SUCCESS, BadgeVariant.PILL)
-						),
-						"4d ago"
-				),
-				new TimelineListItem(
-						VaadinIcon.PENCIL,
-						PERSON_3,
-						"changed the title",
-						"5d ago"
-				)
+		TimelineListItem item1 = new TimelineListItem(
+				VaadinIcon.CHECK, BackgroundColor.SUCCESS, TextColor.SUCCESS_CONTRAST,
+				PERSON_1, "marked issue as fixed", "1d ago"
 		);
+		item1.setAvatarImage(PERSON_1_IMG);
+
+		TimelineListItem item2 = new TimelineListItem(
+				VaadinIcon.TAG, BackgroundColor.PRIMARY, TextColor.PRIMARY_CONTRAST,
+				PERSON_2, new Span(
+				new Text(" added labels "),
+				new Badge("bug", BadgeVariant.ERROR, BadgeVariant.PILL),
+				new Text(" "),
+				new Badge("a11y", BadgeVariant.SUCCESS, BadgeVariant.PILL)
+		), "4d ago"
+		);
+		item2.setAvatarImage(PERSON_2_IMG);
+
+		TimelineListItem item3 = new TimelineListItem(
+				VaadinIcon.PENCIL, BackgroundColor.CONTRAST, TextColor.PRIMARY_CONTRAST,
+				PERSON_3, "changed the title", "5d ago"
+		);
+		item3.setAvatarImage(PERSON_3_IMG);
+
+		TimelineListItem item4 = new TimelineListItem(
+				VaadinIcon.LIGHTBULB,
+				"This is an API test by <b>" + PERSON_1 + "</b>", "3d ago"
+		);
+
+		return new UnorderedList(item1, item2, item3, item4);
 	}
 
 }

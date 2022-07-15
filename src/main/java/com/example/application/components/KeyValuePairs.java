@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class KeyValuePairs extends DescriptionList implements HasTheme {
 
-	public static final String BORDER = "border";
+	public static final String DIVIDERS = "dividers";
 	public static final String STRIPES = "stripes";
 
 	private GridColumns columns;
@@ -49,15 +49,6 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	}
 
 	/**
-	 * Sets the key position of each KeyValuePair.
-	 */
-	public void setKeyPosition(KeyValuePair.KeyPosition keyPosition) {
-		for (KeyValuePair pair : this.pairs) {
-			pair.setKeyPosition(keyPosition);
-		}
-	}
-
-	/**
 	 * Sets the number of columns.
 	 */
 	public void setColumns(GridColumns columns) {
@@ -82,22 +73,31 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
 	}
 
 	/**
+	 * Simulates dividers between items.
+	 */
+	public void setDividers(boolean dividers) {
+		if (dividers) {
+			addThemeName(DIVIDERS);
+		} else {
+			removeThemeName(DIVIDERS);
+		}
+	}
+
+	/**
+	 * Sets the key position of each KeyValuePair.
+	 */
+	public void setKeyPosition(KeyValuePair.KeyPosition keyPosition) {
+		for (KeyValuePair pair : this.pairs) {
+			pair.setKeyPosition(keyPosition);
+		}
+	}
+
+	/**
 	 * Sets the key width for each KeyValuePair.
 	 */
 	public void setKeyWidth(float width, Unit unit) {
 		for (KeyValuePair pair : this.pairs) {
 			pair.setKeyWidth(width, unit);
-		}
-	}
-
-	/**
-	 * Sets a bottom border on each KeyValuePair if true.
-	 */
-	public void setBorder(boolean border) {
-		if (border) {
-			addThemeName(BORDER);
-		} else {
-			removeThemeName(BORDER);
 		}
 	}
 

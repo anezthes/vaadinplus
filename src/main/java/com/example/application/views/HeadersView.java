@@ -18,11 +18,11 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Header | Vaadin+")
-@Route(value = "header", layout = MainLayout.class)
-public class HeaderView extends Main {
+@PageTitle("Headers | Vaadin+")
+@Route(value = "headers", layout = MainLayout.class)
+public class HeadersView extends Main {
 
-	public HeaderView() {
+	public HeadersView() {
 		addClassNames(
 				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
@@ -40,7 +40,7 @@ public class HeaderView extends Main {
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setBreadcrumb(
 				new RouterLink("Home", HomeView.class),
-				new RouterLink("Headings", HeaderView.class)
+				new RouterLink("Headers", HeadersView.class)
 		);
 		add(header);
 
@@ -70,7 +70,7 @@ public class HeaderView extends Main {
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setBreadcrumb(
 				new RouterLink("Home", HomeView.class),
-				new RouterLink("Headings", HeaderView.class)
+				new RouterLink("Headers", HeadersView.class)
 		);
 		header.setDetails(
 				new Tag(VaadinIcon.DENTAL_CHAIR, "Dolor sit"),

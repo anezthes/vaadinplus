@@ -59,7 +59,10 @@ public class Header extends Layout {
 		setActions(null);
 
 		this.row = new Layout(this.prefix, this.column, this.actions);
-		this.row.addClassNames(LumoUtility.Padding.MEDIUM);
+		this.row.addClassNames(
+				LumoUtility.Margin.Vertical.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
+				LumoUtility.Padding.Vertical.SMALL
+		);
 		this.row.setAlignItems(FlexComponent.Alignment.CENTER);
 		this.row.setFlexWrap(FlexWrap.WRAP);
 		this.row.setGap(Gap.MEDIUM);

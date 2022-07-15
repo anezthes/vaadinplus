@@ -47,9 +47,9 @@ public class KeyValuePairsView extends Main {
 		pairs.setKeyPosition(KeyValuePair.KeyPosition.TOP);
 		add(pairs);
 
-		add(new H2("Theme: Border"));
+		add(new H2("Theme: Dividers"));
 		pairs = createKeyValuePairs();
-		pairs.setBorder(true);
+		pairs.setDividers(true);
 		add(pairs);
 
 		add(new H2("Theme: Stripes"));

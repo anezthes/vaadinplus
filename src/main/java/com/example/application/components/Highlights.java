@@ -8,7 +8,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class Highlights extends Layout implements HasTheme {
 
-	public static final String BORDER = "border";
+	public static final String DIVIDERS = "dividers";
 
 	private FlexRowBreakpoint breakpoint;
 
@@ -37,13 +37,13 @@ public class Highlights extends Layout implements HasTheme {
 	}
 
 	/**
-	 * Simulates a border between items.
+	 * Simulates dividers between items.
 	 */
-	public void setBorder(boolean border) {
-		if (border) {
-			addThemeName(BORDER);
+	public void setDividers(boolean dividers) {
+		if (dividers) {
+			addThemeName(DIVIDERS);
 		} else {
-			removeThemeName(BORDER);
+			removeThemeName(DIVIDERS);
 		}
 	}
 

@@ -1,11 +1,11 @@
-ul[theme~="border"] {
+ul[theme~="dividers"] {
     background-color: var(--lumo-base);
     background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
     gap: 1px;
 }
 
 li.timeline::before {
-    background-color: var(--lumo-contrast-10pct);
+    background-color: var(--lumo-contrast-30pct);
     content: "";
     inset: 0 auto 0 calc(var(--lumo-space-m) + (var(--lumo-size-m) / 2));
     position: absolute;

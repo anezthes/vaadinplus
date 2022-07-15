@@ -45,6 +45,7 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
 		setSecondary(secondary);
 
 		this.column = new Layout(this.primary, this.secondary);
+		this.column.addClassNames(LumoUtility.Padding.Start.XSMALL);
 		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 		this.column.setFlexGrow(1, this.column);
 
@@ -54,7 +55,7 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
 		this.row = new Layout(this.column, this.actions);
 		this.row.setAlignItems(Alignment.CENTER);
 		this.row.addClassNames(
-				LumoUtility.Padding.End.SMALL, LumoUtility.Padding.Start.MEDIUM, LumoUtility.Padding.Vertical.SMALL
+				LumoUtility.Padding.End.XSMALL, LumoUtility.Padding.Start.SMALL, LumoUtility.Padding.Vertical.SMALL
 		);
 
 		add(this.image, this.row);

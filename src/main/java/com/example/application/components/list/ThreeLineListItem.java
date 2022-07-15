@@ -28,7 +28,10 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
 	private Layout content;
 
 	public ThreeLineListItem() {
-		addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Padding.MEDIUM);
+		addClassNames(
+				LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Padding.Horizontal.MEDIUM,
+				LumoUtility.Padding.Vertical.SMALL
+		);
 		setFlexDirection(FlexDirection.COLUMN);
 
 		this.prefix = new Layout();
@@ -44,6 +47,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
 		this.secondary.setVisible(false);
 
 		this.column = new Layout(this.primary, this.secondary);
+		this.column.addClassNames(LumoUtility.Padding.Top.XSMALL);
 		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 		this.column.setFlexGrow(1, this.column);
 
@@ -59,6 +63,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
 		this.row.setRowGap(Gap.SMALL);
 
 		this.content = new Layout();
+		this.content.addClassNames(LumoUtility.Padding.Bottom.XSMALL);
 		this.content.setVisible(false);
 
 		add(this.row, this.content);

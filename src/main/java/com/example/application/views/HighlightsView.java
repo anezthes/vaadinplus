@@ -65,9 +65,9 @@ public class HighlightsView extends Main {
 		add(new H2("Grid"));
 		add(createGridHighlights());
 
-		add(new H2("Theme: Border"));
+		add(new H2("Theme: Dividers"));
 		Highlights highlights = createHighlights();
-		highlights.setBorder(true);
+		highlights.setDividers(true);
 		add(highlights);
 	}
 
@@ -157,13 +157,13 @@ public class HighlightsView extends Main {
 
 	private RouterLink createSuffix(String label) {
 		Icon icon = VaadinIcon.CHEVRON_RIGHT_SMALL.create();
-		icon.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Width.MEDIUM);
+		icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
-		RouterLink link = new RouterLink();
+		RouterLink link = new RouterLink("", HighlightsView.class);
 		link.add(icon);
+		link.addClassNames(LumoUtility.Display.FLEX, LumoUtility.Padding.SMALL);
 		link.getElement().setAttribute("aria-label", label);
 		link.getElement().setAttribute("title", label);
-		link.setRoute(HighlightsView.class);
 		return link;
 	}
 

@@ -1,0 +1,5 @@
+/* Dividers */
+
+:host([theme~='vertical'][theme~="dividers"]) [part='group-field'] ::slotted(*:not(:last-of-type)) {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+}

@@ -1,0 +1,39 @@
+/* Right-align */
+
+:host([theme~="right-align"]) .vaadin-checkbox-container {
+    grid-template-columns: 1fr auto;
+}
+
+:host([theme~="right-align"]) .vaadin-checkbox-wrapper {
+    order: 1;
+}
+
+:host([theme~="right-align"][has-label]) ::slotted(label) {
+    padding-inline-start: 0;
+}
+
+/* Switch */
+
+:host([theme~="switch"]) [part='checkbox'] {
+    border-radius: 9999px;
+    width: var(--lumo-size-m);
+}
+
+:host([theme~="switch"]) [part='checkbox']::after {
+    content: "";
+    height: calc(var(--lumo-size-m) / 3);
+    background-color: var(--lumo-secondary-text-color);
+    border-radius: 9999px;
+    inset: 0;
+    /* (size-m/2 - size-m/3) / 2 = size-m/12 */
+    margin: calc(var(--lumo-size-m) / 12);
+    opacity: 1;
+    transition: transform 0.2s;
+    width: calc(var(--lumo-size-m) / 3);
+}
+
+:host([theme~="switch"][checked]) [part='checkbox']::after {
+    background-color: var(--lumo-primary-contrast-color);
+    /* size-m - size-m/3 - 2*size-m/12 = size-m/2 */
+    transform: translateX(calc(var(--lumo-size-m) / 2));
+}

@@ -1,0 +1,31 @@
+/* Dividers */
+
+:host([theme~='vertical'][theme~="dividers"]) [part='group-field'] ::slotted(*:not(:last-of-type)) {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+}
+
+/* Border */
+
+:host([theme*='border']) [part='group-field'] ::slotted(*:first-of-type) {
+    border-radius: var(--lumo-border-radius-m) 0 0 var(--lumo-border-radius-m);
+}
+
+:host([theme*='border']) [part='group-field'] ::slotted(*:last-of-type) {
+    border-radius: 0 var(--lumo-border-radius-m) var(--lumo-border-radius-m) 0;
+}
+
+:host([theme*='border']) [part='group-field'] ::slotted(*:not(:first-of-type)) {
+    margin: 0 0 0 -1px;
+}
+
+:host([theme*='border'][theme~='vertical']) [part='group-field'] ::slotted(*:first-of-type) {
+    border-radius: var(--lumo-border-radius-m) var(--lumo-border-radius-m) 0 0;
+}
+
+:host([theme*='border'][theme~='vertical']) [part='group-field'] ::slotted(*:last-of-type) {
+    border-radius: 0 0 var(--lumo-border-radius-m) var(--lumo-border-radius-m);
+}
+
+:host([theme*='border'][theme~='vertical']) [part='group-field'] ::slotted(*:not(:first-of-type)) {
+    margin: -1px 0 0 0;
+}

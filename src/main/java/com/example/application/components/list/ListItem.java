@@ -44,6 +44,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 		this.secondary.setVisible(false);
 
 		this.column = new Layout(this.primary, this.secondary);
+		this.column.addClassNames(LumoUtility.Padding.Vertical.XSMALL);
 		this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 		this.column.setFlexGrow(1, this.column);
 

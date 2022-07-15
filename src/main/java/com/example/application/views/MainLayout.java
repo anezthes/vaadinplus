@@ -66,10 +66,13 @@ public class MainLayout extends AppLayout {
 
 	private MenuItemInfo[] createMenuItems() {
 		return new MenuItemInfo[]{
-				new MenuItemInfo("Header", "la la-heading", HeaderView.class),
+				new MenuItemInfo("Checkboxes", "la la-check-square", CheckboxesView.class),
+				new MenuItemInfo("Headers", "la la-heading", HeadersView.class),
 				new MenuItemInfo("Highlights", "la la-lightbulb", HighlightsView.class),
 				new MenuItemInfo("Key-Value Pairs", "la la-key", KeyValuePairsView.class),
 				new MenuItemInfo("Lists", "la la-list", ListsView.class),
+				new MenuItemInfo("Notifications", "la la-bell", NotificationsView.class),
+				new MenuItemInfo("Radio Buttons", "la la-dot-circle", RadioButtonsView.class),
 		};
 	}
 
