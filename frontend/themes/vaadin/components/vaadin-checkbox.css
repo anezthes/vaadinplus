@@ -1,14 +1,14 @@
-/* Right-align */
+/* Align: Right */
 
-:host([theme~="right-align"]) .vaadin-checkbox-container {
+:host([theme~="align-right"]) .vaadin-checkbox-container {
     grid-template-columns: 1fr auto;
 }
 
-:host([theme~="right-align"]) .vaadin-checkbox-wrapper {
+:host([theme~="align-right"]) .vaadin-checkbox-wrapper {
     order: 1;
 }
 
-:host([theme~="right-align"][has-label]) ::slotted(label) {
+:host([theme~="align-right"][has-label]) ::slotted(label) {
     padding-inline-start: 0;
 }
 

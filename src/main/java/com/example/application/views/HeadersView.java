@@ -18,13 +18,14 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Headers | Vaadin+")
+@PageTitle("Headers")
 @Route(value = "headers", layout = MainLayout.class)
 public class HeadersView extends Main {
 
 	public HeadersView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new H2("Basic"));

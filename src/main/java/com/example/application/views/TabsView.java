@@ -5,13 +5,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Tabs | Vaadin+")
+@PageTitle("Tabs")
 @Route(value = "tabs", layout = MainLayout.class)
 public class TabsView extends Main {
 
 	public TabsView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		// Different styles

@@ -1,5 +1,6 @@
 package com.example.application.views;
 
+import com.example.application.themes.RadioButtonTheme;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.html.H2;
@@ -15,7 +16,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import java.util.stream.Collectors;
 
-@PageTitle("Radio Buttons | Vaadin+")
+@PageTitle("Radio Buttons")
 @Route(value = "radio-buttons", layout = MainLayout.class)
 public class RadioButtonsView extends Main {
 
@@ -24,26 +25,27 @@ public class RadioButtonsView extends Main {
 
 	public RadioButtonsView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new H2("Descriptions"));
 		add(createRadioButtonGroupWithDescriptions());
 
 		add(new H2("Theme: Dividers"));
-		add(createRadioButtonGroup("dividers"));
+		add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS));
 
-		add(new H2("Theme: Dividers & Right-Align"));
-		add(createRadioButtonGroup("dividers", "right-align"));
+		add(new H2("Theme: Dividers & Align-Right"));
+		add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS, RadioButtonTheme.ALIGN_RIGHT));
 
 		add(new H2("Theme: Border"));
-		add(createRadioButtonGroup("border"));
+		add(createRadioButtonGroup(RadioButtonTheme.BORDER));
 
 		add(new H2("Theme: Border-Only"));
-		add(createRadioButtonGroup("border-only"));
+		add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY));
 
 		add(new H2("Theme: Border-Only & Primary"));
-		add(createRadioButtonGroup("border-only", "primary"));
+		add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.PRIMARY));
 	}
 
 	private RadioButtonGroup<String> createRadioButtonGroupWithDescriptions() {

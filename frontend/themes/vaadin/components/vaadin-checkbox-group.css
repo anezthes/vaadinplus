@@ -1,3 +1,5 @@
+@import "input-field.css";
+
 /* Dividers */
 
 :host([theme~='vertical'][theme~="dividers"]) [part='group-field'] ::slotted(*:not(:last-of-type)) {

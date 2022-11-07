@@ -11,7 +11,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Notifications | Vaadin+")
+@PageTitle("Notifications")
 @Route(value = "notifications", layout = MainLayout.class)
 public class NotificationsView extends Main {
 
@@ -20,7 +20,8 @@ public class NotificationsView extends Main {
 
 	public NotificationsView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN, LumoUtility.Padding.Bottom.LARGE,
+				LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new H2("Info"));

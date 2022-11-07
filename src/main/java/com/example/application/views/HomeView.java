@@ -6,13 +6,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Home | Vaadin+")
+@PageTitle("Home")
 @Route(value = "", layout = MainLayout.class)
 public class HomeView extends Main {
 
 	public HomeView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new Paragraph("Welcome to Vaadin+!"));

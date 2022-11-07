@@ -13,13 +13,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Key-Value Pairs | Vaadin+")
+@PageTitle("Key-Value Pairs")
 @Route(value = "key-value-pairs", layout = MainLayout.class)
 public class KeyValuePairsView extends Main {
 
 	public KeyValuePairsView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new H2("Horizontal with Breakpoint"));

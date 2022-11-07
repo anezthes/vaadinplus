@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 public class Layout extends FlexLayout {
 
+	private com.example.application.utilities.AlignItems alignItems;
 	private Display display;
 	private com.example.application.utilities.FlexDirection flexDirection;
 	private GridColumns gridColumns;
@@ -33,6 +34,20 @@ public class Layout extends FlexLayout {
 		}
 		addClassNames(display.getClassName());
 		this.display = display;
+	}
+
+	@Override
+	public void setAlignItems(Alignment alignment) {
+		// Say "no" to inline styles! :)
+		setAlignItems(AlignItems.valueOf(alignment.name()));
+	}
+
+	private void setAlignItems(AlignItems alignItems) {
+		if (this.alignItems != null) {
+			removeClassNames(this.alignItems.getClassName());
+		}
+		addClassNames(alignItems.getClassName());
+		this.alignItems = alignItems;
 	}
 
 	@Override

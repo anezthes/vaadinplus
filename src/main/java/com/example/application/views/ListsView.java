@@ -24,7 +24,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Lists | Vaadin+")
+@PageTitle("Lists")
 @Route(value = "lists", layout = MainLayout.class)
 public class ListsView extends Main {
 
@@ -56,7 +56,8 @@ public class ListsView extends Main {
 
 	public ListsView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new H2("Basic"));
@@ -99,11 +100,7 @@ public class ListsView extends Main {
 		return new UnorderedList(
 				new ListItem(PERSON_1, PERSON_1_EMAIL),
 				new ListItem(PERSON_2, PERSON_2_EMAIL),
-				new ListItem(PERSON_3, PERSON_3_EMAIL),
-				new ListItem(PERSON_4, PERSON_4_EMAIL),
-				new ListItem(PERSON_5, PERSON_5_EMAIL),
-				new ListItem(PERSON_6, PERSON_6_EMAIL),
-				new ListItem(PERSON_7, PERSON_7_EMAIL)
+				new ListItem(PERSON_3, PERSON_3_EMAIL)
 		);
 	}
 

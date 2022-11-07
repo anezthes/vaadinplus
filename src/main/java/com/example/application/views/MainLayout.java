@@ -69,6 +69,7 @@ public class MainLayout extends AppLayout {
 				new MenuItemInfo("Checkboxes", "la la-check-square", CheckboxesView.class),
 				new MenuItemInfo("Headers", "la la-heading", HeadersView.class),
 				new MenuItemInfo("Highlights", "la la-lightbulb", HighlightsView.class),
+				new MenuItemInfo("Input Groups", "la la-keyboard", InputGroupsView.class),
 				new MenuItemInfo("Key-Value Pairs", "la la-key", KeyValuePairsView.class),
 				new MenuItemInfo("Lists", "la la-list", ListsView.class),
 				new MenuItemInfo("Notifications", "la la-bell", NotificationsView.class),
@@ -84,7 +85,7 @@ public class MainLayout extends AppLayout {
 
 	private String getCurrentPageTitle() {
 		PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
-		return title == null ? "" : title.value();
+		return title == null ? "" : title.value() + " | Vaadin+";
 	}
 
 	/**

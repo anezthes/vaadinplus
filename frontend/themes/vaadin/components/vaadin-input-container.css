@@ -1,0 +1,17 @@
+/* Theme: Outline */
+
+:host([theme~="outline"]) {
+    background-color: var(--lumo-base-color);
+    box-shadow: inset 0 0 0 1px var(--lumo-contrast-50pct);
+}
+
+:host([theme~="outline"][invalid]) {
+    background-color: var(--lumo-error-color-10pct);
+}
+
+/* Theme: Inset Label */
+
+:host([theme~="inset-label"]) ::slotted(:not([slot$='fix'])) {
+    box-sizing: border-box;
+    padding-top: var(--lumo-space-m);
+}

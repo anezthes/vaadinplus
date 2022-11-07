@@ -1,5 +1,6 @@
 package com.example.application.views;
 
+import com.example.application.themes.CheckboxTheme;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
@@ -15,7 +16,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import java.util.stream.Collectors;
 
-@PageTitle("Checkboxes | Vaadin+")
+@PageTitle("Checkboxes")
 @Route(value = "checkboxes", layout = MainLayout.class)
 public class CheckboxesView extends Main {
 
@@ -24,20 +25,21 @@ public class CheckboxesView extends Main {
 
 	public CheckboxesView() {
 		addClassNames(
-				LumoUtility.MinHeight.FULL, LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
+				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
 		add(new H2("Descriptions"));
 		add(createCheckboxGroupWithDescriptions());
 
 		add(new H2("Theme: Dividers"));
-		add(createCheckboxGroup("dividers"));
+		add(createCheckboxGroup(CheckboxTheme.DIVIDERS));
 
-		add(new H2("Theme: Dividers & Right-Align"));
-		add(createCheckboxGroup("dividers", "right-align"));
+		add(new H2("Theme: Dividers & Align-Right"));
+		add(createCheckboxGroup(CheckboxTheme.DIVIDERS, CheckboxTheme.ALIGN_RIGHT));
 
 		add(new H2("Theme: Switch"));
-		add(createCheckboxGroup("switch"));
+		add(createCheckboxGroup(CheckboxTheme.SWITCH));
 	}
 
 	private CheckboxGroup<String> createCheckboxGroupWithDescriptions() {
