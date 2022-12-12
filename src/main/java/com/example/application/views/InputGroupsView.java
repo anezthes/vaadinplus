@@ -27,26 +27,27 @@ public class InputGroupsView extends Main {
 				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
 		);
 
-		add(new H2("Input with Button"));
+		add(new H2("Theme: Inset Label"));
+		add(createTextField(InputTheme.INSET_LABEL));
+		// add(createTextField(VaadinIcon.SEARCH, InputTheme.INSET_LABEL));
+		add(createTextFieldWithoutLabel(InputTheme.INSET_LABEL));
+
+		add(new H2("Theme: Outline"));
+		add(createTextFields(InputTheme.OUTLINE));
+
+		add(new H2("Theme: Hide & Inset Label"));
+		add(createTextField(InputTheme.HIDE_LABEL, InputTheme.INSET_LABEL));
+
+		add(new H2("Theme: Inset Label & Outline"));
+		add(createTextField(InputTheme.INSET_LABEL, InputTheme.OUTLINE));
+
+		add(new H2("Example: Input with Button"));
 		add(createInputWithButton(false));
 		add(createInputWithButton(true));
 
 		add(new H2("Example: Price"));
 		add(createPriceExample(false));
 		add(createPriceExample(true));
-
-		add(new H2("Theme: Inset Label"));
-		add(createTextField(InputTheme.INSET_LABEL));
-		add(createTextFieldWithoutLabel(InputTheme.INSET_LABEL));
-
-		add(new H2("Theme: Hide & Inset Label"));
-		add(createTextField(InputTheme.HIDE_LABEL, InputTheme.INSET_LABEL));
-
-		add(new H2("Theme: Outline"));
-		add(createTextFields(InputTheme.OUTLINE));
-
-		add(new H2("Theme: Inset Label & Outline"));
-		add(createTextField(InputTheme.INSET_LABEL, InputTheme.OUTLINE));
 
 		add(new H2("Example: Vertical Group"));
 		add(createVerticalGroupExample());
@@ -55,25 +56,15 @@ public class InputGroupsView extends Main {
 		add(createCreditCardExample());
 	}
 
-	private Component createInputWithButton(boolean outline) {
-		TextField textField = new TextField("Search");
-		textField.addThemeNames(outline ? InputTheme.OUTLINE : "");
-
-		Button button = new Button("Advanced", VaadinIcon.SEARCH.create());
-		button.addThemeNames(outline ? ButtonTheme.OUTLINE : "");
-
-		return new InputGroup(textField, button);
-	}
-
-	private Component createPriceExample(boolean outline) {
-		PriceField priceField = new PriceField("Price");
-		priceField.addThemeNames(outline ? InputTheme.OUTLINE : "");
-		return priceField;
-	}
-
 	private TextField createTextField(String... themeNames) {
 		TextField textField = new TextField("Label");
 		textField.addThemeNames(themeNames);
+		return textField;
+	}
+
+	private TextField createTextField(VaadinIcon icon, String... themeNames) {
+		TextField textField = createTextField(themeNames);
+		textField.setPrefixComponent(icon.create());
 		return textField;
 	}
 
@@ -97,6 +88,22 @@ public class InputGroupsView extends Main {
 		invalid.setInvalid(true);
 
 		return new Component[]{enabled, disabled, readonly, invalid};
+	}
+
+	private Component createInputWithButton(boolean outline) {
+		TextField textField = new TextField("Search");
+		textField.addThemeNames(outline ? InputTheme.OUTLINE : "");
+
+		Button button = new Button("Advanced", VaadinIcon.SEARCH.create());
+		button.addThemeNames(outline ? ButtonTheme.OUTLINE : "");
+
+		return new InputGroup(textField, button);
+	}
+
+	private Component createPriceExample(boolean outline) {
+		PriceField priceField = new PriceField("Price");
+		priceField.addThemeNames(outline ? InputTheme.OUTLINE : "");
+		return priceField;
 	}
 
 	private Component createVerticalGroupExample() {
