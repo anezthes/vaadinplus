@@ -39,7 +39,7 @@ public class InputGroupsView extends Main {
 		add(createTextField(InputTheme.INSET_LABEL));
 
 		add(new H2("Theme: Outline"));
-		add(createTextField(InputTheme.OUTLINE));
+		add(createTextFields(InputTheme.OUTLINE));
 
 		add(new H2("Theme: Inset Label & Outline"));
 		add(createTextField(InputTheme.INSET_LABEL, InputTheme.OUTLINE));
@@ -67,10 +67,25 @@ public class InputGroupsView extends Main {
 		return priceField;
 	}
 
-	private Component createTextField(String... themeNames) {
+	private TextField createTextField(String... themeNames) {
 		TextField textField = new TextField("Label");
 		textField.addThemeNames(themeNames);
 		return textField;
+	}
+
+	private Component[] createTextFields(String... themeNames) {
+		TextField enabled = createTextField(themeNames);
+
+		TextField disabled = createTextField(themeNames);
+		disabled.setEnabled(false);
+
+		TextField readonly = createTextField(themeNames);
+		readonly.setReadOnly(true);
+
+		TextField invalid = createTextField(themeNames);
+		invalid.setInvalid(true);
+
+		return new Component[]{enabled, disabled, readonly, invalid};
 	}
 
 	private Component createVerticalGroupExample() {

@@ -1,12 +1,16 @@
 /* Theme: Outline */
 
-:host([theme~="outline"]) {
+:host([theme~="outline"]:not([disabled]):not([invalid]):not([readonly])) {
     background-color: var(--lumo-base-color);
     box-shadow: inset 0 0 0 1px var(--lumo-contrast-50pct);
 }
 
+:host([theme~="outline"][disabled]) {
+    box-shadow: inset 0 0 0 1px var(--lumo-contrast-10pct);
+}
+
 :host([theme~="outline"][invalid]) {
-    background-color: var(--lumo-error-color-10pct);
+    box-shadow: inset 0 0 0 1px var(--lumo-error-color-50pct);
 }
 
 /* Theme: Inset Label */
