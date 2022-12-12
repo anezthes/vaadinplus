@@ -85,7 +85,7 @@ public class MainLayout extends AppLayout {
 
 	private String getCurrentPageTitle() {
 		PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
-		return title == null ? "" : title.value() + " | Vaadin+";
+		return title == null ? "" : title.value();
 	}
 
 	/**

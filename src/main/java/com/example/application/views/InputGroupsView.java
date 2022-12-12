@@ -37,6 +37,10 @@ public class InputGroupsView extends Main {
 
 		add(new H2("Theme: Inset Label"));
 		add(createTextField(InputTheme.INSET_LABEL));
+		add(createTextFieldWithoutLabel(InputTheme.INSET_LABEL));
+
+		add(new H2("Theme: Hide & Inset Label"));
+		add(createTextField(InputTheme.HIDE_LABEL, InputTheme.INSET_LABEL));
 
 		add(new H2("Theme: Outline"));
 		add(createTextFields(InputTheme.OUTLINE));
@@ -69,6 +73,13 @@ public class InputGroupsView extends Main {
 
 	private TextField createTextField(String... themeNames) {
 		TextField textField = new TextField("Label");
+		textField.addThemeNames(themeNames);
+		return textField;
+	}
+
+	private TextField createTextFieldWithoutLabel(String... themeNames) {
+		/* Demo purposes only; always use labels! */
+		TextField textField = new TextField();
 		textField.addThemeNames(themeNames);
 		return textField;
 	}

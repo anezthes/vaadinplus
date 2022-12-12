@@ -73,3 +73,8 @@
     font-size: var(--lumo-font-size-xs);
     top: var(--lumo-space-s);
 }
+
+:host([theme~="inset-label"][has-label]:not([theme~="hide-label"])) ::slotted(input) {
+    box-sizing: border-box;
+    padding-top: var(--lumo-space-m);
+}
