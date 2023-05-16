@@ -74,6 +74,7 @@ public class MainLayout extends AppLayout {
 				new MenuItemInfo("Lists", "la la-list", ListsView.class),
 				new MenuItemInfo("Notifications", "la la-bell", NotificationsView.class),
 				new MenuItemInfo("Radio Buttons", "la la-dot-circle", RadioButtonsView.class),
+				new MenuItemInfo("Seqmented Controls", "la la-hand-pointer", SegmentedControlsView.class),
 		};
 	}
 
