@@ -1,0 +1,130 @@
+
+/* Segmented Control variant */
+vaadin-tabs[theme~="segmented-control"] {
+    background-color: var(--lumo-contrast-5pct);
+    border-radius: var(--lumo-border-radius-m);
+    padding: calc(var(--lumo-space-xs) / 2);
+}
+
+vaadin-tabs[theme~="segmented-control"]::part(tabs) {
+    margin: 0;
+    overflow: visible;
+}
+
+vaadin-tabs[theme~="segmented-control"] vaadin-tab {
+    border-radius: var(--lumo-border-radius-s);
+    transition: background-color 100ms;
+}
+
+vaadin-tabs[theme~="segmented-control"] vaadin-tab[focus-ring] {
+    box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct);
+    z-index: 1;
+}
+
+vaadin-tabs[theme~="segmented-control"] vaadin-tab[selected] {
+    background-color: var(--lumo-base-color);
+}
+
+vaadin-tabs[theme~="segmented-control"] vaadin-tab:not([selected]):hover {
+    background-color: var(--lumo-tint-5pct);
+}
+
+/* Segmented Control separated variant */
+vaadin-tabs[theme~="segmented-control"][theme~="border"] {
+    border: 1px solid var(--lumo-contrast-10pct);
+    padding: 0;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab[selected]:not([focus-ring]) {
+    outline: 1px solid var(--lumo-contrast-40pct);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab[selected],
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab[active] {
+    color: var(--lumo-body-text-color);
+}
+
+/* Segmented Control border variant */
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] {
+    background-color: var(--lumo-base-color);
+    border: 1px solid var(--lumo-contrast-20pct);
+    padding: 0;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab {
+    border-radius: 0;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab:first-of-type {
+    border-top-left-radius: var(--lumo-border-radius-s);
+    border-bottom-left-radius: var(--lumo-border-radius-s);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab:last-of-type {
+    border-top-right-radius: var(--lumo-border-radius-s);
+    border-bottom-right-radius: var(--lumo-border-radius-s);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab[selected] {
+    background-color: var(--lumo-primary-color);
+    color: var(--lumo-primary-contrast-color);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab:not([selected]):hover {
+    background-color: var(--lumo-primary-color-10pct);
+}
+
+/* Segmented Control minimal variant */
+vaadin-tabs[theme~="segmented-control"][theme~="hollow"] {
+    background-color: transparent;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="hollow"] vaadin-tab {
+    border-radius: var(--lumo-border-radius-l);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="hollow"] vaadin-tab[selected] {
+    background-color: var(--lumo-primary-color-10pct);
+    color: var(--lumo-primary-text-color);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="hollow"] vaadin-tab:not([selected]):hover {
+    background-color: unset;
+}
+
+/* Vaadin Tab */
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab {
+    border-left: 1px solid var(--lumo-contrast-20pct);
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab[selected] + vaadin-tab,
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab[selected],
+vaadin-tabs[theme~="segmented-control"][theme~="filled"] vaadin-tab:first-of-type {
+    border-left-color: transparent;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab {
+    position: relative;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 1px;
+    height: 60%;
+    top: 20%;
+    bottom: 20%;
+    right: auto;
+    left: 0;
+    background: var(--lumo-contrast-20pct);
+    transform: initial;
+    box-shadow: none;
+    opacity: 1;
+}
+
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab[selected]::after,
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab[selected] + vaadin-tab::after,
+vaadin-tabs[theme~="segmented-control"][theme~="border"] vaadin-tab:first-of-type::after {
+    background: transparent;
+}
