@@ -8,28 +8,28 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class NotificationListItem extends ListItem {
 
-	private Span author;
-	private Span activity;
-	private RouterLink link;
+    private Span author;
+    private Span activity;
+    private RouterLink link;
 
-	public NotificationListItem(
-			String author,
-			String activity,
-			String linkText,
-			Class<? extends Component> navigationTarget,
-			String time
-	) {
-		this.author = new Span(author);
-		this.author.addClassNames(LumoUtility.FontWeight.SEMIBOLD, LumoUtility.TextColor.BODY);
+    public NotificationListItem(
+            String author,
+            String activity,
+            String linkText,
+            Class<? extends Component> navigationTarget,
+            String time
+    ) {
+        this.author = new Span(author);
+        this.author.addClassNames(LumoUtility.FontWeight.SEMIBOLD, LumoUtility.TextColor.BODY);
 
-		this.activity = new Span(" " + activity + " ");
-		this.activity.addClassNames(LumoUtility.TextColor.SECONDARY);
+        this.activity = new Span(" " + activity + " ");
+        this.activity.addClassNames(LumoUtility.TextColor.SECONDARY);
 
-		this.link = new RouterLink(linkText, navigationTarget);
+        this.link = new RouterLink(linkText, navigationTarget);
 
-		setPrefix(new Avatar(author));
-		setPrimary(new Span(this.author, this.activity, this.link));
-		setSecondary(time);
-	}
+        setPrefix(new Avatar(author));
+        setPrimary(new Span(this.author, this.activity, this.link));
+        setSecondary(time);
+    }
 
 }

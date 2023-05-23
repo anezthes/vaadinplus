@@ -10,25 +10,25 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class TaskListItem extends ThreeLineListItem {
 
-	private Span name;
-	private Badge status;
-	private Paragraph content;
+    private Span name;
+    private Badge status;
+    private Paragraph content;
 
-	public TaskListItem(String name, String status, String content, String date) {
-		setGap(Gap.SMALL);
+    public TaskListItem(String name, String status, String content, String date) {
+        setGap(Gap.SMALL);
 
-		this.name = new Span(name);
-		this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        this.name = new Span(name);
+        this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
 
-		this.status = new Badge(status, BadgeVariant.PILL);
+        this.status = new Badge(status, BadgeVariant.PILL);
 
-		this.content = new Paragraph(content);
-		this.content.addClassNames(LumoUtility.Margin.NONE);
+        this.content = new Paragraph(content);
+        this.content.addClassNames(LumoUtility.Margin.NONE);
 
-		setPrimary(this.name, this.status);
-		setSecondary(date);
-		setContent(content);
-		setContentLineClap(LineClamp.LINE_CLAMP_2);
-	}
+        setPrimary(this.name, this.status);
+        setSecondary(date);
+        setContent(content);
+        setContentLineClap(LineClamp.LINE_CLAMP_2);
+    }
 
 }
