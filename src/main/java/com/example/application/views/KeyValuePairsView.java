@@ -15,29 +15,24 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Key-Value Pairs")
 @Route(value = "key-value-pairs", layout = MainLayout.class)
-public class KeyValuePairsView extends Main {
+public class KeyValuePairsView extends View {
 
 	public KeyValuePairsView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Horizontal with Breakpoint"));
+		addH2("Horizontal with Breakpoint");
 		KeyValuePairs pairs = createKeyValuePairs();
 		add(pairs);
 
-		add(new H2("Horizontal without Breakpoint"));
+		addH2("Horizontal without Breakpoint");
 		pairs = createKeyValuePairs();
 		pairs.removeBreakpoint();
 		add(pairs);
 
-		add(new H2("Vertical"));
+		addH2("Vertical");
 		pairs = createKeyValuePairs();
 		pairs.setKeyPosition(KeyValuePair.KeyPosition.TOP);
 		add(pairs);
 
-		add(new H2("Column Span"));
+		addH2("Column Span");
 		pairs = createKeyValuePairs();
 		pairs.setColumns(GridColumns.COLUMNS_2);
 		pairs.setColumnSpan(
@@ -48,12 +43,12 @@ public class KeyValuePairsView extends Main {
 		pairs.setKeyPosition(KeyValuePair.KeyPosition.TOP);
 		add(pairs);
 
-		add(new H2("Theme: Dividers"));
+		addH2("Theme: Dividers");
 		pairs = createKeyValuePairs();
 		pairs.setDividers(true);
 		add(pairs);
 
-		add(new H2("Theme: Stripes"));
+		addH2("Theme: Stripes");
 		pairs = createKeyValuePairs();
 		pairs.setStripes(true);
 		add(pairs);

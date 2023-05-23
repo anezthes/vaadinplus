@@ -20,24 +20,19 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Headers")
 @Route(value = "headers", layout = MainLayout.class)
-public class HeadersView extends Main {
+public class HeadersView extends View {
 
 	public HeadersView() {
-		addClassNames(
-				LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Basic"));
+		addH2("Basic");
 		Header header = new Header("Lorem ipsum", HeadingLevel.H3);
 		add(header);
 
-		add(new H2("Prefix"));
+		addH2("Prefix");
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setPrefix(createBackButton());
 		add(header);
 
-		add(new H2("Breadcrumb"));
+		addH2("Breadcrumb");
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setBreadcrumb(
 				new RouterLink("Home", HomeView.class),
@@ -45,7 +40,7 @@ public class HeadersView extends Main {
 		);
 		add(header);
 
-		add(new H2("Details"));
+		addH2("Details");
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setDetails(
 				new Tag(VaadinIcon.DENTAL_CHAIR, "Dolor sit"),
@@ -54,12 +49,12 @@ public class HeadersView extends Main {
 		);
 		add(header);
 
-		add(new H2("Tabs"));
+		addH2("Tabs");
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setTabs(new Tab("Tab 1"), new Tab("Tab 2"), new Tab("Tab 3"));
 		add(header);
 
-		add(new H2("Actions"));
+		addH2("Actions");
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		Button button = new Button("Button");
 		Button primaryButton = new Button("Button");
@@ -67,7 +62,7 @@ public class HeadersView extends Main {
 		header.setActions(button, primaryButton);
 		add(header);
 
-		add(new H2("Breadcrumb, Details, Tabs & Actions"));
+		addH2("Breadcrumb, Details, Tabs & Actions");
 		header = new Header("Lorem ipsum", HeadingLevel.H3);
 		header.setBreadcrumb(
 				new RouterLink("Home", HomeView.class),
@@ -85,7 +80,7 @@ public class HeadersView extends Main {
 		header.setActions(button, primaryButton);
 		add(header);
 
-		add(new H2("Example: User"));
+		addH2("Example: User");
 		createUserExample();
 	}
 

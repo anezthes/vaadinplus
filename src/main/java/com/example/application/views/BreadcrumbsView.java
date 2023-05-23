@@ -10,15 +10,10 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Breadcrumbs")
 @Route(value = "breadcrumbs", layout = MainLayout.class)
-public class BreadcrumbsView extends Main {
+public class BreadcrumbsView extends View {
 
 	public BreadcrumbsView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Basic"));
+		addH2("Basic");
 		add(new Breadcrumb(
 				new RouterLink("Home", HomeView.class),
 				new RouterLink("Breadcrumbs", BreadcrumbsView.class)

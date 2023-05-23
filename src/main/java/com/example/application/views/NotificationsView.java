@@ -13,37 +13,32 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Notifications")
 @Route(value = "notifications", layout = MainLayout.class)
-public class NotificationsView extends Main {
+public class NotificationsView extends View {
 
 	public static final String LOREM_IPSUM_PT1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 	public static final String LOREM_IPSUM_PT2 = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
 	public NotificationsView() {
-		addClassNames(
-				LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN, LumoUtility.Padding.Bottom.LARGE,
-				LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Info"));
+		addH2("Info");
 		add(createNotification());
 
-		add(new H2("Success"));
+		addH2("Success");
 		add(createSuccessNotification());
 
-		add(new H2("Error"));
+		addH2("Error");
 		add(createErrorNotification());
 
-		add(new H2("Theme: Border"));
+		addH2("Theme: Border");
 		Notification notification = createNotification();
 		notification.setBorder(true);
 		add(notification);
 
-		add(new H2("Theme: Start Border"));
+		addH2("Theme: Start Border");
 		notification = createSuccessNotification();
 		notification.setStartBorder(true);
 		add(notification);
 
-		add(new H2("Custom Text Color"));
+		addH2("Custom Text Color");
 		notification = createErrorNotification();
 		notification.setTextColor(TextColor.ERROR);
 		add(notification);

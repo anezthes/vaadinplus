@@ -18,27 +18,22 @@ import java.util.stream.Collectors;
 
 @PageTitle("Checkboxes")
 @Route(value = "checkboxes", layout = MainLayout.class)
-public class CheckboxesView extends Main {
+public class CheckboxesView extends View {
 
 	public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
 			"tempor.";
 
 	public CheckboxesView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Descriptions"));
+		addH2("Descriptions");
 		add(createCheckboxGroupWithDescriptions());
 
-		add(new H2("Theme: Dividers"));
+		addH2("Theme: Dividers");
 		add(createCheckboxGroup(CheckboxTheme.DIVIDERS));
 
-		add(new H2("Theme: Dividers & Align-Right"));
+		addH2("Theme: Dividers & Align-Right");
 		add(createCheckboxGroup(CheckboxTheme.DIVIDERS, CheckboxTheme.ALIGN_RIGHT));
 
-		add(new H2("Theme: Switch"));
+		addH2("Theme: Switch");
 		add(createCheckboxGroup(CheckboxTheme.SWITCH));
 	}
 

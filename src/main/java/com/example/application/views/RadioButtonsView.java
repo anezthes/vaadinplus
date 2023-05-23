@@ -18,33 +18,28 @@ import java.util.stream.Collectors;
 
 @PageTitle("Radio Buttons")
 @Route(value = "radio-buttons", layout = MainLayout.class)
-public class RadioButtonsView extends Main {
+public class RadioButtonsView extends View {
 
 	public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
 			"tempor.";
 
 	public RadioButtonsView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Descriptions"));
+		addH2("Descriptions");
 		add(createRadioButtonGroupWithDescriptions());
 
-		add(new H2("Theme: Dividers"));
+		addH2("Theme: Dividers");
 		add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS));
 
-		add(new H2("Theme: Dividers & Align-Right"));
+		addH2("Theme: Dividers & Align-Right");
 		add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS, RadioButtonTheme.ALIGN_RIGHT));
 
-		add(new H2("Theme: Border"));
+		addH2("Theme: Border");
 		add(createRadioButtonGroup(RadioButtonTheme.BORDER));
 
-		add(new H2("Theme: Border-Only"));
+		addH2("Theme: Border-Only");
 		add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY));
 
-		add(new H2("Theme: Border-Only & Primary"));
+		addH2("Theme: Border-Only & Primary");
 		add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.PRIMARY));
 	}
 

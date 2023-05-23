@@ -26,7 +26,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Lists")
 @Route(value = "lists", layout = MainLayout.class)
-public class ListsView extends Main {
+public class ListsView extends View {
 
 	public static final String PERSON_1 = "Ava Smith";
 	public static final String PERSON_1_EMAIL = "ava.smith@company.com";
@@ -55,42 +55,37 @@ public class ListsView extends Main {
 	public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 	public ListsView() {
-		addClassNames(
-				LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Basic"));
+		addH2("Basic");
 		add(createList());
 
-		add(new H2("Prefix"));
+		addH2("Prefix");
 		add(createListWithPrefix());
 
-		add(new H2("Suffix"));
+		addH2("Suffix");
 		add(createListWithSuffix());
 
-		add(new H2("Prefix & Suffix"));
+		addH2("Prefix & Suffix");
 		add(createListWithPrefixSuffix());
 
-		add(new H2("Grid"));
+		addH2("Grid");
 		add(createGridList());
 
-		add(new H2("Example: Images"));
+		addH2("Example: Images");
 		add(createImageList());
 
-		add(new H2("Example: Tasks"));
+		addH2("Example: Tasks");
 		add(createTaskList());
 
-		add(new H2("Example: Version History"));
+		addH2("Example: Version History");
 		add(createVersionHistory());
 
-		add(new H2("Example: Notifications"));
+		addH2("Example: Notifications");
 		add(createNotifications());
 
-		add(new H2("Example: Timeline"));
+		addH2("Example: Timeline");
 		add(createTimeline());
 
-		add(new H2("Theme: Dividers"));
+		addH2("Theme: Dividers");
 		UnorderedList list = createList();
 		list.setDividers(true);
 		add(list);

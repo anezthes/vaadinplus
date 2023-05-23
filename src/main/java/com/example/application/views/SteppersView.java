@@ -7,13 +7,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Steppers")
 @Route(value = "steppers", layout = MainLayout.class)
-public class SteppersView extends Main {
+public class SteppersView extends View {
 
 	public SteppersView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
 
 
 	}

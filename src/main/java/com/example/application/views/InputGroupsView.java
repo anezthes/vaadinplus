@@ -19,40 +19,37 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Input Groups")
 @Route(value = "input-groups", layout = MainLayout.class)
-public class InputGroupsView extends Main {
+public class InputGroupsView extends View {
 
 	public InputGroupsView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
+		addClassNames(LumoUtility.AlignItems.START);
 
-		add(new H2("Theme: Inset Label"));
+		addH2("Theme: Inset Label");
 		add(createTextField(InputTheme.INSET_LABEL));
 		// add(createTextField(VaadinIcon.SEARCH, InputTheme.INSET_LABEL));
 		add(createTextFieldWithoutLabel(InputTheme.INSET_LABEL));
 
-		add(new H2("Theme: Outline"));
+		addH2("Theme: Outline");
 		add(createTextFields(InputTheme.OUTLINE));
 
-		add(new H2("Theme: Hide & Inset Label"));
+		addH2("Theme: Hide & Inset Label");
 		add(createTextField(InputTheme.HIDE_LABEL, InputTheme.INSET_LABEL));
 
-		add(new H2("Theme: Inset Label & Outline"));
+		addH2("Theme: Inset Label & Outline");
 		add(createTextField(InputTheme.INSET_LABEL, InputTheme.OUTLINE));
 
-		add(new H2("Example: Input with Button"));
+		addH2("Example: Input with Button");
 		add(createInputWithButton(false));
 		add(createInputWithButton(true));
 
-		add(new H2("Example: Price"));
+		addH2("Example: Price");
 		add(createPriceExample(false));
 		add(createPriceExample(true));
 
-		add(new H2("Example: Vertical Group"));
+		addH2("Example: Vertical Group");
 		add(createVerticalGroupExample());
 
-		add(new H2("Example: Credit Card"));
+		addH2("Example: Credit Card");
 		add(createCreditCardExample());
 	}
 

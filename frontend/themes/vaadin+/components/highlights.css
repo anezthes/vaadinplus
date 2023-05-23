@@ -1,0 +1,5 @@
+.highlights[theme~="dividers"] {
+    background-color: var(--lumo-base);
+    background-image: linear-gradient(var(--lumo-contrast-10pct), var(--lumo-contrast-10pct));
+    gap: 1px;
+}

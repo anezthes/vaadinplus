@@ -1,0 +1,17 @@
+/* Theme: Outline */
+
+:host([theme~="outline"]) {
+    box-shadow: inset 0 0 0 1px var(--lumo-contrast-50pct);
+}
+
+:host([theme~='outline'][focus-ring]) {
+    box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct), inset 0 0 0 1px var(--lumo-primary-color);
+}
+
+:host([theme~='outline'][theme~='error'][focus-ring]) {
+    box-shadow: 0 0 0 2px var(--lumo-error-color-50pct), inset 0 0 0 1px var(--lumo-error-color);
+}
+
+:host([theme~='outline'][theme~='success'][focus-ring]) {
+    box-shadow: 0 0 0 2px var(--lumo-success-color-50pct), inset 0 0 0 1px var(--lumo-success-color);
+}

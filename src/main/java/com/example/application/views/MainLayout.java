@@ -1,80 +1,74 @@
 package com.example.application.views;
 
 
+import com.example.application.components.appnav.AppNav;
+import com.example.application.components.appnav.AppNavItem;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
+
+import javax.sound.sampled.Line;
 
 /**
  * The main view is a top-level placeholder for other views.
  */
 public class MainLayout extends AppLayout {
 
-	private H1 viewTitle;
+	private H2 viewTitle;
 
 	public MainLayout() {
 		setPrimarySection(Section.DRAWER);
-		addToNavbar(true, createHeaderContent());
-		addToDrawer(createDrawerContent());
+		addDrawerContent();
+		addHeaderContent();
 	}
 
-	private Component createHeaderContent() {
+	private void addHeaderContent() {
 		DrawerToggle toggle = new DrawerToggle();
-		toggle.addClassNames("view-toggle");
-		toggle.addThemeVariants(ButtonVariant.LUMO_CONTRAST);
 		toggle.getElement().setAttribute("aria-label", "Menu toggle");
 
-		viewTitle = new H1();
-		viewTitle.addClassNames("view-title");
+		viewTitle = new H2();
+		viewTitle.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
 
-		Header header = new Header(toggle, viewTitle);
-		header.addClassNames("view-header");
-		return header;
+		addToNavbar(true, toggle, viewTitle);
 	}
 
-	private Component createDrawerContent() {
-		H2 appName = new H2("Vaadin+");
-		appName.addClassNames("app-name");
+	private void addDrawerContent() {
+		H1 appName = new H1("Vaadin+");
+		appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
+		Header header = new Header(appName);
 
-		com.vaadin.flow.component.html.Section section = new com.vaadin.flow.component.html.Section(appName,
-				createNavigation());
-		section.addClassNames("drawer-section");
-		return section;
+		Scroller scroller = new Scroller(createNavigation());
+
+		addToDrawer(header, scroller, createFooter());
 	}
 
-	private Nav createNavigation() {
-		Nav nav = new Nav();
-		nav.addClassNames("menu-item-container");
-		nav.getElement().setAttribute("aria-labelledby", "views");
+	private AppNav createNavigation() {
+		AppNav nav = new AppNav();
 
-		// Wrap the links in a list; improves accessibility
-		UnorderedList list = new UnorderedList();
-		list.addClassNames("navigation-list");
-		nav.add(list);
+		nav.addItem(new AppNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
+		nav.addItem(new AppNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
+		nav.addItem(new AppNavItem("Highlights", HighlightsView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
+		nav.addItem(new AppNavItem("Input Groups", InputGroupsView.class, LineAwesomeIcon.KEYBOARD.create()));
+		nav.addItem(new AppNavItem("Key-Value Pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
+		nav.addItem(new AppNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
+		nav.addItem(new AppNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
+		nav.addItem(new AppNavItem("Radio Buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
 
-		for (MenuItemInfo menuItem : createMenuItems()) {
-			list.add(menuItem);
-
-		}
 		return nav;
 	}
 
-	private MenuItemInfo[] createMenuItems() {
-		return new MenuItemInfo[]{
-				new MenuItemInfo("Checkboxes", "la la-check-square", CheckboxesView.class),
-				new MenuItemInfo("Headers", "la la-heading", HeadersView.class),
-				new MenuItemInfo("Highlights", "la la-lightbulb", HighlightsView.class),
-				new MenuItemInfo("Input Groups", "la la-keyboard", InputGroupsView.class),
-				new MenuItemInfo("Key-Value Pairs", "la la-key", KeyValuePairsView.class),
-				new MenuItemInfo("Lists", "la la-list", ListsView.class),
-				new MenuItemInfo("Notifications", "la la-bell", NotificationsView.class),
-				new MenuItemInfo("Radio Buttons", "la la-dot-circle", RadioButtonsView.class),
-		};
+	private Footer createFooter() {
+		Footer layout = new Footer();
+
+		return layout;
 	}
 
 	@Override
@@ -86,45 +80,5 @@ public class MainLayout extends AppLayout {
 	private String getCurrentPageTitle() {
 		PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
 		return title == null ? "" : title.value();
-	}
-
-	/**
-	 * A simple navigation item component, based on ListItem element.
-	 */
-	public static class MenuItemInfo extends ListItem {
-
-		private final Class<? extends Component> view;
-
-		public MenuItemInfo(String menuTitle, String iconClass, Class<? extends Component> view) {
-			this.view = view;
-			RouterLink link = new RouterLink();
-			link.addClassNames("menu-item-link");
-			link.setRoute(view);
-
-			Span text = new Span(menuTitle);
-			text.addClassNames("menu-item-text");
-
-			link.add(new LineAwesomeIcon(iconClass), text);
-			add(link);
-		}
-
-		public Class<?> getView() {
-			return view;
-		}
-
-		/**
-		 * Simple wrapper to create icons using LineAwesome iconset. See
-		 * https://icons8.com/line-awesome
-		 */
-		@NpmPackage(value = "line-awesome", version = "1.3.0")
-		public static class LineAwesomeIcon extends Span {
-			public LineAwesomeIcon(String lineawesomeClassnames) {
-				addClassNames("menu-item-icon");
-				if (!lineawesomeClassnames.isEmpty()) {
-					addClassNames(lineawesomeClassnames);
-				}
-			}
-		}
-
 	}
 }

@@ -7,15 +7,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Tabs")
 @Route(value = "tabs", layout = MainLayout.class)
-public class TabsView extends Main {
+public class TabsView extends View {
 
 	public TabsView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		// Different styles
 
 
 	}

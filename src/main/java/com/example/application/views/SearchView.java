@@ -7,13 +7,10 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Search")
 @Route(value = "search", layout = MainLayout.class)
-public class SearchView extends Main {
+public class SearchView extends View {
 
 	public SearchView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
+
 
 
 	}

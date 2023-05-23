@@ -19,7 +19,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Highlights")
 @Route(value = "highlights", layout = MainLayout.class)
-public class HighlightsView extends Main {
+public class HighlightsView extends View {
 
 	public static final String ORDERS = "Orders";
 	public static final String ORDERS_VALUE = "42,719";
@@ -37,36 +37,31 @@ public class HighlightsView extends Main {
 	public static final String RATING_VALUE = "96.7%";
 
 	public HighlightsView() {
-		addClassNames(
-				LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-				LumoUtility.Padding.Bottom.LARGE, LumoUtility.Padding.Horizontal.LARGE
-		);
-
-		add(new H2("Basic"));
+		addH2("Basic");
 		add(createHighlights());
 
-		add(new H2("Prefix"));
+		addH2("Prefix");
 		add(createHighlightsWithPrefix());
 
-		add(new H2("Details"));
+		addH2("Details");
 		add(createHighlightsWithDetails());
 
-		add(new H2("Suffix"));
+		addH2("Suffix");
 		add(createHighlightsWithSuffix());
 
-		add(new H2("Prefix, Details & Suffix"));
+		addH2("Prefix, Details & Suffix");
 		add(createHighlightsWithPrefixDetailsSuffix());
 
-		add(new H2("Breakpoint"));
+		addH2("Breakpoint");
 		add(createHighlightsWithBreakpoint());
 
-		add(new H2("Gap"));
+		addH2("Gap");
 		add(createHighlightsWithGap());
 
-		add(new H2("Grid"));
+		addH2("Grid");
 		add(createGridHighlights());
 
-		add(new H2("Theme: Dividers"));
+		addH2("Theme: Dividers");
 		Highlights highlights = createHighlights();
 		highlights.setDividers(true);
 		add(highlights);
