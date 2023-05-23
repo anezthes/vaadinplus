@@ -18,8 +18,9 @@
     grid-template-columns: 1fr auto;
 }
 
-:host([theme~="align-right"]) .vaadin-checkbox-wrapper {
-    order: 1;
+:host([theme~="align-right"]) [part='checkbox'],
+:host([theme~="align-right"]) ::slotted(input) {
+    grid-column: 2;
 }
 
 :host([theme~="align-right"][has-label]) ::slotted(label) {
