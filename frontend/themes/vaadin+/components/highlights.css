@@ -1,5 +1,12 @@
 .highlights[theme~="dividers"] {
-    background-color: var(--lumo-base);
-    background-image: linear-gradient(var(--lumo-contrast-10pct), var(--lumo-contrast-10pct));
     gap: 1px;
+}
+
+.highlights[theme~="dividers"] > *::after {
+    border: 1px solid var(--lumo-contrast-10pct);
+    content: "";
+    inset: -1px;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
 }

@@ -14,9 +14,9 @@ public class Layout extends FlexLayout {
 	private com.example.application.utilities.FlexDirection flexDirection;
 	private GridColumns gridColumns;
 	private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
-
 	private ColumnGap colGap;
 	private RowGap rowGap;
+	private Position position;
 
 	public Layout(Component... components) {
 		super(components);
@@ -134,6 +134,14 @@ public class Layout extends FlexLayout {
 			this.removeClassName(this.rowGap.getClassName());
 		}
 		this.rowGap = null;
+	}
+
+	public void setPosition(Position position) {
+		if (this.position != null) {
+			this.removeClassName(this.position.getClassName());
+		}
+		addClassNames(position.getClassName());
+		this.position = position;
 	}
 
 }

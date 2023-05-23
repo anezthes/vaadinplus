@@ -2,6 +2,7 @@ package com.example.application.components;
 
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.Gap;
+import com.example.application.utilities.Position;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.html.Span;
@@ -40,6 +41,7 @@ public class Highlight extends Layout {
 		);
 		setAlignItems(FlexComponent.Alignment.CENTER);
 		setGap(Gap.MEDIUM);
+		setPosition(Position.RELATIVE);
 
 		this.prefix = new Layout();
 		setPrefix(prefix);

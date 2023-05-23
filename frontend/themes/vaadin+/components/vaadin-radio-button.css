@@ -1,3 +1,17 @@
+/* Dividers */
+
+:host([theme~="dividers"]) {
+    position: relative;
+}
+
+:host([theme~="dividers"]:not(:last-of-type))::after {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    content: "";
+    inset: auto 0 0 0;
+    pointer-events: none;
+    position: absolute;
+}
+
 /* Align: Right */
 
 :host([theme~="align-right"]) .vaadin-radio-button-container {
@@ -15,7 +29,8 @@
 /* Border */
 
 :host([theme*="border"]) {
-    box-shadow: inset 0 0 0 1px var(--lumo-contrast-10pct);
+    outline: 1px solid var(--lumo-contrast-10pct);
+    outline-offset: -1px;
     padding: var(--lumo-space-xs);
 }
 
@@ -25,7 +40,7 @@
 
 :host([theme~="border"][checked]) {
     background-color: var(--lumo-primary-color-10pct);
-    box-shadow: inset 0 0 0 1px var(--lumo-primary-color);
+    outline-color: var(--lumo-primary-color);
 }
 
 /* Border-only */
@@ -39,7 +54,7 @@
 }
 
 :host([theme~="border-only"][checked]) {
-    box-shadow: inset 0 0 0 2px var(--lumo-primary-color);
+    outline: 2px solid var(--lumo-primary-color);
 }
 
 /* Border-only & primary */

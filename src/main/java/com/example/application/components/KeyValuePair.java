@@ -3,6 +3,7 @@ package com.example.application.components;
 import com.example.application.utilities.Breakpoint;
 import com.example.application.utilities.FlexRowBreakpoint;
 import com.example.application.utilities.Gap;
+import com.example.application.utilities.Position;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
@@ -44,6 +45,7 @@ public class KeyValuePair extends Layout {
 		setColumnGap(Gap.MEDIUM);
 		setKeyPosition(KeyPosition.SIDE);
 		setKeyWidth(25, Unit.PERCENTAGE);
+		setPosition(Position.RELATIVE);
 	}
 
 	/**
