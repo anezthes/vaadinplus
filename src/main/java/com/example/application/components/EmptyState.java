@@ -73,8 +73,8 @@ public class EmptyState extends Layout {
             replace(this.icon, icon);
         } else {
             icon.addClassNames(LumoUtility.Margin.Bottom.MEDIUM, LumoUtility.TextColor.SECONDARY);
-            ((HasSize) icon).setHeight("var(--lumo-size-l)");
-            ((HasSize) icon).setWidth("var(--lumo-size-l)");
+            ((HasSize) icon).setHeight("var(--lumo-icon-size-l)");
+            ((HasSize) icon).setWidth("var(--lumo-icon-size-l)");
             addComponentAsFirst(icon);
         }
         this.icon = icon;

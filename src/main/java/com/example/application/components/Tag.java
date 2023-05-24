@@ -2,6 +2,7 @@ package com.example.application.components;
 
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
@@ -37,15 +38,22 @@ public class Tag extends Span {
     }
 
     public Tag(LineAwesomeIcon icon, String text, TextColor textColor) {
-        this(icon.create(), text, textColor);
+        this(createIcon(icon), text, textColor);
     }
 
     public Tag(LineAwesomeIcon icon, String text) {
-        this(icon.create(), text, TextColor.SECONDARY);
+        this(icon, text, TextColor.SECONDARY);
     }
 
     public Tag(String text) {
         this((Component) null, text, TextColor.SECONDARY);
+    }
+
+    private static Component createIcon(LineAwesomeIcon icon) {
+        Component i = icon.create();
+        ((HasSize) i).setHeight("var(--lumo-icon-size-s)");
+        ((HasSize) i).setWidth("var(--lumo-icon-size-s)");
+        return i;
     }
 
     /**

@@ -23,46 +23,83 @@ public class HeadersView extends View {
 
     public HeadersView() {
         addH2("Basic");
-        Header header = new Header("Lorem ipsum", HeadingLevel.H3);
-        add(header);
+        addPreview(createHeader());
 
         addH2("Prefix");
-        header = new Header("Lorem ipsum", HeadingLevel.H3);
-        header.setPrefix(createBackButton());
-        add(header);
+        addPreview(createHeaderWithPrefix());
 
         addH2("Breadcrumb");
-        header = new Header("Lorem ipsum", HeadingLevel.H3);
-        header.setBreadcrumb(
-                new RouterLink("Home", HomeView.class),
-                new RouterLink("Headers", HeadersView.class)
-        );
-        add(header);
+        addPreview(createHeaderWithBreadcrumb());
 
         addH2("Details");
-        header = new Header("Lorem ipsum", HeadingLevel.H3);
+        addPreview(createHeaderWithDetails());
+
+        addH2("Tabs");
+        addPreview(createHeaderWithTabs());
+
+        addH2("Actions");
+        addPreview(createHeaderWithActions());
+
+        addH2("Breadcrumb, Details, Tabs & Actions");
+        addPreview(createHeaderWithAllTheThings());
+
+        addH2("Example: User");
+        addPreview(createUserExample());
+    }
+
+    private Header createHeader() {
+        return new Header("Lorem ipsum", HeadingLevel.H3);
+    }
+
+    private Header createHeaderWithPrefix() {
+        Header header = createHeader();
+        header.setPrefix(createBackButton());
+        return header;
+    }
+
+    private Header createHeaderWithBreadcrumb() {
+        Header header = createHeader();
+        header.setBreadcrumb(
+                new RouterLink("Home", HomeView.class),
+                new RouterLink("Headers", HeadersView.class)
+        );
+        return header;
+    }
+
+    private Header createHeaderWithDetails() {
+        Header header = createHeader();
         header.setDetails(
                 new Tag(LineAwesomeIcon.TOOTH_SOLID, "Dolor sit"),
                 new Tag(LineAwesomeIcon.PAPER_PLANE, "Amet consectetur"),
                 new Tag(LineAwesomeIcon.THUMBS_UP, "Adipiscing elit")
         );
-        add(header);
+        return header;
+    }
 
-        addH2("Tabs");
-        header = new Header("Lorem ipsum", HeadingLevel.H3);
+    private Header createHeaderWithTabs() {
+        Header header = createHeader();
         header.setTabs(new Tab("Tab 1"), new Tab("Tab 2"), new Tab("Tab 3"));
-        add(header);
+        return header;
+    }
 
-        addH2("Actions");
-        header = new Header("Lorem ipsum", HeadingLevel.H3);
+    private Header createHeaderWithActions() {
         Button button = new Button("Button");
+
         Button primaryButton = new Button("Button");
         primaryButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        header.setActions(button, primaryButton);
-        add(header);
 
-        addH2("Breadcrumb, Details, Tabs & Actions");
-        header = new Header("Lorem ipsum", HeadingLevel.H3);
+        Header header = createHeader();
+        header.setActions(button, primaryButton);
+        return header;
+    }
+
+    private Header createHeaderWithAllTheThings() {
+        Button button = new Button("Button");
+
+        Button primaryButton = new Button("Button");
+        primaryButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Header header = createHeader();
         header.setBreadcrumb(
                 new RouterLink("Home", HomeView.class),
                 new RouterLink("Headers", HeadersView.class)
@@ -73,29 +110,27 @@ public class HeadersView extends View {
                 new Tag(LineAwesomeIcon.THUMBS_UP, "Adipiscing elit")
         );
         header.setTabs(new Tab("Tab 1"), new Tab("Tab 2"), new Tab("Tab 3"));
-        button = new Button("Button");
-        primaryButton = new Button("Button");
-        primaryButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         header.setActions(button, primaryButton);
-        add(header);
-
-        addH2("Example: User");
-        createUserExample();
+        return header;
     }
 
     private RouterLink createBackButton() {
         Component icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
-        icon.addClassNames(LumoUtility.BoxSizing.BORDER);
-        ((HasSize) icon).setHeight("var(--lumo-size-m)");
-        ((HasSize) icon).setWidth("var(--lumo-size-m)");
+        ((HasSize) icon).setHeight("var(--lumo-icon-size-m)");
+        ((HasSize) icon).setWidth("var(--lumo-icon-size-m)");
 
-        RouterLink link = new RouterLink();
+        RouterLink link = new RouterLink("", HomeView.class);
+        link.addClassNames(
+                LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
+                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM
+        );
         link.add(icon);
-        link.setRoute(HomeView.class);
+        link.getElement().setAttribute("aria-label", "Home");
+        link.getElement().setAttribute("title", "Home");
         return link;
     }
 
-    private void createUserExample() {
+    private Header createUserExample() {
         Avatar avatar = new Avatar("John Smith");
 
         Span details = new Span("john.smith@company.com");
@@ -109,7 +144,7 @@ public class HeadersView extends View {
         header.setHeadingFontSize(FontSize.LARGE);
         header.setDetails(details);
         header.setActions(button);
-        add(header);
+        return header;
     }
 
 }

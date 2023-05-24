@@ -1,5 +1,6 @@
 package com.example.application.components;
 
+import com.example.application.utilities.BoxSizing;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.Gap;
 import com.example.application.utilities.HeadingLevel;
@@ -33,7 +34,9 @@ public class Header extends Layout {
 
     public Header(String title, HeadingLevel level) {
         addClassNames(LumoUtility.Background.BASE, LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
+        setBoxSizing(BoxSizing.BORDER);
         setFlexDirection(FlexDirection.COLUMN);
+        setWidthFull();
 
         this.prefix = new Layout();
         setPrefix(null);

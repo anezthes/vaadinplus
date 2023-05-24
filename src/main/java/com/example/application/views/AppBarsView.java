@@ -41,25 +41,22 @@ public class AppBarsView extends View {
         add(mode);
 
         addH2("Simple");
-        add(createAppBar());
+        addPreview(createAppBar());
 
         addH2("Primary Button");
-        add(createAppBarWithPrimaryButton());
+        addPreview(createAppBarWithPrimaryButton());
 
         addH2("Search");
-        add(createAppBarWithSearch());
+        addPreview(createAppBarWithSearch());
 
         addH2("Search (Middle)");
-        add(createAppBarWithSearchAlt());
+        addPreview(createAppBarWithSearchAlt());
     }
 
     private AppBar createAppBar() {
-        Avatar avatar = new Avatar("John Smith");
-        avatar.setImage("https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80");
-
         AppBar appBar = new AppBar();
         appBar.addToStart(createIcon(), createAppNav());
-        appBar.addToEnd(createButton(), avatar);
+        appBar.addToEnd(createButton(), createAvatar());
         return appBar;
     }
 
@@ -92,9 +89,9 @@ public class AppBarsView extends View {
 
     private Component createIcon() {
         Component icon = LineAwesomeIcon.FEATHER_ALT_SOLID.create();
-        icon.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.TextColor.PRIMARY);
-        ((HasSize) icon).setHeight("var(--lumo-size-m)");
-        ((HasSize) icon).setWidth("var(--lumo-size-m)");
+        icon.addClassNames(LumoUtility.TextColor.PRIMARY);
+        ((HasSize) icon).setHeight("var(--lumo-icon-size-m)");
+        ((HasSize) icon).setWidth("var(--lumo-icon-size-m)");
         return icon;
     }
 

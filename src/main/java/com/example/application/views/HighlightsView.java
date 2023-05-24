@@ -38,33 +38,33 @@ public class HighlightsView extends View {
 
     public HighlightsView() {
         addH2("Basic");
-        add(createHighlights());
+        addPreview(createHighlights());
 
         addH2("Prefix");
-        add(createHighlightsWithPrefix());
+        addPreview(createHighlightsWithPrefix());
 
         addH2("Details");
-        add(createHighlightsWithDetails());
+        addPreview(createHighlightsWithDetails());
 
         addH2("Suffix");
-        add(createHighlightsWithSuffix());
+        addPreview(createHighlightsWithSuffix());
 
         addH2("Prefix, Details & Suffix");
-        add(createHighlightsWithPrefixDetailsSuffix());
+        addPreview(createHighlightsWithPrefixDetailsSuffix());
 
         addH2("Breakpoint");
-        add(createHighlightsWithBreakpoint());
+        addPreview(createHighlightsWithBreakpoint());
 
         addH2("Gap");
-        add(createHighlightsWithGap());
+        addPreview(createHighlightsWithGap());
 
         addH2("Grid");
-        add(createGridHighlights());
+        addPreview(createGridHighlights());
 
         addH2("Theme: Dividers");
         Highlights highlights = createHighlights();
         highlights.setDividers(true);
-        add(highlights);
+        addPreview(highlights);
     }
 
     private Highlights createHighlights() {
@@ -85,7 +85,7 @@ public class HighlightsView extends View {
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
+                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
                 SALES, SALES_VALUE
         );
         highlights.add(highlight);
@@ -101,13 +101,13 @@ public class HighlightsView extends View {
 
     private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
         Component i = icon.create();
-        ((HasSize) i).setHeight("var(--lumo-size-m)");
-        ((HasSize) i).setWidth("var(--lumo-size-m)");
-        i.addClassNames(textColor.getClassName());
+        ((HasSize) i).setHeight("var(--lumo-icon-size-l)");
+        ((HasSize) i).setWidth("var(--lumo-icon-size-l)");
 
         Layout container = new Layout(i);
         container.addClassNames(
-                backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE, LumoUtility.Height.XLARGE, LumoUtility.Width.XLARGE
+                backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE, LumoUtility.Height.XLARGE,
+                textColor.getClassName(), LumoUtility.Width.XLARGE
         );
         container.setAlignItems(FlexComponent.Alignment.CENTER);
         container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
@@ -159,13 +159,16 @@ public class HighlightsView extends View {
 
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.TextColor.SECONDARY);
-        ((HasSize) icon).setHeight("var(--lumo-size-s)");
-        ((HasSize) icon).setWidth("var(--lumo-size-s)");
+        icon.addClassNames(LumoUtility.TextColor.SECONDARY);
+        ((HasSize) icon).setHeight("var(--lumo-icon-size-s)");
+        ((HasSize) icon).setWidth("var(--lumo-icon-size-s)");
 
         RouterLink link = new RouterLink("", HighlightsView.class);
+        link.addClassNames(
+                LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
+                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM
+        );
         link.add(icon);
-        link.addClassNames(LumoUtility.Display.FLEX, LumoUtility.Padding.SMALL);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
         return link;

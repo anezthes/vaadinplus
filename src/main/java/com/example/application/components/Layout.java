@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Layout extends FlexLayout {
 
     private com.example.application.utilities.AlignItems alignItems;
+    private BoxSizing boxSizing;
     private Display display;
     private com.example.application.utilities.FlexDirection flexDirection;
     private GridColumns gridColumns;
@@ -48,6 +49,14 @@ public class Layout extends FlexLayout {
         }
         addClassNames(alignItems.getClassName());
         this.alignItems = alignItems;
+    }
+
+    public void setBoxSizing(BoxSizing boxSizing) {
+        if (this.boxSizing != null) {
+            removeClassNames(this.boxSizing.getClassName());
+        }
+        addClassNames(boxSizing.getClassName());
+        this.boxSizing = boxSizing;
     }
 
     @Override

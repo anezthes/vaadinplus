@@ -55,39 +55,39 @@ public class ListsView extends View {
 
     public ListsView() {
         addH2("Basic");
-        add(createList());
+        addPreview(createList());
 
         addH2("Prefix");
-        add(createListWithPrefix());
+        addPreview(createListWithPrefix());
 
         addH2("Suffix");
-        add(createListWithSuffix());
+        addPreview(createListWithSuffix());
 
         addH2("Prefix & Suffix");
-        add(createListWithPrefixSuffix());
+        addPreview(createListWithPrefixSuffix());
 
         addH2("Grid");
-        add(createGridList());
+        addPreview(createGridList());
 
         addH2("Example: Images");
-        add(createImageList());
+        addPreview(createImageList());
 
         addH2("Example: Tasks");
-        add(createTaskList());
+        addPreview(createTaskList());
 
         addH2("Example: Version History");
-        add(createVersionHistory());
+        addPreview(createVersionHistory());
 
         addH2("Example: Notifications");
-        add(createNotifications());
+        addPreview(createNotifications());
 
         addH2("Example: Timeline");
-        add(createTimeline());
+        addPreview(createTimeline());
 
         addH2("Theme: Dividers");
         UnorderedList list = createList();
         list.setDividers(true);
-        add(list);
+        addPreview(list);
     }
 
     private UnorderedList createList() {
@@ -116,9 +116,9 @@ public class ListsView extends View {
 
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.TextColor.SECONDARY);
-        ((HasSize) icon).setHeight("var(--lumo-size-s)");
-        ((HasSize) icon).setWidth("var(--lumo-size-s)");
+        icon.addClassNames(LumoUtility.TextColor.SECONDARY);
+        ((HasSize) icon).setHeight("var(--lumo-icon-size-s)");
+        ((HasSize) icon).setWidth("var(--lumo-icon-size-s)");
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);

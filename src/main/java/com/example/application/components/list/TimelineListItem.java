@@ -1,19 +1,23 @@
 package com.example.application.components.list;
 
+import com.example.application.components.Layout;
 import com.example.application.utilities.BackgroundColor;
+import com.example.application.utilities.BoxSizing;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class TimelineListItem extends ListItem {
 
-    private Component icon;
+    private Layout icon;
     private Html content;
     private Avatar avatar;
     private Span author;
@@ -82,12 +86,18 @@ public class TimelineListItem extends ListItem {
     }
 
     public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
-        this.icon = icon.create();
+        Component i = icon.create();
+        ((HasSize) i).setHeight("var(--lumo-icon-size-s)");
+        ((HasSize) i).setWidth("var(--lumo-icon-size-s)");
+
+        this.icon = new Layout(i);
         this.icon.addClassNames(
-                LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_10, LumoUtility.Height.MEDIUM,
-                LumoUtility.Padding.SMALL, "rounded-full", LumoUtility.Width.MEDIUM
+                background.getClassName(), LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_10,
+                color.getClassName(), LumoUtility.Height.MEDIUM, "rounded-full", LumoUtility.Width.MEDIUM
         );
-        this.icon.addClassNames(background.getClassName(), color.getClassName());
+        this.icon.setAlignItems(FlexComponent.Alignment.CENTER);
+        this.icon.setBoxSizing(BoxSizing.BORDER);
+        this.icon.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
     }
 
     public void setContent(String content) {

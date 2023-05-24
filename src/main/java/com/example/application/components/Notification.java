@@ -4,6 +4,7 @@ import com.example.application.utilities.BorderColor;
 import com.example.application.utilities.Gap;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
@@ -19,7 +20,7 @@ public class Notification extends Layout implements HasTheme {
     private BorderColor borderColor;
 
     private Type type;
-    private Component icon;
+    private Layout icon;
     private Layout row;
     private Layout column;
     private Span title;
@@ -149,11 +150,17 @@ public class Notification extends Layout implements HasTheme {
      * Sets the icon.
      */
     public void setIcon(LineAwesomeIcon icon, TextColor color) {
-        this.icon = icon.create();
+        Component i = icon.create();
+        ((HasSize) i).setHeight("var(--lumo-icon-size-s)");
+        ((HasSize) i).setWidth("var(--lumo-icon-size-s)");
+
+        this.icon = new Layout(i);
         this.icon.addClassNames(
-                color.getClassName(), LumoUtility.Flex.SHRINK_NONE, LumoUtility.Margin.Top.XSMALL,
-                LumoUtility.Margin.Start.XSMALL, LumoUtility.Padding.XSMALL
+                color.getClassName(), LumoUtility.Flex.SHRINK_NONE, LumoUtility.Height.XSMALL,
+                LumoUtility.Margin.Top.XSMALL, LumoUtility.Margin.Start.XSMALL, LumoUtility.Width.XSMALL
         );
+        this.icon.setAlignItems(Alignment.CENTER);
+        this.icon.setJustifyContentMode(JustifyContentMode.CENTER);
     }
 
     /**

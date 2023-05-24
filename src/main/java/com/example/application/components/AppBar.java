@@ -15,9 +15,10 @@ public class AppBar extends Header implements HasTheme {
 
     public AppBar(Component... components) {
         addClassNames(
-                LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Gap.LARGE,
-                LumoUtility.Height.XLARGE, LumoUtility.Padding.Horizontal.MEDIUM
+                LumoUtility.Background.BASE, LumoUtility.BoxSizing.BORDER, LumoUtility.Display.FLEX,
+                LumoUtility.Gap.LARGE, LumoUtility.Height.XLARGE, LumoUtility.Padding.Horizontal.MEDIUM
         );
+        setWidthFull();
 
         this.start = new Layout();
         this.start.setAlignItems(FlexComponent.Alignment.CENTER);
