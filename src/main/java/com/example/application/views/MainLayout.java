@@ -1,7 +1,6 @@
 package com.example.application.views;
 
 
-import com.example.application.components.AppBar;
 import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -34,8 +33,7 @@ public class MainLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE);
 
-        AppBar appBar = new AppBar(toggle, viewTitle);
-        addToNavbar(true, appBar);
+        addToNavbar(true, toggle, viewTitle);
     }
 
     private void addDrawerContent() {

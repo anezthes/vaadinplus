@@ -8,12 +8,12 @@ import com.example.application.themes.InputTheme;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Input Groups")
 @Route(value = "input-groups", layout = MainLayout.class)
@@ -24,7 +24,6 @@ public class InputGroupsView extends View {
 
         addH2("Theme: Inset Label");
         add(createTextField(InputTheme.INSET_LABEL));
-        // add(createTextField(VaadinIcon.SEARCH, InputTheme.INSET_LABEL));
         add(createTextFieldWithoutLabel(InputTheme.INSET_LABEL));
 
         addH2("Theme: Outline");
@@ -57,7 +56,7 @@ public class InputGroupsView extends View {
         return textField;
     }
 
-    private TextField createTextField(VaadinIcon icon, String... themeNames) {
+    private TextField createTextField(LineAwesomeIcon icon, String... themeNames) {
         TextField textField = createTextField(themeNames);
         textField.setPrefixComponent(icon.create());
         return textField;
@@ -89,7 +88,7 @@ public class InputGroupsView extends View {
         TextField textField = new TextField("Search");
         textField.addThemeNames(outline ? InputTheme.OUTLINE : "");
 
-        Button button = new Button("Advanced", VaadinIcon.SEARCH.create());
+        Button button = new Button("Advanced", LineAwesomeIcon.SEARCH_SOLID.create());
         button.addThemeNames(outline ? ButtonTheme.OUTLINE : "");
 
         return new InputGroup(textField, button);

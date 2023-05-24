@@ -7,8 +7,8 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class Tag extends Span {
 
@@ -36,11 +36,11 @@ public class Tag extends Span {
         this(prefix, text, TextColor.SECONDARY);
     }
 
-    public Tag(VaadinIcon icon, String text, TextColor textColor) {
+    public Tag(LineAwesomeIcon icon, String text, TextColor textColor) {
         this(icon.create(), text, textColor);
     }
 
-    public Tag(VaadinIcon icon, String text) {
+    public Tag(LineAwesomeIcon icon, String text) {
         this(icon.create(), text, TextColor.SECONDARY);
     }
 

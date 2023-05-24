@@ -4,17 +4,18 @@ import com.example.application.components.Header;
 import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.HeadingLevel;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Headers")
 @Route(value = "headers", layout = MainLayout.class)
@@ -41,9 +42,9 @@ public class HeadersView extends View {
         addH2("Details");
         header = new Header("Lorem ipsum", HeadingLevel.H3);
         header.setDetails(
-                new Tag(VaadinIcon.DENTAL_CHAIR, "Dolor sit"),
-                new Tag(VaadinIcon.PAPERPLANE, "Amet consectetur"),
-                new Tag(VaadinIcon.THUMBS_UP, "Adipiscing elit")
+                new Tag(LineAwesomeIcon.TOOTH_SOLID, "Dolor sit"),
+                new Tag(LineAwesomeIcon.PAPER_PLANE, "Amet consectetur"),
+                new Tag(LineAwesomeIcon.THUMBS_UP, "Adipiscing elit")
         );
         add(header);
 
@@ -67,9 +68,9 @@ public class HeadersView extends View {
                 new RouterLink("Headers", HeadersView.class)
         );
         header.setDetails(
-                new Tag(VaadinIcon.DENTAL_CHAIR, "Dolor sit"),
-                new Tag(VaadinIcon.PAPERPLANE, "Amet consectetur"),
-                new Tag(VaadinIcon.THUMBS_UP, "Adipiscing elit")
+                new Tag(LineAwesomeIcon.TOOTH_SOLID, "Dolor sit"),
+                new Tag(LineAwesomeIcon.PAPER_PLANE, "Amet consectetur"),
+                new Tag(LineAwesomeIcon.THUMBS_UP, "Adipiscing elit")
         );
         header.setTabs(new Tab("Tab 1"), new Tab("Tab 2"), new Tab("Tab 3"));
         button = new Button("Button");
@@ -83,8 +84,10 @@ public class HeadersView extends View {
     }
 
     private RouterLink createBackButton() {
-        Icon icon = VaadinIcon.ARROW_LEFT.create();
-        icon.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Padding.SMALL, LumoUtility.Width.MEDIUM);
+        Component icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
+        icon.addClassNames(LumoUtility.BoxSizing.BORDER);
+        ((HasSize) icon).setHeight("var(--lumo-size-m)");
+        ((HasSize) icon).setWidth("var(--lumo-size-m)");
 
         RouterLink link = new RouterLink();
         link.add(icon);
@@ -98,7 +101,7 @@ public class HeadersView extends View {
         Span details = new Span("john.smith@company.com");
         details.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
-        Button button = new Button("Edit", VaadinIcon.EDIT.create());
+        Button button = new Button("Edit", LineAwesomeIcon.EDIT.create());
 
         Header header = new Header("John Smith", HeadingLevel.H3);
         header.setPrefix(avatar);

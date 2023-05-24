@@ -10,9 +10,8 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 // TODO: Needs a new name to avoid clashing with the default.
 public class Notification extends Layout implements HasTheme {
@@ -20,7 +19,7 @@ public class Notification extends Layout implements HasTheme {
     private BorderColor borderColor;
 
     private Type type;
-    private Icon icon;
+    private Component icon;
     private Layout row;
     private Layout column;
     private Span title;
@@ -129,19 +128,19 @@ public class Notification extends Layout implements HasTheme {
                 setBorderColor(BorderColor.PRIMARY_50);
                 getElement().setAttribute("role", "status");
                 getStyle().set("background-image", "linear-gradient(var(--lumo-primary-color-10pct), var(--lumo-primary-color-10pct))");
-                setIcon(VaadinIcon.INFO_CIRCLE, TextColor.PRIMARY);
+                setIcon(LineAwesomeIcon.INFO_CIRCLE_SOLID, TextColor.PRIMARY);
                 break;
             case SUCCESS:
                 setBorderColor(BorderColor.SUCCESS_50);
                 getElement().setAttribute("role", "status");
                 getStyle().set("background-image", "linear-gradient(var(--lumo-success-color-10pct), var(--lumo-success-color-10pct))");
-                setIcon(VaadinIcon.CHECK_CIRCLE, TextColor.SUCCESS);
+                setIcon(LineAwesomeIcon.CHECK_CIRCLE, TextColor.SUCCESS);
                 break;
             case ERROR:
                 setBorderColor(BorderColor.ERROR_50);
                 getElement().setAttribute("role", "alert");
                 getStyle().set("background-image", "linear-gradient(var(--lumo-error-color-10pct), var(--lumo-error-color-10pct))");
-                setIcon(VaadinIcon.EXCLAMATION_CIRCLE, TextColor.ERROR);
+                setIcon(LineAwesomeIcon.EXCLAMATION_CIRCLE_SOLID, TextColor.ERROR);
                 break;
         }
     }
@@ -149,7 +148,7 @@ public class Notification extends Layout implements HasTheme {
     /**
      * Sets the icon.
      */
-    public void setIcon(VaadinIcon icon, TextColor color) {
+    public void setIcon(LineAwesomeIcon icon, TextColor color) {
         this.icon = icon.create();
         this.icon.addClassNames(
                 color.getClassName(), LumoUtility.Flex.SHRINK_NONE, LumoUtility.Margin.Top.XSMALL,

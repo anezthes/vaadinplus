@@ -8,29 +8,28 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class TimelineListItem extends ListItem {
 
-    private Icon icon;
+    private Component icon;
     private Html content;
     private Avatar avatar;
     private Span author;
     private Span activity;
     private Span time;
 
-    private TimelineListItem(VaadinIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor) {
+    private TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor) {
         addClassNames("timeline");
         setIcon(icon, iconBackgroundColor, iconTextColor);
     }
 
-    public TimelineListItem(VaadinIcon icon, String content, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, String content, String time) {
         this(icon, BackgroundColor.BASE, TextColor.SECONDARY, content, time);
     }
 
-    public TimelineListItem(VaadinIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String content, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String content, String time) {
         this(icon, iconBackgroundColor, iconTextColor);
         setContent(content);
 
@@ -42,27 +41,27 @@ public class TimelineListItem extends ListItem {
         setSuffix(this.time);
     }
 
-    public TimelineListItem(VaadinIcon icon, String author, String activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, String author, String activity, String time) {
         this(icon, BackgroundColor.BASE, TextColor.SECONDARY, author, activity, time);
     }
 
-    public TimelineListItem(VaadinIcon icon, TextColor iconTextColor, String author, String activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, TextColor iconTextColor, String author, String activity, String time) {
         this(icon, BackgroundColor.BASE, iconTextColor, author, activity, time);
     }
 
-    public TimelineListItem(VaadinIcon icon, String author, Component activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, String author, Component activity, String time) {
         this(icon, BackgroundColor.BASE, TextColor.SECONDARY, author, activity, time);
     }
 
-    public TimelineListItem(VaadinIcon icon, TextColor iconTextColor, String author, Component activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, TextColor iconTextColor, String author, Component activity, String time) {
         this(icon, BackgroundColor.BASE, iconTextColor, author, activity, time);
     }
 
-    public TimelineListItem(VaadinIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String author, String activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String author, String activity, String time) {
         this(icon, iconBackgroundColor, iconTextColor, author, new Text(" " + activity + " "), time);
     }
 
-    public TimelineListItem(VaadinIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String author, Component activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String author, Component activity, String time) {
         this(icon, iconBackgroundColor, iconTextColor);
 
         this.avatar = new Avatar(author);
@@ -82,7 +81,7 @@ public class TimelineListItem extends ListItem {
         setSuffix(this.time);
     }
 
-    public void setIcon(VaadinIcon icon, BackgroundColor background, TextColor color) {
+    public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
         this.icon = icon.create();
         this.icon.addClassNames(
                 LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_10, LumoUtility.Height.MEDIUM,

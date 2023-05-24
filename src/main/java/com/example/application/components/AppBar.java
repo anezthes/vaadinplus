@@ -2,18 +2,22 @@ package com.example.application.components;
 
 import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class AppBar extends Header {
+public class AppBar extends Header implements HasTheme {
 
     private Layout start;
     private Layout middle;
     private Layout end;
 
     public AppBar(Component... components) {
-        addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Height.XLARGE, LumoUtility.Padding.Horizontal.MEDIUM);
+        addClassNames(
+                LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Gap.LARGE,
+                LumoUtility.Height.XLARGE, LumoUtility.Padding.Horizontal.MEDIUM
+        );
 
         this.start = new Layout();
         this.start.setAlignItems(FlexComponent.Alignment.CENTER);
@@ -22,6 +26,7 @@ public class AppBar extends Header {
         this.middle = new Layout();
         this.middle.setAlignItems(FlexComponent.Alignment.CENTER);
         this.middle.setFlexGrow(1, this.middle);
+        this.middle.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         this.end = new Layout();
         this.end.setAlignItems(FlexComponent.Alignment.CENTER);
@@ -42,6 +47,10 @@ public class AppBar extends Header {
 
     public void addToEnd(Component... components) {
         this.end.add(components);
+    }
+
+    public void addToEnd(int index, Component component) {
+        this.end.addComponentAtIndex(index, component);
     }
 
 }

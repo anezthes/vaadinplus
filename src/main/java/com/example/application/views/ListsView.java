@@ -7,6 +7,8 @@ import com.example.application.utilities.BackgroundColor;
 import com.example.application.utilities.BadgeVariant;
 import com.example.application.utilities.Gap;
 import com.example.application.utilities.TextColor;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -15,12 +17,11 @@ import com.vaadin.flow.component.avatar.AvatarGroup.AvatarGroupItem;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Lists")
 @Route(value = "lists", layout = MainLayout.class)
@@ -114,8 +115,10 @@ public class ListsView extends View {
     }
 
     private RouterLink createSuffix(String label) {
-        Icon icon = VaadinIcon.CHEVRON_RIGHT_SMALL.create();
-        icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
+        icon.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.TextColor.SECONDARY);
+        ((HasSize) icon).setHeight("var(--lumo-size-s)");
+        ((HasSize) icon).setWidth("var(--lumo-size-s)");
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
@@ -151,55 +154,55 @@ public class ListsView extends View {
                         "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=640",
                         "Aerial shot of forest",
                         "Pine Watt", "November 28, 2017",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?w=640",
                         "Photo of green grass field at sunrise",
                         "Ales Krivec", "June 19, 2015",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=640",
                         "Brown wooden dock between lavender flower field near body of water during golden hour",
                         "Mark Harpur", "July 22, 2018",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=640",
                         "Three brown wooden boat on blue lake water taken at daytime",
                         "Pietro De Grandi", "August 3, 2017",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=640",
                         "Brown house near body of water",
                         "Luca Bravo", "August 9, 2016",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1433838552652-f9a46b332c40?w=640",
                         "Hot air balloon contest",
                         "Daniela Cuevas", "June 9, 2015",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=640",
                         "Silhouette photo of mountain during night time",
                         "Vincentiu Solomon", "December 22, 2014",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?w=640",
                         "Milky way above body of water",
                         "Kristopher Roller", "July 12, 2016",
-                        createIconButton(VaadinIcon.ELLIPSIS_DOTS_V, "Actions")
+                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
                 )
         );
         return list;
     }
 
-    private Button createIconButton(VaadinIcon icon, String ariaLabel) {
+    private Button createIconButton(LineAwesomeIcon icon, String ariaLabel) {
         Button button = new Button(icon.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.getElement().setAttribute("aria-label", ariaLabel);
@@ -264,13 +267,13 @@ public class ListsView extends View {
 
     private UnorderedList createTimeline() {
         TimelineListItem item1 = new TimelineListItem(
-                VaadinIcon.CHECK, BackgroundColor.SUCCESS, TextColor.SUCCESS_CONTRAST,
+                LineAwesomeIcon.CHECK_SOLID, BackgroundColor.SUCCESS, TextColor.SUCCESS_CONTRAST,
                 PERSON_1, "marked issue as fixed", "1d ago"
         );
         item1.setAvatarImage(PERSON_1_IMG);
 
         TimelineListItem item2 = new TimelineListItem(
-                VaadinIcon.TAG, BackgroundColor.PRIMARY, TextColor.PRIMARY_CONTRAST,
+                LineAwesomeIcon.TAG_SOLID, BackgroundColor.PRIMARY, TextColor.PRIMARY_CONTRAST,
                 PERSON_2, new Span(
                 new Text(" added labels "),
                 new Badge("bug", BadgeVariant.ERROR, BadgeVariant.PILL),
@@ -281,13 +284,13 @@ public class ListsView extends View {
         item2.setAvatarImage(PERSON_2_IMG);
 
         TimelineListItem item3 = new TimelineListItem(
-                VaadinIcon.PENCIL, BackgroundColor.CONTRAST, TextColor.PRIMARY_CONTRAST,
+                LineAwesomeIcon.PEN_ALT_SOLID, BackgroundColor.CONTRAST, TextColor.PRIMARY_CONTRAST,
                 PERSON_3, "changed the title", "5d ago"
         );
         item3.setAvatarImage(PERSON_3_IMG);
 
         TimelineListItem item4 = new TimelineListItem(
-                VaadinIcon.LIGHTBULB,
+                LineAwesomeIcon.LIGHTBULB,
                 "This is an API test by <b>" + PERSON_1 + "</b>", "3d ago"
         );
 

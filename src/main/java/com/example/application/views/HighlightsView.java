@@ -2,18 +2,20 @@ package com.example.application.views;
 
 import com.example.application.components.Highlight;
 import com.example.application.components.Highlights;
+import com.example.application.components.Layout;
 import com.example.application.components.Tag;
 import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.ItemLabelGenerator;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Highlights")
 @Route(value = "highlights", layout = MainLayout.class)
@@ -77,19 +79,19 @@ public class HighlightsView extends View {
         Highlights highlights = new Highlights();
 
         Highlight highlight = new Highlight(
-                createIcon(VaadinIcon.CUBE, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
+                createIcon(LineAwesomeIcon.CUBE_SOLID, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
                 ORDERS, ORDERS_VALUE
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(VaadinIcon.BAR_CHART, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
+                createIcon(LineAwesomeIcon.CHART_BAR, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
                 SALES, SALES_VALUE
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(VaadinIcon.USERS, BackgroundColor.ERROR_10, TextColor.ERROR),
+                createIcon(LineAwesomeIcon.USER_SOLID, BackgroundColor.ERROR_10, TextColor.ERROR),
                 VISITORS, VISITORS_VALUE
         );
         highlights.add(highlight);
@@ -97,14 +99,20 @@ public class HighlightsView extends View {
         return highlights;
     }
 
-    private Icon createIcon(VaadinIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
-        Icon i = icon.create();
-        i.addClassNames(
-                LumoUtility.BorderRadius.LARGE, LumoUtility.Height.XLARGE, LumoUtility.Padding.MEDIUM,
-                LumoUtility.Width.XLARGE
+    private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
+        Component i = icon.create();
+        ((HasSize) i).setHeight("var(--lumo-size-m)");
+        ((HasSize) i).setWidth("var(--lumo-size-m)");
+        i.addClassNames(textColor.getClassName());
+
+        Layout container = new Layout(i);
+        container.addClassNames(
+                backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE, LumoUtility.Height.XLARGE, LumoUtility.Width.XLARGE
         );
-        i.addClassNames(backgroundColor.getClassName(), textColor.getClassName());
-        return i;
+        container.setAlignItems(FlexComponent.Alignment.CENTER);
+        container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+
+        return container;
     }
 
     private Highlights createHighlightsWithDetails() {
@@ -112,21 +120,21 @@ public class HighlightsView extends View {
 
         Highlight highlight = new Highlight(ORDERS, ORDERS_VALUE);
         highlight.setDetails(
-                new Tag(VaadinIcon.TRENDING_UP, ORDERS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, TextColor.SUCCESS),
                 new Tag(ORDERS_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(SALES, SALES_VALUE);
         highlight.setDetails(
-                new Tag(VaadinIcon.TRENDING_UP, SALES_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, TextColor.SUCCESS),
                 new Tag(SALES_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(VISITORS, VISITORS_VALUE);
         highlight.setDetails(
-                new Tag(VaadinIcon.TRENDING_UP, VISITORS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, TextColor.SUCCESS),
                 new Tag(VISITORS_WEEKLY)
         );
         highlights.add(highlight);
@@ -150,8 +158,10 @@ public class HighlightsView extends View {
     }
 
     private RouterLink createSuffix(String label) {
-        Icon icon = VaadinIcon.CHEVRON_RIGHT_SMALL.create();
-        icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
+        icon.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.TextColor.SECONDARY);
+        ((HasSize) icon).setHeight("var(--lumo-size-s)");
+        ((HasSize) icon).setWidth("var(--lumo-size-s)");
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
@@ -165,31 +175,31 @@ public class HighlightsView extends View {
         Highlights highlights = new Highlights();
 
         Highlight highlight = new Highlight(
-                createIcon(VaadinIcon.CUBE, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
+                createIcon(LineAwesomeIcon.CUBES_SOLID, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
                 ORDERS, ORDERS_VALUE, createSuffix(ORDERS)
         );
         highlight.setDetails(
-                new Tag(VaadinIcon.TRENDING_UP, ORDERS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, TextColor.SUCCESS),
                 new Tag(ORDERS_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(VaadinIcon.BAR_CHART, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
+                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
                 SALES, SALES_VALUE, createSuffix(SALES)
         );
         highlight.setDetails(
-                new Tag(VaadinIcon.TRENDING_UP, SALES_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, TextColor.SUCCESS),
                 new Tag(SALES_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(VaadinIcon.USERS, BackgroundColor.ERROR_10, TextColor.ERROR),
+                createIcon(LineAwesomeIcon.USER, BackgroundColor.ERROR_10, TextColor.ERROR),
                 VISITORS, VISITORS_VALUE, createSuffix(VISITORS)
         );
         highlight.setDetails(
-                new Tag(VaadinIcon.TRENDING_UP, VISITORS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, TextColor.SUCCESS),
                 new Tag(VISITORS_WEEKLY)
         );
         highlights.add(highlight);
