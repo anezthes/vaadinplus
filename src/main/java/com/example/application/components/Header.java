@@ -6,6 +6,7 @@ import com.example.application.utilities.Gap;
 import com.example.application.utilities.HeadingLevel;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
@@ -13,7 +14,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class Header extends Layout {
+public class Header extends Layout implements HasTheme {
 
     // Style
     private FontSize headingFontSize;

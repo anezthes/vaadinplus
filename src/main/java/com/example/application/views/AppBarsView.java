@@ -1,6 +1,7 @@
 package com.example.application.views;
 
 import com.example.application.components.AppBar;
+import com.example.application.components.Preview;
 import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.themes.InputTheme;
@@ -27,17 +28,18 @@ public class AppBarsView extends View {
 
         RadioButtonGroup mode = new RadioButtonGroup("Mode");
         mode.setItems("Light", "Dark");
-        mode.addValueChangeListener(e -> {
-            getChildren().forEach(child -> {
-                if (child instanceof AppBar) {
-                    if (e.getValue().equals("Dark")) {
-                        ((AppBar) child).addThemeName(Lumo.DARK);
-                    } else {
-                        ((AppBar) child).removeThemeName(Lumo.DARK);
-                    }
-                }
-            });
-        });
+        mode.addValueChangeListener(e -> getChildren()
+                .filter(child -> child instanceof Preview)
+                .forEach(child -> child.getChildren()
+                        .filter(grandChild -> grandChild instanceof AppBar)
+                        .forEach(grandChild -> {
+                            if (e.getValue().equals("Dark")) {
+                                ((AppBar) grandChild).addThemeName(Lumo.DARK);
+                            } else {
+                                ((AppBar) grandChild).removeThemeName(Lumo.DARK);
+                            }
+                        })
+                ));
         add(mode);
 
         addH2("Simple");
