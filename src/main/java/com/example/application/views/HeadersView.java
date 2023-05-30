@@ -1,6 +1,5 @@
 package com.example.application.views;
 
-import com.example.application.components.AppBar;
 import com.example.application.components.Header;
 import com.example.application.components.Preview;
 import com.example.application.components.Tag;
