@@ -2,8 +2,6 @@ package com.example.application.views;
 
 import com.example.application.components.AppBar;
 import com.example.application.components.Preview;
-import com.example.application.components.appnav.AppNav;
-import com.example.application.components.appnav.AppNavItem;
 import com.example.application.themes.InputTheme;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
@@ -12,6 +10,8 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.sidenav.SideNav;
+import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -97,12 +97,12 @@ public class AppBarsView extends View {
         return icon;
     }
 
-    private AppNav createAppNav() {
-        AppNav nav = new AppNav();
-        nav.addItem(new AppNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
-        nav.addItem(new AppNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
-        nav.addItem(new AppNavItem("Empty States", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
-        nav.addItem(new AppNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
+    private SideNav createAppNav() {
+        SideNav nav = new SideNav();
+        nav.addItem(new SideNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
+        nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
+        nav.addItem(new SideNavItem("Empty States", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
+        nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
         nav.getChildren().forEach(navItem -> navItem.addClassNames(LumoUtility.Display.INLINE_BLOCK));
         return nav;
     }

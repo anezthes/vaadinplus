@@ -1,4 +1,5 @@
 /* LineAwesome */
+
 :host ::slotted(span) {
     --_size: var(--lumo-icon-size-s) !important;
 }
