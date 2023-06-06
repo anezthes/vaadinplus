@@ -2,7 +2,6 @@ package com.example.application.components;
 
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.UnorderedList;
-import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class Stepper extends Nav {
