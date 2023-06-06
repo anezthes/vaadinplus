@@ -1,13 +1,9 @@
 package com.example.application.components;
 
-import com.example.application.utilities.BackgroundColor;
-import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.charts.model.Back;
-import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.ListItem;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
@@ -19,13 +15,6 @@ public class Step extends ListItem implements AfterNavigationObserver {
     private Div circle;
     private Span label;
     private Span description;
-
-    public enum State {
-        ACTIVE,
-        COMPLETE,
-        ERROR,
-        INACTIVE
-    }
 
     public Step(String label, String description, Class<? extends Component> navigationTarget) {
         addClassNames(LumoUtility.Position.RELATIVE);
@@ -109,22 +98,22 @@ public class Step extends ListItem implements AfterNavigationObserver {
     }
 
     private String[] getActiveClassNames() {
-        return new String[] {
+        return new String[]{
                 LumoUtility.Background.BASE, LumoUtility.Border.ALL, LumoUtility.BorderColor.PRIMARY,
                 LumoUtility.TextColor.PRIMARY
         };
     }
 
     private String[] getCompleteClassNames() {
-        return new String[] { LumoUtility.Background.PRIMARY, LumoUtility.TextColor.PRIMARY_CONTRAST };
+        return new String[]{LumoUtility.Background.PRIMARY, LumoUtility.TextColor.PRIMARY_CONTRAST};
     }
 
     private String[] getErrorClassNames() {
-        return new String[] { LumoUtility.Background.ERROR, LumoUtility.TextColor.ERROR_CONTRAST };
+        return new String[]{LumoUtility.Background.ERROR, LumoUtility.TextColor.ERROR_CONTRAST};
     }
 
     private String[] getInactiveClassNames() {
-        return new String[] {
+        return new String[]{
                 LumoUtility.Background.BASE, LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_30,
                 LumoUtility.TextColor.SECONDARY
         };
@@ -135,5 +124,12 @@ public class Step extends ListItem implements AfterNavigationObserver {
         if (this.link.getHref().equals(event.getLocation().getFirstSegment())) {
             setState(State.ACTIVE);
         }
+    }
+
+    public enum State {
+        ACTIVE,
+        COMPLETE,
+        ERROR,
+        INACTIVE
     }
 }

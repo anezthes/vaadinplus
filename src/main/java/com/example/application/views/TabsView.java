@@ -1,6 +1,5 @@
 package com.example.application.views;
 
-import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
