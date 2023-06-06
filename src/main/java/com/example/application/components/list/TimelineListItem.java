@@ -92,7 +92,7 @@ public class TimelineListItem extends ListItem {
 
         this.icon = new Layout(i);
         this.icon.addClassNames(
-                background.getClassName(), LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_10,
+                background.getClassName(), LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_30,
                 color.getClassName(), LumoUtility.Height.MEDIUM, "rounded-full", LumoUtility.Width.MEDIUM
         );
         this.icon.setAlignItems(FlexComponent.Alignment.CENTER);

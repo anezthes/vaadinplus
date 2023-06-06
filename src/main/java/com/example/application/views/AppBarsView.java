@@ -118,7 +118,7 @@ public class AppBarsView extends View {
     private Button createButton() {
         Button button = new Button(LineAwesomeIcon.BELL.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-        button.getElement().setAttribute("aria-label", "Notifications");
+        button.setAriaLabel("Notifications");
         return button;
     }
 

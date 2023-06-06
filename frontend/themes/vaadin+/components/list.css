@@ -1,7 +1,9 @@
-ul[theme~="dividers"] {
-    background-color: var(--lumo-base);
-    background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
-    gap: 1px;
+ul[theme~="dividers"] > *:not(:last-of-type)::after {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    content: "";
+    inset: auto 0 0 0;
+    pointer-events: none;
+    position: absolute;
 }
 
 li.timeline::before {

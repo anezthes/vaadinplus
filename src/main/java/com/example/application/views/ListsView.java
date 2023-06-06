@@ -205,7 +205,7 @@ public class ListsView extends View {
     private Button createIconButton(LineAwesomeIcon icon, String ariaLabel) {
         Button button = new Button(icon.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-        button.getElement().setAttribute("aria-label", ariaLabel);
+        button.setAriaLabel(ariaLabel);
         return button;
     }
 

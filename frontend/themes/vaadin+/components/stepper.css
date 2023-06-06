@@ -1,0 +1,35 @@
+nav.stepper ul {
+    counter-reset: step;
+}
+
+nav.stepper li {
+    counter-increment: step;
+}
+
+nav.stepper a {
+    text-decoration: none;
+}
+
+nav.stepper a > *:first-child:empty::before {
+    content: counter(step);
+}
+
+nav.stepper li::before {
+    background-color: var(--lumo-contrast-30pct);
+    content: "";
+    inset: 0 auto 0 calc(var(--lumo-space-m) + (var(--lumo-size-m) / 2));
+    position: absolute;
+    width: 1px;
+}
+
+nav.stepper li:first-child::before {
+    top: 50%;
+}
+
+nav.stepper li:last-child::before {
+    bottom: 50%;
+}
+
+nav.stepper li > * {
+    z-index: 0;
+}
