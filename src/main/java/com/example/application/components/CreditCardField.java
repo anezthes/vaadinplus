@@ -1,6 +1,5 @@
 package com.example.application.components;
 
-import com.example.application.themes.InputTheme;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -17,16 +16,16 @@ public class CreditCardField extends CustomField<CreditCardField.CreditCard> {
     }
 
     public CreditCardField() {
-        number = new TextField("Card Number");
-        number.addThemeName(InputTheme.HIDE_LABEL);
+        number = new TextField();
+        number.setAriaLabel("Card Number");
         number.setPlaceholder("Card Number");
 
-        expiration = new TextField("Expiration Date");
-        expiration.addThemeName(InputTheme.HIDE_LABEL);
+        expiration = new TextField();
+        expiration.setAriaLabel("Expiration Date");
         expiration.setPlaceholder("Expiration Date");
 
-        csc = new TextField("Security Code");
-        csc.addThemeName(InputTheme.HIDE_LABEL);
+        csc = new TextField();
+        csc.addThemeName("Security Code");
         csc.setPlaceholder("Security Code");
 
         InputGroup row = new InputGroup(expiration, csc);

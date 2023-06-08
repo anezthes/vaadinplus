@@ -1,6 +1,5 @@
 package com.example.application.components;
 
-import com.example.application.themes.InputTheme;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.select.Select;
@@ -21,13 +20,12 @@ public class PriceField extends CustomField<PriceField.Price> {
     }
 
     public PriceField() {
-        amount = new TextField("Amount");
-        amount.addThemeName(InputTheme.HIDE_LABEL);
+        amount = new TextField();
+        amount.setAriaLabel("Amount");
 
         currency = new Select();
         currency.addValueChangeListener(e -> updateAmountPrefix());
-        currency.addThemeNames(InputTheme.HIDE_LABEL);
-        currency.setLabel("Currency");
+        currency.setAriaLabel("Currency");
         currency.setItems(EUR, GBP, USD);
         currency.setValue(EUR);
         currency.setWidth("6em");

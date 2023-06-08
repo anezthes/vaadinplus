@@ -29,9 +29,6 @@ public class InputGroupsView extends View {
         addH2("Theme: Outline");
         add(createTextFields(InputTheme.OUTLINE));
 
-        addH2("Theme: Hide & Inset Label");
-        add(createTextField(InputTheme.HIDE_LABEL, InputTheme.INSET_LABEL));
-
         addH2("Theme: Inset Label & Outline");
         add(createTextField(InputTheme.INSET_LABEL, InputTheme.OUTLINE));
 
@@ -101,11 +98,13 @@ public class InputGroupsView extends View {
     }
 
     private Component createVerticalGroupExample() {
-        DatePicker startDate = new DatePicker("Start Date");
-        startDate.addThemeNames(InputTheme.HIDE_LABEL, InputTheme.OUTLINE);
+        DatePicker startDate = new DatePicker();
+        startDate.setAriaLabel("Start Date");
+        startDate.addThemeNames(InputTheme.OUTLINE);
 
-        DatePicker endDate = new DatePicker("End Date");
-        endDate.addThemeNames(InputTheme.HIDE_LABEL, InputTheme.OUTLINE);
+        DatePicker endDate = new DatePicker();
+        endDate.setAriaLabel("End Date");
+        endDate.addThemeNames(InputTheme.OUTLINE);
 
         InputGroup inputGroup = new InputGroup(startDate, endDate);
         inputGroup.setFlexDirection(FlexLayout.FlexDirection.COLUMN);

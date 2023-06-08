@@ -2,13 +2,13 @@ package com.example.application.views;
 
 import com.example.application.components.AppBar;
 import com.example.application.components.Preview;
-import com.example.application.themes.InputTheme;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
@@ -25,6 +25,7 @@ public class AppBarsView extends View {
 
     public AppBarsView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);
+        add(new Paragraph("No official support for horizontal navigation. Yet."));
 
         RadioButtonGroup mode = new RadioButtonGroup("Mode");
         mode.setItems("Light", "Dark");
@@ -108,8 +109,8 @@ public class AppBarsView extends View {
     }
 
     private TextField createTextField() {
-        TextField textField = new TextField("Search");
-        textField.addThemeNames(InputTheme.HIDE_LABEL);
+        TextField textField = new TextField();
+        textField.setAriaLabel("Search");
         textField.setPlaceholder("Search");
         textField.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
         return textField;
