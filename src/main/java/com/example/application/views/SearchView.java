@@ -1,6 +1,5 @@
 package com.example.application.views;
 
-import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
