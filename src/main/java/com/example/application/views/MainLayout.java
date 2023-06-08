@@ -57,7 +57,8 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
         nav.addItem(new SideNavItem("Radio Buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
-        nav.addItem(new SideNavItem("Search", SearchView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
+        nav.addItem(new SideNavItem("Search Dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
+        nav.addItem(new SideNavItem("Sidebar", SidebarsView.class, LineAwesomeIcon.INFO_SOLID.create()));
         nav.addItem(new SideNavItem("Steppers", SteppersView.class, LineAwesomeIcon.WALKING_SOLID.create()));
         return nav;
     }

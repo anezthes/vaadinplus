@@ -8,11 +8,11 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("Search")
-@Route(value = "search", layout = MainLayout.class)
-public class SearchView extends View {
+@PageTitle("Search Dialogs")
+@Route(value = "search-dialogs", layout = MainLayout.class)
+public class SearchDialogsView extends View {
 
-    public SearchView() {
+    public SearchDialogsView() {
         addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);
 
         createBasicExample();
