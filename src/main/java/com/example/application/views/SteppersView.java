@@ -4,13 +4,15 @@ import com.example.application.components.Step;
 import com.example.application.components.Stepper;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Steppers")
 @Route(value = "steppers", layout = MainLayout.class)
 public class SteppersView extends View {
 
     public SteppersView() {
-        addH2("Basic");
+        addClassNames(LumoUtility.Padding.Top.LARGE);
+
         add(createStepper());
     }
 

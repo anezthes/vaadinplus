@@ -100,7 +100,7 @@ public class Step extends ListItem implements AfterNavigationObserver {
     private String[] getActiveClassNames() {
         return new String[]{
                 LumoUtility.Background.BASE, LumoUtility.Border.ALL, LumoUtility.BorderColor.PRIMARY,
-                LumoUtility.TextColor.PRIMARY
+                "border-2", LumoUtility.TextColor.PRIMARY
         };
     }
 
