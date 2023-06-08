@@ -1,6 +1,7 @@
 package com.example.application.components;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -10,7 +11,7 @@ import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-public class Sidebar extends Section {
+public class Sidebar extends Section implements HasEnabled {
 
     private Header header;
     private H2 title;
@@ -26,7 +27,7 @@ public class Sidebar extends Section {
         addClassNames(
                 LumoUtility.Background.BASE, LumoUtility.BoxShadow.MEDIUM, LumoUtility.Display.FLEX,
                 LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN, LumoUtility.Position.FIXED,
-                "bottom-0", "right-0", "top-0", "z-10"
+                "bottom-0", "end-0", "top-0", "z-10"
         );
         setMaxWidth(100, Unit.PERCENTAGE);
         setWidth(480, Unit.PIXELS);
@@ -34,6 +35,8 @@ public class Sidebar extends Section {
         createHeader(title, description);
         createContent(components);
         createFooter();
+
+        close();
     }
 
     private void createHeader(String title, String description) {
@@ -47,7 +50,7 @@ public class Sidebar extends Section {
         layout.addClassNames(LumoUtility.Gap.SMALL);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 
-        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create());
+        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create(), e -> close());
         close.addClassNames(LumoUtility.Margin.NONE);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close");
@@ -83,6 +86,16 @@ public class Sidebar extends Section {
                 LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
         );
         add(this.footer);
+    }
+
+    public void close() {
+        addClassNames("start-full");
+        setEnabled(false);
+    }
+
+    public void open() {
+        removeClassNames("start-full");
+        setEnabled(true);
     }
 
     public void addHeaderTheme(String theme) {

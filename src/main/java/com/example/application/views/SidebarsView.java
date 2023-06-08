@@ -2,6 +2,7 @@ package com.example.application.views;
 
 import com.example.application.components.Sidebar;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextArea;
@@ -24,7 +25,7 @@ public class SidebarsView extends View {
     public static final String DAVID_THOMPSON = "David Thompson";
 
     public SidebarsView() {
-        addClassNames(LumoUtility.Padding.Top.LARGE);
+        addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);
 
         RadioButtonGroup mode = new RadioButtonGroup("Header theme");
         mode.setItems("Light", "Dark");
@@ -39,17 +40,15 @@ public class SidebarsView extends View {
         }));
         add(mode);
 
-        createBasicExample();
-    }
-
-    private void createBasicExample() {
-        add(
-                new Sidebar(
-                        "New Event",
-                        "Fill in the blibber-blabber below to create a sensational event that will leave everyone flibber-gasted!",
-                        createForm()
-                )
+        Sidebar sidebar = new Sidebar(
+                "New Event",
+                "Fill in the blibber-blabber below to create a sensational event that will leave everyone flibber-gasted!",
+                createForm()
         );
+        add(sidebar);
+
+        Button button = new Button("Open Sidebar", e -> sidebar.open());
+        add(button);
     }
 
     private Component[] createForm() {

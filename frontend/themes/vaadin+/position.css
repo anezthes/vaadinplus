@@ -2,12 +2,12 @@
   bottom: 0px;
 }
 
-.left-0 {
-  left: 0px;
+.end-0 {
+  inset-inline-end: 0px;
 }
 
-.right-0 {
-  right: 0px;
+.start-full {
+  inset-inline-start: 100%;
 }
 
 .top-0 {

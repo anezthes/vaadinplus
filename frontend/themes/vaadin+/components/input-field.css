@@ -4,31 +4,6 @@
     --_size: var(--lumo-icon-size-s) !important;
 }
 
-/* Theme: Hide Label */
-
-:host([theme~="hide-label"][has-label]) {
-    padding: var(--lumo-space-xs) 0;
-}
-
-:host([theme~="hide-label"][has-label])::before {
-    margin-top: 0;
-}
-
-:host([theme~='hide-label']) [class$='container'] {
-    position: relative;
-}
-
-:host([theme~="hide-label"]) [part='label'] {
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
-
 /* Theme: Outline */
 
 :host([theme~='outline']) {
@@ -104,9 +79,4 @@
 :host([theme~="inset-label"][has-value]) [part='label'] {
     font-size: var(--lumo-font-size-xs);
     top: var(--lumo-space-s);
-}
-
-:host([theme~="inset-label"][has-label]:not([theme~="hide-label"])) ::slotted(input) {
-    box-sizing: border-box;
-    padding-top: var(--lumo-space-m);
 }
