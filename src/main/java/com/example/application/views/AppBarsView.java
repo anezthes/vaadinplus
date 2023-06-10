@@ -2,6 +2,7 @@ package com.example.application.views;
 
 import com.example.application.components.AppBar;
 import com.example.application.components.Preview;
+import com.example.application.utilities.IconSize;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
@@ -93,8 +94,8 @@ public class AppBarsView extends View {
     private Component createIcon() {
         Component icon = LineAwesomeIcon.FEATHER_ALT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.PRIMARY);
-        ((HasSize) icon).setHeight("var(--lumo-icon-size-m)");
-        ((HasSize) icon).setWidth("var(--lumo-icon-size-m)");
+        ((HasSize) icon).setHeight(IconSize.MEDIUM.getCSSVariable());
+        ((HasSize) icon).setWidth(IconSize.MEDIUM.getCSSVariable());
         return icon;
     }
 

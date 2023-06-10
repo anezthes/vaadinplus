@@ -17,7 +17,7 @@ public class View extends Main {
 
     public void addH2(String text) {
         H2 h2 = new H2(text);
-        h2.addClassNames(LumoUtility.Margin.Bottom.MEDIUM, LumoUtility.Margin.Top.LARGE);
+        h2.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.Bottom.MEDIUM, LumoUtility.Margin.Top.LARGE);
         add(h2);
     }
 

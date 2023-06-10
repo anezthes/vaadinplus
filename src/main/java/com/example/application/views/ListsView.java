@@ -3,10 +3,7 @@ package com.example.application.views;
 import com.example.application.components.Badge;
 import com.example.application.components.Tag;
 import com.example.application.components.list.*;
-import com.example.application.utilities.BackgroundColor;
-import com.example.application.utilities.BadgeVariant;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.TextColor;
+import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Text;
@@ -117,8 +114,8 @@ public class ListsView extends View {
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        ((HasSize) icon).setHeight("var(--lumo-icon-size-s)");
-        ((HasSize) icon).setWidth("var(--lumo-icon-size-s)");
+        ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
+        ((HasSize) icon).setWidth(IconSize.SMALL.getCSSVariable());
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);

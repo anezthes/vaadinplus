@@ -5,6 +5,7 @@ import com.example.application.components.Preview;
 import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.HeadingLevel;
+import com.example.application.utilities.IconSize;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -137,8 +138,8 @@ public class HeadersView extends View {
 
     private RouterLink createBackButton() {
         Component icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
-        ((HasSize) icon).setHeight("var(--lumo-icon-size-m)");
-        ((HasSize) icon).setWidth("var(--lumo-icon-size-m)");
+        ((HasSize) icon).setHeight(IconSize.MEDIUM.getCSSVariable());
+        ((HasSize) icon).setWidth(IconSize.MEDIUM.getCSSVariable());
 
         RouterLink link = new RouterLink("", HomeView.class);
         link.addClassNames(

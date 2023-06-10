@@ -49,6 +49,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
         nav.addItem(new SideNavItem("Breadcrumbs", BreadcrumbsView.class, LineAwesomeIcon.BREAD_SLICE_SOLID.create()));
         nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
+        nav.addItem(new SideNavItem("Dialogs", DialogsView.class, LineAwesomeIcon.WINDOWS.create()));
         nav.addItem(new SideNavItem("Empty States", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
         nav.addItem(new SideNavItem("Highlights", HighlightsView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
@@ -56,6 +57,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Key-Value Pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
         nav.addItem(new SideNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
+        nav.addItem(new SideNavItem("Notifications II", NotificationsIIView.class, LineAwesomeIcon.BELL.create()));
         nav.addItem(new SideNavItem("Radio Buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
         nav.addItem(new SideNavItem("Search Dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
         nav.addItem(new SideNavItem("Sidebar", SidebarsView.class, LineAwesomeIcon.INFO_SOLID.create()));

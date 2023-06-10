@@ -1,5 +1,6 @@
 package com.example.application.components;
 
+import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
@@ -51,8 +52,8 @@ public class Tag extends Span {
 
     private static Component createIcon(LineAwesomeIcon icon) {
         Component i = icon.create();
-        ((HasSize) i).setHeight("var(--lumo-icon-size-s)");
-        ((HasSize) i).setWidth("var(--lumo-icon-size-s)");
+        ((HasSize) i).setHeight(IconSize.SMALL.getCSSVariable());
+        ((HasSize) i).setWidth(IconSize.SMALL.getCSSVariable());
         return i;
     }
 

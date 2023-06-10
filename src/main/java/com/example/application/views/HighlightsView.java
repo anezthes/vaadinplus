@@ -101,8 +101,8 @@ public class HighlightsView extends View {
 
     private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
         Component i = icon.create();
-        ((HasSize) i).setHeight("var(--lumo-icon-size-l)");
-        ((HasSize) i).setWidth("var(--lumo-icon-size-l)");
+        ((HasSize) i).setHeight(IconSize.LARGE.getCSSVariable());
+        ((HasSize) i).setWidth(IconSize.LARGE.getCSSVariable());
 
         Layout container = new Layout(i);
         container.addClassNames(
@@ -111,7 +111,6 @@ public class HighlightsView extends View {
         );
         container.setAlignItems(FlexComponent.Alignment.CENTER);
         container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-
         return container;
     }
 
@@ -160,8 +159,8 @@ public class HighlightsView extends View {
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        ((HasSize) icon).setHeight("var(--lumo-icon-size-s)");
-        ((HasSize) icon).setWidth("var(--lumo-icon-size-s)");
+        ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
+        ((HasSize) icon).setWidth(IconSize.SMALL.getCSSVariable());
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.addClassNames(

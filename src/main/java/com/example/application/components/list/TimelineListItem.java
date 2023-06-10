@@ -3,6 +3,7 @@ package com.example.application.components.list;
 import com.example.application.components.Layout;
 import com.example.application.utilities.BackgroundColor;
 import com.example.application.utilities.BoxSizing;
+import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
@@ -87,8 +88,8 @@ public class TimelineListItem extends ListItem {
 
     public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
         Component i = icon.create();
-        ((HasSize) i).setHeight("var(--lumo-icon-size-s)");
-        ((HasSize) i).setWidth("var(--lumo-icon-size-s)");
+        ((HasSize) i).setHeight(IconSize.SMALL.getCSSVariable());
+        ((HasSize) i).setWidth(IconSize.SMALL.getCSSVariable());
 
         this.icon = new Layout(i);
         this.icon.addClassNames(

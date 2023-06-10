@@ -1,0 +1,3 @@
+:host([theme~='no-padding']) [part='content'] {
+    padding: 0;
+}

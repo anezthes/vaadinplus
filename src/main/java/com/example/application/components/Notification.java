@@ -2,6 +2,7 @@ package com.example.application.components;
 
 import com.example.application.utilities.BorderColor;
 import com.example.application.utilities.Gap;
+import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
@@ -151,8 +152,8 @@ public class Notification extends Layout implements HasTheme {
      */
     public void setIcon(LineAwesomeIcon icon, TextColor color) {
         Component i = icon.create();
-        ((HasSize) i).setHeight("var(--lumo-icon-size-s)");
-        ((HasSize) i).setWidth("var(--lumo-icon-size-s)");
+        ((HasSize) i).setHeight(IconSize.SMALL.getCSSVariable());
+        ((HasSize) i).setWidth(IconSize.SMALL.getCSSVariable());
 
         this.icon = new Layout(i);
         this.icon.addClassNames(
