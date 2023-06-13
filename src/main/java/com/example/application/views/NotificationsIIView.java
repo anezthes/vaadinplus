@@ -23,12 +23,35 @@ public class NotificationsIIView extends View {
         addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);
 
         add(
-                new Button("Simple", e -> createNotificationWithIcon().open()),
-                new Button("Icon & Description", e -> createNotificationWithLink().open())
+                new Button("Simple", e -> createSimpleNotification().open()),
+                new Button("Icon & Description", e -> createNotificationWithIconDescription().open())
         );
     }
 
-    private Notification createNotificationWithIcon() {
+    private Notification createSimpleNotification() {
+        Span title = new Span("Lorem ipsum");
+        title.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.SEMIBOLD, LumoUtility.Padding.MEDIUM);
+
+        Button button = new Button("Button");
+        button.addClassNames(LumoUtility.Margin.NONE);
+        button.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
+
+        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create());
+        close.addClassNames(LumoUtility.Margin.NONE, LumoUtility.TextColor.SECONDARY);
+        close.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
+        close.setAriaLabel("Close");
+
+        Layout buttons = new Layout(button, close);
+        buttons.addClassNames(LumoUtility.Padding.SMALL);
+        buttons.setGap(Gap.SMALL);
+
+        Notification notification = new Notification(title, buttons);
+        notification.addThemeName("no-padding");
+        notification.setPosition(Notification.Position.TOP_END);
+        return notification;
+    }
+
+    private Notification createNotificationWithIconDescription() {
         Component icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.SUCCESS);
         ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
@@ -57,28 +80,6 @@ public class NotificationsIIView extends View {
         buttons.addClassNames(LumoUtility.AlignSelf.START, LumoUtility.Padding.SMALL);
 
         Notification notification = new Notification(layout, buttons);
-        notification.addThemeName("no-padding");
-        notification.setPosition(Notification.Position.TOP_END);
-        return notification;
-    }
-
-    private Notification createNotificationWithLink() {
-        Span title = new Span("Lorem ipsum");
-        title.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.SEMIBOLD, LumoUtility.Padding.MEDIUM);
-
-        Button button = new Button("Button");
-        button.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
-
-        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create());
-        close.addClassNames(LumoUtility.TextColor.SECONDARY);
-        close.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
-        close.setAriaLabel("Close");
-
-        Layout buttons = new Layout(button, close);
-        buttons.addClassNames(LumoUtility.Padding.SMALL);
-        buttons.setGap(Gap.SMALL);
-
-        Notification notification = new Notification(title, buttons);
         notification.addThemeName("no-padding");
         notification.setPosition(Notification.Position.TOP_END);
         return notification;
