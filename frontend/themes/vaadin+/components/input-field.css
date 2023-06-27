@@ -59,6 +59,7 @@
     font-size: var(--lumo-font-size-m);
     margin-left: 0;
     padding-bottom: 0;
+    pointer-events: none;
     position: absolute;
     top: calc((var(--lumo-text-field-size) - var(--lumo-font-size-m)) / 2);
     transition: color 0.2s, font-size 0.1s, top 0.1s;
