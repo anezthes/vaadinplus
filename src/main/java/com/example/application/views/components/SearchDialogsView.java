@@ -1,6 +1,7 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.SearchDialog;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.router.PageTitle;
@@ -10,7 +11,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Search Dialogs")
 @Route(value = "search-dialogs", layout = MainLayout.class)
-public class SearchDialogsView extends View {
+public class SearchDialogsView extends ComponentView {
 
     public SearchDialogsView() {
         addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);

@@ -1,6 +1,7 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.themes.CheckboxTheme;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 @PageTitle("Checkboxes")
 @Route(value = "checkboxes", layout = MainLayout.class)
-public class CheckboxesView extends View {
+public class CheckboxesView extends ComponentView {
 
     public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
             "tempor.";

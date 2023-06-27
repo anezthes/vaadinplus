@@ -1,4 +1,4 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Header;
 import com.example.application.components.Preview;
@@ -6,6 +6,7 @@ import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.HeadingLevel;
 import com.example.application.utilities.IconSize;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -23,7 +24,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Headers")
 @Route(value = "headers", layout = MainLayout.class)
-public class HeadersView extends View {
+public class HeadersView extends ComponentView {
 
     public HeadersView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);

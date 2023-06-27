@@ -1,9 +1,10 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.KeyValuePair;
 import com.example.application.components.KeyValuePairs;
 import com.example.application.utilities.GridColumnSpan;
 import com.example.application.utilities.GridColumns;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -11,7 +12,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Key-Value Pairs")
 @Route(value = "key-value-pairs", layout = MainLayout.class)
-public class KeyValuePairsView extends View {
+public class KeyValuePairsView extends ComponentView {
 
     public KeyValuePairsView() {
         addH2("Horizontal with Breakpoint");

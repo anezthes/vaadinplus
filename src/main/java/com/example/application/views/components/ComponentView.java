@@ -1,4 +1,4 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Preview;
 import com.vaadin.flow.component.Component;
@@ -6,9 +6,9 @@ import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class View extends Main {
+public class ComponentView extends Main {
 
-    public View() {
+    public ComponentView() {
         addClassNames(
                 LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN, LumoUtility.Padding.Bottom.LARGE,
                 LumoUtility.Padding.Horizontal.LARGE

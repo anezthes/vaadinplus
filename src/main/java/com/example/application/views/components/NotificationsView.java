@@ -1,9 +1,10 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Layout;
 import com.example.application.utilities.Gap;
 import com.example.application.utilities.IconSize;
 import com.example.application.utilities.LineClamp;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
@@ -18,11 +19,11 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("Notifications II")
-@Route(value = "notifications-ii", layout = MainLayout.class)
-public class NotificationsIIView extends View {
+@PageTitle("Notifications")
+@Route(value = "notifications", layout = MainLayout.class)
+public class NotificationsView extends ComponentView {
 
-    public NotificationsIIView() {
+    public NotificationsView() {
         addClassNames(AlignItems.START, Padding.Top.LARGE);
 
         add(

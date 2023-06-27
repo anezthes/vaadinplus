@@ -1,8 +1,9 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.AppBar;
 import com.example.application.components.Preview;
 import com.example.application.utilities.IconSize;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
@@ -22,7 +23,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("App Bars")
 @Route(value = "app-bars", layout = MainLayout.class)
-public class AppBarsView extends View {
+public class AppBarsView extends ComponentView {
 
     public AppBarsView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);

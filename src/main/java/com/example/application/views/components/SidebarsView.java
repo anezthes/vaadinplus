@@ -1,6 +1,7 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Sidebar;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
@@ -14,7 +15,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Sidebars")
 @Route(value = "sidebars", layout = MainLayout.class)
-public class SidebarsView extends View {
+public class SidebarsView extends ComponentView {
 
     public static final String JOHN_SMITH = "John Smith";
     public static final String EMILY_JOHNSON = "Emily Johnson";

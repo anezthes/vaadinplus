@@ -1,10 +1,11 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.CreditCardField;
 import com.example.application.components.InputGroup;
 import com.example.application.components.PriceField;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -17,7 +18,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Input Groups")
 @Route(value = "input-groups", layout = MainLayout.class)
-public class InputGroupsView extends View {
+public class InputGroupsView extends ComponentView {
 
     public InputGroupsView() {
         addClassNames(LumoUtility.AlignItems.START);

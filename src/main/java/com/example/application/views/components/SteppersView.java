@@ -1,14 +1,15 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Step;
 import com.example.application.components.Stepper;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @PageTitle("Steppers")
 @Route(value = "steppers", layout = MainLayout.class)
-public class SteppersView extends View {
+public class SteppersView extends ComponentView {
 
     public SteppersView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);

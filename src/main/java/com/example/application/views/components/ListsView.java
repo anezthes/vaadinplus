@@ -1,9 +1,10 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Badge;
 import com.example.application.components.Tag;
 import com.example.application.components.list.*;
 import com.example.application.utilities.*;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Text;
@@ -22,7 +23,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Lists")
 @Route(value = "lists", layout = MainLayout.class)
-public class ListsView extends View {
+public class ListsView extends ComponentView {
 
     public static final String PERSON_1 = "Ava Smith";
     public static final String PERSON_1_EMAIL = "ava.smith@company.com";

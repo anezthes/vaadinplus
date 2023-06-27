@@ -1,10 +1,11 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Highlight;
 import com.example.application.components.Highlights;
 import com.example.application.components.Layout;
 import com.example.application.components.Tag;
 import com.example.application.utilities.*;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.ItemLabelGenerator;
@@ -19,7 +20,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Highlights")
 @Route(value = "highlights", layout = MainLayout.class)
-public class HighlightsView extends View {
+public class HighlightsView extends ComponentView {
 
     public static final String ORDERS = "Orders";
     public static final String ORDERS_VALUE = "42,719";

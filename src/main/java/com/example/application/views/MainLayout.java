@@ -1,7 +1,10 @@
 package com.example.application.views;
 
+import com.example.application.views.components.*;
+import com.example.application.views.templates.ProfileView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
@@ -39,13 +42,16 @@ public class MainLayout extends AppLayout {
         Span appName = new Span("Vaadin+");
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.FontWeight.SEMIBOLD);
 
-        Scroller scroller = new Scroller(createNavigation());
+        Div nav = new Div(createComponentNavigation(), createTemplatesNavigation());
+        nav.addClassNames(LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN, LumoUtility.Gap.MEDIUM);
+
+        Scroller scroller = new Scroller(nav);
 
         addToDrawer(new Header(appName), scroller);
     }
 
-    private SideNav createNavigation() {
-        SideNav nav = new SideNav();
+    private SideNav createComponentNavigation() {
+        SideNav nav = new SideNav("Components");
         nav.addItem(new SideNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
         nav.addItem(new SideNavItem("Breadcrumbs", BreadcrumbsView.class, LineAwesomeIcon.BREAD_SLICE_SOLID.create()));
         nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
@@ -57,11 +63,17 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Key-Value Pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
         nav.addItem(new SideNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
-        nav.addItem(new SideNavItem("Notifications II", NotificationsIIView.class, LineAwesomeIcon.BELL.create()));
         nav.addItem(new SideNavItem("Radio Buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
         nav.addItem(new SideNavItem("Search Dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
         nav.addItem(new SideNavItem("Sidebar", SidebarsView.class, LineAwesomeIcon.INFO_SOLID.create()));
+        nav.addItem(new SideNavItem("Statuses", StatusesView.class, LineAwesomeIcon.INFO_SOLID.create()));
         nav.addItem(new SideNavItem("Steppers", SteppersView.class, LineAwesomeIcon.WALKING_SOLID.create()));
+        return nav;
+    }
+
+    private SideNav createTemplatesNavigation() {
+        SideNav nav = new SideNav("Templates");
+        nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
         return nav;
     }
 

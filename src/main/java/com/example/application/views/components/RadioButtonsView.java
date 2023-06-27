@@ -1,6 +1,7 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.themes.RadioButtonTheme;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.html.Span;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 @PageTitle("Radio Buttons")
 @Route(value = "radio-buttons", layout = MainLayout.class)
-public class RadioButtonsView extends View {
+public class RadioButtonsView extends ComponentView {
 
     public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
             "tempor.";

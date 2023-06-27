@@ -1,7 +1,8 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.Notification;
 import com.example.application.utilities.TextColor;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.UnorderedList;
@@ -9,14 +10,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Notifications")
-@Route(value = "notifications", layout = MainLayout.class)
-public class NotificationsView extends View {
+@PageTitle("Statuses")
+@Route(value = "statuses", layout = MainLayout.class)
+public class StatusesView extends ComponentView {
 
     public static final String LOREM_IPSUM_PT1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
     public static final String LOREM_IPSUM_PT2 = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-    public NotificationsView() {
+    public StatusesView() {
         addH2("Info");
         add(createNotification());
 

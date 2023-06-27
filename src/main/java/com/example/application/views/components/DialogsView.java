@@ -1,6 +1,7 @@
-package com.example.application.views;
+package com.example.application.views.components;
 
 import com.example.application.components.IconDialog;
+import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -11,7 +12,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Dialogs")
 @Route(value = "dialogs", layout = MainLayout.class)
-public class DialogsView extends View {
+public class DialogsView extends ComponentView {
 
     public DialogsView() {
         addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);
