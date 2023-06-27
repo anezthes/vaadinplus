@@ -126,7 +126,7 @@ public class AppBarsView extends ComponentView {
     }
 
     private Avatar createAvatar() {
-        Avatar avatar = new Avatar("John Smith");
+        Avatar avatar = new Avatar("Emily Johnson");
         avatar.setImage("https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80");
         return avatar;
     }

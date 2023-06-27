@@ -1,5 +1,7 @@
 package com.example.application.views;
 
+import com.example.application.components.Layout;
+import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
 import com.example.application.views.templates.ProfileView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -8,6 +10,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
@@ -42,8 +45,9 @@ public class MainLayout extends AppLayout {
         Span appName = new Span("Vaadin+");
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.FontWeight.SEMIBOLD);
 
-        Div nav = new Div(createComponentNavigation(), createTemplatesNavigation());
-        nav.addClassNames(LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN, LumoUtility.Gap.MEDIUM);
+        Layout nav = new Layout(createComponentNavigation(), createTemplatesNavigation());
+        nav.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        nav.setGap(Gap.MEDIUM);
 
         Scroller scroller = new Scroller(nav);
 

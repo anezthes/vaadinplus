@@ -4,6 +4,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
@@ -33,8 +34,8 @@ public class Step extends ListItem implements AfterNavigationObserver {
         this.description = new Span(description);
         this.description.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
-        Div div = new Div(this.label, this.description);
-        div.addClassNames(LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN);
+        Layout layout = new Layout(this.label, this.description);
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 
         this.link = new RouterLink();
         this.link.addClassNames(
@@ -45,7 +46,7 @@ public class Step extends ListItem implements AfterNavigationObserver {
         if (navigationTarget != null) {
             this.link.setRoute(navigationTarget);
         }
-        this.link.add(this.circle, div);
+        this.link.add(this.circle, layout);
         add(this.link);
 
         setState(State.INACTIVE);
