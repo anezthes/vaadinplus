@@ -50,8 +50,11 @@
 
 :host([theme~='gap']) [part='group-field'] {
     display: flex;
-    flex-direction: column;
     gap: var(--lumo-space-s);
+}
+
+:host([theme~='gap']:not([theme~="vertical"])) [part='group-field'] {
+    flex-direction: column;
 }
 
 :host([theme~='gap']) [part='group-field'] ::slotted(*) {
@@ -59,7 +62,7 @@
 }
 
 @media (min-width: 640px) {
-    :host([theme~='gap']) [part='group-field'] {
+    :host([theme~='gap']:not([theme~="vertical"])) [part='group-field'] {
         flex-direction: row;
     }
 }
