@@ -32,7 +32,20 @@ import java.util.stream.Collectors;
 @Route(value = "product", layout = MainLayout.class)
 public class ProductView extends Main {
 
-    private String src = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80";
+    private String img1 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
+    private String alt1 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
+
+    private String img2 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
+    private String alt2 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
+
+    private String img3 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
+    private String alt3 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
+
+    private String img4 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
+    private String alt4 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
+
+    private String img5 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
+    private String alt5 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
 
     public ProductView() {
         addClassNames(AlignItems.START, Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Small.ROW,
@@ -41,16 +54,51 @@ public class ProductView extends Main {
     }
 
     public Component createImages() {
-        Image img = new Image(this.src, "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash");
-        img.setMaxWidth(100, Unit.PERCENTAGE);
+        Layout images = new Layout(
+                createPreview(),
+                createThumbnails()
+        );
+        images.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        images.setGap(com.example.application.utilities.Gap.MEDIUM);
+        images.setMaxWidth(100, Unit.PERCENTAGE);
+        images.setWidth(24, Unit.REM);
+        return images;
+    }
 
-        Layout layout = new Layout(img);
-        layout.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
-        layout.setAlignItems(FlexComponent.Alignment.CENTER);
-        layout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        layout.setMaxWidth(100, Unit.PERCENTAGE);
-        layout.setWidth(24, Unit.REM);
-        return layout;
+    public Component createPreview() {
+        Image img = new Image(this.img1, this.alt1);
+        img.setWidthFull();
+
+        Layout preview = new Layout(img);
+        preview.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
+        preview.setAlignItems(FlexComponent.Alignment.CENTER);
+        preview.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        preview.setWidthFull();
+        return preview;
+    }
+
+    public Component createThumbnails() {
+        Layout thumbnails = new Layout(
+                createThumbnail(this.img2, this.alt2),
+                createThumbnail(this.img3, this.alt3),
+                createThumbnail(this.img4, this.alt4),
+                createThumbnail(this.img5, this.alt5)
+        );
+        thumbnails.setDisplay(com.example.application.utilities.Display.GRID);
+        thumbnails.setGap(com.example.application.utilities.Gap.MEDIUM);
+        thumbnails.setGridColumns(GridColumns.COLUMNS_4);
+        return thumbnails;
+    }
+
+    public Component createThumbnail(String src, String alt) {
+        Image img = new Image(src, alt);
+        img.setWidthFull();
+
+        Layout thumbnail = new Layout(img);
+        thumbnail.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
+        thumbnail.setAlignItems(FlexComponent.Alignment.CENTER);
+        thumbnail.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        return thumbnail;
     }
 
     public Component createInformation() {
