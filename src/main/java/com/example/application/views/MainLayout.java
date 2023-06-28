@@ -3,6 +3,7 @@ package com.example.application.views;
 import com.example.application.components.Layout;
 import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
+import com.example.application.views.templates.ProductView;
 import com.example.application.views.templates.ProfileView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -76,6 +77,7 @@ public class MainLayout extends AppLayout {
 
     private SideNav createTemplatesNavigation() {
         SideNav nav = new SideNav("Templates");
+        nav.addItem(new SideNavItem("Product", ProductView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
         return nav;
     }

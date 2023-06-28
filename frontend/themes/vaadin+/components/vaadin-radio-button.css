@@ -30,6 +30,7 @@
 /* Border */
 
 :host([theme*="border"]) {
+    background-color: var(--lumo-base-color);
     outline: 1px solid var(--lumo-contrast-10pct);
     outline-offset: -1px;
     padding: var(--lumo-space-xs);
