@@ -9,3 +9,9 @@ Made with accessibility in mind.
 ## Running the application
 
 `mvn`
+
+## Demo
+
+https://v-herd.eu/jonte-vaadinplus/
+
+Thanks Martin Vyšný!
