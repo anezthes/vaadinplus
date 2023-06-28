@@ -132,7 +132,7 @@ public class ProductView extends Main {
 
         Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
                 "eiusmod tempor incididunt ut labore et dolore magna aliqua.");
-        description.addClassNames(Margin.Bottom.XSMALL, Margin.Top.MEDIUM);
+        description.addClassNames(Margin.Bottom.LARGE, Margin.Top.MEDIUM);
 
         RadioButtonGroup<String> color = new RadioButtonGroup("Color scheme");
         color.setItems("Light", "Dark");
@@ -202,7 +202,7 @@ public class ProductView extends Main {
                 "tasks, share files, and track project progress directly within the platform.");
 
         Layout details = new Layout(settings, customization, collaboration);
-        details.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Margin.Bottom.SMALL, Margin.Top.LARGE);
+        details.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Margin.Bottom.MEDIUM, Margin.Top.LARGE);
         details.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 
         Layout layout = new Layout(breadcrumb, title, price, reviewLayout, description, color, intensity, effects,
