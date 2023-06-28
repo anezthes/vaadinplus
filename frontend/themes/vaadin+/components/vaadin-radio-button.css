@@ -31,7 +31,7 @@
 
 :host([theme*="border"]) {
     background-color: var(--lumo-base-color);
-    outline: 1px solid var(--lumo-contrast-10pct);
+    outline: 1px solid var(--lumo-contrast-50pct);
     outline-offset: -1px;
     padding: var(--lumo-space-xs);
 }
@@ -55,8 +55,14 @@
     padding-inline-start: var(--lumo-space-s);
 }
 
+:host([theme~="border-only"][focus-ring]) {
+    box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 3px var(--lumo-primary-color-50pct);
+    z-index: 1;
+}
+
 :host([theme~="border-only"][checked]) {
     outline: 2px solid var(--lumo-primary-color);
+    outline-offset: -2px;
 }
 
 /* Border-only & primary */
