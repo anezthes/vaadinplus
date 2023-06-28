@@ -1,9 +1,9 @@
 .bottom-0 {
-  bottom: 0px;
+  bottom: 0;
 }
 
 .end-0 {
-  inset-inline-end: 0px;
+  inset-inline-end: 0;
 }
 
 .start-full {
@@ -11,5 +11,5 @@
 }
 
 .top-0 {
-  top: 0px;
+  top: 0;
 }

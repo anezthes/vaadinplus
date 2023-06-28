@@ -9,11 +9,12 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.CheckboxGroup;
+import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Main;
-import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
@@ -27,14 +28,22 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class ProfileView extends Main {
 
     public ProfileView() {
-        addClassNames(Display.FLEX, FlexDirection.COLUMN, Margin.Horizontal.AUTO, MaxWidth.SCREEN_SMALL,
-                Padding.Bottom.LARGE, Padding.Horizontal.LARGE);
-        add(createPublicInformation(), createContactInformation());
+        addClassNames(AlignItems.START, Display.FLEX, JustifyContent.CENTER);
+        add(createForm(), createLinks());
+    }
+
+    public Component createForm() {
+        Layout layout = new Layout(createPublicInformation(), createContactInformation(), createPassword(),
+                createNotifications());
+        layout.addClassNames(MaxWidth.SCREEN_SMALL, Padding.Bottom.LARGE, Padding.Horizontal.LARGE);
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        return layout;
     }
 
     public Component createPublicInformation() {
         H2 title = new H2("Public Information");
         title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
+        title.setId(title.getText().replace(" ", "-").toLowerCase());
 
         Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
         description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
@@ -74,6 +83,7 @@ public class ProfileView extends Main {
     public Component createContactInformation() {
         H2 title = new H2("Contact Information");
         title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
+        title.setId(title.getText().replace(" ", "-").toLowerCase());
 
         Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
         description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
@@ -96,5 +106,57 @@ public class ProfileView extends Main {
         layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
         layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_4, title, description, address);
         return layout;
+    }
+
+    public Component createPassword() {
+        H2 title = new H2("Password");
+        title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
+        title.setId(title.getText().replace(" ", "-").toLowerCase());
+
+        Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+        description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
+
+        TextField currentPassword = new TextField("Current password");
+        TextField newPassword = new TextField("New password");
+        TextField confirmPassword = new TextField("Confirm password");
+
+        Layout layout = new Layout(title, description, currentPassword, newPassword, confirmPassword);
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        return layout;
+    }
+
+    public Component createNotifications() {
+        H2 title = new H2("Notifications");
+        title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
+        title.setId(title.getText().replace(" ", "-").toLowerCase());
+
+        Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+        description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
+
+        CheckboxGroup emailNotifications = new CheckboxGroup("Email notifications");
+        emailNotifications.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        emailNotifications.setItems("Newsletters", "Promotional offers", "Account updates", "New messages or activities", "Events or upcoming appointments");
+
+        CheckboxGroup pushNotifications = new CheckboxGroup("Push notifications");
+        pushNotifications.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        pushNotifications.setItems("New messages", "Friend requests", "Activity updates", "Order status updates", "Reminders or alerts");
+
+        Layout layout = new Layout(title, description, emailNotifications, pushNotifications);
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        return layout;
+    }
+
+    public Component createLinks() {
+        UnorderedList list = new UnorderedList(
+                new ListItem(new Anchor("profile#public-information", "Public information")),
+                new ListItem(new Anchor("profile#contact-information", "Contact information")),
+                new ListItem(new Anchor("profile#password", "Password")),
+                new ListItem(new Anchor("profile#notifications", "Notifications"))
+        );
+        list.addClassNames(Margin.Vertical.XLARGE, Padding.Horizontal.LARGE);
+
+        Nav nav = new Nav(list);
+        nav.addClassNames(Display.HIDDEN, Display.Breakpoint.Small.FLEX, FontSize.SMALL, Position.STICKY, "top-0");
+        return nav;
     }
 }
