@@ -5,7 +5,6 @@ import com.example.application.components.Preview;
 import com.example.application.utilities.IconSize;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
@@ -95,8 +94,7 @@ public class AppBarsView extends ComponentView {
     private Component createIcon() {
         Component icon = LineAwesomeIcon.FEATHER_ALT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.PRIMARY);
-        ((HasSize) icon).setHeight(IconSize.MEDIUM.getCSSVariable());
-        ((HasSize) icon).setWidth(IconSize.MEDIUM.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.MEDIUM.getCSSVariable());
         return icon;
     }
 

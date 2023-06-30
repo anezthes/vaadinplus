@@ -8,7 +8,6 @@ import com.example.application.utilities.HeadingLevel;
 import com.example.application.utilities.IconSize;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -139,8 +138,7 @@ public class HeadersView extends ComponentView {
 
     private RouterLink createBackButton() {
         Component icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
-        ((HasSize) icon).setHeight(IconSize.MEDIUM.getCSSVariable());
-        ((HasSize) icon).setWidth(IconSize.MEDIUM.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.MEDIUM.getCSSVariable());
 
         RouterLink link = new RouterLink("", HomeView.class);
         link.addClassNames(

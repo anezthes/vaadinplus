@@ -7,7 +7,6 @@ import com.example.application.utilities.GridColumns;
 import com.example.application.views.MainLayout;
 import com.example.application.views.components.HomeView;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -28,29 +27,26 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.stream.Collectors;
 
-@PageTitle("Product")
-@Route(value = "product", layout = MainLayout.class)
-public class ProductView extends Main {
+@PageTitle("Product Details")
+@Route(value = "product-details", layout = MainLayout.class)
+public class ProductDetailsView extends Main {
 
     private String img1 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
     private String alt1 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
 
-    private String img2 = "https://images.unsplash.com/photo-1614506660616-f803bea5b0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt2 = "Clear glass ball on white sand during daytime ⋅ Ibrahim Mushan ⋅ Unsplash";
+    private String img2 = "https://images.unsplash.com/photo-1520532622976-1bdf3b7a5af9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
+    private String alt2 = "Clear glass light bulb on sand during daytime ⋅ Glen Carrie ⋅ Unsplash";
 
-    private String img3 = "https://images.unsplash.com/photo-1520532622976-1bdf3b7a5af9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt3 = "Clear glass light bulb on sand during daytime ⋅ Glen Carrie ⋅ Unsplash";
+    private String img3 = "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
+    private String alt3 = "Selective focus photography of light bulb ⋅ Ameen Fahmy ⋅ Unsplash";
 
-    private String img4 = "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt4 = "Selective focus photography of light bulb ⋅ Ameen Fahmy ⋅ Unsplash";
+    private String img4 = "https://images.unsplash.com/photo-1573621622238-f7ac6ac0429a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
+    private String alt4 = "Hanging black and clear light bulb turned on ⋅ Jonathan Borba ⋅ Unsplash";
 
-    private String img5 = "https://images.unsplash.com/photo-1573621622238-f7ac6ac0429a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt5 = "Hanging black and clear light bulb turned on ⋅ Jonathan Borba ⋅ Unsplash";
-
-    public ProductView() {
-        addClassNames(AlignItems.START, Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Small.ROW,
+    public ProductDetailsView() {
+        addClassNames(AlignItems.START, Display.FLEX, FlexDirection.COLUMN_REVERSE, FlexDirection.Breakpoint.Small.ROW,
                 Gap.XLARGE, JustifyContent.CENTER, Padding.LARGE);
-        add(createImages(), createInformation());
+        add(createInformation(), createImages());
     }
 
     public Component createImages() {
@@ -79,10 +75,10 @@ public class ProductView extends Main {
 
     public Component createThumbnails() {
         Layout thumbnails = new Layout(
+                createThumbnail(this.img1, this.alt1),
                 createThumbnail(this.img2, this.alt2),
                 createThumbnail(this.img3, this.alt3),
-                createThumbnail(this.img4, this.alt4),
-                createThumbnail(this.img5, this.alt5)
+                createThumbnail(this.img4, this.alt4)
         );
         thumbnails.setDisplay(com.example.application.utilities.Display.GRID);
         thumbnails.setGap(com.example.application.utilities.Gap.MEDIUM);
@@ -145,8 +141,7 @@ public class ProductView extends Main {
                         "strain in low-light environments");
             }
         }));
-        setRadioButtonGroupTheme(color, RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.GAP,
-                RadioButtonTheme.EQUAL_WIDTH);
+        setRadioButtonGroupTheme(color, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
 
         RadioButtonGroup<String> intensity = new RadioButtonGroup("Sound intensity");
         intensity.setItems("Low", "High");
@@ -157,8 +152,7 @@ public class ProductView extends Main {
                 return renderLabelWithDescription(item, "Produces vibrant and energetic tones");
             }
         }));
-        setRadioButtonGroupTheme(intensity, RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.GAP,
-                RadioButtonTheme.EQUAL_WIDTH);
+        setRadioButtonGroupTheme(intensity, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
 
         RadioButtonGroup<String> effects = new RadioButtonGroup("Lighting effects");
         effects.setItems("Solid", "Transitional");
@@ -171,8 +165,7 @@ public class ProductView extends Main {
                         "mesmerizing visual display");
             }
         }));
-        setRadioButtonGroupTheme(effects, RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.GAP,
-                RadioButtonTheme.EQUAL_WIDTH);
+        setRadioButtonGroupTheme(effects, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
 
         IntegerField quantity = new IntegerField("Quantity");
         quantity.setStepButtonsVisible(true);
@@ -214,15 +207,13 @@ public class ProductView extends Main {
 
     private Component createStar() {
         Component star = LineAwesomeIcon.STAR_SOLID.create();
-        ((HasSize) star).setHeight(com.example.application.utilities.IconSize.SMALL.getCSSVariable());
-        ((HasSize) star).setWidth(com.example.application.utilities.IconSize.SMALL.getCSSVariable());
+        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL.getCSSVariable());
         return star;
     }
 
     private Component createHalfStar() {
         Component star = LineAwesomeIcon.STAR_HALF_SOLID.create();
-        ((HasSize) star).setHeight(com.example.application.utilities.IconSize.SMALL.getCSSVariable());
-        ((HasSize) star).setWidth(com.example.application.utilities.IconSize.SMALL.getCSSVariable());
+        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL.getCSSVariable());
         return star;
     }
 
@@ -233,7 +224,7 @@ public class ProductView extends Main {
         secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         Layout layout = new Layout(primary, secondary);
-        layout.addClassNames(Padding.XSMALL);
+        layout.addClassNames(Padding.SMALL);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         layout.setGap(com.example.application.utilities.Gap.XSMALL);
         return layout;

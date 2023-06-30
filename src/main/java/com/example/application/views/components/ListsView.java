@@ -6,7 +6,6 @@ import com.example.application.components.list.*;
 import com.example.application.utilities.*;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -115,8 +114,7 @@ public class ListsView extends ComponentView {
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
-        ((HasSize) icon).setWidth(IconSize.SMALL.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
@@ -145,7 +143,6 @@ public class ListsView extends ComponentView {
         UnorderedList list = new UnorderedList();
         list.setAutoFill(200, Unit.PIXELS);
         list.setGap(Gap.MEDIUM);
-        list.removeBackgroundColor();
 
         list.add(
                 new ImageListItem(

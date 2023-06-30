@@ -18,7 +18,8 @@ public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList 
 
     public UnorderedList(Component... components) {
         add(components);
-        addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.NONE);
+        addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Overflow.HIDDEN,
+                LumoUtility.Padding.NONE);
         setDisplay(Display.GRID);
     }
 

@@ -2,7 +2,6 @@ package com.example.application.components;
 
 import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -111,14 +110,12 @@ public class IconDialog extends Dialog {
 
     private void setIconSize(Size size) {
         if (size == Size.MEDIUM) {
-            ((HasSize) this.icon).setHeight(IconSize.SMALL.getCSSVariable());
-            ((HasSize) this.icon).setWidth(IconSize.SMALL.getCSSVariable());
+            this.icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
             this.iconLayout.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
             this.iconLayout.removeClassNames(LumoUtility.Height.LARGE, LumoUtility.Width.LARGE);
 
         } else if (size == Size.LARGE) {
-            ((HasSize) this.icon).setHeight(IconSize.MEDIUM.getCSSVariable());
-            ((HasSize) this.icon).setWidth(IconSize.MEDIUM.getCSSVariable());
+            this.icon.getStyle().set("--_size", IconSize.MEDIUM.getCSSVariable());
             this.iconLayout.addClassNames(LumoUtility.Height.LARGE, LumoUtility.Width.LARGE);
             this.iconLayout.removeClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
         }

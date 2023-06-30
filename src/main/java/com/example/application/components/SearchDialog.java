@@ -115,7 +115,7 @@ public class SearchDialog extends Dialog {
             message.setAriaLabel("Message");
 
             Button video = new Button(LineAwesomeIcon.VIDEO_SOLID.create());
-            video.setAriaLabel("Video Call");
+            video.setAriaLabel("Video call");
 
             FlexLayout buttons = new FlexLayout(message, video);
             buttons.addClassNames(LumoUtility.Gap.SMALL);

@@ -3,7 +3,6 @@ package com.example.application.components;
 import com.example.application.utilities.HeadingLevel;
 import com.example.application.utilities.IconSize;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.*;
@@ -74,8 +73,7 @@ public class EmptyState extends Layout {
             replace(this.icon, icon);
         } else {
             icon.addClassNames(LumoUtility.Margin.Bottom.MEDIUM, LumoUtility.TextColor.SECONDARY);
-            ((HasSize) icon).setHeight(IconSize.LARGE.getCSSVariable());
-            ((HasSize) icon).setWidth(IconSize.LARGE.getCSSVariable());
+            icon.getStyle().set("--_size", IconSize.LARGE.getCSSVariable());
             addComponentAsFirst(icon);
         }
         this.icon = icon;

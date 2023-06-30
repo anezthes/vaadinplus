@@ -7,7 +7,6 @@ import com.example.application.components.Tag;
 import com.example.application.utilities.*;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.ItemLabelGenerator;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
@@ -102,8 +101,7 @@ public class HighlightsView extends ComponentView {
 
     private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
         Component i = icon.create();
-        ((HasSize) i).setHeight(IconSize.LARGE.getCSSVariable());
-        ((HasSize) i).setWidth(IconSize.LARGE.getCSSVariable());
+        i.getStyle().set("--_size", IconSize.LARGE.getCSSVariable());
 
         Layout container = new Layout(i);
         container.addClassNames(
@@ -160,8 +158,7 @@ public class HighlightsView extends ComponentView {
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
-        ((HasSize) icon).setWidth(IconSize.SMALL.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.addClassNames(

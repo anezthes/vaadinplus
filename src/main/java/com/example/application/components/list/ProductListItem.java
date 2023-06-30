@@ -8,8 +8,9 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
+public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
 
+    // Components
     private Layout image;
     private Layout row;
     private Layout column;
@@ -17,27 +18,29 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
     private Layout secondary;
     private Layout actions;
 
-    public ImageListItem(String src, String alt, String primary, String secondary, Component... actions) {
+    public ProductListItem(String src, String alt, String primary, String secondary, Component... actions) {
         this(new Image(src, alt), new Text(primary), new Text(secondary), actions);
     }
 
-    public ImageListItem(Image image, Component primary, Component secondary, Component... actions) {
-        addClassNames(LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX,
-                LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN);
+    public ProductListItem(Image image, Component primary, Component secondary, Component... actions) {
+        addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
+                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.LARGE, LumoUtility.Position.RELATIVE);
+
+        image.addClassNames(LumoUtility.BorderRadius.MEDIUM);
 
         this.image = new Layout();
         this.image.setFlexGrow(1, this.image);
         setImage(image);
 
         this.primary = new Layout();
+        this.primary.addClassNames(LumoUtility.FontSize.SMALL);
         setPrimary(primary);
 
         this.secondary = new Layout();
-        this.secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.secondary.addClassNames(LumoUtility.FontWeight.BOLD);
         setSecondary(secondary);
 
         this.column = new Layout(this.primary, this.secondary);
-        this.column.addClassNames(LumoUtility.Padding.Start.XSMALL);
         this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         this.column.setFlexGrow(1, this.column);
 
@@ -46,9 +49,6 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
 
         this.row = new Layout(this.column, this.actions);
         this.row.setAlignItems(Alignment.CENTER);
-        this.row.addClassNames(
-                LumoUtility.Padding.End.XSMALL, LumoUtility.Padding.Start.SMALL, LumoUtility.Padding.Vertical.SMALL
-        );
 
         add(this.image, this.row);
     }

@@ -1,7 +1,7 @@
-ul[theme~="dividers"] > *:not(:last-of-type)::after {
-    border-bottom: 1px solid var(--lumo-contrast-10pct);
+ul[theme~="dividers"] > *::after {
+    border: 1px solid var(--lumo-contrast-10pct);
     content: "";
-    inset: auto 0 0 0;
+    inset: -1px;
     pointer-events: none;
     position: absolute;
 }

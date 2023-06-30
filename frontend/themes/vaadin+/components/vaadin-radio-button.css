@@ -1,8 +1,13 @@
-/* Dividers */
-
-:host([theme~="dividers"]) {
+:host {
     position: relative;
 }
+
+:host([focus-ring]),
+:host([checked]) {
+    z-index: 1;
+}
+
+/* Theme: Dividers */
 
 :host([theme~="dividers"]:not(:last-of-type))::after {
     border-bottom: 1px solid var(--lumo-contrast-10pct);
@@ -12,7 +17,7 @@
     position: absolute;
 }
 
-/* Align: Right */
+/* Theme: Align-Right */
 
 :host([theme~="align-right"]) .vaadin-radio-button-container {
     grid-template-columns: 1fr auto;
@@ -27,17 +32,23 @@
     padding-inline-start: 0;
 }
 
-/* Border */
+/* Theme: Border & Toggle */
 
-:host([theme*="border"]) {
+:host([theme~="border"]) {
     background-color: var(--lumo-base-color);
     outline: 1px solid var(--lumo-contrast-50pct);
     outline-offset: -1px;
-    padding: var(--lumo-space-xs);
 }
 
-:host([theme*="border"][checked]) {
-    z-index: 1;
+:host([theme~="border"]) [part='radio'] {
+    margin-inline-start: var(--lumo-space-s);
+}
+
+:host([theme~="border"][has-label]) ::slotted(label) {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    min-height: var(--lumo-size-m);
 }
 
 :host([theme~="border"][checked]) {
@@ -45,29 +56,56 @@
     outline-color: var(--lumo-primary-color);
 }
 
-/* Border-only */
+/* Theme: Toggle */
 
-:host([theme~="border-only"]) [part='radio'] {
+:host([theme~="toggle"]) {
+    background-color: var(--lumo-base-color);
+    outline: 1px solid var(--lumo-contrast-50pct);
+    outline-offset: -1px;
+}
+
+:host([theme~="toggle"]) [part='radio'] {
     display: none;
 }
 
-:host([theme~="border-only"][has-label]) ::slotted(label) {
+:host([theme~="toggle"][has-label]) ::slotted(label) {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    min-height: var(--lumo-size-m);
     padding-inline-start: var(--lumo-space-s);
 }
 
-:host([theme~="border-only"][focus-ring]) {
-    box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 3px var(--lumo-primary-color-50pct);
-    z-index: 1;
-}
-
-:host([theme~="border-only"][checked]) {
+:host([theme~="toggle"][checked]) {
+    background-color: var(--lumo-primary-color-10pct);
+    color: var(--lumo-primary-color);
     outline: 2px solid var(--lumo-primary-color);
     outline-offset: -2px;
 }
 
-/* Border-only & primary */
+:host([theme~="toggle"][focus-ring]) {
+    box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 3px var(--lumo-primary-color-50pct);
+}
 
-:host([theme~="border-only"][theme~="primary"][checked]) {
+/* Theme: Toggle & Tertiary */
+
+:host([theme~="toggle"][theme~="tertiary"][checked]) {
+    background-color: var(--lumo-base-color);
+}
+
+/* Theme: Toggle & Primary */
+
+:host([theme~="toggle"][theme~="primary"][checked]) {
     background-color: var(--lumo-primary-color);
     color: var(--lumo-primary-contrast-color);
+}
+
+/* Theme: Small */
+
+:host([theme~="small"]) {
+    font-size: var(--lumo-font-size-s);
+}
+
+:host([theme~="small"][has-label]) ::slotted(label) {
+    min-height: var(--lumo-size-s);
 }

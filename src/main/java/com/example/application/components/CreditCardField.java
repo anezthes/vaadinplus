@@ -17,16 +17,16 @@ public class CreditCardField extends CustomField<CreditCardField.CreditCard> {
 
     public CreditCardField() {
         number = new TextField();
-        number.setAriaLabel("Card Number");
-        number.setPlaceholder("Card Number");
+        number.setAriaLabel("Card number");
+        number.setPlaceholder("Card number");
 
         expiration = new TextField();
-        expiration.setAriaLabel("Expiration Date");
-        expiration.setPlaceholder("Expiration Date");
+        expiration.setAriaLabel("Expiration date");
+        expiration.setPlaceholder("Expiration date");
 
         csc = new TextField();
-        csc.addThemeName("Security Code");
-        csc.setPlaceholder("Security Code");
+        csc.addThemeName("Security code");
+        csc.setPlaceholder("Security code");
 
         InputGroup row = new InputGroup(expiration, csc);
         InputGroup col = new InputGroup(number, row);

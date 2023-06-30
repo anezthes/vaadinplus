@@ -6,7 +6,6 @@ import com.example.application.utilities.IconSize;
 import com.example.application.utilities.LineClamp;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
@@ -60,8 +59,7 @@ public class NotificationsView extends ComponentView {
     private Notification createNotificationWithIconDescription() {
         Component icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
         icon.addClassNames(TextColor.SUCCESS);
-        ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
-        ((HasSize) icon).setWidth(IconSize.SMALL.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
 
         Span title = new Span("Lorem ipsum");
         title.addClassNames(FontSize.SMALL, FontWeight.SEMIBOLD);
@@ -94,8 +92,7 @@ public class NotificationsView extends ComponentView {
     private Notification createNotificationWithIconDescriptionActions() {
         Component icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
         icon.addClassNames(TextColor.SUCCESS);
-        ((HasSize) icon).setHeight(IconSize.SMALL.getCSSVariable());
-        ((HasSize) icon).setWidth(IconSize.SMALL.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
 
         Span title = new Span("Lorem ipsum");
         title.addClassNames(FontSize.SMALL, FontWeight.SEMIBOLD);

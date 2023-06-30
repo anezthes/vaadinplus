@@ -100,11 +100,11 @@ public class InputGroupsView extends ComponentView {
 
     private Component createVerticalGroupExample() {
         DatePicker startDate = new DatePicker();
-        startDate.setAriaLabel("Start Date");
+        startDate.setAriaLabel("Start date");
         startDate.addThemeNames(InputTheme.OUTLINE);
 
         DatePicker endDate = new DatePicker();
-        endDate.setAriaLabel("End Date");
+        endDate.setAriaLabel("End date");
         endDate.addThemeNames(InputTheme.OUTLINE);
 
         InputGroup inputGroup = new InputGroup(startDate, endDate);

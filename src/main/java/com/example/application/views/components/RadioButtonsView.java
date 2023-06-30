@@ -35,20 +35,14 @@ public class RadioButtonsView extends ComponentView {
         addH2("Theme: Border");
         add(createRadioButtonGroup(RadioButtonTheme.BORDER));
 
-        addH2("Theme: Border & Gap");
-        add(createRadioButtonGroup(RadioButtonTheme.BORDER, RadioButtonTheme.GAP));
+        addH2("Theme: Toggle");
+        add(createRadioButtonGroup(RadioButtonTheme.TOGGLE));
 
-        addH2("Theme: Border-Only");
-        add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY));
+        addH2("Theme: Toggle & Tertiary");
+        add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.TERTIARY));
 
-        addH2("Theme: Border-Only & Gap");
-        add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.GAP));
-
-        addH2("Theme: Border-Only & Primary");
-        add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.PRIMARY));
-
-        addH2("Theme: Border-Only, Gap & Primary");
-        add(createRadioButtonGroup(RadioButtonTheme.BORDER_ONLY, RadioButtonTheme.GAP, RadioButtonTheme.PRIMARY));
+        addH2("Theme: Toggle & Primary");
+        add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.PRIMARY));
     }
 
     private RadioButtonGroup<String> createRadioButtonGroupWithDescriptions() {

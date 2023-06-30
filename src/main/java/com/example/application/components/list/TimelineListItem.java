@@ -6,7 +6,6 @@ import com.example.application.utilities.BoxSizing;
 import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -88,8 +87,7 @@ public class TimelineListItem extends ListItem {
 
     public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
         Component i = icon.create();
-        ((HasSize) i).setHeight(IconSize.SMALL.getCSSVariable());
-        ((HasSize) i).setWidth(IconSize.SMALL.getCSSVariable());
+        i.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
 
         this.icon = new Layout(i);
         this.icon.addClassNames(
