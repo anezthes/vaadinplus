@@ -208,10 +208,7 @@ public class ListsView extends ComponentView {
         return new UnorderedList(
                 createTaskItem("Task 1", "Status", "Aug 8, 2022 ⋅ 7:30 PM"),
                 createTaskItem("Task 2", "Status", "Aug 9, 2022 ⋅ 2:00 PM"),
-                createTaskItem("Task 3", "Status", "Aug 12, 2022 ⋅ 5:45 PM"),
-                createTaskItem("Task 4", "Status", "Aug 16, 2022 ⋅ 9:25 AM"),
-                createTaskItem("Task 5", "Status", "Aug 27, 2022 ⋅ 10:15 AM"),
-                createTaskItem("Task 6", "Status", "Aug 29, 2022 ⋅ 4:30 PM")
+                createTaskItem("Task 3", "Status", "Aug 12, 2022 ⋅ 5:45 PM")
         );
     }
 

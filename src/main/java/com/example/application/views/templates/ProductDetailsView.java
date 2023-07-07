@@ -201,7 +201,7 @@ public class ProductDetailsView extends Main {
         Layout layout = new Layout(breadcrumb, title, price, reviewLayout, description, color, intensity, effects,
                 details, quantityLayout);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setMaxWidth(32, Unit.REM);
+        layout.setMaxWidth(40, Unit.REM);
         return layout;
     }
 
