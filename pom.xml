@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- Project from https://start.vaadin.com/project/9c153ebe-6c45-4b66-9d7a-63c8a13437e8 -->
+    <!-- Project from https://start.vaadin.com/project/0859ced5-a7a7-41c4-92af-88161467e23a -->
     <groupId>com.example.application</groupId>
     <artifactId>vaadinplus</artifactId>
     <name>Vaadin+</name>
@@ -11,8 +11,8 @@
 
     <properties>
         <java.version>17</java.version>
-        <vaadin.version>24.1.0.beta2</vaadin.version>
-        <selenium.version>4.8.3</selenium.version>
+        <vaadin.version>24.1.4</vaadin.version>
+        <selenium.version>4.10.0</selenium.version>
     </properties>
 
     <parent>
@@ -22,23 +22,6 @@
     </parent>
 
     <repositories>
-        <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
-
-        <!-- Main Maven repository -->
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>vaadin-prereleases</id>
-            <url>
-                https://maven.vaadin.com/vaadin-prereleases/
-            </url>
-        </repository>
-        <!-- Repository used by many Vaadin add-ons -->
         <repository>
             <id>Vaadin Directory</id>
             <url>https://maven.vaadin.com/vaadin-addons</url>
@@ -47,23 +30,6 @@
             </snapshots>
         </repository>
     </repositories>
-
-    <pluginRepositories>
-        <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
-        <pluginRepository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>vaadin-prereleases</id>
-            <url>
-                https://maven.vaadin.com/vaadin-prereleases/
-            </url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <dependencyManagement>
         <dependencies>
@@ -120,10 +86,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- Clean build and startup time for Vaadin apps sometimes may exceed
-                     the default Spring Boot's 30sec timeout.  -->
                 <configuration>
-                    <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5423</jvmArguments>
+                    <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5946</jvmArguments>
                     <wait>500</wait>
                     <maxAttempts>240</maxAttempts>
                 </configuration>

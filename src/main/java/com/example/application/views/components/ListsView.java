@@ -83,7 +83,7 @@ public class ListsView extends ComponentView {
 
         addH2("Theme: Dividers");
         UnorderedList list = createList();
-        list.setDividers(true);
+        list.setHorizontalDividers(true);
         addPreview(list);
     }
 

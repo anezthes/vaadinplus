@@ -1,6 +1,7 @@
 package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
+import com.example.application.components.PriceRange;
 import com.example.application.components.list.ProductListItem;
 import com.example.application.components.list.UnorderedList;
 import com.example.application.themes.RadioButtonTheme;
@@ -11,6 +12,8 @@ import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
+import com.vaadin.flow.component.contextmenu.ContextMenu;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -19,6 +22,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.Display;
 import com.vaadin.flow.theme.lumo.LumoUtility.Flex;
 import com.vaadin.flow.theme.lumo.LumoUtility.FlexDirection;
@@ -44,14 +48,25 @@ public class ProductListView extends Main {
         search.setPlaceholder("Search...");
         search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
 
-        Button price = new Button("Price");
-        price.setIcon(new Icon("lumo", "angle-down"));
-        price.setIconAfterText(true);
-
         MultiSelectComboBox brands = new MultiSelectComboBox<>();
         brands.setAriaLabel("Brands");
         brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
         brands.setPlaceholder("Brands");
+
+        Button price = new Button("Price");
+        price.setIcon(new Icon("lumo", "angle-down"));
+        price.setIconAfterText(true);
+
+        PriceRange priceRange = new PriceRange("Price");
+        priceRange.addClassNames(Padding.Top.XSMALL);
+        priceRange.setWidth(16, Unit.REM);
+
+        Div container = new Div(priceRange);
+        container.addClassNames(Padding.MEDIUM);
+
+        ContextMenu menu = new ContextMenu(price);
+        menu.add(container);
+        menu.setOpenOnClick(true);
 
         RadioButtonGroup<String> mode = new RadioButtonGroup();
         mode.setAriaLabel("View mode");
@@ -60,10 +75,10 @@ public class ProductListView extends Main {
         mode.setValue("Grid");
         setRadioButtonGroupTheme(mode, RadioButtonTheme.TOGGLE);
 
-        Layout toolbar = new Layout(search, price, brands, mode);
+        Layout toolbar = new Layout(search, brands, price, mode);
         toolbar.addClassNames(Padding.Horizontal.LARGE, Padding.Vertical.MEDIUM);
         toolbar.setAlignItems(FlexComponent.Alignment.CENTER);
-        toolbar.setGap(Gap.SMALL);
+        toolbar.setGap(Gap.MEDIUM);
         return toolbar;
     }
 
@@ -77,8 +92,9 @@ public class ProductListView extends Main {
 
     public Component createList() {
         UnorderedList list = new UnorderedList();
+        list.addClassNames(LumoUtility.Margin.Horizontal.LARGE);
         list.setAutoFill(320, Unit.PIXELS);
-        list.setDividers(true);
+        list.setBorders(true);
 
         list.add(
                 new ProductListItem(

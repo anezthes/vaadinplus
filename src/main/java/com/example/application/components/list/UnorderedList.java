@@ -8,6 +8,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList implements HasTheme {
 
+    public static final String BORDERS = "borders";
     public static final String DIVIDERS = "dividers";
 
     // Style
@@ -40,6 +41,19 @@ public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList 
     }
 
     /**
+     * Adds a border on the list and its items.
+     */
+    public void setBorders(boolean borders) {
+        if (borders) {
+            addClassNames(LumoUtility.Border.LEFT, LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
+            addThemeName(BORDERS);
+        } else {
+            removeClassNames(LumoUtility.Border.LEFT, LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
+            removeThemeName(BORDERS);
+        }
+    }
+
+    /**
      * Removes the background color.
      */
     public void removeBackgroundColor() {
@@ -61,9 +75,9 @@ public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList 
     }
 
     /**
-     * Simulates dividers between items.
+     * Sets horizontal dividers between items.
      */
-    public void setDividers(boolean dividers) {
+    public void setHorizontalDividers(boolean dividers) {
         if (dividers) {
             addThemeName(DIVIDERS);
         } else {

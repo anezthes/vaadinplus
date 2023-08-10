@@ -1,7 +1,12 @@
+ul[theme~="borders"] > * {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    border-inline-end: 1px solid var(--lumo-contrast-10pct);
+}
+
 ul[theme~="dividers"] > *::after {
-    border: 1px solid var(--lumo-contrast-10pct);
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
     content: "";
-    inset: -1px;
+    inset: auto 0 0 0;
     pointer-events: none;
     position: absolute;
 }

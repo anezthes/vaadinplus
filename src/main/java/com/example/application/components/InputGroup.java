@@ -1,15 +1,20 @@
 package com.example.application.components;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class InputGroup extends Layout {
 
     public static final String INPUT_GROUP = "input-group";
 
     public InputGroup(Component... components) {
+        super(components);
         addClassName(INPUT_GROUP);
         setFlexDirection(FlexDirection.ROW);
-        add(components);
+
+        for (Component component : components) {
+            component.addClassNames(LumoUtility.MinWidth.NONE);
+        }
     }
 
     @Override

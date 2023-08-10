@@ -24,7 +24,7 @@ public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
 
     public ProductListItem(Image image, Component primary, Component secondary, Component... actions) {
         addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.LARGE, LumoUtility.Position.RELATIVE);
+                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.LARGE);
 
         image.addClassNames(LumoUtility.BorderRadius.MEDIUM);
 
