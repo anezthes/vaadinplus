@@ -45,7 +45,7 @@ public class ProductDetailsView extends Main {
 
     public ProductDetailsView() {
         addClassNames(AlignItems.START, Display.FLEX, FlexDirection.COLUMN_REVERSE, FlexDirection.Breakpoint.Small.ROW,
-                Gap.XLARGE, JustifyContent.CENTER, Padding.LARGE);
+                JustifyContent.CENTER);
         add(createInformation(), createImages());
     }
 
@@ -54,6 +54,8 @@ public class ProductDetailsView extends Main {
                 createPreview(),
                 createThumbnails()
         );
+        images.addClassNames(Padding.LARGE);
+        images.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         images.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         images.setGap(com.example.application.utilities.Gap.MEDIUM);
         images.setMaxWidth(100, Unit.PERCENTAGE);
@@ -74,6 +76,7 @@ public class ProductDetailsView extends Main {
     }
 
     public Component createThumbnails() {
+        // TODO: Missing semantics, use tabs or radio buttons
         Layout thumbnails = new Layout(
                 createThumbnail(this.img1, this.alt1),
                 createThumbnail(this.img2, this.alt2),
@@ -200,6 +203,8 @@ public class ProductDetailsView extends Main {
 
         Layout layout = new Layout(breadcrumb, title, price, reviewLayout, description, color, intensity, effects,
                 details, quantityLayout);
+        layout.addClassNames(Padding.LARGE);
+        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         layout.setMaxWidth(40, Unit.REM);
         return layout;

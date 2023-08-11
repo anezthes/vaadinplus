@@ -41,6 +41,16 @@ public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList 
     }
 
     /**
+     * Removes the background color.
+     */
+    public void removeBackgroundColor() {
+        if (this.backgroundColor != null) {
+            this.removeClassName(this.backgroundColor.getClassName());
+        }
+        this.backgroundColor = null;
+    }
+
+    /**
      * Adds a border on the list and its items.
      */
     public void setBorders(boolean borders) {
@@ -51,16 +61,6 @@ public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList 
             removeClassNames(LumoUtility.Border.LEFT, LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
             removeThemeName(BORDERS);
         }
-    }
-
-    /**
-     * Removes the background color.
-     */
-    public void removeBackgroundColor() {
-        if (this.backgroundColor != null) {
-            this.removeClassName(this.backgroundColor.getClassName());
-        }
-        this.backgroundColor = null;
     }
 
     /**

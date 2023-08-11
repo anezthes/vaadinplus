@@ -6,6 +6,7 @@ import com.example.application.views.components.*;
 import com.example.application.views.templates.ProductDetailsView;
 import com.example.application.views.templates.ProductListView;
 import com.example.application.views.templates.ProfileView;
+import com.example.application.views.templates.ShoppingCartView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
@@ -81,6 +82,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Product Details", ProductDetailsView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
         nav.addItem(new SideNavItem("Product List", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
+        nav.addItem(new SideNavItem("Shopping Cart", ShoppingCartView.class, LineAwesomeIcon.SHOPPING_CART_SOLID.create()));
         return nav;
     }
 

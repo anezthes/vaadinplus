@@ -28,18 +28,15 @@ public class KeyValuePair extends Layout {
 
     public KeyValuePair(Component key, Component value) {
         this.key = new DescriptionList.Term(key);
-        this.key.addClassNames(
-                LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.MEDIUM, LumoUtility.TextColor.SECONDARY
-        );
+        this.key.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.MEDIUM,
+                LumoUtility.TextColor.SECONDARY);
 
         this.value = new DescriptionList.Description(value);
         this.value.addClassNames(LumoUtility.Margin.NONE);
 
         add(this.key, this.value);
 
-        addClassNames(
-                LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
-        );
+        addClassNames(LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL);
         setAlignItems(Alignment.BASELINE);
         setBreakpoint(Breakpoint.MEDIUM);
         setColumnGap(Gap.MEDIUM);
@@ -71,6 +68,16 @@ public class KeyValuePair extends Layout {
 
     public void setKeyWidth(float width, Unit unit) {
         this.key.setMinWidth(width, unit);
+        this.key.removeClassNames(LumoUtility.Flex.GROW);
+    }
+
+    public void setKeyWidthFull() {
+        this.key.setMinWidth(null);
+        this.key.addClassNames(LumoUtility.Flex.GROW);
+    }
+
+    public void removeHorizontalPadding() {
+        removeClassName(LumoUtility.Padding.Horizontal.MEDIUM);
     }
 
     private void updateClassNames() {

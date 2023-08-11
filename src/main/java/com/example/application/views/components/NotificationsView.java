@@ -29,7 +29,7 @@ public class NotificationsView extends ComponentView {
                 new Button("Simple", e -> createSimpleNotification().open()),
                 new Button("Icon & Description", e -> createNotificationWithIconDescription().open()),
                 new Button("Icon, Description & Actions", e -> createNotificationWithIconDescriptionActions().open()),
-                new Button("Vertical Actions", e -> createNotificationWithVerticalActions().open())
+                new Button("Stacked Actions", e -> createNotificationWithStackedActions().open())
         );
     }
 
@@ -132,7 +132,7 @@ public class NotificationsView extends ComponentView {
         return notification;
     }
 
-    private Notification createNotificationWithVerticalActions() {
+    private Notification createNotificationWithStackedActions() {
         Avatar avatar = new Avatar("Emily Johnson");
         avatar.setImage("https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80");
 

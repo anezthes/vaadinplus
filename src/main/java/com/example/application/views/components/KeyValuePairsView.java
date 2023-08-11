@@ -69,7 +69,7 @@ public class KeyValuePairsView extends ComponentView {
 
     private KeyValuePairs createKeyValuePairsWithDividers() {
         KeyValuePairs pairs = createKeyValuePairs();
-        pairs.setDividers(true);
+        pairs.setHorizontalDividers(true);
         return pairs;
     }
 
