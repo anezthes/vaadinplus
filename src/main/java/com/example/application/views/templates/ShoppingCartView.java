@@ -27,13 +27,13 @@ public class ShoppingCartView extends Main {
     public ShoppingCartView() {
         addClassNames(LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
                 LumoUtility.FlexDirection.Breakpoint.Small.ROW, LumoUtility.Gap.Column.XLARGE,
-                LumoUtility.JustifyContent.CENTER);
+                LumoUtility.JustifyContent.CENTER, LumoUtility.Padding.LARGE);
         add(createShoppingCart(), createSummary());
     }
 
     private Component createShoppingCart() {
         H2 title = new H2("Shopping Cart");
-        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.XLARGE);
+        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.MEDIUM);
 
         UnorderedList list = new UnorderedList(
                 new ShoppingCartListItem(
@@ -61,8 +61,6 @@ public class ShoppingCartView extends Main {
         list.setHorizontalDividers(true);
 
         Section section = new Section(title, list);
-        section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.Bottom.LARGE,
-                LumoUtility.Padding.Horizontal.LARGE);
         section.setMaxWidth(40, Unit.REM);
         return section;
     }
@@ -99,7 +97,7 @@ public class ShoppingCartView extends Main {
         Section section = new Section(title, pairs, inputGroup, checkout);
         section.addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.BorderRadius.LARGE,
                 LumoUtility.BoxSizing.BORDER, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-                LumoUtility.Gap.LARGE, LumoUtility.Margin.Top.MEDIUM, LumoUtility.Padding.LARGE);
+                LumoUtility.Gap.LARGE, LumoUtility.Padding.LARGE);
         section.setMaxWidth(100, Unit.PERCENTAGE);
         section.setWidth(24, Unit.REM);
         return section;
