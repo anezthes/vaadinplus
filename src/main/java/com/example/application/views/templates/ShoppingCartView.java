@@ -32,7 +32,7 @@ public class ShoppingCartView extends Main {
     }
 
     private Component createShoppingCart() {
-        H2 title = new H2("Shopping Cart");
+        H2 title = new H2("Shopping cart");
         title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.MEDIUM);
 
         UnorderedList list = new UnorderedList(
@@ -66,7 +66,7 @@ public class ShoppingCartView extends Main {
     }
 
     private Component createSummary() {
-        H2 title = new H2("Order Summary");
+        H2 title = new H2("Order summary");
         title.addClassNames(LumoUtility.FontSize.XLARGE);
 
         KeyValuePairs pairs = new KeyValuePairs(
