@@ -27,7 +27,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.stream.Collectors;
 
-@PageTitle("Product Details")
+@PageTitle("Product details")
 @Route(value = "product-details", layout = MainLayout.class)
 public class ProductDetailsView extends Main {
 
@@ -183,17 +183,17 @@ public class ProductDetailsView extends Main {
         quantityLayout.setGap(com.example.application.utilities.Gap.SMALL);
         quantityLayout.setGridColumns(GridColumns.COLUMNS_2);
 
-        Details settings = createDetails("Performance Settings", "Users can customize the performance " +
+        Details settings = createDetails("Performance settings", "Users can customize the performance " +
                 "settings of Xyloflux to optimize its speed and responsiveness. They can adjust parameters such as " +
                 "animation smoothness, transition effects, and rendering quality based on their device capabilities " +
                 "and preferences.");
 
-        Details customization = createDetails("Theme Customization", "Xyloflux offers extensive theme " +
+        Details customization = createDetails("Theme customization", "Xyloflux offers extensive theme " +
                 "customization options, allowing users to personalize the visual appearance of the product. Users " +
                 "can choose from a variety of color schemes, font styles, and layout options to create a unique and " +
                 "tailored experience.");
 
-        Details collaboration = createDetails("Collaboration Tools", "Xyloflux offers built-in " +
+        Details collaboration = createDetails("Collaboration tools", "Xyloflux offers built-in " +
                 "collaboration tools to facilitate teamwork and communication. Users can invite team members, assign " +
                 "tasks, share files, and track project progress directly within the platform.");
 

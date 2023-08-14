@@ -26,7 +26,7 @@ public class SidebarsView extends ComponentView {
     public static final String DAVID_THOMPSON = "David Thompson";
 
     public SidebarsView() {
-        addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);
+        addClassNames(LumoUtility.AlignItems.START, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.Top.LARGE);
 
         RadioButtonGroup mode = new RadioButtonGroup("Header theme");
         mode.setItems("Light", "Dark");
@@ -42,13 +42,13 @@ public class SidebarsView extends ComponentView {
         add(mode);
 
         Sidebar sidebar = new Sidebar(
-                "New Event",
+                "New event",
                 "Fill in the blibber-blabber below to create a sensational event that will leave everyone flibber-gasted!",
                 createForm()
         );
         add(sidebar);
 
-        Button button = new Button("Open Sidebar", e -> sidebar.open());
+        Button button = new Button("Open sidebar", e -> sidebar.open());
         add(button);
     }
 

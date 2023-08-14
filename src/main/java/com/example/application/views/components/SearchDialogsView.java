@@ -24,7 +24,7 @@ public class SearchDialogsView extends ComponentView {
     private void createBasicExample() {
         SearchDialog dialog = new SearchDialog();
 
-        Button button = new Button("Basic Example", e -> dialog.open());
+        Button button = new Button("Basic example", e -> dialog.open());
         button.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
         add(button);
     }
@@ -33,7 +33,7 @@ public class SearchDialogsView extends ComponentView {
         SearchDialog dialog = new SearchDialog();
         dialog.setPadding(true);
 
-        Button button = new Button("Padded Example", e -> dialog.open());
+        Button button = new Button("Padded example", e -> dialog.open());
         button.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
         add(button);
     }
@@ -44,7 +44,7 @@ public class SearchDialogsView extends ComponentView {
         dialog.setPreview(true);
         dialog.setWidth(800, Unit.PIXELS);
 
-        Button button = new Button("Preview Example", e -> dialog.open());
+        Button button = new Button("Preview example", e -> dialog.open());
         button.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
         add(button);
     }

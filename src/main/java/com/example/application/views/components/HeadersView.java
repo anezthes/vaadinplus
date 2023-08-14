@@ -62,10 +62,10 @@ public class HeadersView extends ComponentView {
         addH2("Actions");
         addPreview(createHeaderWithActions());
 
-        addH2("Breadcrumb, Details, Tabs & Actions");
+        addH2("Breadcrumb, details, tabs & actions");
         addPreview(createHeaderWithAllTheThings());
 
-        addH2("Example: User");
+        addH2("Example: user");
         addPreview(createUserExample());
     }
 

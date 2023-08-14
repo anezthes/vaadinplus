@@ -60,28 +60,28 @@ public class ListsView extends ComponentView {
         addH2("Suffix");
         addPreview(createListWithSuffix());
 
-        addH2("Prefix & Suffix");
+        addH2("Prefix & suffix");
         addPreview(createListWithPrefixSuffix());
 
         addH2("Grid");
         addPreview(createGridList());
 
-        addH2("Example: Images");
+        addH2("Example: images");
         addPreview(createImageList());
 
-        addH2("Example: Tasks");
+        addH2("Example: tasks");
         addPreview(createTaskList());
 
-        addH2("Example: Version History");
+        addH2("Example: version history");
         addPreview(createVersionHistory());
 
-        addH2("Example: Notifications");
+        addH2("Example: notifications");
         addPreview(createNotifications());
 
-        addH2("Example: Timeline");
+        addH2("Example: timeline");
         addPreview(createTimeline());
 
-        addH2("Theme: Dividers");
+        addH2("Theme: dividers");
         UnorderedList list = createList();
         list.setHorizontalDividers(true);
         addPreview(list);

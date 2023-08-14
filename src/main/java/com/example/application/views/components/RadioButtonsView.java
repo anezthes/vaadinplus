@@ -26,22 +26,22 @@ public class RadioButtonsView extends ComponentView {
         addH2("Descriptions");
         add(createRadioButtonGroupWithDescriptions());
 
-        addH2("Theme: Dividers");
+        addH2("Theme: dividers");
         add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS));
 
-        addH2("Theme: Dividers & Align-Right");
+        addH2("Theme: dividers & align-right");
         add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS, RadioButtonTheme.ALIGN_RIGHT));
 
-        addH2("Theme: Border");
+        addH2("Theme: border");
         add(createRadioButtonGroup(RadioButtonTheme.BORDER));
 
-        addH2("Theme: Toggle");
+        addH2("Theme: toggle");
         add(createRadioButtonGroup(RadioButtonTheme.TOGGLE));
 
-        addH2("Theme: Toggle & Tertiary");
+        addH2("Theme: toggle & tertiary");
         add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.TERTIARY));
 
-        addH2("Theme: Toggle & Primary");
+        addH2("Theme: toggle & primary");
         add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.PRIMARY));
     }
 

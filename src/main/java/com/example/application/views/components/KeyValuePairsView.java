@@ -10,27 +10,27 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("Key-Value Pairs")
+@PageTitle("Key-value pairs")
 @Route(value = "key-value-pairs", layout = MainLayout.class)
 public class KeyValuePairsView extends ComponentView {
 
     public KeyValuePairsView() {
-        addH2("Horizontal with Breakpoint");
+        addH2("Horizontal with breakpoint");
         addPreview(createKeyValuePairs());
 
-        addH2("Horizontal without Breakpoint");
+        addH2("Horizontal without breakpoint");
         addPreview(createKeyValuePairsWithoutBreakpoint());
 
         addH2("Vertical");
         addPreview(createVerticalKeyValuePairs());
 
-        addH2("Column Span");
+        addH2("Column span");
         addPreview(createKeyValuePairsWithColumnSpan());
 
-        addH2("Theme: Dividers");
+        addH2("Theme: dividers");
         addPreview(createKeyValuePairsWithDividers());
 
-        addH2("Theme: Stripes");
+        addH2("Theme: stripes");
         addPreview(createKeyValuePairsWithStripes());
     }
 

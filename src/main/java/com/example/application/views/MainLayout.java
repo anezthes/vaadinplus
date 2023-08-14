@@ -9,6 +9,8 @@ import com.example.application.views.templates.ProfileView;
 import com.example.application.views.templates.ShoppingCartView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.avatar.Avatar;
+import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
@@ -40,7 +42,16 @@ public class MainLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE);
 
-        addToNavbar(true, toggle, viewTitle);
+        Avatar avatar = new Avatar("John Smith");
+        avatar.addClassNames(LumoUtility.Margin.End.SMALL, LumoUtility.Margin.Start.AUTO);
+
+        // @TODO: Accessibility, should be dialog
+        ContextMenu menu = new ContextMenu(avatar);
+        menu.addItem("Manage account");
+        menu.addItem("Sign out");
+        menu.setOpenOnClick(true);
+
+        addToNavbar(true, toggle, viewTitle, avatar);
     }
 
     private void addDrawerContent() {
@@ -58,19 +69,19 @@ public class MainLayout extends AppLayout {
 
     private SideNav createComponentNavigation() {
         SideNav nav = new SideNav("Components");
-        nav.addItem(new SideNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
+        nav.addItem(new SideNavItem("App bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
         nav.addItem(new SideNavItem("Breadcrumbs", BreadcrumbsView.class, LineAwesomeIcon.BREAD_SLICE_SOLID.create()));
         nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
         nav.addItem(new SideNavItem("Dialogs", DialogsView.class, LineAwesomeIcon.WINDOWS.create()));
-        nav.addItem(new SideNavItem("Empty States", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
+        nav.addItem(new SideNavItem("Empty states", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
         nav.addItem(new SideNavItem("Highlights", HighlightsView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
-        nav.addItem(new SideNavItem("Input Groups", InputGroupsView.class, LineAwesomeIcon.KEYBOARD.create()));
-        nav.addItem(new SideNavItem("Key-Value Pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
+        nav.addItem(new SideNavItem("Input groups", InputGroupsView.class, LineAwesomeIcon.KEYBOARD.create()));
+        nav.addItem(new SideNavItem("Key-value pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
         nav.addItem(new SideNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
-        nav.addItem(new SideNavItem("Radio Buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
-        nav.addItem(new SideNavItem("Search Dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
+        nav.addItem(new SideNavItem("Radio buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
+        nav.addItem(new SideNavItem("Search dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
         nav.addItem(new SideNavItem("Sidebar", SidebarsView.class, LineAwesomeIcon.COLUMNS_SOLID.create()));
         nav.addItem(new SideNavItem("Statuses", StatusesView.class, LineAwesomeIcon.INFO_CIRCLE_SOLID.create()));
         nav.addItem(new SideNavItem("Steppers", SteppersView.class, LineAwesomeIcon.WALKING_SOLID.create()));
@@ -79,10 +90,10 @@ public class MainLayout extends AppLayout {
 
     private SideNav createTemplatesNavigation() {
         SideNav nav = new SideNav("Templates");
-        nav.addItem(new SideNavItem("Product Details", ProductDetailsView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
-        nav.addItem(new SideNavItem("Product List", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
+        nav.addItem(new SideNavItem("Product details", ProductDetailsView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
+        nav.addItem(new SideNavItem("Product list", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
-        nav.addItem(new SideNavItem("Shopping Cart", ShoppingCartView.class, LineAwesomeIcon.SHOPPING_CART_SOLID.create()));
+        nav.addItem(new SideNavItem("Shopping cart", ShoppingCartView.class, LineAwesomeIcon.SHOPPING_CART_SOLID.create()));
         return nav;
     }
 

@@ -26,13 +26,13 @@ public class CheckboxesView extends ComponentView {
         addH2("Descriptions");
         add(createCheckboxGroupWithDescriptions());
 
-        addH2("Theme: Dividers");
+        addH2("Theme: dividers");
         add(createCheckboxGroup(CheckboxTheme.DIVIDERS));
 
-        addH2("Theme: Dividers & Align-Right");
+        addH2("Theme: dividers & align-right");
         add(createCheckboxGroup(CheckboxTheme.DIVIDERS, CheckboxTheme.ALIGN_RIGHT));
 
-        addH2("Theme: Switch");
+        addH2("Theme: switch");
         add(createCheckboxGroup(CheckboxTheme.SWITCH));
     }
 

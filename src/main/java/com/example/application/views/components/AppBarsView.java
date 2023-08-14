@@ -20,7 +20,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("App Bars")
+@PageTitle("App bars")
 @Route(value = "app-bars", layout = MainLayout.class)
 public class AppBarsView extends ComponentView {
 
@@ -47,13 +47,13 @@ public class AppBarsView extends ComponentView {
         addH2("Simple");
         addPreview(createAppBar());
 
-        addH2("Primary Button");
+        addH2("Primary button");
         addPreview(createAppBarWithPrimaryButton());
 
         addH2("Search");
         addPreview(createAppBarWithSearch());
 
-        addH2("Search (Middle)");
+        addH2("Search II");
         addPreview(createAppBarWithSearchAlt());
     }
 
@@ -65,7 +65,7 @@ public class AppBarsView extends ComponentView {
     }
 
     private AppBar createAppBarWithPrimaryButton() {
-        Button button = new Button("New Event", LineAwesomeIcon.PLUS_SOLID.create());
+        Button button = new Button("New event", LineAwesomeIcon.PLUS_SOLID.create());
         button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         AppBar appBar = createAppBar();

@@ -18,8 +18,8 @@ public class DialogsView extends ComponentView {
         addClassNames(LumoUtility.AlignItems.START, LumoUtility.Padding.Top.LARGE);
 
         add(
-                new Button("Left-Icon Dialog", e -> createLeftIconDialog().open()),
-                new Button("Top-Icon Dialog", e -> createTopIconDialog().open())
+                new Button("Left-icon dialog", e -> createLeftIconDialog().open()),
+                new Button("Top-icon dialog", e -> createTopIconDialog().open())
         );
     }
 

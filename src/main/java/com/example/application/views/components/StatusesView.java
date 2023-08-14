@@ -27,17 +27,17 @@ public class StatusesView extends ComponentView {
         addH2("Error");
         add(createErrorNotification());
 
-        addH2("Theme: Border");
+        addH2("Theme: border");
         Notification notification = createNotification();
         notification.setBorder(true);
         add(notification);
 
-        addH2("Theme: Start Border");
+        addH2("Theme: start border");
         notification = createSuccessNotification();
         notification.setAccentBorder(true);
         add(notification);
 
-        addH2("Custom Text Color");
+        addH2("Custom text color");
         notification = createErrorNotification();
         notification.setTextColor(TextColor.ERROR);
         add(notification);

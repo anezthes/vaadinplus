@@ -64,6 +64,7 @@ public class ProductListView extends Main {
         Div container = new Div(priceRange);
         container.addClassNames(Padding.MEDIUM);
 
+        // @TODO: Accessibility, should be role="dialog"
         ContextMenu menu = new ContextMenu(price);
         menu.add(container);
         menu.setOpenOnClick(true);

@@ -27,9 +27,9 @@ public class NotificationsView extends ComponentView {
 
         add(
                 new Button("Simple", e -> createSimpleNotification().open()),
-                new Button("Icon & Description", e -> createNotificationWithIconDescription().open()),
-                new Button("Icon, Description & Actions", e -> createNotificationWithIconDescriptionActions().open()),
-                new Button("Stacked Actions", e -> createNotificationWithStackedActions().open())
+                new Button("Icon & description", e -> createNotificationWithIconDescription().open()),
+                new Button("Icon, description & actions", e -> createNotificationWithIconDescriptionActions().open()),
+                new Button("Stacked actions", e -> createNotificationWithStackedActions().open())
         );
     }
 

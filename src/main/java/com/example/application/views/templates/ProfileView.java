@@ -41,7 +41,7 @@ public class ProfileView extends Main {
     }
 
     public Component createPublicInformation() {
-        H2 title = new H2("Public Information");
+        H2 title = new H2("Public information");
         title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
         title.setId(title.getText().replace(" ", "-").toLowerCase());
 
@@ -81,7 +81,7 @@ public class ProfileView extends Main {
     }
 
     public Component createContactInformation() {
-        H2 title = new H2("Contact Information");
+        H2 title = new H2("Contact information");
         title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
         title.setId(title.getText().replace(" ", "-").toLowerCase());
 

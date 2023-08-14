@@ -16,35 +16,35 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("Input Groups")
+@PageTitle("Input groups")
 @Route(value = "input-groups", layout = MainLayout.class)
 public class InputGroupsView extends ComponentView {
 
     public InputGroupsView() {
         addClassNames(LumoUtility.AlignItems.START);
 
-        addH2("Theme: Inset Label");
+        addH2("Theme: inset label");
         add(createTextField(InputTheme.INSET_LABEL));
         add(createTextFieldWithoutLabel(InputTheme.INSET_LABEL));
 
-        addH2("Theme: Outline");
+        addH2("Theme: outline");
         add(createTextFields(InputTheme.OUTLINE));
 
-        addH2("Theme: Inset Label & Outline");
+        addH2("Theme: inset label & outline");
         add(createTextField(InputTheme.INSET_LABEL, InputTheme.OUTLINE));
 
-        addH2("Example: Input with Button");
+        addH2("Example: input with button");
         add(createInputWithButton(false));
         add(createInputWithButton(true));
 
-        addH2("Example: Price");
+        addH2("Example: price");
         add(createPriceExample(false));
         add(createPriceExample(true));
 
-        addH2("Example: Vertical Group");
+        addH2("Example: vertical group");
         add(createVerticalGroupExample());
 
-        addH2("Example: Credit Card");
+        addH2("Example: credit card");
         add(createCreditCardExample());
     }
 

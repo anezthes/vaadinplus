@@ -49,7 +49,7 @@ public class HighlightsView extends ComponentView {
         addH2("Suffix");
         addPreview(createHighlightsWithSuffix());
 
-        addH2("Prefix, Details & Suffix");
+        addH2("Prefix, details & suffix");
         addPreview(createHighlightsWithPrefixDetailsSuffix());
 
         addH2("Breakpoint");
@@ -61,7 +61,7 @@ public class HighlightsView extends ComponentView {
         addH2("Grid");
         addPreview(createGridHighlights());
 
-        addH2("Theme: Dividers");
+        addH2("Theme: dividers");
         Highlights highlights = createHighlights();
         highlights.setDividers(true);
         addPreview(highlights);
