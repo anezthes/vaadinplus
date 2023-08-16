@@ -29,6 +29,7 @@ public class CheckoutView extends Main {
     private Component createForm() {
         Layout layout = new Layout(createShippingInformation(), createPaymentInformation());
         layout.addClassNames(LumoUtility.MaxWidth.SCREEN_SMALL, LumoUtility.Padding.LARGE);
+        layout.setBoxSizing(BoxSizing.BORDER);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         return layout;
     }
