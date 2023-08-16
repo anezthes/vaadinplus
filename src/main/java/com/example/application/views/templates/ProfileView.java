@@ -1,6 +1,7 @@
 package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
+import com.example.application.utilities.Breakpoint;
 import com.example.application.utilities.GridColumnSpan;
 import com.example.application.utilities.GridColumns;
 import com.example.application.views.MainLayout;
@@ -35,14 +36,14 @@ public class ProfileView extends Main {
     public Component createForm() {
         Layout layout = new Layout(createPublicInformation(), createContactInformation(), createPassword(),
                 createNotifications());
-        layout.addClassNames(MaxWidth.SCREEN_SMALL, Padding.Bottom.LARGE, Padding.Horizontal.LARGE);
+        layout.addClassNames(MaxWidth.SCREEN_SMALL, Padding.LARGE);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         return layout;
     }
 
     public Component createPublicInformation() {
         H2 title = new H2("Public information");
-        title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
+        title.addClassNames(FontSize.XLARGE, Margin.Top.MEDIUM);
         title.setId(title.getText().replace(" ", "-").toLowerCase());
 
         Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
@@ -73,10 +74,13 @@ public class ProfileView extends Main {
         TextField lastName = new TextField("Last name");
 
         Layout layout = new Layout(title, description, avatarLayout, username, firstName, lastName);
+        // Viewport < 1024px
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        // Viewport > 1024px
+        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
         layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setDisplay(com.example.application.utilities.Display.GRID);
-        layout.setGridColumns(GridColumns.COLUMNS_2);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, title, description, avatarLayout, username);
+        layout.setGridColumns(Breakpoint.LARGE, GridColumns.COLUMNS_2);
+        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, description, avatarLayout, username);
         return layout;
     }
 
@@ -100,11 +104,14 @@ public class ProfileView extends Main {
         email.setPrefixComponent(LineAwesomeIcon.ENVELOPE.create());
 
         Layout layout = new Layout(title, description, address, city, state, zip, phone, email);
+        // Viewport < 1024px
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        // Viewport > 1024px
+        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
         layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setDisplay(com.example.application.utilities.Display.GRID);
         layout.setGridColumns(GridColumns.COLUMNS_4);
         layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_4, title, description, address);
+        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, description, address);
         return layout;
     }
 

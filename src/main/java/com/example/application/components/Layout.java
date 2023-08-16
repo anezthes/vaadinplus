@@ -12,8 +12,10 @@ public class Layout extends FlexLayout {
     private com.example.application.utilities.AlignItems alignItems;
     private BoxSizing boxSizing;
     private Display display;
+    private HashMap<Breakpoint, Display> responsiveDisplay;
     private com.example.application.utilities.FlexDirection flexDirection;
     private GridColumns gridColumns;
+    private HashMap<Breakpoint, GridColumns> responsiveGridColumns;
     private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
     private ColumnGap colGap;
     private RowGap rowGap;
@@ -26,6 +28,9 @@ public class Layout extends FlexLayout {
         getStyle().remove("display");
 
         setDisplay(Display.FLEX);
+
+        this.responsiveDisplay = new HashMap<>();
+        this.responsiveGridColumns = new HashMap<>();
         this.gridColumnSpans = new HashMap<>();
     }
 
@@ -35,6 +40,14 @@ public class Layout extends FlexLayout {
         }
         addClassNames(display.getClassName());
         this.display = display;
+    }
+
+    public void setDisplay(Breakpoint breakpoint, Display display) {
+        if (this.responsiveDisplay.get(breakpoint) != null) {
+            removeClassName(breakpoint.getPrefix() + ":" + this.responsiveDisplay.get(breakpoint).getClassName());
+        }
+        addClassNames(breakpoint.getPrefix() + ":" + display.getClassName());
+        this.responsiveDisplay.put(breakpoint, display);
     }
 
     @Override
@@ -73,12 +86,26 @@ public class Layout extends FlexLayout {
         this.flexDirection = flexDirection;
     }
 
+    /**
+     * Sets the default number of grid columns.
+     */
     public void setGridColumns(GridColumns gridColumns) {
         if (this.gridColumns != null) {
             removeClassNames(this.gridColumns.getClassName());
         }
         addClassNames(gridColumns.getClassName());
         this.gridColumns = gridColumns;
+    }
+
+    /**
+     * Sets the number of grid columns for a given breakpoint.
+     */
+    public void setGridColumns(Breakpoint breakpoint, GridColumns gridColumns) {
+        if (this.responsiveGridColumns.get(breakpoint) != null) {
+            removeClassName(breakpoint.getPrefix() + ":" + this.responsiveGridColumns.get(breakpoint).getClassName());
+        }
+        addClassNames(breakpoint.getPrefix() + ":" + gridColumns.getClassName());
+        this.responsiveGridColumns.put(breakpoint, gridColumns);
     }
 
     public void setGridColumnSpan(GridColumnSpan gridColumnSpan, HasStyle... components) {

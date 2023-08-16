@@ -3,10 +3,13 @@ package com.example.application.views.templates;
 import com.example.application.components.InputGroup;
 import com.example.application.components.KeyValuePair;
 import com.example.application.components.KeyValuePairs;
+import com.example.application.components.Layout;
 import com.example.application.components.list.ShoppingCartListItem;
 import com.example.application.components.list.UnorderedList;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
+import com.example.application.utilities.BoxSizing;
+import com.example.application.utilities.Gap;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
@@ -14,26 +17,26 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Section;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Shopping Cart")
+@PageTitle("Shopping cart")
 @Route(value = "shopping-cart", layout = MainLayout.class)
 public class ShoppingCartView extends Main {
 
     public ShoppingCartView() {
-        addClassNames(LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-                LumoUtility.FlexDirection.Breakpoint.Small.ROW, LumoUtility.Gap.Column.XLARGE,
-                LumoUtility.JustifyContent.CENTER, LumoUtility.Padding.LARGE);
+        addClassNames(LumoUtility.AlignItems.START, LumoUtility.Display.FLEX, LumoUtility.FlexWrap.WRAP,
+                LumoUtility.JustifyContent.CENTER);
         add(createShoppingCart(), createSummary());
     }
 
     private Component createShoppingCart() {
         H2 title = new H2("Shopping cart");
-        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.MEDIUM);
+        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.XLARGE);
 
         UnorderedList list = new UnorderedList(
                 new ShoppingCartListItem(
@@ -61,7 +64,7 @@ public class ShoppingCartView extends Main {
         list.setHorizontalDividers(true);
 
         Section section = new Section(title, list);
-        section.setMaxWidth(40, Unit.REM);
+        section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.MaxWidth.SCREEN_MEDIUM, LumoUtility.Padding.Horizontal.LARGE);
         return section;
     }
 
@@ -80,11 +83,11 @@ public class ShoppingCartView extends Main {
         pairs.removeHorizontalPadding();
 
         TextField code = new TextField("Enter a promo code");
-        code.addClassNames(LumoUtility.Flex.GROW, LumoUtility.Padding.NONE);
+        code.addClassNames(LumoUtility.Flex.GROW);
         code.addThemeName(InputTheme.OUTLINE);
 
         Button apply = new Button("Apply");
-        apply.addClassNames(LumoUtility.Background.BASE, LumoUtility.Margin.NONE);
+        apply.addClassNames(LumoUtility.Background.BASE);
         apply.addThemeName(ButtonTheme.OUTLINE);
 
         InputGroup inputGroup = new InputGroup(code, apply);
@@ -94,12 +97,15 @@ public class ShoppingCartView extends Main {
                 LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX, LumoUtility.FontWeight.SEMIBOLD,
                 LumoUtility.Height.MEDIUM, LumoUtility.JustifyContent.CENTER, LumoUtility.TextColor.PRIMARY_CONTRAST);
 
-        Section section = new Section(title, pairs, inputGroup, checkout);
-        section.addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.BorderRadius.LARGE,
-                LumoUtility.BoxSizing.BORDER, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-                LumoUtility.Gap.LARGE, LumoUtility.Padding.LARGE);
-        section.setMaxWidth(100, Unit.PERCENTAGE);
-        section.setWidth(24, Unit.REM);
+        Layout layout = new Layout(title, pairs, inputGroup, checkout);
+        layout.addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.BorderRadius.LARGE, LumoUtility.Padding.LARGE);
+        layout.setBoxSizing(BoxSizing.BORDER);
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setGap(Gap.MEDIUM);
+
+        Section section = new Section(layout);
+        section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Flex.GROW, LumoUtility.Padding.LARGE);
+        section.setMaxWidth(24, Unit.REM);
         return section;
     }
 

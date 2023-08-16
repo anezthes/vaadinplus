@@ -44,8 +44,7 @@ public class ProductDetailsView extends Main {
     private String alt4 = "Hanging black and clear light bulb turned on ⋅ Jonathan Borba ⋅ Unsplash";
 
     public ProductDetailsView() {
-        addClassNames(AlignItems.START, Display.FLEX, FlexDirection.COLUMN_REVERSE, FlexDirection.Breakpoint.Small.ROW,
-                JustifyContent.CENTER);
+        addClassNames(Display.FLEX, FlexWrap.WRAP_REVERSE, JustifyContent.CENTER);
         add(createInformation(), createImages());
     }
 
@@ -55,11 +54,11 @@ public class ProductDetailsView extends Main {
                 createThumbnails()
         );
         images.addClassNames(Padding.LARGE);
+        images.setAlignSelf(FlexComponent.Alignment.END, images);
         images.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         images.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         images.setGap(com.example.application.utilities.Gap.MEDIUM);
-        images.setMaxWidth(100, Unit.PERCENTAGE);
-        images.setWidth(24, Unit.REM);
+        images.setMaxWidth(24, Unit.REM);
         return images;
     }
 
@@ -203,10 +202,9 @@ public class ProductDetailsView extends Main {
 
         Layout layout = new Layout(breadcrumb, title, price, reviewLayout, description, color, intensity, effects,
                 details, quantityLayout);
-        layout.addClassNames(Padding.LARGE);
+        layout.addClassNames(MaxWidth.SCREEN_SMALL, Padding.LARGE);
         layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setMaxWidth(40, Unit.REM);
         return layout;
     }
 

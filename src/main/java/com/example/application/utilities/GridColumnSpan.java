@@ -14,7 +14,8 @@ public enum GridColumnSpan {
     COLUMN_SPAN_9(LumoUtility.Grid.Column.COLUMN_SPAN_9),
     COLUMN_SPAN_10(LumoUtility.Grid.Column.COLUMN_SPAN_10),
     COLUMN_SPAN_11(LumoUtility.Grid.Column.COLUMN_SPAN_11),
-    COLUMN_SPAN_12(LumoUtility.Grid.Column.COLUMN_SPAN_12);
+    COLUMN_SPAN_12(LumoUtility.Grid.Column.COLUMN_SPAN_12),
+    COLUMN_SPAN_FULL("col-span-full");
 
     private final String className;
 

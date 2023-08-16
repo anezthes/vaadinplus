@@ -3,10 +3,7 @@ package com.example.application.views;
 import com.example.application.components.Layout;
 import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
-import com.example.application.views.templates.ProductDetailsView;
-import com.example.application.views.templates.ProductListView;
-import com.example.application.views.templates.ProfileView;
-import com.example.application.views.templates.ShoppingCartView;
+import com.example.application.views.templates.*;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -90,6 +87,7 @@ public class MainLayout extends AppLayout {
 
     private SideNav createTemplatesNavigation() {
         SideNav nav = new SideNav("Templates");
+        nav.addItem(new SideNavItem("Checkout", CheckoutView.class, LineAwesomeIcon.CREDIT_CARD.create()));
         nav.addItem(new SideNavItem("Product details", ProductDetailsView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
         nav.addItem(new SideNavItem("Product list", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
