@@ -43,6 +43,11 @@ public class RadioButtonsView extends ComponentView {
 
         addH2("Theme: toggle & primary");
         add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.PRIMARY));
+
+        addH2("Theme: segmented");
+        RadioButtonGroup<String> radioButtonGroup = createRadioButtonGroup(RadioButtonTheme.SEGMENTED);
+        radioButtonGroup.removeThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
+        add(radioButtonGroup);
     }
 
     private RadioButtonGroup<String> createRadioButtonGroupWithDescriptions() {

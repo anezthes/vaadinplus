@@ -35,7 +35,7 @@ public class ShoppingCartView extends Main {
     }
 
     private Component createShoppingCart() {
-        H2 title = new H2("Shopping cart");
+        H2 title = new H2("Items (3)");
         title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.XLARGE);
 
         UnorderedList list = new UnorderedList(
@@ -64,7 +64,7 @@ public class ShoppingCartView extends Main {
         list.setHorizontalDividers(true);
 
         Section section = new Section(title, list);
-        section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.MaxWidth.SCREEN_MEDIUM, LumoUtility.Padding.Horizontal.LARGE);
+        section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.MaxWidth.SCREEN_SMALL, LumoUtility.Padding.Horizontal.LARGE);
         return section;
     }
 
@@ -92,7 +92,7 @@ public class ShoppingCartView extends Main {
 
         InputGroup inputGroup = new InputGroup(code, apply);
 
-        RouterLink checkout = new RouterLink("Checkout", ShoppingCartView.class);
+        RouterLink checkout = new RouterLink("Checkout", CheckoutView.class);
         checkout.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Background.PRIMARY,
                 LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX, LumoUtility.FontWeight.SEMIBOLD,
                 LumoUtility.Height.MEDIUM, LumoUtility.JustifyContent.CENTER, LumoUtility.TextColor.PRIMARY_CONTRAST);

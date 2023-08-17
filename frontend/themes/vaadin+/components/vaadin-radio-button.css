@@ -32,7 +32,7 @@
     padding-inline-start: 0;
 }
 
-/* Theme: Border & Toggle */
+/* Theme: Border */
 
 :host([theme~="border"]) {
     background-color: var(--lumo-base-color);
@@ -89,6 +89,10 @@
 }
 
 :host([theme~="toggle"][focus-ring]) {
+    box-shadow: inset 0 0 0 2px var(--lumo-primary-color-50pct);
+}
+
+:host([theme~="toggle"][checked][focus-ring]) {
     box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 3px var(--lumo-primary-color-50pct);
 }
 
@@ -113,4 +117,53 @@
 
 :host([theme~="small"][has-label]) ::slotted(label) {
     min-height: var(--lumo-size-s);
+}
+
+/* Theme: Segmented */
+
+:host([theme~="segmented"]) {
+    border-radius: var(--lumo-border-radius-m);
+    position: relative;
+}
+
+:host([theme~="segmented"])::after {
+    border-inline-end: 1px solid var(--lumo-contrast-10pct);
+    content: "";
+    inset: 0 0 0 auto;
+    position: absolute;
+}
+
+:host([theme~="segmented"]) .vaadin-radio-button-container {
+    min-height: 100%;
+}
+
+:host([theme~="segmented"]) [part='radio'] {
+    display: none;
+}
+
+:host([theme~="segmented"][has-label]) ::slotted(label) {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    min-height: 100%;
+    padding-inline-start: var(--lumo-space-s);
+}
+
+:host([theme~="segmented"][checked]) {
+    background-color: var(--lumo-base-color);
+    box-shadow: var(--lumo-box-shadow-xs);
+}
+
+:host([theme~="segmented"]:last-of-type)::after,
+:host([theme~="segmented"][checked])::after,
+:host([theme~="segmented"][focus-ring])::after {
+    content: none;
+}
+
+:host([theme~="segmented"][focus-ring]) {
+    box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct);
+}
+
+:host([theme~="segmented"][checked][focus-ring]) {
+    box-shadow: var(--lumo-box-shadow-xs), 0 0 0 2px var(--lumo-primary-color-50pct);
 }

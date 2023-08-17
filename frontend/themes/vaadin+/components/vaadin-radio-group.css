@@ -83,3 +83,18 @@
 :host([theme~="small"])::before {
     height: var(--lumo-size-s);
 }
+
+/* Theme: Segmented */
+
+:host([theme~="segmented"]) .vaadin-group-field-container {
+    max-width: 100%;
+    width: auto;
+}
+
+:host([theme~="segmented"]) [part='group-field'] {
+    background-color: var(--lumo-contrast-20pct);
+    border-radius: var(--lumo-border-radius-m);
+    box-sizing: border-box;
+    height: var(--lumo-size-m);
+    padding: 0.125rem;
+}
