@@ -60,8 +60,13 @@
 
 :host([theme~="toggle"]) {
     background-color: var(--lumo-base-color);
+    min-height: var(--lumo-size-m);
     outline: 1px solid var(--lumo-contrast-50pct);
     outline-offset: -1px;
+}
+
+:host([theme~="toggle"]) .vaadin-radio-button-container {
+    min-height: 100%;
 }
 
 :host([theme~="toggle"]) [part='radio'] {
@@ -72,7 +77,7 @@
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    min-height: var(--lumo-size-m);
+    min-height: 100%;
     padding-inline-start: var(--lumo-space-s);
 }
 
