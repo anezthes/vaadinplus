@@ -1,13 +1,13 @@
 package com.example.application.views;
 
 import com.example.application.components.Layout;
+import com.example.application.components.UserMenu;
 import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
 import com.example.application.views.templates.*;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
-import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
@@ -39,16 +39,13 @@ public class MainLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE);
 
+        UserMenu menu = new UserMenu();
+
         Avatar avatar = new Avatar("John Smith");
         avatar.addClassNames(LumoUtility.Margin.End.SMALL, LumoUtility.Margin.Start.AUTO);
+        avatar.getElement().addEventListener("click", e -> menu.open());
 
-        // @TODO: Accessibility, should be dialog
-        ContextMenu menu = new ContextMenu(avatar);
-        menu.addItem("Manage account");
-        menu.addItem("Sign out");
-        menu.setOpenOnClick(true);
-
-        addToNavbar(true, toggle, viewTitle, avatar);
+        addToNavbar(true, toggle, viewTitle, avatar, menu);
     }
 
     private void addDrawerContent() {

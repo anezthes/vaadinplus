@@ -38,11 +38,9 @@ public class Step extends ListItem implements AfterNavigationObserver {
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 
         this.link = new RouterLink();
-        this.link.addClassNames(
-                LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Gap.MEDIUM,
+        this.link.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Gap.MEDIUM,
                 LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL,
-                LumoUtility.Position.RELATIVE
-        );
+                LumoUtility.Position.RELATIVE);
         if (navigationTarget != null) {
             this.link.setRoute(navigationTarget);
         }
