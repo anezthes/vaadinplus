@@ -29,8 +29,6 @@ import com.vaadin.flow.theme.lumo.LumoUtility.FlexDirection;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-import java.util.stream.Collectors;
-
 @PageTitle("Product List")
 @Route(value = "product-list", layout = MainLayout.class)
 public class ProductListView extends Main {
@@ -159,11 +157,11 @@ public class ProductListView extends Main {
 
     private void setRadioButtonGroupTheme(RadioButtonGroup group, String... themeNames) {
         group.addThemeNames(themeNames);
-        for (Component component : group.getChildren().collect(Collectors.toList())) {
+        group.getChildren().forEach(component -> {
             for (String themeName : themeNames) {
                 component.getElement().getThemeList().add(themeName);
             }
-        }
+        });
     }
 
 }

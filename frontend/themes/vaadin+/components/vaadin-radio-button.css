@@ -133,6 +133,12 @@
     position: absolute;
 }
 
+:host([theme~="segmented"]:last-of-type)::after,
+:host([theme~="segmented"][checked])::after,
+:host([theme~="segmented"][focus-ring])::after {
+    content: none;
+}
+
 :host([theme~="segmented"]) .vaadin-radio-button-container {
     min-height: 100%;
 }
@@ -152,12 +158,6 @@
 :host([theme~="segmented"][checked]) {
     background-color: var(--lumo-base-color);
     box-shadow: var(--lumo-box-shadow-xs);
-}
-
-:host([theme~="segmented"]:last-of-type)::after,
-:host([theme~="segmented"][checked])::after,
-:host([theme~="segmented"][focus-ring])::after {
-    content: none;
 }
 
 :host([theme~="segmented"][focus-ring]) {

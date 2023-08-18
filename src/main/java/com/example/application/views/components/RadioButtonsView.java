@@ -13,8 +13,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-import java.util.stream.Collectors;
-
 @PageTitle("Radio Buttons")
 @Route(value = "radio-buttons", layout = MainLayout.class)
 public class RadioButtonsView extends ComponentView {
@@ -74,11 +72,11 @@ public class RadioButtonsView extends ComponentView {
         group.setItems("Item 1", "Item 2", "Item 3");
         group.setWidth(320, Unit.PIXELS);
 
-        for (Component component : group.getChildren().collect(Collectors.toList())) {
+        group.getChildren().forEach(component -> {
             for (String themeName : themeNames) {
                 component.getElement().getThemeList().add(themeName);
             }
-        }
+        });
 
         return group;
     }

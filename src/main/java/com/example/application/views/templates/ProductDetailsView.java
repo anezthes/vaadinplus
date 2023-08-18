@@ -25,8 +25,6 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-import java.util.stream.Collectors;
-
 @PageTitle("Product details")
 @Route(value = "product-details", layout = MainLayout.class)
 public class ProductDetailsView extends Main {
@@ -235,11 +233,11 @@ public class ProductDetailsView extends Main {
 
     private void setRadioButtonGroupTheme(RadioButtonGroup group, String... themeNames) {
         group.addThemeNames(themeNames);
-        for (Component component : group.getChildren().collect(Collectors.toList())) {
+        group.getChildren().forEach(component -> {
             for (String themeName : themeNames) {
                 component.getElement().getThemeList().add(themeName);
             }
-        }
+        });
     }
 
     private Details createDetails(String title, String description) {

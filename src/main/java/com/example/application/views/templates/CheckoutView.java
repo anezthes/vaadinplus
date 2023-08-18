@@ -26,7 +26,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 @PageTitle("Checkout")
 @Route(value = "checkout", layout = MainLayout.class)
@@ -197,11 +196,11 @@ public class CheckoutView extends Main {
 
     private void setRadioButtonGroupTheme(RadioButtonGroup group, String... themeNames) {
         group.addThemeNames(themeNames);
-        for (Component component : group.getChildren().collect(Collectors.toList())) {
+        group.getChildren().forEach(component -> {
             for (String themeName : themeNames) {
                 component.getElement().getThemeList().add(themeName);
             }
-        }
+        });
     }
 
     private Component createSummary() {

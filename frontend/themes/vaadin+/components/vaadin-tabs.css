@@ -1,0 +1,12 @@
+/* Theme: Segmented */
+
+:host([theme~="segmented"]) {
+    background-color: var(--lumo-contrast-20pct);
+    border-radius: var(--lumo-border-radius-m);
+    box-shadow: none;
+}
+
+:host([theme~="segmented"]) [part='tabs'] {
+    margin: 0;
+    padding: 0.125rem;
+}
