@@ -1,6 +1,6 @@
 @import "input-field.css";
 
-/* Theme: Dividers */
+/* Theme: dividers */
 
 :host([theme~='vertical'][theme~="dividers"]) ::slotted(vaadin-radio-button:not(:last-child)::after) {
     border-bottom: 1px solid var(--lumo-contrast-10pct);
@@ -10,7 +10,7 @@
     position: absolute;
 }
 
-/* Theme: Border & Toggle */
+/* Theme: border & toggle */
 
 :host([theme~="border"])::before,
 :host([theme~="toggle"])::before{
@@ -47,7 +47,7 @@
     margin: -1px 0 0 0;
 }
 
-/* Theme: Equal Width */
+/* Theme: equal width */
 
 :host([theme~='equal-width']) [part='group-field'] {
     display: flex;
@@ -57,7 +57,7 @@
     flex: 1;
 }
 
-/* Theme: Gap */
+/* Theme: gap */
 
 :host([theme~='gap']) [part='group-field'] {
     display: flex;
@@ -78,13 +78,13 @@
     }
 }
 
-/* Theme: Small */
+/* Theme: small */
 
 :host([theme~="small"])::before {
     height: var(--lumo-size-s);
 }
 
-/* Theme: Segmented */
+/* Theme: segmented */
 
 :host([theme~="segmented"]) .vaadin-group-field-container {
     max-width: 100%;

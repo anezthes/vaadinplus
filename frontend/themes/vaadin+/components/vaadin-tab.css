@@ -1,4 +1,4 @@
-/* Theme: Segmented */
+/* Theme: segmented */
 
 :host([theme~="segmented"]) {
     border-radius: var(--lumo-border-radius-m);

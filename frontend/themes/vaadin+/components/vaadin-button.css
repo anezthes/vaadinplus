@@ -3,7 +3,7 @@
     --_size: var(--lumo-icon-size-s) !important;
 }
 
-/* Theme: Outline */
+/* Theme: outline */
 
 :host([theme~="outline"]) {
     outline: 1px solid var(--lumo-contrast-50pct);

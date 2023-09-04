@@ -1,7 +1,6 @@
 package com.example.application.views.components;
 
 import com.example.application.components.Header;
-import com.example.application.components.Preview;
 import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.HeadingLevel;
@@ -12,12 +11,10 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -27,22 +24,6 @@ public class HeadersView extends ComponentView {
 
     public HeadersView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);
-
-        RadioButtonGroup mode = new RadioButtonGroup("Mode");
-        mode.setItems("Light", "Dark");
-        mode.addValueChangeListener(e -> getChildren()
-                .filter(child -> child instanceof Preview)
-                .forEach(child -> child.getChildren()
-                        .filter(grandChild -> grandChild instanceof Header)
-                        .forEach(grandChild -> {
-                            if (e.getValue().equals("Dark")) {
-                                ((Header) grandChild).addThemeName(Lumo.DARK);
-                            } else {
-                                ((Header) grandChild).removeThemeName(Lumo.DARK);
-                            }
-                        })
-                ));
-        add(mode);
 
         addH2("Basic");
         addPreview(createHeader());

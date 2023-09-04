@@ -1,4 +1,4 @@
-/* Theme: Segmented */
+/* Theme: segmented */
 
 :host([theme~="segmented"]) {
     background-color: var(--lumo-contrast-20pct);

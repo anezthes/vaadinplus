@@ -1,0 +1,15 @@
+/* Theme: gap */
+
+:host([theme~="gap-s"]) ::slotted(*:not(:nth-last-of-type(2)):not([slot='overflow'])) {
+    margin-inline-end: calc(var(--lumo-space-s) / 2);
+}
+
+:host([theme~="gap-m"]) ::slotted(*:not(:nth-last-of-type(2)):not([slot='overflow'])) {
+    margin-inline-end: calc(var(--lumo-space-m) / 2);
+}
+
+/* Theme: rounded */
+
+:host([theme~="rounded"]) ::slotted(*) {
+    border-radius: var(--lumo-border-radius-m);
+}

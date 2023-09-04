@@ -8,7 +8,7 @@
     --_size: var(--lumo-icon-size-s) !important;
 }
 
-/* Theme: Outline */
+/* Theme: outline */
 
 :host([theme~='outline']) {
     --vaadin-input-field-border-color: var(--lumo-contrast-50pct);
@@ -44,7 +44,7 @@
     box-shadow: 0 0 0 2px var(--lumo-error-color-50pct), inset 0 0 0 var(--vaadin-input-field-border-width, 0) var(--vaadin-input-field-border-color);
 }
 
-/* Theme: Inset Label */
+/* Theme: inset label */
 
 :host([theme~='inset-label']) {
     --lumo-text-field-size: var(--lumo-size-xl);

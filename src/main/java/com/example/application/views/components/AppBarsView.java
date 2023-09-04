@@ -1,7 +1,6 @@
 package com.example.application.views.components;
 
 import com.example.application.components.AppBar;
-import com.example.application.components.Preview;
 import com.example.application.utilities.IconSize;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
@@ -10,13 +9,11 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -27,22 +24,6 @@ public class AppBarsView extends ComponentView {
     public AppBarsView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);
         add(new Paragraph("No official support for horizontal navigation. Yet."));
-
-        RadioButtonGroup mode = new RadioButtonGroup("Mode");
-        mode.setItems("Light", "Dark");
-        mode.addValueChangeListener(e -> getChildren()
-                .filter(child -> child instanceof Preview)
-                .forEach(child -> child.getChildren()
-                        .filter(grandChild -> grandChild instanceof AppBar)
-                        .forEach(grandChild -> {
-                            if (e.getValue().equals("Dark")) {
-                                ((AppBar) grandChild).addThemeName(Lumo.DARK);
-                            } else {
-                                ((AppBar) grandChild).removeThemeName(Lumo.DARK);
-                            }
-                        })
-                ));
-        add(mode);
 
         addH2("Simple");
         addPreview(createAppBar());

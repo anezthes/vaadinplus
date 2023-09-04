@@ -1,9 +1,6 @@
 package com.example.application.components;
 
-import com.example.application.utilities.BoxSizing;
-import com.example.application.utilities.FontSize;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.HeadingLevel;
+import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.HasTheme;
@@ -16,9 +13,11 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class Header extends Layout implements HasTheme {
 
+    protected Layout actions;
     // Style
+    private TextColor headingTextColor;
     private FontSize headingFontSize;
-
+    private FontWeight headingFontWeight;
     // Components
     private Layout row;
     private Layout prefix;
@@ -26,7 +25,6 @@ public class Header extends Layout implements HasTheme {
     private Breadcrumb breadcrumb;
     private Component heading;
     private Layout details;
-    private Layout actions;
     private Tabs tabs;
 
     public Header(String title) {
@@ -139,6 +137,21 @@ public class Header extends Layout implements HasTheme {
         this.heading = heading;
     }
 
+    public void setHeading(String title) {
+        this.heading.getElement().setText(title);
+    }
+
+    /**
+     * Sets the heading's text color.
+     */
+    public void setHeadingTextColor(TextColor textColor) {
+        if (this.headingTextColor != null) {
+            ((HasStyle) this.heading).removeClassName(this.headingTextColor.getClassName());
+        }
+        ((HasStyle) this.heading).addClassNames(textColor.getClassName());
+        this.headingTextColor = textColor;
+    }
+
     /**
      * Sets the heading's font size.
      */
@@ -148,6 +161,17 @@ public class Header extends Layout implements HasTheme {
         }
         ((HasStyle) this.heading).addClassNames(fontSize.getClassName());
         this.headingFontSize = fontSize;
+    }
+
+    /**
+     * Sets the heading's font weight.
+     */
+    public void setHeadingFontWeight(FontWeight fontWeight) {
+        if (this.headingFontWeight != null) {
+            ((HasStyle) this.heading).removeClassName(this.headingFontWeight.getClassName());
+        }
+        ((HasStyle) this.heading).addClassNames(fontWeight.getClassName());
+        this.headingFontWeight = fontWeight;
     }
 
     /**
@@ -187,10 +211,9 @@ public class Header extends Layout implements HasTheme {
     }
 
     /**
-     * Sets the actions.
+     * Adds the specified actions.
      */
-    public void setActions(Component... components) {
-        this.actions.removeAll();
+    public void addActions(Component... components) {
         if (components != null) {
             for (Component component : components) {
                 if (component != null) {
@@ -199,6 +222,14 @@ public class Header extends Layout implements HasTheme {
             }
         }
         this.actions.setVisible(this.actions.getComponentCount() > 0);
+    }
+
+    /**
+     * Sets the actions.
+     */
+    public void setActions(Component... components) {
+        this.actions.removeAll();
+        addActions(components);
     }
 
     /**

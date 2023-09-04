@@ -7,7 +7,7 @@
     z-index: 1;
 }
 
-/* Theme: Dividers */
+/* Theme: dividers */
 
 :host([theme~="dividers"]:not(:last-of-type))::after {
     border-bottom: 1px solid var(--lumo-contrast-10pct);
@@ -17,7 +17,7 @@
     position: absolute;
 }
 
-/* Theme: Align-Right */
+/* Theme: align-right */
 
 :host([theme~="align-right"]) .vaadin-radio-button-container {
     grid-template-columns: 1fr auto;
@@ -32,7 +32,7 @@
     padding-inline-start: 0;
 }
 
-/* Theme: Border */
+/* Theme: border */
 
 :host([theme~="border"]) {
     background-color: var(--lumo-base-color);
@@ -56,7 +56,7 @@
     outline-color: var(--lumo-primary-color);
 }
 
-/* Theme: Toggle */
+/* Theme: toggle */
 
 :host([theme~="toggle"]) {
     background-color: var(--lumo-base-color);
@@ -96,20 +96,20 @@
     box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 3px var(--lumo-primary-color-50pct);
 }
 
-/* Theme: Toggle & Tertiary */
+/* Theme: toggle & tertiary */
 
 :host([theme~="toggle"][theme~="tertiary"][checked]) {
     background-color: var(--lumo-base-color);
 }
 
-/* Theme: Toggle & Primary */
+/* Theme: toggle & primary */
 
 :host([theme~="toggle"][theme~="primary"][checked]) {
     background-color: var(--lumo-primary-color);
     color: var(--lumo-primary-contrast-color);
 }
 
-/* Theme: Small */
+/* Theme: small */
 
 :host([theme~="small"]) {
     font-size: var(--lumo-font-size-s);
@@ -119,7 +119,7 @@
     min-height: var(--lumo-size-s);
 }
 
-/* Theme: Segmented */
+/* Theme: segmented */
 
 :host([theme~="segmented"]) {
     border-radius: var(--lumo-border-radius-m);

@@ -68,11 +68,13 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
         nav.addItem(new SideNavItem("Dialogs", DialogsView.class, LineAwesomeIcon.WINDOWS.create()));
         nav.addItem(new SideNavItem("Empty states", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
+        nav.addItem(new SideNavItem("Grids", GridsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
         nav.addItem(new SideNavItem("Highlights", HighlightsView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
         nav.addItem(new SideNavItem("Input groups", InputGroupsView.class, LineAwesomeIcon.KEYBOARD.create()));
         nav.addItem(new SideNavItem("Key-value pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
         nav.addItem(new SideNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
+        nav.addItem(new SideNavItem("Menu bars", MenuBarsView.class, LineAwesomeIcon.ELLIPSIS_V_SOLID.create()));
         nav.addItem(new SideNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
         nav.addItem(new SideNavItem("Radio buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
         nav.addItem(new SideNavItem("Search dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
