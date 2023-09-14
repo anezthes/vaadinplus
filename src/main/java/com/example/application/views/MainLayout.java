@@ -43,7 +43,7 @@ public class MainLayout extends AppLayout {
 
         Avatar avatar = new Avatar("John Smith");
         avatar.addClassNames(LumoUtility.Margin.End.SMALL, LumoUtility.Margin.Start.AUTO);
-        avatar.getElement().addEventListener("click", e -> menu.open());
+        avatar.getElement().addEventListener("click", e -> menu.showModal());
 
         addToNavbar(true, toggle, viewTitle, avatar, menu);
     }

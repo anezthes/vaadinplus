@@ -11,15 +11,25 @@ public class NativeDialog extends HtmlContainer implements HasAriaLabel {
         super(components);
         addClassNames(LumoUtility.Background.BASE, LumoUtility.Border.NONE, LumoUtility.BorderRadius.MEDIUM,
                 LumoUtility.BoxShadow.LARGE, LumoUtility.Padding.XSMALL);
+
+        // Close the (modal) dialog when clicking outside it
+        getElement().executeJs(
+            "$0.addEventListener('click', (event) => {" +
+                "if (event.target === $0) {" +
+                    "$0.close();" +
+                "}" +
+            "})", getElement());
+
+        // Default position
         getStyle().set("inset", "auto");
     }
 
-    public void open() {
-        getElement().setAttribute("open", true);
+    public void showModal() {
+        getElement().executeJs("$0.showModal()", getElement());
     }
 
     public void close() {
-        getElement().setAttribute("open", false);
+        getElement().executeJs("$0.close()", getElement());
     }
 
     public void setRight(float size, Unit unit) {

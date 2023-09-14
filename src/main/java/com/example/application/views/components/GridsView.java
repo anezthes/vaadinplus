@@ -39,11 +39,11 @@ public class GridsView extends ComponentView {
     public GridsView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);
 
-        addH2("Basic example");
-        addPreview(createBasicExample());
+        addH2("Grid header");
+        addPreview(createGridHeaderExample());
     }
 
-    private Component createBasicExample() {
+    private Component createGridHeaderExample() {
         Grid<Employee> grid = new Grid();
         grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
         grid.setItems(createEmployees());
