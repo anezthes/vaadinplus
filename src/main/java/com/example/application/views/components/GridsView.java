@@ -18,6 +18,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @PageTitle("Grids")
 @Route(value = "grids", layout = MainLayout.class)
@@ -38,19 +39,20 @@ public class GridsView extends ComponentView {
     public GridsView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);
 
-        addH2("Header");
-        addPreview(createHeaderExample());
+        addH2("Basic example");
+        addPreview(createBasicExample());
     }
 
-    private Component createHeaderExample() {
+    private Component createBasicExample() {
         Grid<Employee> grid = new Grid();
         grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
         grid.setItems(createEmployees());
         grid.setSelectionMode(Grid.SelectionMode.MULTI);
-        grid.addColumn(Employee::getName).setHeader("Name");
+        grid.addColumn(Employee::getFirstName).setHeader("First name");
+        grid.addColumn(Employee::getLastName).setHeader("Last name");
 
         GridHeader header = new GridHeader("Employees (42)", grid);
-        header.setDefaultActions(createDefaultMenuBar());
+        header.setDefaultActions(createDefaultMenuBar(grid));
         header.setContextActions(createContextMenuBar());
 
         Layout layout = new Layout(header, grid);
@@ -59,14 +61,25 @@ public class GridsView extends ComponentView {
         return layout;
     }
 
-    private MenuBar createDefaultMenuBar() {
+    private MenuBar createDefaultMenuBar(Grid grid) {
         MenuBar menuBar = new MenuBar();
         menuBar.addThemeNames(MenuBarTheme.ROUNDED, MenuBarTheme.GAP_MEDIUM);
 
         MenuItem add = menuBar.addItem(new Item("New employee", LineAwesomeIcon.PLUS_SOLID));
         add.addThemeNames(MenuBarVariant.LUMO_PRIMARY.getVariantName());
 
-        MenuItem more = menuBar.addItem(new Item(LineAwesomeIcon.ELLIPSIS_V_SOLID));
+        MenuItem columns = menuBar.addItem(LineAwesomeIcon.COLUMNS_SOLID.create());
+        columns.setAriaLabel("Columns");
+        columns.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
+
+        List<Grid.Column> cols = grid.getColumns();
+        for (Grid.Column col : cols) {
+            MenuItem menuItem = columns.getSubMenu().addItem(col.getHeaderText(), e -> col.setVisible(!col.isVisible()));
+            menuItem.setCheckable(true);
+            menuItem.setChecked(true);
+        }
+
+        MenuItem more = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
         more.setAriaLabel("More");
         more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
 
@@ -82,7 +95,7 @@ public class GridsView extends ComponentView {
 
         menuBar.addItem(new Item("Delete", LineAwesomeIcon.TRASH_SOLID));
 
-        MenuItem more = menuBar.addItem(new Item(LineAwesomeIcon.ELLIPSIS_V_SOLID));
+        MenuItem more = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
         more.setAriaLabel("More");
         more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
 
@@ -97,25 +110,35 @@ public class GridsView extends ComponentView {
     private ArrayList<Employee> createEmployees() {
         ArrayList<Employee> employees = new ArrayList<>();
         for (String name : names) {
-            employees.add(new Employee(name));
+            employees.add(new Employee(name.split(" ")[0], name.split(" ")[1]));
         }
         return employees;
     }
 
 
     private class Employee {
-        private String name;
+        private String firstName;
+        private String lastName;
 
-        public Employee(String name) {
-            this.name = name;
+        public Employee(String firstName, String lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
         }
 
-        public String getName() {
-            return name;
+        public String getFirstName() {
+            return firstName;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
         }
     }
 }

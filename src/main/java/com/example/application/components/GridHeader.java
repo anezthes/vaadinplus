@@ -3,7 +3,6 @@ package com.example.application.components;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.FontWeight;
 import com.example.application.utilities.HeadingLevel;
-import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.theme.lumo.LumoUtility;
@@ -14,7 +13,6 @@ public class GridHeader extends Header {
     private Component[] defaultActions;
     private Component[] contextActions;
     private Grid grid;
-
 
     public GridHeader(String title) {
         this(title, HeadingLevel.H2);
@@ -79,7 +77,6 @@ public class GridHeader extends Header {
     private void updateActionsVisibility(int size) {
         if (size == 0) {
             setHeading(this.title);
-            setHeadingTextColor(TextColor.HEADER);
             setHeadingFontSize(FontSize.LARGE);
             setHeadingFontWeight(FontWeight.SEMIBOLD);
             removeClassNames(LumoUtility.Background.PRIMARY_10);
@@ -87,7 +84,6 @@ public class GridHeader extends Header {
             setContextActionsVisible(false);
         } else {
             setHeading(size + " items selected");
-            setHeadingTextColor(TextColor.PRIMARY);
             setHeadingFontSize(FontSize.MEDIUM);
             setHeadingFontWeight(FontWeight.NORMAL);
             addClassNames(LumoUtility.Background.PRIMARY_10);

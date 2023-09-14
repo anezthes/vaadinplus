@@ -21,10 +21,4 @@ public class Item extends Layout {
         add(i, new Text(text));
     }
 
-    public Item(LineAwesomeIcon icon) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
-        add(i);
-    }
-
 }
