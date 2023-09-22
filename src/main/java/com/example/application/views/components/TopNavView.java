@@ -14,8 +14,7 @@ public class TopNavView extends ComponentView {
 
     public TopNavView() {
         addClassNames(LumoUtility.Padding.Top.LARGE);
-        addH2("Explicit Expand/Collapse");
-        addPreview(createSideNav());
+        add(createSideNav());
     }
 
     private TopNav createSideNav() {
