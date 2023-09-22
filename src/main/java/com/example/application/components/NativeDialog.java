@@ -14,11 +14,11 @@ public class NativeDialog extends HtmlContainer implements HasAriaLabel {
 
         // Close the (modal) dialog when clicking outside it
         getElement().executeJs(
-            "$0.addEventListener('click', (event) => {" +
-                "if (event.target === $0) {" +
-                    "$0.close();" +
-                "}" +
-            "})", getElement());
+                "$0.addEventListener('click', (event) => {" +
+                        "if (event.target === $0) {" +
+                        "$0.close();" +
+                        "}" +
+                        "})", getElement());
 
         // Default position
         getStyle().set("inset", "auto");

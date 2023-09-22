@@ -2,8 +2,8 @@ package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
 import com.example.application.components.PriceRange;
+import com.example.application.components.list.List;
 import com.example.application.components.list.ProductListItem;
-import com.example.application.components.list.UnorderedList;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.utilities.Gap;
 import com.example.application.views.MainLayout;
@@ -90,7 +90,7 @@ public class ProductListView extends Main {
     }
 
     public Component createList() {
-        UnorderedList list = new UnorderedList();
+        List list = new List();
         list.addClassNames(LumoUtility.Margin.Horizontal.LARGE);
         list.setAutoFill(320, Unit.PIXELS);
         list.setBorders(true);

@@ -1,0 +1,8 @@
+slot[name="children"] {
+    background-color: var(--vaadin-side-nav-child-background-color, transparent);
+    border-radius: var(--vaadin-side-nav-child-border-radius, 0px);
+    box-shadow: var(--vaadin-side-nav-child-box-shadow, none);
+    min-width: var(--vaadin-side-nav-child-min-width, auto);
+    padding: var(--vaadin-side-nav-child-padding, 0px);
+    position: var(--vaadin-side-nav-child-position, static);
+}

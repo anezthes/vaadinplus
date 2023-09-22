@@ -82,29 +82,29 @@ public class ListsView extends ComponentView {
         addPreview(createTimeline());
 
         addH2("Theme: dividers");
-        UnorderedList list = createList();
+        List list = createList();
         list.setHorizontalDividers(true);
         addPreview(list);
     }
 
-    private UnorderedList createList() {
-        return new UnorderedList(
+    private List createList() {
+        return new List(
                 new ListItem(PERSON_1, PERSON_1_EMAIL),
                 new ListItem(PERSON_2, PERSON_2_EMAIL),
                 new ListItem(PERSON_3, PERSON_3_EMAIL)
         );
     }
 
-    private UnorderedList createListWithPrefix() {
-        return new UnorderedList(
+    private List createListWithPrefix() {
+        return new List(
                 new ListItem(new Avatar(PERSON_1), PERSON_1, PERSON_1_EMAIL),
                 new ListItem(new Avatar(PERSON_2), PERSON_2, PERSON_2_EMAIL),
                 new ListItem(new Avatar(PERSON_3), PERSON_3, PERSON_3_EMAIL)
         );
     }
 
-    private UnorderedList createListWithSuffix() {
-        return new UnorderedList(
+    private List createListWithSuffix() {
+        return new List(
                 new ListItem(PERSON_1, PERSON_1_EMAIL, createSuffix(PERSON_1)),
                 new ListItem(PERSON_2, PERSON_2_EMAIL, createSuffix(PERSON_2)),
                 new ListItem(PERSON_3, PERSON_3_EMAIL, createSuffix(PERSON_3))
@@ -124,23 +124,23 @@ public class ListsView extends ComponentView {
         return link;
     }
 
-    private UnorderedList createListWithPrefixSuffix() {
-        return new UnorderedList(
+    private List createListWithPrefixSuffix() {
+        return new List(
                 new ListItem(new Avatar(PERSON_1), PERSON_1, PERSON_1_EMAIL, createSuffix(PERSON_1)),
                 new ListItem(new Avatar(PERSON_2), PERSON_2, PERSON_2_EMAIL, createSuffix(PERSON_2)),
                 new ListItem(new Avatar(PERSON_3), PERSON_3, PERSON_3_EMAIL, createSuffix(PERSON_3))
         );
     }
 
-    private UnorderedList createGridList() {
-        UnorderedList list = createList();
+    private List createGridList() {
+        List list = createList();
         list.setAutoFill(200, Unit.PIXELS);
         list.setGap(Gap.MEDIUM);
         return list;
     }
 
-    private UnorderedList createImageList() {
-        UnorderedList list = new UnorderedList();
+    private List createImageList() {
+        List list = new List();
         list.setAutoFill(200, Unit.PIXELS);
         list.setGap(Gap.MEDIUM);
 
@@ -204,8 +204,8 @@ public class ListsView extends ComponentView {
         return button;
     }
 
-    private UnorderedList createTaskList() {
-        return new UnorderedList(
+    private List createTaskList() {
+        return new List(
                 createTaskItem("Task 1", "Status", "Aug 8, 2022 ⋅ 7:30 PM"),
                 createTaskItem("Task 2", "Status", "Aug 9, 2022 ⋅ 2:00 PM"),
                 createTaskItem("Task 3", "Status", "Aug 12, 2022 ⋅ 5:45 PM")
@@ -226,8 +226,8 @@ public class ListsView extends ComponentView {
         );
     }
 
-    private UnorderedList createVersionHistory() {
-        return new UnorderedList(
+    private List createVersionHistory() {
+        return new List(
                 new ListItem(
                         new Text("Aug 24, 11:01 AM"),
                         new Tag(new Avatar(PERSON_1, PERSON_1_IMG), PERSON_1)
@@ -243,8 +243,8 @@ public class ListsView extends ComponentView {
         );
     }
 
-    private UnorderedList createNotifications() {
-        return new UnorderedList(
+    private List createNotifications() {
+        return new List(
                 new NotificationListItem(
                         PERSON_1, "approved", "Invoice #7121", this.getClass(), "8m ago"
                 ),
@@ -257,7 +257,7 @@ public class ListsView extends ComponentView {
         );
     }
 
-    private UnorderedList createTimeline() {
+    private List createTimeline() {
         TimelineListItem item1 = new TimelineListItem(
                 LineAwesomeIcon.CHECK_SOLID, BackgroundColor.SUCCESS, TextColor.SUCCESS_CONTRAST,
                 PERSON_1, "marked issue as fixed", "1d ago"
@@ -286,7 +286,7 @@ public class ListsView extends ComponentView {
                 "This is an API test by <b>" + PERSON_1 + "</b>", "3d ago"
         );
 
-        return new UnorderedList(item1, item2, item3, item4);
+        return new List(item1, item2, item3, item4);
     }
 
 }

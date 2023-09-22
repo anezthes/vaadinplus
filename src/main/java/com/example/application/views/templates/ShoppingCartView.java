@@ -4,8 +4,8 @@ import com.example.application.components.InputGroup;
 import com.example.application.components.KeyValuePair;
 import com.example.application.components.KeyValuePairs;
 import com.example.application.components.Layout;
+import com.example.application.components.list.List;
 import com.example.application.components.list.ShoppingCartListItem;
-import com.example.application.components.list.UnorderedList;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
 import com.example.application.utilities.BoxSizing;
@@ -38,7 +38,7 @@ public class ShoppingCartView extends Main {
         H2 title = new H2("Items (3)");
         title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Top.XLARGE);
 
-        UnorderedList list = new UnorderedList(
+        List list = new List(
                 new ShoppingCartListItem(
                         "https://images.unsplash.com/photo-1610136649349-0f646f318053?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80",
                         "Black framed sunglasses on white table",

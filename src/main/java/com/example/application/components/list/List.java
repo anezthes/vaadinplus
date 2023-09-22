@@ -6,7 +6,7 @@ import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList implements HasTheme {
+public class List extends com.vaadin.flow.component.html.UnorderedList implements HasTheme {
 
     public static final String BORDERS = "borders";
     public static final String DIVIDERS = "dividers";
@@ -17,7 +17,7 @@ public class UnorderedList extends com.vaadin.flow.component.html.UnorderedList 
     private ColumnGap colGap;
     private RowGap rowGap;
 
-    public UnorderedList(Component... components) {
+    public List(Component... components) {
         add(components);
         addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Overflow.HIDDEN,
                 LumoUtility.Padding.NONE);
