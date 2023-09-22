@@ -16,6 +16,9 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class UserMenu extends NativeDialog {
 
+    private String theme = "";
+    private String density = "";
+
     public UserMenu() {
         setAriaLabel("User menu");
         setWidth(16, Unit.REM);
@@ -32,25 +35,52 @@ public class UserMenu extends NativeDialog {
         list.addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.Horizontal.NONE,
                 LumoUtility.Padding.Vertical.XSMALL);
 
-        // Appearance
-        RadioButtonGroup<String> appearance = new RadioButtonGroup<>();
-        appearance.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.Bottom.SMALL,
-                LumoUtility.Padding.Horizontal.SMALL);
-        appearance.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
-        appearance.addValueChangeListener(e -> setTheme(e.getValue().equals(Lumo.DARK)));
+        // Theme
+        RadioButtonGroup<String> theme = new RadioButtonGroup<>();
+        theme.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.SMALL);
+        theme.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
+        theme.addValueChangeListener(e -> setTheme(e.getValue().equals(Lumo.DARK)));
 
-        appearance.setAriaLabel("Appearance");
-        appearance.setItems(Lumo.DARK, Lumo.LIGHT);
-        appearance.setRenderer(new ComponentRenderer<>(theme -> renderTheme(theme)));
-        appearance.setValue(Lumo.LIGHT);
-        appearance.setWidthFull();
+        theme.setAriaLabel("Appearance");
+        theme.setItems(Lumo.DARK, Lumo.LIGHT);
+        theme.setRenderer(new ComponentRenderer<>(item -> renderTheme(item)));
+        theme.setValue(Lumo.LIGHT);
+        theme.setWidthFull();
 
-        appearance.getChildren().forEach(component -> {
+        theme.getChildren().forEach(component -> {
             component.getElement().getThemeList().add(RadioButtonTheme.PRIMARY);
             component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE);
         });
 
-        add(list, new Hr(), appearance);
+        // Density
+        RadioButtonGroup<String> density = new RadioButtonGroup<>();
+        density.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.SMALL);
+        density.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
+        density.addValueChangeListener(e -> setDensity(e.getValue().equals("Compact")));
+
+        density.setAriaLabel("Density");
+        density.setItems("Default", "Compact");
+        density.setRenderer(new ComponentRenderer<>(item -> renderDensity(item)));
+        density.setValue("Default");
+        density.setWidthFull();
+
+        density.getChildren().forEach(component -> {
+            component.getElement().getThemeList().add(RadioButtonTheme.PRIMARY);
+            component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE);
+        });
+
+        add(list, new Hr(), theme, density);
+    }
+
+    private ListItem createListItem(String text, LineAwesomeIcon icon, Class<? extends Component> navigationTarget) {
+        Item item = new Item(text, icon);
+        item.addClassNames(LumoUtility.LineHeight.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
+                LumoUtility.Padding.Vertical.SMALL);
+
+        RouterLink link = new RouterLink(navigationTarget);
+        link.add(item);
+
+        return new ListItem(link);
     }
 
     private Component renderTheme(String theme) {
@@ -63,19 +93,26 @@ public class UserMenu extends NativeDialog {
     }
 
     private void setTheme(boolean dark) {
-        var js = "document.documentElement.setAttribute('theme', $0)";
-        getElement().executeJs(js, dark ? Lumo.DARK : Lumo.LIGHT);
+        this.theme = dark ? Lumo.DARK : Lumo.LIGHT;
+        updateTheme();
     }
 
-    private ListItem createListItem(String text, LineAwesomeIcon icon, Class<? extends Component> navigationTarget) {
-        Item item = new Item(text, icon);
-        item.addClassNames(LumoUtility.LineHeight.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL);
+    private Component renderDensity(String density) {
+        LineAwesomeIcon icon = density.equals("Default") ? LineAwesomeIcon.EXPAND_SOLID : LineAwesomeIcon.COMPRESS_SOLID;
 
-        RouterLink link = new RouterLink(navigationTarget);
-        link.add(item);
+        Item item = new Item(density, icon);
+        item.addClassNames(LumoUtility.Margin.Horizontal.AUTO);
+        return item;
+    }
 
-        return new ListItem(link);
+    private void setDensity(boolean compact) {
+        this.density = compact ? "compact" : "";
+        updateTheme();
+    }
+
+    private void updateTheme() {
+        var js = "document.documentElement.setAttribute('theme', $0)";
+        getElement().executeJs(js, this.theme + " " + this.density);
     }
 
 }
