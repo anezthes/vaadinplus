@@ -3,12 +3,12 @@
     --vaadin-side-nav-child-background-color: var(--lumo-base-color);
     --vaadin-side-nav-child-border-radius: var(--lumo-border-radius-m);
     --vaadin-side-nav-child-box-shadow: var(--lumo-box-shadow-xs);
-    --vaadin-side-nav-child-min-width: min-content;
+    --vaadin-side-nav-child-min-width: -webkit-fill-available;
     --vaadin-side-nav-child-padding: var(--lumo-space-xs) 0;
     --vaadin-side-nav-child-position: absolute;
 }
 
-:host([theme~="top"]) slot {
+:host([theme~="top"]) [part="children"] {
     display: flex;
 }
 
