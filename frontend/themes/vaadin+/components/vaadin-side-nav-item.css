@@ -6,7 +6,3 @@ slot[name="children"] {
     padding: var(--vaadin-side-nav-child-padding, 0px);
     position: var(--vaadin-side-nav-child-position, static);
 }
-
-::part(children):empty {
-    display: none;
-}
