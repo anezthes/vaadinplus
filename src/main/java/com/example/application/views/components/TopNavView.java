@@ -20,17 +20,17 @@ public class TopNavView extends ComponentView {
     private TopNav createSideNav() {
         TopNav nav = new TopNav();
 
-        TopNavItem homeLink = new TopNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create());
+        TopNavItem homeLink = new TopNavItem("Home", AppBarsView.class, LineAwesomeIcon.HOME_SOLID.create());
 
-        TopNavItem messagesLink = new TopNavItem("Messages", AppBarsView.class, LineAwesomeIcon.ENVELOPE.create());
-        messagesLink.addItem(new TopNavItem("Inbox", BreadcrumbsView.class, LineAwesomeIcon.INBOX_SOLID.create()));
-        messagesLink.addItem(new TopNavItem("Sent", CheckboxesView.class, LineAwesomeIcon.PAPER_PLANE.create()));
-        messagesLink.addItem(new TopNavItem("Trash", DialogsView.class, LineAwesomeIcon.TRASH_SOLID.create()));
+        TopNavItem messagesLink = new TopNavItem("Messages", BreadcrumbsView.class, LineAwesomeIcon.ENVELOPE.create());
+        messagesLink.addItem(new TopNavItem("Inbox", CheckboxesView.class, LineAwesomeIcon.INBOX_SOLID.create()));
+        messagesLink.addItem(new TopNavItem("Sent", DialogsView.class, LineAwesomeIcon.PAPER_PLANE.create()));
+        messagesLink.addItem(new TopNavItem("Trash", EmptyStatesView.class, LineAwesomeIcon.TRASH_SOLID.create()));
 
         TopNavItem adminSection = new TopNavItem("Admin");
         adminSection.setPrefixComponent(LineAwesomeIcon.COG_SOLID.create());
-        adminSection.addItem(new TopNavItem("Users", EmptyStatesView.class, LineAwesomeIcon.USERS_SOLID.create()));
-        adminSection.addItem(new TopNavItem("Permissions", GridsView.class, LineAwesomeIcon.KEY_SOLID.create()));
+        adminSection.addItem(new TopNavItem("Users", GridsView.class, LineAwesomeIcon.USERS_SOLID.create()));
+        adminSection.addItem(new TopNavItem("Permissions", HeadersView.class, LineAwesomeIcon.KEY_SOLID.create()));
 
         nav.addItem(homeLink, messagesLink, adminSection);
         return nav;
