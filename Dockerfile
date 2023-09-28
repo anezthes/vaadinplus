@@ -12,7 +12,7 @@ COPY . /app/
 WORKDIR /app/
 ARG offlinekey
 ENV VAADIN_OFFLINE_KEY=$offlinekey
-RUN ./mvnw clean test package -Pproduction
+RUN ./mvnw clean test package -Pproduction -Dvaadin.skip.dev.bundle=true
 # At this point, we have the app (executable jar file):  /app/target/vaadinplus-1.0-SNAPSHOT.jar
 
 # The "Run" stage. Start with a clean image, and copy over just the app itself, omitting gradle, npm and any intermediate build files.
