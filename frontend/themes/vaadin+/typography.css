@@ -1,0 +1,3 @@
+.no-underline, .no-underline:hover {
+  text-decoration-line: none;
+}

@@ -78,6 +78,7 @@ public class UserMenu extends NativeDialog {
                 LumoUtility.Padding.Vertical.SMALL);
 
         RouterLink link = new RouterLink(navigationTarget);
+        link.addClassNames(LumoUtility.TextColor.BODY, "no-underline");
         link.add(item);
 
         return new ListItem(link);

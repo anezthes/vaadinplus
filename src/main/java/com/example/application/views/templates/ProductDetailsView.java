@@ -73,7 +73,7 @@ public class ProductDetailsView extends Main {
     }
 
     public Component createThumbnails() {
-        // TODO: Missing semantics, use tabs or radio buttons
+        // TODO: Accessibility, use tabs or radio buttons
         Layout thumbnails = new Layout(
                 createThumbnail(this.img1, this.alt1),
                 createThumbnail(this.img2, this.alt2),

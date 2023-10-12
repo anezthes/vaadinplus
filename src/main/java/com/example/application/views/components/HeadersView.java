@@ -23,8 +23,6 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class HeadersView extends ComponentView {
 
     public HeadersView() {
-        addClassNames(LumoUtility.Padding.Top.LARGE);
-
         addH2("Basic");
         addPreview(createHeader());
 

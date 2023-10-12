@@ -81,6 +81,10 @@
     padding-inline-start: var(--lumo-space-s);
 }
 
+:host([theme~="toggle"]:not([checked]):not([disabled]):hover) {
+    background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
+}
+
 :host([theme~="toggle"][checked]) {
     background-color: var(--lumo-primary-color-10pct);
     color: var(--lumo-primary-color);
@@ -153,6 +157,10 @@
     display: flex;
     min-height: 100%;
     padding-inline-start: var(--lumo-space-s);
+}
+
+:host([theme~="segmented"]:not([checked]):not([disabled]):hover) {
+    background-image: linear-gradient(var(--lumo-tint-5pct), var(--lumo-tint-5pct));
 }
 
 :host([theme~="segmented"][checked]) {

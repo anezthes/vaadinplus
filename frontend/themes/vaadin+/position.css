@@ -2,6 +2,10 @@
   bottom: 0;
 }
 
+.-end-full {
+  inset-inline-end: -100%;
+}
+
 .end-0 {
   inset-inline-end: 0;
 }

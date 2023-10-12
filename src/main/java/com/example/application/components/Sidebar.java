@@ -27,7 +27,7 @@ public class Sidebar extends Section implements HasEnabled {
         addClassNames(
                 LumoUtility.Background.BASE, LumoUtility.BoxShadow.MEDIUM, LumoUtility.Display.FLEX,
                 LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN, LumoUtility.Position.FIXED,
-                "bottom-0", "end-0", "top-0", "z-10"
+                "bottom-0", "top-0", "transition-all", "z-10"
         );
         setMaxWidth(100, Unit.PERCENTAGE);
         setWidth(480, Unit.PIXELS);
@@ -89,12 +89,14 @@ public class Sidebar extends Section implements HasEnabled {
     }
 
     public void close() {
-        addClassNames("start-full");
+        addClassNames("-end-full");
+        removeClassName("end-0");
         setEnabled(false);
     }
 
     public void open() {
-        removeClassNames("start-full");
+        addClassNames("end-0");
+        removeClassNames("-end-full");
         setEnabled(true);
     }
 

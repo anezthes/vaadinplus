@@ -37,8 +37,6 @@ public class GridsView extends ComponentView {
     };
 
     public GridsView() {
-        addClassNames(LumoUtility.Padding.Top.LARGE);
-
         addH2("Grid header");
         addPreview(createGridHeaderExample());
     }
@@ -68,7 +66,10 @@ public class GridsView extends ComponentView {
         MenuItem add = menuBar.addItem(new Item("New employee", LineAwesomeIcon.PLUS_SOLID));
         add.addThemeNames(MenuBarVariant.LUMO_PRIMARY.getVariantName());
 
-        MenuItem columns = menuBar.addItem(LineAwesomeIcon.COLUMNS_SOLID.create());
+        Component columnsIcon = LineAwesomeIcon.BARS_SOLID.create();
+        columnsIcon.addClassNames("rotate-90");
+
+        MenuItem columns = menuBar.addItem(columnsIcon);
         columns.setAriaLabel("Columns");
         columns.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
 

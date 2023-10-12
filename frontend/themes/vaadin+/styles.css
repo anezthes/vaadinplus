@@ -10,6 +10,9 @@
 @import url('./line-clamp.css');
 @import url('./main-layout.css');
 @import url('./position.css');
+@import url('./transforms.css');
+@import url('./transition.css');
+@import url('./typography.css');
 @import url('./z-index.css');
 
 [theme~='compact'] {
