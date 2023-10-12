@@ -32,17 +32,20 @@ public class UserMenu extends NativeDialog {
                 createListItem("Manage account", LineAwesomeIcon.USER_CIRCLE, ProfileView.class),
                 createListItem("Sign out", LineAwesomeIcon.SIGN_OUT_ALT_SOLID, ProfileView.class)
         );
-        list.addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.Horizontal.NONE,
-                LumoUtility.Padding.Vertical.XSMALL);
+        list.addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.XSMALL);
+
+        // Divider
+        Hr hr = new Hr();
+        hr.addClassNames(LumoUtility.Margin.Vertical.XSMALL);
 
         // Theme
         RadioButtonGroup<String> theme = new RadioButtonGroup<>();
-        theme.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.SMALL);
+        theme.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.XSMALL);
         theme.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
         theme.addValueChangeListener(e -> setTheme(e.getValue().equals(Lumo.DARK)));
 
         theme.setAriaLabel("Appearance");
-        theme.setItems(Lumo.DARK, Lumo.LIGHT);
+        theme.setItems(Lumo.LIGHT, Lumo.DARK);
         theme.setRenderer(new ComponentRenderer<>(item -> renderTheme(item)));
         theme.setValue(Lumo.LIGHT);
         theme.setWidthFull();
@@ -54,7 +57,7 @@ public class UserMenu extends NativeDialog {
 
         // Density
         RadioButtonGroup<String> density = new RadioButtonGroup<>();
-        density.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.SMALL);
+        density.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.XSMALL);
         density.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
         density.addValueChangeListener(e -> setDensity(e.getValue().equals("Compact")));
 
@@ -69,13 +72,13 @@ public class UserMenu extends NativeDialog {
             component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE);
         });
 
-        add(list, new Hr(), theme, density);
+        add(list, hr, theme, density);
     }
 
     private ListItem createListItem(String text, LineAwesomeIcon icon, Class<? extends Component> navigationTarget) {
         Item item = new Item(text, icon);
-        item.addClassNames(LumoUtility.LineHeight.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL);
+        item.addClassNames(LumoUtility.BorderRadius.MEDIUM, LumoUtility.LineHeight.XSMALL, LumoUtility.Padding.SMALL,
+                "hover:bg-contrast-5");
 
         RouterLink link = new RouterLink(navigationTarget);
         link.addClassNames(LumoUtility.TextColor.BODY, "no-underline");
