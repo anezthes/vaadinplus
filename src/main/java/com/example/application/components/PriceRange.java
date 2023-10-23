@@ -3,6 +3,9 @@ package com.example.application.components;
 import com.example.application.themes.InputTheme;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.shared.Registration;
+
+import java.util.Optional;
 
 public class PriceRange extends CustomField {
 
@@ -32,5 +35,20 @@ public class PriceRange extends CustomField {
     @Override
     protected void setPresentationValue(Object o) {
 
+    }
+
+    @Override
+    public Registration addValueChangeListener(ValueChangeListener valueChangeListener) {
+        return null;
+    }
+
+    @Override
+    public Optional getOptionalValue() {
+        return super.getOptionalValue();
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
     }
 }

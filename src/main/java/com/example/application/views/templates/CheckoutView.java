@@ -212,7 +212,7 @@ public class CheckoutView extends Main {
                 new KeyValuePair("Delivery", "0,00 €"),
                 new KeyValuePair("Total", "3 950,00 €")
         );
-        pairs.setHorizontalDividers(true);
+        pairs.addClassNames("divide-y");
         pairs.setKeyWidthFull();
         pairs.removeBackgroundColor();
         pairs.removeHorizontalPadding();

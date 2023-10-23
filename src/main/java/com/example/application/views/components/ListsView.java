@@ -81,9 +81,9 @@ public class ListsView extends ComponentView {
         addH2("Example: timeline");
         addPreview(createTimeline());
 
-        addH2("Theme: dividers");
+        addH2("Utility class: divide-y");
         List list = createList();
-        list.setHorizontalDividers(true);
+        list.addClassNames("divide-y");
         addPreview(list);
     }
 

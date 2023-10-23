@@ -13,8 +13,13 @@
 /* Theme: border & toggle */
 
 :host([theme~="border"])::before,
-:host([theme~="toggle"])::before{
+:host([theme~="toggle"])::before {
     height: var(--lumo-size-m);
+}
+
+:host([theme~="border"]) [part='group-field'],
+:host([theme~="toggle"]) [part='group-field'] {
+    flex-wrap: nowrap;
 }
 
 :host([theme~='border']:not([theme~='gap'])) [part='group-field'] ::slotted(*:first-of-type),

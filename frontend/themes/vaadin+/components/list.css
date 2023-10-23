@@ -1,16 +1,3 @@
-ul[theme~="borders"] > * {
-    border-bottom: 1px solid var(--lumo-contrast-10pct);
-    border-inline-end: 1px solid var(--lumo-contrast-10pct);
-}
-
-ul[theme~="dividers"] > *::after {
-    border-bottom: 1px solid var(--lumo-contrast-10pct);
-    content: "";
-    inset: auto 0 0 0;
-    pointer-events: none;
-    position: absolute;
-}
-
 li.timeline::before {
     background-color: var(--lumo-contrast-30pct);
     content: "";

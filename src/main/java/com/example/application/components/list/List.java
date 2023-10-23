@@ -16,12 +16,13 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     private Display display;
     private ColumnGap colGap;
     private RowGap rowGap;
+    private Overflow overflow;
 
     public List(Component... components) {
         add(components);
-        addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Overflow.HIDDEN,
-                LumoUtility.Padding.NONE);
+        addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.NONE);
         setDisplay(Display.GRID);
+        setOverflow(Overflow.HIDDEN);
     }
 
     /**
@@ -51,19 +52,6 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     }
 
     /**
-     * Adds a border on the list and its items.
-     */
-    public void setBorders(boolean borders) {
-        if (borders) {
-            addClassNames(LumoUtility.Border.LEFT, LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
-            addThemeName(BORDERS);
-        } else {
-            removeClassNames(LumoUtility.Border.LEFT, LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
-            removeThemeName(BORDERS);
-        }
-    }
-
-    /**
      * Sets the display property.
      */
     public void setDisplay(Display display) {
@@ -72,17 +60,6 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
         }
         addClassNames(display.getClassName());
         this.display = display;
-    }
-
-    /**
-     * Sets horizontal dividers between items.
-     */
-    public void setHorizontalDividers(boolean dividers) {
-        if (dividers) {
-            addThemeName(DIVIDERS);
-        } else {
-            removeThemeName(DIVIDERS);
-        }
     }
 
     /**
@@ -137,6 +114,17 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
             this.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
+    }
+
+    /**
+     * Sets the overflow property.
+     */
+    public void setOverflow(Overflow overflow) {
+        if (this.overflow != null) {
+            removeClassNames(this.overflow.getClassName());
+        }
+        addClassNames(overflow.getClassName());
+        this.overflow = overflow;
     }
 
 }

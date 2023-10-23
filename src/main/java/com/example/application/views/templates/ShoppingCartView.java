@@ -61,7 +61,7 @@ public class ShoppingCartView extends Main {
                         "650,00 €"
                 )
         );
-        list.setHorizontalDividers(true);
+        list.addClassNames("divide-y");
 
         Section section = new Section(title, list);
         section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.MaxWidth.SCREEN_SMALL, LumoUtility.Padding.Horizontal.LARGE);
@@ -77,7 +77,7 @@ public class ShoppingCartView extends Main {
                 new KeyValuePair("Delivery", "0,00 €"),
                 new KeyValuePair("Total", "3 950,00 €")
         );
-        pairs.setHorizontalDividers(true);
+        pairs.addClassNames("divide-y");
         pairs.setKeyWidthFull();
         pairs.removeBackgroundColor();
         pairs.removeHorizontalPadding();

@@ -95,17 +95,6 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
     }
 
     /**
-     * Sets horizontal dividers between items.
-     */
-    public void setHorizontalDividers(boolean dividers) {
-        if (dividers) {
-            addThemeName(DIVIDERS);
-        } else {
-            removeThemeName(DIVIDERS);
-        }
-    }
-
-    /**
      * Sets the key position of each KeyValuePair.
      */
     public void setKeyPosition(KeyValuePair.KeyPosition keyPosition) {

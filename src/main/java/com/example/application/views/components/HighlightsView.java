@@ -61,9 +61,9 @@ public class HighlightsView extends ComponentView {
         addH2("Grid");
         addPreview(createGridHighlights());
 
-        addH2("Theme: dividers");
+        addH2("Utility class: divide-x");
         Highlights highlights = createHighlights();
-        highlights.setDividers(true);
+        highlights.addClassNames("divide-x");
         addPreview(highlights);
     }
 

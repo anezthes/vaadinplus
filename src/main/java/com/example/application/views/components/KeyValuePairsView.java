@@ -27,7 +27,7 @@ public class KeyValuePairsView extends ComponentView {
         addH2("Column span");
         addPreview(createKeyValuePairsWithColumnSpan());
 
-        addH2("Theme: dividers");
+        addH2("Utility class: divide-y");
         addPreview(createKeyValuePairsWithDividers());
 
         addH2("Theme: stripes");
@@ -69,7 +69,7 @@ public class KeyValuePairsView extends ComponentView {
 
     private KeyValuePairs createKeyValuePairsWithDividers() {
         KeyValuePairs pairs = createKeyValuePairs();
-        pairs.setHorizontalDividers(true);
+        pairs.addClassNames("divide-y");
         return pairs;
     }
 

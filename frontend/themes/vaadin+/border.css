@@ -1,3 +1,13 @@
 .border-2 {
   border-width: 2px;
 }
+
+/* Divide */
+
+.divide-x > * + * {
+  border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+}
+
+.divide-y > * + * {
+  border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+}

@@ -1,52 +1,72 @@
 package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
+import com.example.application.components.NativeDialog;
 import com.example.application.components.PriceRange;
 import com.example.application.components.list.List;
 import com.example.application.components.list.ProductListItem;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.utilities.Gap;
 import com.example.application.views.MainLayout;
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.CheckboxGroup;
+import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
-import com.vaadin.flow.component.contextmenu.ContextMenu;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
+import com.vaadin.flow.component.html.Section;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
-import com.vaadin.flow.theme.lumo.LumoUtility.Display;
-import com.vaadin.flow.theme.lumo.LumoUtility.Flex;
-import com.vaadin.flow.theme.lumo.LumoUtility.FlexDirection;
-import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Product List")
 @Route(value = "product-list", layout = MainLayout.class)
 public class ProductListView extends Main {
 
+    private Section sidebar;
 
     public ProductListView() {
-        addClassNames(Display.FLEX, FlexDirection.COLUMN);
-        add(createToolbar(), createList());
+        addClassNames(Display.FLEX, Height.FULL, Overflow.HIDDEN);
+        add(createSidebar(), createContent());
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+
+        // Hide the menu default, because we'll need room the filters
+        ((MainLayout) getParent().get()).setDrawerOpened(false);
+    }
+
+    public Component createContent() {
+        Layout content = new Layout(createToolbar(), createList());
+        content.addClassNames(Flex.GROW);
+        content.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        content.setOverflow(com.example.application.utilities.Overflow.HIDDEN);
+        return content;
     }
 
     public Component createToolbar() {
         TextField search = new TextField();
-        search.addClassNames(Flex.GROW);
+        search.addClassNames(Flex.GROW, MinWidth.NONE);
         search.setAriaLabel("Search");
         search.setPlaceholder("Search...");
         search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
 
         MultiSelectComboBox brands = new MultiSelectComboBox<>();
+        brands.addClassNames(MinWidth.NONE);
         brands.setAriaLabel("Brands");
         brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
         brands.setPlaceholder("Brands");
@@ -56,16 +76,16 @@ public class ProductListView extends Main {
         price.setIconAfterText(true);
 
         PriceRange priceRange = new PriceRange("Price");
-        priceRange.addClassNames(Padding.Top.XSMALL);
+        priceRange.addClassNames(Margin.SMALL, Padding.Top.XSMALL);
         priceRange.setWidth(16, Unit.REM);
 
-        Div container = new Div(priceRange);
-        container.addClassNames(Padding.MEDIUM);
+        NativeDialog priceDialog = new NativeDialog(priceRange);
+        priceDialog.setRight(8, Unit.REM);
+        priceDialog.setTop(7.5f, Unit.REM);
+        price.addClickListener(e -> priceDialog.showModal());
 
-        // @TODO: Accessibility, should be role="dialog"
-        ContextMenu menu = new ContextMenu(price);
-        menu.add(container);
-        menu.setOpenOnClick(true);
+        Button filters = new Button("Filters", LineAwesomeIcon.SLIDERS_H_SOLID.create());
+        filters.addClickListener(e -> this.sidebar.setVisible(!this.sidebar.isVisible()));
 
         RadioButtonGroup<String> mode = new RadioButtonGroup();
         mode.setAriaLabel("View mode");
@@ -74,8 +94,8 @@ public class ProductListView extends Main {
         mode.setValue("Grid");
         setRadioButtonGroupTheme(mode, RadioButtonTheme.TOGGLE);
 
-        Layout toolbar = new Layout(search, brands, price, mode);
-        toolbar.addClassNames(Padding.Horizontal.LARGE, Padding.Vertical.MEDIUM);
+        Layout toolbar = new Layout(search, brands, price, priceDialog, filters, mode);
+        toolbar.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Padding.Horizontal.LARGE, Padding.Vertical.SMALL);
         toolbar.setAlignItems(FlexComponent.Alignment.CENTER);
         toolbar.setGap(Gap.MEDIUM);
         return toolbar;
@@ -91,9 +111,8 @@ public class ProductListView extends Main {
 
     public Component createList() {
         List list = new List();
-        list.addClassNames(LumoUtility.Margin.Horizontal.LARGE);
         list.setAutoFill(320, Unit.PIXELS);
-        list.setBorders(true);
+        list.setOverflow(com.example.application.utilities.Overflow.AUTO);
 
         list.add(
                 new ProductListItem(
@@ -162,6 +181,47 @@ public class ProductListView extends Main {
                 component.getElement().getThemeList().add(themeName);
             }
         });
+    }
+
+    private Section createSidebar() {
+        H2 title = new H2("Filters");
+        title.addClassNames(FontSize.MEDIUM, Padding.Vertical.XSMALL);
+
+        Layout header = new Layout(title);
+        header.addClassNames(Padding.Horizontal.LARGE, Padding.Vertical.MEDIUM);
+        header.setAlignItems(FlexComponent.Alignment.CENTER);
+
+        CheckboxGroup brands = new CheckboxGroup("Brands");
+        brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
+        brands.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+
+        PriceRange priceRange = new PriceRange("Price");
+
+        CheckboxGroup rating = new CheckboxGroup("Rating");
+        rating.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        rating.setItems("★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★");
+        rating.setRenderer(new ComponentRenderer(item -> {
+            Span span = new Span(item.toString());
+            span.getElement().setAttribute("aria-hidden", "true");
+
+            Span screenReader = new Span(item.toString().chars().filter(ch -> ch == '★').count() + " star(s)");
+            screenReader.addClassNames(Accessibility.SCREEN_READER_ONLY);
+
+            return new Span(span, screenReader);
+        }));
+
+        CheckboxGroup availability = new CheckboxGroup("Availability");
+        availability.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        availability.setItems("In stock (72)", "Out of stock (4)");
+
+        Layout form = new Layout(brands, priceRange, rating, availability);
+        form.addClassNames(Padding.Horizontal.LARGE);
+        form.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+
+        this.sidebar = new Section(header, form);
+        this.sidebar.addClassNames(Border.RIGHT, BorderColor.CONTRAST_10, Display.FLEX, FlexDirection.COLUMN);
+        this.sidebar.setWidth(20, Unit.REM);
+        return this.sidebar;
     }
 
 }

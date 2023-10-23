@@ -4,9 +4,10 @@ import com.example.application.components.Layout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
 
@@ -23,21 +24,22 @@ public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
     }
 
     public ProductListItem(Image image, Component primary, Component secondary, Component... actions) {
-        addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
-                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.LARGE);
+        addClassNames(Background.BASE, Border.BOTTOM, Border.RIGHT, BorderColor.CONTRAST_10, Display.FLEX,
+                FlexDirection.COLUMN, Gap.MEDIUM, Padding.Bottom.MEDIUM, Padding.Horizontal.LARGE, Padding.Top.LARGE);
 
-        image.addClassNames(LumoUtility.BorderRadius.MEDIUM);
-
-        this.image = new Layout();
-        this.image.setFlexGrow(1, this.image);
+        this.image = new Layout(image);
+        this.image.addClassNames("aspect-video", BorderRadius.MEDIUM);
+        this.image.setAlignItems(Alignment.CENTER);
+        this.image.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        this.image.setOverflow(com.example.application.utilities.Overflow.HIDDEN);
         setImage(image);
 
         this.primary = new Layout();
-        this.primary.addClassNames(LumoUtility.FontSize.SMALL);
+        this.primary.addClassNames(FontSize.SMALL);
         setPrimary(primary);
 
         this.secondary = new Layout();
-        this.secondary.addClassNames(LumoUtility.FontWeight.BOLD);
+        this.secondary.addClassNames(FontWeight.BOLD);
         setSecondary(secondary);
 
         this.column = new Layout(this.primary, this.secondary);
@@ -59,7 +61,7 @@ public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
     public void setImage(Image image) {
         this.image.removeAll();
         if (image != null) {
-            image.addClassNames(LumoUtility.MaxWidth.FULL);
+            image.addClassNames(MaxWidth.FULL);
             this.image.add(image);
         }
     }

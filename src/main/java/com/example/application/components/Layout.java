@@ -19,6 +19,7 @@ public class Layout extends FlexLayout {
     private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
     private ColumnGap colGap;
     private RowGap rowGap;
+    private Overflow overflow;
     private Position position;
 
     public Layout(Component... components) {
@@ -170,6 +171,17 @@ public class Layout extends FlexLayout {
             this.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
+    }
+
+    /**
+     * Sets the overflow property.
+     */
+    public void setOverflow(Overflow overflow) {
+        if (this.overflow != null) {
+            removeClassNames(this.overflow.getClassName());
+        }
+        addClassNames(overflow.getClassName());
+        this.overflow = overflow;
     }
 
     public void setPosition(Position position) {
