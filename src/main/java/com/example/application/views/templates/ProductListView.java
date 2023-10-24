@@ -195,8 +195,8 @@ public class ProductListView extends Main {
         // Desktop
         this.sidebar.getStyle().remove("margin-inline-start");
         // Mobile
-        this.sidebar.addClassNames("-start-full");
-        this.sidebar.removeClassName("start-0");
+        this.sidebar.addClassNames("start-0");
+        this.sidebar.removeClassName("-start-full");
     }
 
     private void closeSidebar() {
@@ -204,8 +204,8 @@ public class ProductListView extends Main {
         // Desktop
         this.sidebar.getStyle().set("margin-inline-start", "-20rem");
         // Mobile
-        this.sidebar.addClassNames("start-0");
-        this.sidebar.removeClassName("-start-full");
+        this.sidebar.addClassNames("-start-full");
+        this.sidebar.removeClassName("start-0");
     }
 
     private Component renderIconWithAriaLabel(String item) {
