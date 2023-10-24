@@ -16,8 +16,16 @@
 
 /* Position */
 
+.-bottom-full {
+  bottom: -100%;
+}
+
 .bottom-0 {
   bottom: 0;
+}
+
+.bottom-full {
+  bottom: 100%;
 }
 
 .-end-full {
@@ -32,6 +40,10 @@
   inset-inline-end: 100%;
 }
 
+.-start-full {
+  inset-inline-start: -100%;
+}
+
 .start-0 {
   inset-inline-start: 0;
 }
@@ -40,10 +52,17 @@
   inset-inline-start: 100%;
 }
 
+.-top-full {
+  top: -100%;
+}
+
 .top-0 {
   top: 0;
 }
 
+.top-full {
+  top: 100%;
+}
 
 /* Responsive design */
 
