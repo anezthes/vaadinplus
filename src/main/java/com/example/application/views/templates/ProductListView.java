@@ -164,6 +164,7 @@ public class ProductListView extends Main {
         priceDialog.setTop(7.5f, Unit.REM);
         price.addClickListener(e -> priceDialog.showModal());
 
+        // TODO: a11y improvements, opened/closed states
         Button filters = new Button("Filters", LineAwesomeIcon.SLIDERS_H_SOLID.create());
         filters.addClickListener(e -> toggleSidebar());
 
