@@ -114,7 +114,7 @@ public class ListsView extends ComponentView {
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.SMALL);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);

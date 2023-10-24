@@ -51,7 +51,7 @@ public class Tag extends Span {
 
     private static Component createIcon(LineAwesomeIcon icon) {
         Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
+        i.getStyle().set("--_size", IconSize.SMALL);
         return i;
     }
 

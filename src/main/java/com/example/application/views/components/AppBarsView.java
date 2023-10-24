@@ -75,7 +75,7 @@ public class AppBarsView extends ComponentView {
     private Component createIcon() {
         Component icon = LineAwesomeIcon.FEATHER_ALT_SOLID.create();
         icon.addClassNames(LumoUtility.TextColor.PRIMARY);
-        icon.getStyle().set("--_size", IconSize.MEDIUM.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.MEDIUM);
         return icon;
     }
 

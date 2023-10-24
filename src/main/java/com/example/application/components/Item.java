@@ -17,7 +17,7 @@ public class Item extends Layout {
         setGap(Gap.SMALL);
 
         Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
+        i.getStyle().set("--_size", IconSize.SMALL);
         add(i, new Text(text));
     }
 

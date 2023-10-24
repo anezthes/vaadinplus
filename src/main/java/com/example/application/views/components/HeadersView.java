@@ -117,7 +117,7 @@ public class HeadersView extends ComponentView {
 
     private RouterLink createBackButton() {
         Component icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
-        icon.getStyle().set("--_size", IconSize.MEDIUM.getCSSVariable());
+        icon.getStyle().set("--_size", IconSize.MEDIUM);
 
         RouterLink link = new RouterLink("", HomeView.class);
         link.addClassNames(

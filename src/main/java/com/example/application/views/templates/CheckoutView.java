@@ -4,7 +4,8 @@ import com.example.application.components.*;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
 import com.example.application.themes.RadioButtonTheme;
-import com.example.application.utilities.*;
+import com.example.application.utilities.Breakpoint;
+import com.example.application.utilities.Size;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
@@ -19,7 +20,7 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.DayOfWeek;
@@ -32,7 +33,8 @@ import java.util.Locale;
 public class CheckoutView extends Main {
 
     public CheckoutView() {
-        addClassNames(LumoUtility.Display.FLEX, LumoUtility.FlexWrap.WRAP, LumoUtility.JustifyContent.CENTER);
+        addClassNames(Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Medium.ROW, Margin.Horizontal.AUTO,
+                MaxWidth.SCREEN_LARGE);
         add(createForm(), createSummary());
     }
 
@@ -47,15 +49,15 @@ public class CheckoutView extends Main {
 
     private Component createForm() {
         Layout layout = new Layout(createShippingInformation(), createDeliveryMethod(), createPaymentInformation());
-        layout.addClassNames(LumoUtility.MaxWidth.SCREEN_SMALL, LumoUtility.Padding.LARGE);
-        layout.setBoxSizing(BoxSizing.BORDER);
+        layout.addClassNames(Padding.LARGE);
+        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         return layout;
     }
 
     private Component createShippingInformation() {
         H2 title = new H2("Shipping information");
-        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Bottom.SMALL, LumoUtility.Margin.Top.MEDIUM);
+        title.addClassNames(FontSize.XLARGE, Margin.Bottom.SMALL, Margin.Top.MEDIUM);
 
         TextField address = new TextField("Address");
         TextField city = new TextField("City");
@@ -72,17 +74,17 @@ public class CheckoutView extends Main {
         // Viewport < 1024px
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, Display.GRID);
-        layout.setColumnGap(Gap.MEDIUM);
-        layout.setGridColumns(GridColumns.COLUMNS_4);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, address);
+        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
+        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
+        layout.setGridColumns(com.example.application.utilities.GridColumns.COLUMNS_4);
+        layout.setGridColumnSpan(com.example.application.utilities.GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
+        layout.setGridColumnSpan(com.example.application.utilities.GridColumnSpan.COLUMN_SPAN_FULL, title, address);
         return layout;
     }
 
     private Component createDeliveryMethod() {
         H2 title = new H2("Delivery method");
-        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Bottom.SMALL, LumoUtility.Margin.Top.XLARGE);
+        title.addClassNames(FontSize.XLARGE, Margin.Bottom.SMALL, Margin.Top.XLARGE);
 
         RadioButtonGroup<DeliveryMethod> deliveryMethod = new RadioButtonGroup("Delivery method");
         deliveryMethod.setItems(DeliveryMethod.values());
@@ -97,12 +99,12 @@ public class CheckoutView extends Main {
 
     private Component renderDeliveryMethod(DeliveryMethod method) {
         Span name = new Span(method.getDisplayName());
-        name.addClassNames(LumoUtility.FontWeight.MEDIUM);
+        name.addClassNames(FontWeight.MEDIUM);
 
         Span cost = new Span();
 
         Span date = new Span();
-        date.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        date.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, MMM d, yyyy", Locale.ENGLISH);
@@ -121,17 +123,17 @@ public class CheckoutView extends Main {
         }
 
         Span primary = new Span(name, cost);
-        primary.addClassNames(LumoUtility.Display.FLEX, LumoUtility.FlexWrap.WRAP, LumoUtility.JustifyContent.BETWEEN);
+        primary.addClassNames(Display.FLEX, FlexWrap.WRAP, JustifyContent.BETWEEN);
 
         Span span = new Span(primary, date);
-        span.addClassNames(LumoUtility.Display.FLEX, LumoUtility.Flex.GROW, LumoUtility.FlexDirection.COLUMN,
-                LumoUtility.Gap.XSMALL, LumoUtility.Padding.SMALL);
+        span.addClassNames(Display.FLEX, Flex.GROW, FlexDirection.COLUMN,
+                Gap.XSMALL, Padding.SMALL);
         return span;
     }
 
     private Component createPaymentInformation() {
         H2 title = new H2("Payment information");
-        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Bottom.SMALL, LumoUtility.Margin.Top.XLARGE);
+        title.addClassNames(FontSize.XLARGE, Margin.Bottom.SMALL, Margin.Top.XLARGE);
 
         RadioButtonGroup<PaymentMethod> paymentMethod = new RadioButtonGroup("Payment method");
         paymentMethod.setItems(PaymentMethod.values());
@@ -147,10 +149,10 @@ public class CheckoutView extends Main {
         // Viewport < 1024px
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, Display.GRID);
-        layout.setColumnGap(Gap.MEDIUM);
-        layout.setGridColumns(GridColumns.COLUMNS_2);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, paymentMethod, creditCard);
+        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
+        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
+        layout.setGridColumns(com.example.application.utilities.GridColumns.COLUMNS_2);
+        layout.setGridColumnSpan(com.example.application.utilities.GridColumnSpan.COLUMN_SPAN_FULL, title, paymentMethod, creditCard);
         return layout;
     }
 
@@ -173,23 +175,23 @@ public class CheckoutView extends Main {
 
     private Component createCreditCard() {
         Image visa = new Image("https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg", "Visa");
-        visa.setMaxHeight(Size.LARGE.getCSSVariable());
+        visa.setMaxHeight(Size.LARGE);
         visa.setMaxWidth(100, Unit.PERCENTAGE);
 
         Image mastercard = new Image("https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg", "Mastercard");
-        mastercard.setMaxHeight(Size.LARGE.getCSSVariable());
+        mastercard.setMaxHeight(Size.LARGE);
         mastercard.setMaxWidth(100, Unit.PERCENTAGE);
 
         Span images = new Span(visa, mastercard);
-        images.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.BoxSizing.BORDER, LumoUtility.Display.GRID,
-                LumoUtility.Gap.SMALL, LumoUtility.Grid.Column.COLUMNS_2, LumoUtility.Padding.SMALL);
+        images.addClassNames(AlignItems.CENTER, BoxSizing.BORDER, Display.GRID,
+                Gap.SMALL, Grid.Column.COLUMNS_2, Padding.SMALL);
         return images;
     }
 
     private Component createImage(String src, String alt) {
         Image img = new Image(src, alt);
-        img.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Margin.Horizontal.AUTO, LumoUtility.Padding.SMALL);
-        img.setMaxHeight(Size.LARGE.getCSSVariable());
+        img.addClassNames(BoxSizing.BORDER, Margin.Horizontal.AUTO, Padding.SMALL);
+        img.setMaxHeight(Size.LARGE);
         img.setMaxWidth(100, Unit.PERCENTAGE);
         return img;
     }
@@ -205,7 +207,7 @@ public class CheckoutView extends Main {
 
     private Component createSummary() {
         H2 title = new H2("Order summary");
-        title.addClassNames(LumoUtility.FontSize.XLARGE);
+        title.addClassNames(FontSize.XLARGE);
 
         KeyValuePairs pairs = new KeyValuePairs(
                 new KeyValuePair("Subtotal", "3 950,00 €"),
@@ -218,29 +220,29 @@ public class CheckoutView extends Main {
         pairs.removeHorizontalPadding();
 
         TextField code = new TextField("Enter a promo code");
-        code.addClassNames(LumoUtility.Flex.GROW);
+        code.addClassNames(Flex.GROW);
         code.addThemeName(InputTheme.OUTLINE);
 
         Button apply = new Button("Apply");
-        apply.addClassNames(LumoUtility.Background.BASE);
+        apply.addClassNames(Background.BASE);
         apply.addThemeName(ButtonTheme.OUTLINE);
 
         InputGroup inputGroup = new InputGroup(code, apply);
 
         RouterLink confirmOrder = new RouterLink("Confirm order", ShoppingCartView.class);
-        confirmOrder.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Background.PRIMARY,
-                LumoUtility.BorderRadius.MEDIUM, LumoUtility.Display.FLEX, LumoUtility.FontWeight.SEMIBOLD,
-                LumoUtility.Height.MEDIUM, LumoUtility.JustifyContent.CENTER, LumoUtility.TextColor.PRIMARY_CONTRAST);
+        confirmOrder.addClassNames(AlignItems.CENTER, Background.PRIMARY,
+                BorderRadius.MEDIUM, Display.FLEX, FontWeight.SEMIBOLD,
+                Height.MEDIUM, JustifyContent.CENTER, TextColor.PRIMARY_CONTRAST);
 
         Layout layout = new Layout(title, pairs, inputGroup, confirmOrder);
-        layout.addClassNames(LumoUtility.Background.CONTRAST_5, LumoUtility.BorderRadius.LARGE, LumoUtility.Padding.LARGE);
-        layout.setBoxSizing(BoxSizing.BORDER);
+        layout.addClassNames(Background.CONTRAST_5, BorderRadius.LARGE, Padding.LARGE);
+        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setGap(Gap.MEDIUM);
+        layout.setGap(com.example.application.utilities.Gap.MEDIUM);
 
         Section section = new Section(layout);
-        section.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Flex.GROW, LumoUtility.Padding.LARGE);
-        section.setMaxWidth(24, Unit.REM);
+        section.addClassNames(BoxSizing.BORDER, Padding.LARGE);
+        section.setMinWidth(24, Unit.REM);
         return section;
     }
 

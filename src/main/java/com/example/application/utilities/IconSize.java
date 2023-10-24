@@ -1,17 +1,9 @@
 package com.example.application.utilities;
 
-public enum IconSize {
-    SMALL("var(--lumo-icon-size-s)"),
-    MEDIUM("var(--lumo-icon-size-m)"),
-    LARGE("var(--lumo-icon-size-l)");
+public class IconSize {
 
-    private final String cssVariable;
+    public static String SMALL = "var(--lumo-icon-size-s)";
+    public static String MEDIUM = "var(--lumo-icon-size-m)";
+    public static String LARGE = "var(--lumo-icon-size-l)";
 
-    private IconSize(String cssVariable) {
-        this.cssVariable = cssVariable;
-    }
-
-    public String getCSSVariable() {
-        return this.cssVariable;
-    }
 }

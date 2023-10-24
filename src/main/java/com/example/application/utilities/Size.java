@@ -1,19 +1,11 @@
 package com.example.application.utilities;
 
-public enum Size {
-    XSMALL("var(--lumo-size-xs)"),
-    SMALL("var(--lumo-size-s)"),
-    MEDIUM("var(--lumo-size-m)"),
-    LARGE("var(--lumo-size-l)"),
-    XLARGE("var(--lumo-size-xl)");
+public class Size {
 
-    private final String cssVariable;
+    public static String XSMALL = "var(--lumo-size-xs)";
+    public static String SMALL = "var(--lumo-size-s)";
+    public static String MEDIUM = "var(--lumo-size-m)";
+    public static String LARGE = "var(--lumo-size-l)";
+    public static String XLARGE = "var(--lumo-size-xl)";
 
-    private Size(String cssVariable) {
-        this.cssVariable = cssVariable;
-    }
-
-    public String getCSSVariable() {
-        return this.cssVariable;
-    }
 }

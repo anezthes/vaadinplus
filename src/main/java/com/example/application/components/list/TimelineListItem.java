@@ -87,7 +87,7 @@ public class TimelineListItem extends ListItem {
 
     public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
         Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
+        i.getStyle().set("--_size", IconSize.SMALL);
 
         this.icon = new Layout(i);
         this.icon.addClassNames(

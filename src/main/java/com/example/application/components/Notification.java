@@ -151,7 +151,7 @@ public class Notification extends Layout implements HasTheme {
      */
     public void setIcon(LineAwesomeIcon icon, TextColor color) {
         Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
+        i.getStyle().set("--_size", IconSize.SMALL);
 
         this.icon = new Layout(i);
         this.icon.addClassNames(

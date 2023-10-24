@@ -208,13 +208,13 @@ public class ProductDetailsView extends Main {
 
     private Component createStar() {
         Component star = LineAwesomeIcon.STAR_SOLID.create();
-        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL.getCSSVariable());
+        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL);
         return star;
     }
 
     private Component createHalfStar() {
         Component star = LineAwesomeIcon.STAR_HALF_SOLID.create();
-        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL.getCSSVariable());
+        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL);
         return star;
     }
 

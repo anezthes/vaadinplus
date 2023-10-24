@@ -108,14 +108,14 @@ public class IconDialog extends Dialog {
         }
     }
 
-    private void setIconSize(Size size) {
-        if (size == Size.MEDIUM) {
-            this.icon.getStyle().set("--_size", IconSize.SMALL.getCSSVariable());
+    private void setIconSize(String size) {
+        if (size.equals(Size.MEDIUM)) {
+            this.icon.getStyle().set("--_size", IconSize.SMALL);
             this.iconLayout.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
             this.iconLayout.removeClassNames(LumoUtility.Height.LARGE, LumoUtility.Width.LARGE);
 
-        } else if (size == Size.LARGE) {
-            this.icon.getStyle().set("--_size", IconSize.MEDIUM.getCSSVariable());
+        } else if (size.equals(Size.LARGE)) {
+            this.icon.getStyle().set("--_size", IconSize.MEDIUM);
             this.iconLayout.addClassNames(LumoUtility.Height.LARGE, LumoUtility.Width.LARGE);
             this.iconLayout.removeClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
         }

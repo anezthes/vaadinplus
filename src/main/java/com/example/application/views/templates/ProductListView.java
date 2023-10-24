@@ -8,7 +8,6 @@ import com.example.application.components.list.ProductListItem;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.utilities.Gap;
 import com.example.application.views.MainLayout;
-import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -40,14 +39,6 @@ public class ProductListView extends Main {
     public ProductListView() {
         addClassNames(Display.FLEX, Height.FULL, Overflow.HIDDEN);
         add(createSidebar(), createContent());
-    }
-
-    @Override
-    protected void onAttach(AttachEvent attachEvent) {
-        super.onAttach(attachEvent);
-
-        // Hide the menu default, because we'll need room the filters
-        ((MainLayout) getParent().get()).setDrawerOpened(false);
     }
 
     public Component createContent() {
