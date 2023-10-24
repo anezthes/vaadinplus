@@ -1,3 +1,5 @@
+/* Aspect ratio */
+
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
@@ -6,13 +8,63 @@
   aspect-ratio: 16 / 9;
 }
 
+/* Grid column */
+
 .col-span-full {
   grid-column: 1 / -1;
 }
 
+/* Position */
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.-end-full {
+  inset-inline-end: -100%;
+}
+
+.end-0 {
+  inset-inline-end: 0;
+}
+
+.end-full {
+  inset-inline-end: 100%;
+}
+
+.start-0 {
+  inset-inline-start: 0;
+}
+
+.start-full {
+  inset-inline-start: 100%;
+}
+
+.top-0 {
+  top: 0;
+}
+
+
+/* Responsive design */
+
 @media (min-width: 640px) {
   .sm\:grid {
     display: grid;
+  }
+  .sm\:absolute {
+    position: absolute;
+  }
+  .sm\:fixed {
+    position: fixed;
+  }
+  .sm\:relative {
+    position: relative;
+  }
+  .sm\:static {
+    position: static;
+  }
+  .sm\:sticky {
+    position: sticky;
   }
 }
 
@@ -20,10 +72,82 @@
   .md\:grid {
     display: grid;
   }
+  .md\:absolute {
+    position: absolute;
+  }
+  .md\:fixed {
+    position: fixed;
+  }
+  .md\:relative {
+    position: relative;
+  }
+  .md\:static {
+    position: static;
+  }
+  .md\:sticky {
+    position: sticky;
+  }
 }
 
 @media (min-width: 1024px) {
   .lg\:grid {
     display: grid;
+  }
+  .lg\:absolute {
+    position: absolute;
+  }
+  .lg\:fixed {
+    position: fixed;
+  }
+  .lg\:relative {
+    position: relative;
+  }
+  .lg\:static {
+    position: static;
+  }
+  .lg\:sticky {
+    position: sticky;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid {
+    display: grid;
+  }
+  .xl\:absolute {
+    position: absolute;
+  }
+  .xl\:fixed {
+    position: fixed;
+  }
+  .xl\:relative {
+    position: relative;
+  }
+  .xl\:static {
+    position: static;
+  }
+  .xl\:sticky {
+    position: sticky;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:grid {
+    display: grid;
+  }
+  .\32xl\:absolute {
+    position: absolute;
+  }
+  .\32xl\:fixed {
+    position: fixed;
+  }
+  .\32xl\:relative {
+    position: relative;
+  }
+  .\32xl\:static {
+    position: static;
+  }
+  .\32xl\:sticky {
+    position: sticky;
   }
 }

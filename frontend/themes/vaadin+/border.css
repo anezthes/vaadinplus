@@ -2,6 +2,12 @@
   border-width: 2px;
 }
 
+/* Border radius */
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
 /* Divide */
 
 .divide-x > * + * {

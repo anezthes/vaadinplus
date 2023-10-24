@@ -1,14 +1,16 @@
 package com.example.application.views.templates;
 
+import com.example.application.components.Badge;
 import com.example.application.components.Layout;
 import com.example.application.components.NativeDialog;
 import com.example.application.components.PriceRange;
 import com.example.application.components.list.List;
 import com.example.application.components.list.ProductListItem;
 import com.example.application.themes.RadioButtonTheme;
-import com.example.application.utilities.Gap;
+import com.example.application.utilities.BadgeVariant;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -30,15 +32,111 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
+import java.util.Random;
+
 @PageTitle("Product List")
 @Route(value = "product-list", layout = MainLayout.class)
 public class ProductListView extends Main {
 
     private Section sidebar;
+    private Random random = new Random();
 
     public ProductListView() {
         addClassNames(Display.FLEX, Height.FULL, Overflow.HIDDEN);
         add(createSidebar(), createContent());
+        closeSidebar();
+    }
+
+    private Section createSidebar() {
+        H2 title = new H2("Filters");
+        title.addClassNames(FontSize.MEDIUM);
+
+        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create(), e -> closeSidebar());
+        close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        close.setAriaLabel("Close sidebar");
+        close.setTooltipText("Close sidebar");
+
+        Layout header = new Layout(title, close);
+        header.addClassNames(Padding.End.MEDIUM, Padding.Start.LARGE, Padding.Vertical.SMALL);
+        header.setAlignItems(FlexComponent.Alignment.CENTER);
+        header.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
+
+        CheckboxGroup<String> brands = new CheckboxGroup("Brands");
+        brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
+        brands.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        setRenderer(brands);
+
+        PriceRange priceRange = new PriceRange("Price");
+
+        CheckboxGroup<String> rating = new CheckboxGroup("Rating");
+        rating.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        rating.setItems("1 star", "2 stars", "3 stars", "4 stars", "5 stars");
+        rating.setRenderer(new ComponentRenderer<>(item -> {
+            String count = Integer.toString(this.random.nextInt(100));
+
+            Badge badge = new Badge(count);
+            badge.addThemeVariants(BadgeVariant.CONTRAST, BadgeVariant.SMALL, BadgeVariant.PILL);
+
+            int stars = Integer.parseInt(item.split(" ")[0]);
+
+            Span span = new Span(getStars(stars), badge);
+            span.addClassNames(AlignItems.CENTER, Display.FLEX, Gap.SMALL);
+            span.getElement().setAttribute("aria-hidden", "true");
+
+            Span screenReader = new Span(item + ", " + count + " items");
+            screenReader.addClassNames(Accessibility.SCREEN_READER_ONLY);
+
+            return new Span(span, screenReader);
+        }));
+
+        CheckboxGroup<String> availability = new CheckboxGroup("Availability");
+        availability.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
+        availability.setItems("In stock", "Out of stock");
+        setRenderer(availability);
+
+        Layout form = new Layout(brands, priceRange, rating, availability);
+        form.addClassNames(Padding.Horizontal.LARGE);
+        form.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+
+        this.sidebar = new Section(header, form);
+        this.sidebar.addClassNames(
+                "bg-tint-90",
+                Border.RIGHT,
+                BorderColor.CONTRAST_10,
+                Display.FLEX,
+                FlexDirection.COLUMN,
+                Position.ABSOLUTE,
+                "lg:static",
+                "bottom-0",
+                "top-0",
+                "transition-all",
+                "z-10"
+        );
+        this.sidebar.setWidth(20, Unit.REM);
+        return this.sidebar;
+    }
+
+    private void setRenderer(CheckboxGroup<String> checkboxGroup) {
+        checkboxGroup.setRenderer(new ComponentRenderer<>(item -> {
+            Badge badge = new Badge(Integer.toString(this.random.nextInt(100)));
+            badge.addThemeVariants(BadgeVariant.CONTRAST, BadgeVariant.SMALL, BadgeVariant.PILL);
+
+            Span span = new Span(new Text(item), badge);
+            span.addClassNames(AlignItems.CENTER, Display.FLEX, Gap.SMALL);
+            return span;
+        }));
+    }
+
+    private Text getStars(int stars) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            if (i < stars) {
+                builder.append("★");
+            } else {
+                builder.append("☆");
+            }
+        }
+        return new Text(builder.toString());
     }
 
     public Component createContent() {
@@ -76,7 +174,7 @@ public class ProductListView extends Main {
         price.addClickListener(e -> priceDialog.showModal());
 
         Button filters = new Button("Filters", LineAwesomeIcon.SLIDERS_H_SOLID.create());
-        filters.addClickListener(e -> this.sidebar.setVisible(!this.sidebar.isVisible()));
+        filters.addClickListener(e -> toggleSidebar());
 
         RadioButtonGroup<String> mode = new RadioButtonGroup();
         mode.setAriaLabel("View mode");
@@ -88,8 +186,34 @@ public class ProductListView extends Main {
         Layout toolbar = new Layout(search, brands, price, priceDialog, filters, mode);
         toolbar.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Padding.Horizontal.LARGE, Padding.Vertical.SMALL);
         toolbar.setAlignItems(FlexComponent.Alignment.CENTER);
-        toolbar.setGap(Gap.MEDIUM);
+        toolbar.setGap(com.example.application.utilities.Gap.MEDIUM);
         return toolbar;
+    }
+
+    private void toggleSidebar() {
+        if (this.sidebar.isEnabled()) {
+            closeSidebar();
+        } else {
+            openSidebar();
+        }
+    }
+
+    private void openSidebar() {
+        this.sidebar.setEnabled(true);
+        // Desktop
+        this.sidebar.getStyle().remove("margin-inline-start");
+        // Mobile
+        this.sidebar.addClassNames("-start-full");
+        this.sidebar.removeClassName("start-0");
+    }
+
+    private void closeSidebar() {
+        this.sidebar.setEnabled(false);
+        // Desktop
+        this.sidebar.getStyle().set("margin-inline-start", "-20rem");
+        // Mobile
+        this.sidebar.addClassNames("start-0");
+        this.sidebar.removeClassName("-start-full");
     }
 
     private Component renderIconWithAriaLabel(String item) {
@@ -172,47 +296,6 @@ public class ProductListView extends Main {
                 component.getElement().getThemeList().add(themeName);
             }
         });
-    }
-
-    private Section createSidebar() {
-        H2 title = new H2("Filters");
-        title.addClassNames(FontSize.MEDIUM, Padding.Vertical.XSMALL);
-
-        Layout header = new Layout(title);
-        header.addClassNames(Padding.Horizontal.LARGE, Padding.Vertical.MEDIUM);
-        header.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        CheckboxGroup brands = new CheckboxGroup("Brands");
-        brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
-        brands.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
-
-        PriceRange priceRange = new PriceRange("Price");
-
-        CheckboxGroup rating = new CheckboxGroup("Rating");
-        rating.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
-        rating.setItems("★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★");
-        rating.setRenderer(new ComponentRenderer(item -> {
-            Span span = new Span(item.toString());
-            span.getElement().setAttribute("aria-hidden", "true");
-
-            Span screenReader = new Span(item.toString().chars().filter(ch -> ch == '★').count() + " star(s)");
-            screenReader.addClassNames(Accessibility.SCREEN_READER_ONLY);
-
-            return new Span(span, screenReader);
-        }));
-
-        CheckboxGroup availability = new CheckboxGroup("Availability");
-        availability.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
-        availability.setItems("In stock (72)", "Out of stock (4)");
-
-        Layout form = new Layout(brands, priceRange, rating, availability);
-        form.addClassNames(Padding.Horizontal.LARGE);
-        form.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-
-        this.sidebar = new Section(header, form);
-        this.sidebar.addClassNames(Border.RIGHT, BorderColor.CONTRAST_10, Display.FLEX, FlexDirection.COLUMN);
-        this.sidebar.setWidth(20, Unit.REM);
-        return this.sidebar;
     }
 
 }

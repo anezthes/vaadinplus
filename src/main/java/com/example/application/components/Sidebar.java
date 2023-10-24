@@ -53,7 +53,8 @@ public class Sidebar extends Section implements HasEnabled {
         Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create(), e -> close());
         close.addClassNames(LumoUtility.Margin.NONE);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-        close.setAriaLabel("Close");
+        close.setAriaLabel("Close sidebar");
+        close.setTooltipText("Close sidebar");
 
         this.header = new Header(layout, close);
         this.header.addClassNames(

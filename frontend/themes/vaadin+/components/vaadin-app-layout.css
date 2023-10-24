@@ -1,0 +1,4 @@
+[part='drawer'] {
+    overflow: hidden;
+    z-index: 60;
+}
