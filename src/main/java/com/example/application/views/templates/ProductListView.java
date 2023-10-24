@@ -99,19 +99,9 @@ public class ProductListView extends Main {
         form.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
 
         this.sidebar = new Section(header, form);
-        this.sidebar.addClassNames(
-                "bg-tint-90",
-                Border.RIGHT,
-                BorderColor.CONTRAST_10,
-                Display.FLEX,
-                FlexDirection.COLUMN,
-                Position.ABSOLUTE,
-                "lg:static",
-                "bottom-0",
-                "top-0",
-                "transition-all",
-                "z-10"
-        );
+        this.sidebar.addClassNames("backdrop-blur-sm", "bg-tint-90", Border.RIGHT, BorderColor.CONTRAST_10,
+                Display.FLEX, FlexDirection.COLUMN, Position.ABSOLUTE, "lg:static", "bottom-0", "top-0",
+                "transition-all", "z-10");
         this.sidebar.setWidth(20, Unit.REM);
         return this.sidebar;
     }
@@ -155,12 +145,13 @@ public class ProductListView extends Main {
         search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
 
         MultiSelectComboBox brands = new MultiSelectComboBox<>();
-        brands.addClassNames(MinWidth.NONE);
+        brands.addClassNames(Display.HIDDEN, "lg:inline-flex", MinWidth.NONE);
         brands.setAriaLabel("Brands");
         brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
         brands.setPlaceholder("Brands");
 
         Button price = new Button("Price");
+        price.addClassNames(Display.HIDDEN, "lg:inline-block");
         price.setIcon(new Icon("lumo", "angle-down"));
         price.setIconAfterText(true);
 

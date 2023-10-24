@@ -48,9 +48,27 @@
 /* Responsive design */
 
 @media (min-width: 640px) {
+  /* Display */
+  .sm\:block {
+    display: block;
+  }
   .sm\:grid {
     display: grid;
   }
+  .sm\:inline {
+    display: inline;
+  }
+  .sm\:inline-block {
+    display: inline-block;
+  }
+  .sm\:inline-flex {
+    display: inline-flex;
+  }
+  .sm\:inline-grid {
+    display: inline-grid;
+  }
+
+  /* Position */
   .sm\:absolute {
     position: absolute;
   }
@@ -69,9 +87,27 @@
 }
 
 @media (min-width: 768px) {
+  /* Display */
+  .md\:block {
+    display: block;
+  }
   .md\:grid {
     display: grid;
   }
+  .md\:inline {
+    display: inline;
+  }
+  .md\:inline-block {
+    display: inline-block;
+  }
+  .md\:inline-flex {
+    display: inline-flex;
+  }
+  .md\:inline-grid {
+    display: inline-grid;
+  }
+
+  /* Position */
   .md\:absolute {
     position: absolute;
   }
@@ -90,9 +126,27 @@
 }
 
 @media (min-width: 1024px) {
+  /* Display */
+  .lg\:block {
+    display: block;
+  }
   .lg\:grid {
     display: grid;
   }
+  .lg\:inline {
+    display: inline;
+  }
+  .lg\:inline-block {
+    display: inline-block;
+  }
+  .lg\:inline-flex {
+    display: inline-flex;
+  }
+  .lg\:inline-grid {
+    display: inline-grid;
+  }
+
+  /* Position */
   .lg\:absolute {
     position: absolute;
   }
@@ -111,9 +165,27 @@
 }
 
 @media (min-width: 1280px) {
+  /* Display */
+  .xl\:block {
+    display: block;
+  }
   .xl\:grid {
     display: grid;
   }
+  .xl\:inline {
+    display: inline;
+  }
+  .xl\:inline-block {
+    display: inline-block;
+  }
+  .xl\:inline-flex {
+    display: inline-flex;
+  }
+  .xl\:inline-grid {
+    display: inline-grid;
+  }
+
+  /* Position */
   .xl\:absolute {
     position: absolute;
   }
@@ -132,9 +204,27 @@
 }
 
 @media (min-width: 1536px) {
+  /* Display */
+  .\32xl\:block {
+    display: block;
+  }
   .\32xl\:grid {
     display: grid;
   }
+  .\32xl\:inline {
+    display: inline;
+  }
+  .\32xl\:inline-block {
+    display: inline-block;
+  }
+  .\32xl\:inline-flex {
+    display: inline-flex;
+  }
+  .\32xl\:inline-grid {
+    display: inline-grid;
+  }
+
+  /* Position */
   .\32xl\:absolute {
     position: absolute;
   }
