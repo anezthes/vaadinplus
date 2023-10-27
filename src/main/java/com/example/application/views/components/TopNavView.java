@@ -8,7 +8,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("Top Navigation")
+@PageTitle("Top navigation")
 @Route(value = "top-nav", layout = MainLayout.class)
 public class TopNavView extends ComponentView {
 

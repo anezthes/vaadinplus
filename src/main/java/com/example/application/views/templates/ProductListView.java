@@ -34,7 +34,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.Random;
 
-@PageTitle("Product List")
+@PageTitle("Product list")
 @Route(value = "product-list", layout = MainLayout.class)
 public class ProductListView extends Main {
 

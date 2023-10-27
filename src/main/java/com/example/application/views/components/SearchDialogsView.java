@@ -9,7 +9,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-@PageTitle("Search Dialogs")
+@PageTitle("Search dialogs")
 @Route(value = "search-dialogs", layout = MainLayout.class)
 public class SearchDialogsView extends ComponentView {
 

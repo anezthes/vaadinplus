@@ -13,7 +13,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-@PageTitle("Radio Buttons")
+@PageTitle("Radio buttons")
 @Route(value = "radio-buttons", layout = MainLayout.class)
 public class RadioButtonsView extends ComponentView {
 
