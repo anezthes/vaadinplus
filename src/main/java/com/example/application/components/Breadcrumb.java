@@ -4,19 +4,19 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Nav;
-import com.vaadin.flow.component.html.UnorderedList;
+import com.vaadin.flow.component.html.OrderedList;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class Breadcrumb extends Nav {
 
-    private UnorderedList list;
+    private OrderedList list;
 
     public Breadcrumb() {
         addClassName("breadcrumb");
         setAriaLabel("Breadcrumb");
 
-        this.list = new UnorderedList();
+        this.list = new OrderedList();
         this.list.addClassNames(
                 LumoUtility.Display.FLEX, LumoUtility.FontSize.SMALL, LumoUtility.ListStyleType.NONE,
                 LumoUtility.Margin.NONE, LumoUtility.Padding.NONE
