@@ -1,5 +1,6 @@
 package com.example.application.views.components;
 
+import com.example.application.components.BreadcrumbItem;
 import com.example.application.components.Header;
 import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
@@ -61,8 +62,8 @@ public class HeadersView extends ComponentView {
     private Header createHeaderWithBreadcrumb() {
         Header header = createHeader();
         header.setBreadcrumb(
-                new RouterLink("Home", HomeView.class),
-                new RouterLink("Headers", HeadersView.class)
+                new BreadcrumbItem("Home", HomeView.class),
+                new BreadcrumbItem("Headers", HeadersView.class)
         );
         return header;
     }
@@ -102,8 +103,8 @@ public class HeadersView extends ComponentView {
 
         Header header = createHeader();
         header.setBreadcrumb(
-                new RouterLink("Home", HomeView.class),
-                new RouterLink("Headers", HeadersView.class)
+                new BreadcrumbItem("Home", HomeView.class),
+                new BreadcrumbItem("Headers", HeadersView.class)
         );
         header.setDetails(
                 new Tag(LineAwesomeIcon.TOOTH_SOLID, "Dolor sit"),

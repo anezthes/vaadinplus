@@ -33,4 +33,8 @@ public class Breadcrumb extends Nav {
         this.list.remove(items);
     }
 
+    @Override
+    public void removeAll() {
+        this.list.removeAll();
+    }
 }

@@ -93,12 +93,12 @@ public class Header extends Layout implements HasTheme {
     /**
      * Sets the content of the breadcrumb.
      */
-    public void setBreadcrumb(Component... components) {
+    public void setBreadcrumb(BreadcrumbItem... items) {
         this.breadcrumb.removeAll();
-        if (components != null) {
-            for (Component component : components) {
-                if (component != null) {
-                    this.breadcrumb.add(component);
+        if (items != null) {
+            for (BreadcrumbItem item : items) {
+                if (item != null) {
+                    this.breadcrumb.add(item);
                 }
             }
         }

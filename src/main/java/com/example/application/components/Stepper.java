@@ -8,6 +8,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class Stepper extends Nav implements HasTheme {
 
+    private Orientation orientation;
     private UnorderedList list;
 
     public Stepper(Step... steps) {
@@ -25,22 +26,19 @@ public class Stepper extends Nav implements HasTheme {
     }
 
     public void setOrientation(Orientation orientation) {
-        if (orientation.equals(Orientation.HORIZONTAL)) {
-            addThemeName(StepperTheme.HORIZONTAL);
-            removeThemeName(StepperTheme.VERTICAL);
-
-            this.list.addClassNames("lg:items-center", FlexDirection.Breakpoint.Large.ROW);
-            this.list.getChildren().forEach(component -> {
-                component.addClassNames("flex-1");
-                ((Step) component).setOrientation(orientation);
-            });
-
-        } else {
-            addThemeName(StepperTheme.VERTICAL);
-            removeThemeName(StepperTheme.HORIZONTAL);
-
-            this.list.removeClassName(FlexDirection.Breakpoint.Large.ROW);
+        if (this.orientation != null) {
+            removeThemeName(this.orientation.name().toLowerCase());
         }
+        addThemeName(orientation.name().toLowerCase());
+        this.orientation = orientation;
+
+        if (orientation.equals(Orientation.HORIZONTAL)) {
+            this.list.addClassNames("lg:items-center", FlexDirection.Breakpoint.Large.ROW);
+        } else {
+            this.list.removeClassNames("lg:items-center", FlexDirection.Breakpoint.Large.ROW);
+        }
+
+        this.list.getChildren().forEach(component -> ((Step) component).setOrientation(orientation));
     }
 
     public void setSmall(boolean small) {

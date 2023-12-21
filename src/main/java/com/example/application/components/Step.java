@@ -5,13 +5,17 @@ import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.router.*;
+import com.vaadin.flow.router.AfterNavigationEvent;
+import com.vaadin.flow.router.AfterNavigationObserver;
+import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class Step extends ListItem implements AfterNavigationObserver, HasTheme {
 
+    private Stepper.Orientation orientation;
+    private boolean small;
+    private State state;
     private RouterLink link;
     private Div circle;
     private Span label;
@@ -21,27 +25,15 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         addClassNames(Overflow.HIDDEN, Position.RELATIVE);
 
         this.circle = new Div();
-        this.circle.addClassNames(AlignItems.CENTER, BoxSizing.BORDER, Display.FLEX, Flex.SHRINK_NONE, FontSize.SMALL,
-                FontWeight.MEDIUM, Height.MEDIUM, JustifyContent.CENTER, "rounded-full", Width.MEDIUM);
-
         this.label = new Span(label);
-        this.label.addClassNames(FontWeight.MEDIUM, TextColor.BODY);
-
         this.description = new Span(description);
-        this.description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
-        Layout layout = new Layout(this.label, this.description);
-        layout.addClassNames(Background.BASE, Padding.End.SMALL);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setOverflow(com.example.application.utilities.Overflow.HIDDEN);
+        Div layout = new Div(this.label, this.description);
+        layout.addClassNames(Background.BASE, Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN, Padding.End.SMALL);
 
         this.link = new RouterLink();
-        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, Gap.MEDIUM, "no-underline", Padding.SMALL,
-                Position.RELATIVE, "z-10");
-        if (navigationTarget != null) {
-            this.link.setRoute(navigationTarget);
-        }
         this.link.add(this.circle, layout);
+        if (navigationTarget != null) this.link.setRoute(navigationTarget);
         add(this.link);
 
         setState(State.INACTIVE);
@@ -51,102 +43,115 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         this(label, "", navigationTarget);
     }
 
-    public Step(String label, String description) {
-        this(label, description, null);
-    }
-
-    public Step(String label) {
-        this(label, "", null);
-    }
-
-    public void setRoute(Router router, Class<? extends Component> navigationTarget) {
-        this.link.setRoute(router, navigationTarget, RouteParameters.empty());
-    }
-
-    public void setState(State state) {
-        this.circle.removeAll();
-        this.circle.removeClassNames(getActiveClassNames());
-        this.circle.removeClassNames(getCompleteClassNames());
-        this.circle.removeClassNames(getErrorClassNames());
-        this.circle.removeClassNames(getInactiveClassNames());
-
-        this.label.removeClassNames(TextColor.PRIMARY, TextColor.SECONDARY, TextColor.ERROR);
-
-        switch (state) {
-            case ACTIVE -> {
-                this.circle.addClassNames(getActiveClassNames());
-                this.label.addClassName(TextColor.PRIMARY);
-            }
-            case COMPLETE -> {
-                this.circle.add(LineAwesomeIcon.CHECK_SOLID.create());
-                this.circle.addClassNames(getCompleteClassNames());
-            }
-            case ERROR -> {
-                this.circle.add(LineAwesomeIcon.EXCLAMATION_SOLID.create());
-                this.circle.addClassNames(getErrorClassNames());
-                this.label.addClassName(TextColor.ERROR);
-            }
-            case INACTIVE -> {
-                this.circle.addClassNames(getInactiveClassNames());
-                this.label.addClassName(TextColor.SECONDARY);
-            }
-        }
-    }
-
-    private String[] getActiveClassNames() {
-        return new String[]{Background.BASE, Border.ALL, BorderColor.PRIMARY, "border-2", TextColor.PRIMARY};
-    }
-
-    private String[] getCompleteClassNames() {
-        return new String[]{Background.PRIMARY, TextColor.PRIMARY_CONTRAST};
-    }
-
-    private String[] getErrorClassNames() {
-        return new String[]{Background.ERROR, TextColor.ERROR_CONTRAST};
-    }
-
-    private String[] getInactiveClassNames() {
-        return new String[]{Background.BASE, Border.ALL, BorderColor.CONTRAST_30, TextColor.SECONDARY};
-    }
-
     public void setOrientation(Stepper.Orientation orientation) {
-        if (orientation.equals(Stepper.Orientation.HORIZONTAL)) {
-            this.label.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
-            this.description.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
-        } else {
-            this.label.removeClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
-            this.description.removeClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
-        }
+        this.orientation = orientation;
+        updateClassNames();
     }
 
     public void setSmall(boolean small) {
-        this.link.addClassNames(getLinkClassNames(small));
-        this.circle.addClassNames(getCircleClassNames(small));
-        this.label.addClassNames(getLabelClassNames(small));
-        this.description.addClassName(getDescriptionClassNames(small));
-
-        this.link.removeClassNames(getLinkClassNames(!small));
-        this.circle.removeClassNames(getCircleClassNames(!small));
-        this.label.removeClassNames(getLabelClassNames(!small));
-        this.description.removeClassName(getDescriptionClassNames(!small));
+        this.small = small;
+        updateClassNames();
     }
 
-    private String getLinkClassNames(boolean small) {
-        return !small ? Gap.MEDIUM : Gap.SMALL;
+    public void setState(State state) {
+        this.state = state;
+        updateClassNames();
     }
 
-    private String[] getCircleClassNames(boolean small) {
-        return !small ?
-                new String[]{FontSize.SMALL, Height.MEDIUM, Width.MEDIUM} :
-                new String[]{FontSize.XSMALL, Height.XSMALL, Width.XSMALL};
+    private void updateClassNames() {
+        updateStepClassNames();
+        updateLinkClassNames();
+        updateCircleIcon();
+        updateCircleClassNames();
+        updateLabelClassNames();
+        updateDescriptionClassNames();
     }
 
-    private String getLabelClassNames(boolean small) {
-        return !small ? FontSize.MEDIUM : FontSize.SMALL;
+    private void updateStepClassNames() {
+        if (this.orientation != null) {
+            if (this.orientation.equals(Stepper.Orientation.HORIZONTAL)) {
+                addClassNames("flex-1");
+            } else {
+                removeClassNames("flex-1");
+            }
+        }
     }
 
-    private String getDescriptionClassNames(boolean small) {
-        return !small ? FontSize.SMALL : FontSize.XSMALL;
+    private void updateLinkClassNames() {
+        this.link.getClassNames().clear();
+        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, "no-underline", Padding.SMALL,
+                Position.RELATIVE, "z-10");
+
+        if (this.small) {
+            this.link.addClassNames(Gap.SMALL);
+        } else {
+            this.link.addClassNames(Gap.MEDIUM);
+        }
+    }
+
+    private void updateCircleIcon() {
+        this.circle.removeAll();
+
+        switch (this.state) {
+            case COMPLETE -> this.circle.add(LineAwesomeIcon.CHECK_SOLID.create());
+            case ERROR -> this.circle.add(LineAwesomeIcon.EXCLAMATION_SOLID.create());
+        }
+    }
+
+    private void updateCircleClassNames() {
+        this.circle.getClassNames().clear();
+        this.circle.addClassNames(AlignItems.CENTER, Border.ALL, BoxSizing.BORDER, Display.FLEX, Flex.SHRINK_NONE,
+                FontWeight.MEDIUM, JustifyContent.CENTER, "rounded-full");
+
+        if (this.small) {
+            this.circle.addClassNames(FontSize.XSMALL, Height.XSMALL, Width.XSMALL);
+        } else {
+            this.circle.addClassNames(FontSize.SMALL, Height.MEDIUM, Width.MEDIUM);
+        }
+
+        switch (this.state) {
+            case ACTIVE ->
+                    this.circle.addClassNames(Background.BASE, BorderColor.PRIMARY, "border-2", TextColor.PRIMARY);
+            case COMPLETE ->
+                    this.circle.addClassNames(Background.PRIMARY, BorderColor.PRIMARY, TextColor.PRIMARY_CONTRAST);
+            case ERROR -> this.circle.addClassNames(Background.ERROR, BorderColor.ERROR, TextColor.ERROR_CONTRAST);
+            case INACTIVE -> this.circle.addClassNames(Background.BASE, BorderColor.CONTRAST_30, TextColor.SECONDARY);
+        }
+    }
+
+    private void updateLabelClassNames() {
+        this.label.getClassNames().clear();
+        this.label.addClassNames(FontWeight.MEDIUM);
+
+        if (this.orientation != null && this.orientation.equals(Stepper.Orientation.HORIZONTAL)) {
+            this.label.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
+        }
+
+        if (this.small) {
+            this.label.addClassNames(FontSize.SMALL);
+        }
+
+        switch (state) {
+            case ACTIVE -> this.label.addClassName(TextColor.PRIMARY);
+            case COMPLETE -> this.label.addClassName(TextColor.BODY);
+            case ERROR -> this.label.addClassName(TextColor.ERROR);
+            case INACTIVE -> this.label.addClassName(TextColor.SECONDARY);
+        }
+    }
+
+    private void updateDescriptionClassNames() {
+        this.description.getClassNames().clear();
+        this.description.addClassNames(TextColor.SECONDARY);
+
+        if (this.orientation != null && this.orientation.equals(Stepper.Orientation.HORIZONTAL)) {
+            this.description.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
+        }
+
+        if (this.small) {
+            this.description.addClassNames(FontSize.XSMALL);
+        } else {
+            this.description.addClassNames(FontSize.SMALL);
+        }
     }
 
     @Override
