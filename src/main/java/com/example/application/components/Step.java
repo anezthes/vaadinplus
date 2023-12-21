@@ -1,46 +1,43 @@
 package com.example.application.components;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.*;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-public class Step extends ListItem implements AfterNavigationObserver {
+public class Step extends ListItem implements AfterNavigationObserver, HasTheme {
 
-    private State state;
     private RouterLink link;
     private Div circle;
     private Span label;
     private Span description;
 
     public Step(String label, String description, Class<? extends Component> navigationTarget) {
-        addClassNames(LumoUtility.Position.RELATIVE);
+        addClassNames(Overflow.HIDDEN, Position.RELATIVE);
 
         this.circle = new Div();
-        this.circle.addClassNames(
-                LumoUtility.AlignItems.CENTER, LumoUtility.BoxSizing.BORDER, LumoUtility.Display.FLEX,
-                LumoUtility.Flex.SHRINK_NONE, LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.MEDIUM,
-                LumoUtility.Height.MEDIUM, LumoUtility.JustifyContent.CENTER, "rounded-full",
-                LumoUtility.Width.MEDIUM
-        );
+        this.circle.addClassNames(AlignItems.CENTER, BoxSizing.BORDER, Display.FLEX, Flex.SHRINK_NONE, FontSize.SMALL,
+                FontWeight.MEDIUM, Height.MEDIUM, JustifyContent.CENTER, "rounded-full", Width.MEDIUM);
 
         this.label = new Span(label);
-        this.label.addClassNames(LumoUtility.FontWeight.MEDIUM, LumoUtility.TextColor.BODY);
+        this.label.addClassNames(FontWeight.MEDIUM, TextColor.BODY);
 
         this.description = new Span(description);
-        this.description.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         Layout layout = new Layout(this.label, this.description);
+        layout.addClassNames(Background.BASE, Padding.End.SMALL);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setOverflow(com.example.application.utilities.Overflow.HIDDEN);
 
         this.link = new RouterLink();
-        this.link.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Gap.MEDIUM,
-                LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL,
-                LumoUtility.Position.RELATIVE);
+        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, Gap.MEDIUM, "no-underline", Padding.SMALL,
+                Position.RELATIVE, "z-10");
         if (navigationTarget != null) {
             this.link.setRoute(navigationTarget);
         }
@@ -73,12 +70,12 @@ public class Step extends ListItem implements AfterNavigationObserver {
         this.circle.removeClassNames(getErrorClassNames());
         this.circle.removeClassNames(getInactiveClassNames());
 
-        this.label.removeClassNames(LumoUtility.TextColor.PRIMARY, LumoUtility.TextColor.SECONDARY, LumoUtility.TextColor.ERROR);
+        this.label.removeClassNames(TextColor.PRIMARY, TextColor.SECONDARY, TextColor.ERROR);
 
         switch (state) {
             case ACTIVE -> {
                 this.circle.addClassNames(getActiveClassNames());
-                this.label.addClassName(LumoUtility.TextColor.PRIMARY);
+                this.label.addClassName(TextColor.PRIMARY);
             }
             case COMPLETE -> {
                 this.circle.add(LineAwesomeIcon.CHECK_SOLID.create());
@@ -87,35 +84,69 @@ public class Step extends ListItem implements AfterNavigationObserver {
             case ERROR -> {
                 this.circle.add(LineAwesomeIcon.EXCLAMATION_SOLID.create());
                 this.circle.addClassNames(getErrorClassNames());
-                this.label.addClassName(LumoUtility.TextColor.ERROR);
+                this.label.addClassName(TextColor.ERROR);
             }
             case INACTIVE -> {
                 this.circle.addClassNames(getInactiveClassNames());
-                this.label.addClassName(LumoUtility.TextColor.SECONDARY);
+                this.label.addClassName(TextColor.SECONDARY);
             }
         }
     }
 
+    public void setOrientation(Stepper.Orientation orientation) {
+        if (orientation.equals(Stepper.Orientation.HORIZONTAL)) {
+            this.label.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
+            this.description.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
+        } else {
+            this.label.removeClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
+            this.description.removeClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
+        }
+    }
+
+    public void setSmall(boolean small) {
+        this.link.addClassNames(getLinkClassNames(small));
+        this.circle.addClassNames(getCircleClassNames(small));
+        this.label.addClassNames(getLabelClassNames(small));
+        this.description.addClassName(getDescriptionClassNames(small));
+
+        this.link.removeClassNames(getLinkClassNames(!small));
+        this.circle.removeClassNames(getCircleClassNames(!small));
+        this.label.removeClassNames(getLabelClassNames(!small));
+        this.description.removeClassName(getDescriptionClassNames(!small));
+    }
+
     private String[] getActiveClassNames() {
-        return new String[]{
-                LumoUtility.Background.BASE, LumoUtility.Border.ALL, LumoUtility.BorderColor.PRIMARY,
-                "border-2", LumoUtility.TextColor.PRIMARY
-        };
+        return new String[]{Background.BASE, Border.ALL, BorderColor.PRIMARY, "border-2", TextColor.PRIMARY};
     }
 
     private String[] getCompleteClassNames() {
-        return new String[]{LumoUtility.Background.PRIMARY, LumoUtility.TextColor.PRIMARY_CONTRAST};
+        return new String[]{Background.PRIMARY, TextColor.PRIMARY_CONTRAST};
     }
 
     private String[] getErrorClassNames() {
-        return new String[]{LumoUtility.Background.ERROR, LumoUtility.TextColor.ERROR_CONTRAST};
+        return new String[]{Background.ERROR, TextColor.ERROR_CONTRAST};
     }
 
     private String[] getInactiveClassNames() {
-        return new String[]{
-                LumoUtility.Background.BASE, LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_30,
-                LumoUtility.TextColor.SECONDARY
-        };
+        return new String[]{Background.BASE, Border.ALL, BorderColor.CONTRAST_30, TextColor.SECONDARY};
+    }
+
+    private String getLinkClassNames(boolean small) {
+        return !small ? Gap.MEDIUM : Gap.SMALL;
+    }
+
+    private String[] getCircleClassNames(boolean small) {
+        return !small ?
+                new String[]{FontSize.SMALL, Height.MEDIUM, Width.MEDIUM} :
+                new String[]{FontSize.XSMALL, Height.XSMALL, Width.XSMALL};
+    }
+
+    private String getLabelClassNames(boolean small) {
+        return !small ? FontSize.MEDIUM : FontSize.SMALL;
+    }
+
+    private String getDescriptionClassNames(boolean small) {
+        return !small ? FontSize.SMALL : FontSize.XSMALL;
     }
 
     @Override

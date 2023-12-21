@@ -87,6 +87,11 @@
     display: inline-grid;
   }
 
+  /* Overflow */
+  .sm\:overflow-hidden {
+    overflow: hidden;
+  }
+
   /* Position */
   .sm\:absolute {
     position: absolute;
@@ -124,6 +129,11 @@
   }
   .md\:inline-grid {
     display: inline-grid;
+  }
+
+  /* Overflow */
+  .md\:overflow-hidden {
+    overflow: hidden;
   }
 
   /* Position */
@@ -165,6 +175,11 @@
     display: inline-grid;
   }
 
+  /* Overflow */
+  .lg\:overflow-hidden {
+    overflow: hidden;
+  }
+
   /* Position */
   .lg\:absolute {
     position: absolute;
@@ -204,6 +219,11 @@
     display: inline-grid;
   }
 
+  /* Overflow */
+  .xl\:overflow-hidden {
+    overflow: hidden;
+  }
+
   /* Position */
   .xl\:absolute {
     position: absolute;
@@ -241,6 +261,11 @@
   }
   .\32xl\:inline-grid {
     display: inline-grid;
+  }
+
+  /* Overflow */
+  .\32xl\:overflow-hidden {
+    overflow: hidden;
   }
 
   /* Position */

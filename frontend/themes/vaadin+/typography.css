@@ -28,3 +28,65 @@
 .no-underline:hover {
   text-decoration-line: none;
 }
+
+/* Responsive design */
+
+@media (min-width: 640px) {
+  /* Text overflow */
+  .sm\:overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+  /* Whitespace */
+  .sm\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Text overflow */
+  .md\:overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+  /* Whitespace */
+  .md\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Text overflow */
+  .lg\:overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+  /* Whitespace */
+  .lg\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Text overflow */
+  .xl\:overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+  /* Whitespace */
+  .xl\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1536px) {
+  /* Text overflow */
+  .\32xl\:overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+  /* Whitespace */
+  .\32xl\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+}

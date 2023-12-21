@@ -1,0 +1,42 @@
+/* Flex */
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+/* Responsive design */
+
+@media (min-width: 640px) {
+  /* Align items */
+  .sm\:items-center {
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Align items */
+  .md\:items-center {
+    align-items: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Align items */
+  .lg\:items-center {
+    align-items: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Align items */
+  .xl\:items-center {
+    align-items: center;
+  }
+}
+
+@media (min-width: 1536px) {
+  /* Align items */
+  .\32xl\:items-center {
+    align-items: center;
+  }
+}
