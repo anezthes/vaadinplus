@@ -93,6 +93,22 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         }
     }
 
+    private String[] getActiveClassNames() {
+        return new String[]{Background.BASE, Border.ALL, BorderColor.PRIMARY, "border-2", TextColor.PRIMARY};
+    }
+
+    private String[] getCompleteClassNames() {
+        return new String[]{Background.PRIMARY, TextColor.PRIMARY_CONTRAST};
+    }
+
+    private String[] getErrorClassNames() {
+        return new String[]{Background.ERROR, TextColor.ERROR_CONTRAST};
+    }
+
+    private String[] getInactiveClassNames() {
+        return new String[]{Background.BASE, Border.ALL, BorderColor.CONTRAST_30, TextColor.SECONDARY};
+    }
+
     public void setOrientation(Stepper.Orientation orientation) {
         if (orientation.equals(Stepper.Orientation.HORIZONTAL)) {
             this.label.addClassNames("lg:overflow-ellipsis", "lg:overflow-hidden", "lg:whitespace-nowrap");
@@ -113,22 +129,6 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         this.circle.removeClassNames(getCircleClassNames(!small));
         this.label.removeClassNames(getLabelClassNames(!small));
         this.description.removeClassName(getDescriptionClassNames(!small));
-    }
-
-    private String[] getActiveClassNames() {
-        return new String[]{Background.BASE, Border.ALL, BorderColor.PRIMARY, "border-2", TextColor.PRIMARY};
-    }
-
-    private String[] getCompleteClassNames() {
-        return new String[]{Background.PRIMARY, TextColor.PRIMARY_CONTRAST};
-    }
-
-    private String[] getErrorClassNames() {
-        return new String[]{Background.ERROR, TextColor.ERROR_CONTRAST};
-    }
-
-    private String[] getInactiveClassNames() {
-        return new String[]{Background.BASE, Border.ALL, BorderColor.CONTRAST_30, TextColor.SECONDARY};
     }
 
     private String getLinkClassNames(boolean small) {
