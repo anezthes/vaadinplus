@@ -1,6 +1,7 @@
 package com.example.application.views.templates;
 
 import com.example.application.components.Breadcrumb;
+import com.example.application.components.BreadcrumbItem;
 import com.example.application.components.Layout;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.utilities.GridColumns;
@@ -20,7 +21,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
@@ -99,9 +99,9 @@ public class ProductDetailsView extends Main {
 
     public Component createInformation() {
         Breadcrumb breadcrumb = new Breadcrumb(
-                new RouterLink("Link 1", HomeView.class),
-                new RouterLink("Link 2", HomeView.class),
-                new RouterLink("Link 3", HomeView.class)
+                new BreadcrumbItem("Home", HomeView.class),
+                new BreadcrumbItem("Products", ProductListView.class),
+                new BreadcrumbItem("Xyloflux", ProductDetailsView.class)
         );
         breadcrumb.addClassNames(Margin.Bottom.XSMALL);
 

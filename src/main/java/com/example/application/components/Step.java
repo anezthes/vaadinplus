@@ -121,7 +121,10 @@ public class Step extends ListItem implements AfterNavigationObserver {
     @Override
     public void afterNavigation(AfterNavigationEvent event) {
         if (this.link.getHref().equals(event.getLocation().getFirstSegment())) {
+            this.link.getElement().setAttribute("aria-current", "step");
             setState(State.ACTIVE);
+        } else {
+            this.link.getElement().removeAttribute("aria-current");
         }
     }
 

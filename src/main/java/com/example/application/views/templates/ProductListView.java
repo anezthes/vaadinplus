@@ -192,6 +192,7 @@ public class ProductListView extends Main {
 
     private void openSidebar() {
         this.sidebar.setEnabled(true);
+        this.sidebar.addClassNames(Border.RIGHT);
         // Desktop
         this.sidebar.getStyle().remove("margin-inline-start");
         // Mobile
@@ -201,6 +202,7 @@ public class ProductListView extends Main {
 
     private void closeSidebar() {
         this.sidebar.setEnabled(false);
+        this.sidebar.removeClassName(Border.RIGHT);
         // Desktop
         this.sidebar.getStyle().set("margin-inline-start", "-20rem");
         // Mobile

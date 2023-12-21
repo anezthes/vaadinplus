@@ -1,11 +1,7 @@
 package com.example.application.components;
 
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.OrderedList;
-import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class Breadcrumb extends Nav {
@@ -24,37 +20,17 @@ public class Breadcrumb extends Nav {
         super.add(this.list);
     }
 
-    public Breadcrumb(RouterLink... links) {
+    public Breadcrumb(BreadcrumbItem... items) {
         this();
-        add(links);
+        this.list.add(items);
     }
 
-    public Breadcrumb(Anchor... anchors) {
-        this();
-        add(anchors);
+    public void add(BreadcrumbItem... items) {
+        this.list.add(items);
     }
 
-    @Override
-    public void add(Component... components) {
-        for (Component component : components) {
-            ListItem listItem = new ListItem(component);
-            listItem.addClassNames(LumoUtility.Display.FLEX);
-            this.list.add(listItem);
-        }
+    public void remove(BreadcrumbItem... items) {
+        this.list.remove(items);
     }
 
-    @Override
-    public int getComponentCount() {
-        return Math.toIntExact(this.list.getChildren().count());
-    }
-
-    @Override
-    public void remove(Component... components) {
-        this.list.remove(components);
-    }
-
-    @Override
-    public void removeAll() {
-        this.list.removeAll();
-    }
 }

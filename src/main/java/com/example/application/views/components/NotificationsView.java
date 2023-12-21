@@ -53,6 +53,9 @@ public class NotificationsView extends ComponentView {
         Notification notification = new Notification(title, buttons);
         notification.addThemeName("no-padding");
         notification.setPosition(Notification.Position.TOP_END);
+
+        close.addClickListener(e -> notification.close());
+
         return notification;
     }
 
@@ -86,6 +89,9 @@ public class NotificationsView extends ComponentView {
         Notification notification = new Notification(layout, buttons);
         notification.addThemeName("no-padding");
         notification.setPosition(Notification.Position.TOP_END);
+
+        close.addClickListener(e -> notification.close());
+
         return notification;
     }
 
@@ -129,6 +135,9 @@ public class NotificationsView extends ComponentView {
         Notification notification = new Notification(layout, buttons);
         notification.addThemeName("no-padding");
         notification.setPosition(Notification.Position.TOP_END);
+
+        close.addClickListener(e -> notification.close());
+
         return notification;
     }
 
@@ -169,6 +178,10 @@ public class NotificationsView extends ComponentView {
         Notification notification = new Notification(layout, actions);
         notification.addThemeName("no-padding");
         notification.setPosition(Notification.Position.TOP_END);
+
+        action1.addClickListener(e -> notification.close());
+        action2.addClickListener(e -> notification.close());
+
         return notification;
     }
 }
