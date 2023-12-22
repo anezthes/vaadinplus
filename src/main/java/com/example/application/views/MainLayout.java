@@ -1,13 +1,17 @@
 package com.example.application.views;
 
+import com.example.application.components.Badge;
 import com.example.application.components.Layout;
 import com.example.application.components.UserMenu;
+import com.example.application.utilities.BadgeVariant;
 import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
 import com.example.application.views.templates.*;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
@@ -16,7 +20,10 @@ import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
+import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import com.vaadin.flow.theme.lumo.LumoUtility.Position;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 /**
@@ -37,20 +44,34 @@ public class MainLayout extends AppLayout {
         toggle.setAriaLabel("Menu toggle");
 
         viewTitle = new H1();
-        viewTitle.addClassNames(LumoUtility.FontSize.LARGE);
+        viewTitle.addClassNames(FontSize.LARGE);
 
-        UserMenu menu = new UserMenu();
+        // NotificationsMenu notificationsMenu = new NotificationsMenu();
+
+        Badge badge = new Badge("2");
+        badge.addClassNames("-end-s", Position.ABSOLUTE, "top-0");
+        badge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
+
+        Button notifications = new Button(LineAwesomeIcon.BELL_SOLID.create());
+        notifications.addClassNames(Margin.Start.AUTO);
+        notifications.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        notifications.setAriaLabel("View notifications (2)");
+        notifications.setSuffixComponent(badge);
+        notifications.setTooltipText("View notifications (2)");
+
+        UserMenu userMenu = new UserMenu();
 
         Avatar avatar = new Avatar("John Smith");
-        avatar.addClassNames(LumoUtility.Margin.End.SMALL, LumoUtility.Margin.Start.AUTO);
-        avatar.getElement().addEventListener("click", e -> menu.showModal());
+        avatar.addClassNames(Margin.Horizontal.SMALL);
+        avatar.getElement().addEventListener("click", e -> userMenu.showModal());
+        avatar.setTooltipEnabled(true);
 
-        addToNavbar(true, toggle, viewTitle, avatar, menu);
+        addToNavbar(true, toggle, viewTitle, notifications, avatar, userMenu);
     }
 
     private void addDrawerContent() {
         Span appName = new Span("Vaadin+");
-        appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.FontWeight.SEMIBOLD);
+        appName.addClassNames(FontSize.LARGE, FontWeight.SEMIBOLD);
 
         Layout nav = new Layout(createComponentNavigation(), createTemplatesNavigation());
         nav.setFlexDirection(FlexLayout.FlexDirection.COLUMN);

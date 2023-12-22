@@ -28,6 +28,10 @@
   bottom: 100%;
 }
 
+.-end-s {
+  inset-inline-end: calc(var(--lumo-space-s) / -1);
+}
+
 .-end-full {
   inset-inline-end: -100%;
 }

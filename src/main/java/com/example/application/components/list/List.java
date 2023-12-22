@@ -8,9 +8,6 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class List extends com.vaadin.flow.component.html.UnorderedList implements HasTheme {
 
-    public static final String BORDERS = "borders";
-    public static final String DIVIDERS = "dividers";
-
     // Style
     private BackgroundColor backgroundColor;
     private Display display;

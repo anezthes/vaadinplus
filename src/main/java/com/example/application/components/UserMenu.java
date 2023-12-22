@@ -11,7 +11,7 @@ import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class UserMenu extends NativeDialog {
@@ -32,15 +32,15 @@ public class UserMenu extends NativeDialog {
                 createListItem("Manage account", LineAwesomeIcon.USER_CIRCLE, ProfileView.class),
                 createListItem("Sign out", LineAwesomeIcon.SIGN_OUT_ALT_SOLID, ProfileView.class)
         );
-        list.addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.XSMALL);
+        list.addClassNames(ListStyleType.NONE, Margin.NONE, Padding.XSMALL);
 
         // Divider
         Hr hr = new Hr();
-        hr.addClassNames(LumoUtility.Margin.Vertical.XSMALL);
+        hr.addClassNames(Margin.Vertical.XSMALL);
 
         // Theme
         RadioButtonGroup<String> theme = new RadioButtonGroup<>();
-        theme.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.XSMALL);
+        theme.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
         theme.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
         theme.addValueChangeListener(e -> setTheme(e.getValue().equals(Lumo.DARK)));
 
@@ -57,7 +57,7 @@ public class UserMenu extends NativeDialog {
 
         // Density
         RadioButtonGroup<String> density = new RadioButtonGroup<>();
-        density.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Padding.XSMALL);
+        density.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
         density.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
         density.addValueChangeListener(e -> setDensity(e.getValue().equals("Compact")));
 
@@ -77,11 +77,10 @@ public class UserMenu extends NativeDialog {
 
     private ListItem createListItem(String text, LineAwesomeIcon icon, Class<? extends Component> navigationTarget) {
         Item item = new Item(text, icon);
-        item.addClassNames(LumoUtility.BorderRadius.MEDIUM, LumoUtility.LineHeight.XSMALL, LumoUtility.Padding.SMALL,
-                "hover:bg-contrast-5");
+        item.addClassNames(BorderRadius.MEDIUM, LineHeight.XSMALL, Padding.SMALL, "hover:bg-contrast-5");
 
         RouterLink link = new RouterLink(navigationTarget);
-        link.addClassNames(LumoUtility.TextColor.BODY, "no-underline");
+        link.addClassNames(TextColor.BODY, "no-underline");
         link.add(item);
 
         return new ListItem(link);
@@ -92,7 +91,7 @@ public class UserMenu extends NativeDialog {
         LineAwesomeIcon icon = theme.equals(Lumo.DARK) ? LineAwesomeIcon.MOON : LineAwesomeIcon.SUN;
 
         Item item = new Item(text, icon);
-        item.addClassNames(LumoUtility.Margin.Horizontal.AUTO);
+        item.addClassNames(Margin.Horizontal.AUTO);
         return item;
     }
 
@@ -105,7 +104,7 @@ public class UserMenu extends NativeDialog {
         LineAwesomeIcon icon = density.equals("Default") ? LineAwesomeIcon.EXPAND_SOLID : LineAwesomeIcon.COMPRESS_SOLID;
 
         Item item = new Item(density, icon);
-        item.addClassNames(LumoUtility.Margin.Horizontal.AUTO);
+        item.addClassNames(Margin.Horizontal.AUTO);
         return item;
     }
 

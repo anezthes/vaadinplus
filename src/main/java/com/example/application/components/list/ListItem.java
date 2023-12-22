@@ -6,6 +6,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
+import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class ListItem extends com.vaadin.flow.component.html.ListItem {
@@ -17,6 +18,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     private RowGap rowGap;
 
     // Components
+    private Component classNameTarget;
     private Layout prefix;
     private Layout column;
     private Layout primary;
@@ -24,12 +26,10 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     private Layout suffix;
 
     public ListItem() {
-        addClassNames(
-                LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL, LumoUtility.Position.RELATIVE
-        );
-        setAlignItems(AlignItems.CENTER);
-        setGap(Gap.MEDIUM);
+        this.classNameTarget = this;
+        addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Background.BASE, LumoUtility.Display.FLEX,
+                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL,
+                LumoUtility.Position.RELATIVE);
 
         this.prefix = new Layout();
         this.prefix.setVisible(false);
@@ -194,7 +194,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void setColumnGap(Gap gap) {
         removeColumnGap();
-        this.addClassNames(gap.getColumnGap().getClassName());
+        addClassNames(gap.getColumnGap().getClassName());
         this.colGap = gap.getColumnGap();
     }
 
@@ -203,7 +203,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void setRowGap(Gap gap) {
         removeRowGap();
-        this.addClassNames(gap.getRowGap().getClassName());
+        addClassNames(gap.getRowGap().getClassName());
         this.rowGap = gap.getRowGap();
     }
 
@@ -220,7 +220,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void removeColumnGap() {
         if (this.colGap != null) {
-            this.removeClassName(this.colGap.getClassName());
+            this.classNameTarget.removeClassName(this.colGap.getClassName());
         }
         this.colGap = null;
     }
@@ -230,9 +230,66 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void removeRowGap() {
         if (this.rowGap != null) {
-            this.removeClassName(this.rowGap.getClassName());
+            this.classNameTarget.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
     }
 
+    /**
+     * TBD
+     */
+    public void setRoute(Class<? extends Component> navigationTarget) {
+        if (navigationTarget != null) {
+            RouterLink link = new RouterLink(navigationTarget);
+            link.add(this.prefix, this.column, this.suffix);
+
+            moveClassNames(link);
+            add(link);
+
+            this.classNameTarget = link;
+
+        } else {
+            removeAll();
+            add(this.prefix, this.column, this.suffix);
+
+            moveClassNames(this);
+            this.classNameTarget = this;
+        }
+    }
+
+    /**
+     * TBD
+     */
+    private void moveClassNames(Component target) {
+        if (this.classNameTarget != null) {
+            for (String className : this.classNameTarget.getClassNames()) {
+                target.addClassName(className);
+            }
+        }
+        this.classNameTarget.getClassNames().clear();
+    }
+
+    @Override
+    public void addClassName(String className) {
+        this.classNameTarget.getElement().getClassList().add(className);
+    }
+
+    @Override
+    public void addClassNames(String... classNames) {
+        for (String className : classNames) {
+            this.classNameTarget.getElement().getClassList().add(className);
+        }
+    }
+
+    @Override
+    public boolean removeClassName(String className) {
+        return this.classNameTarget.getElement().getClassList().remove(className);
+    }
+
+    @Override
+    public void removeClassNames(String... classNames) {
+        for (String className : classNames) {
+            this.classNameTarget.getElement().getClassList().remove(className);
+        }
+    }
 }

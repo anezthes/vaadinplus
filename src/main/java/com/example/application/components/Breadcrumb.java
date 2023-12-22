@@ -2,7 +2,7 @@ package com.example.application.components;
 
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.OrderedList;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class Breadcrumb extends Nav {
 
@@ -13,10 +13,7 @@ public class Breadcrumb extends Nav {
         setAriaLabel("Breadcrumb");
 
         this.list = new OrderedList();
-        this.list.addClassNames(
-                LumoUtility.Display.FLEX, LumoUtility.FontSize.SMALL, LumoUtility.ListStyleType.NONE,
-                LumoUtility.Margin.NONE, LumoUtility.Padding.NONE
-        );
+        this.list.addClassNames(Display.FLEX, FontSize.SMALL, ListStyleType.NONE, Margin.NONE, Padding.NONE);
         super.add(this.list);
     }
 
