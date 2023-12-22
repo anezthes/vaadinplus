@@ -18,7 +18,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     private RowGap rowGap;
 
     // Components
-    private Component classNameTarget;
+    private Component mainLayout;
     private Layout prefix;
     private Layout column;
     private Layout primary;
@@ -26,7 +26,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     private Layout suffix;
 
     public ListItem() {
-        this.classNameTarget = this;
+        this.mainLayout = this;
         addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Background.BASE, LumoUtility.Display.FLEX,
                 LumoUtility.Gap.MEDIUM, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL,
                 LumoUtility.Position.RELATIVE);
@@ -220,7 +220,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void removeColumnGap() {
         if (this.colGap != null) {
-            this.classNameTarget.removeClassName(this.colGap.getClassName());
+            this.mainLayout.removeClassName(this.colGap.getClassName());
         }
         this.colGap = null;
     }
@@ -230,66 +230,66 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void removeRowGap() {
         if (this.rowGap != null) {
-            this.classNameTarget.removeClassName(this.rowGap.getClassName());
+            this.mainLayout.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
     }
 
     /**
-     * TBD
+     * Creates a router link and makes it the main layout.
      */
     public void setRoute(Class<? extends Component> navigationTarget) {
         if (navigationTarget != null) {
+            // Move the content to the router link.
             RouterLink link = new RouterLink(navigationTarget);
             link.add(this.prefix, this.column, this.suffix);
 
             moveClassNames(link);
             add(link);
 
-            this.classNameTarget = link;
-
         } else {
+            // Move the content to the list item.
             removeAll();
             add(this.prefix, this.column, this.suffix);
 
             moveClassNames(this);
-            this.classNameTarget = this;
         }
     }
 
     /**
-     * TBD
+     * Moves the class names from the old to the new main layout.
      */
-    private void moveClassNames(Component target) {
-        if (this.classNameTarget != null) {
-            for (String className : this.classNameTarget.getClassNames()) {
-                target.addClassName(className);
+    private void moveClassNames(Component mainLayout) {
+        if (this.mainLayout != null) {
+            for (String className : this.mainLayout.getClassNames()) {
+                mainLayout.addClassName(className);
             }
         }
-        this.classNameTarget.getClassNames().clear();
+        this.mainLayout.getClassNames().clear();
+        this.mainLayout = mainLayout;
     }
 
     @Override
     public void addClassName(String className) {
-        this.classNameTarget.getElement().getClassList().add(className);
+        this.mainLayout.getElement().getClassList().add(className);
     }
 
     @Override
     public void addClassNames(String... classNames) {
         for (String className : classNames) {
-            this.classNameTarget.getElement().getClassList().add(className);
+            this.mainLayout.getElement().getClassList().add(className);
         }
     }
 
     @Override
     public boolean removeClassName(String className) {
-        return this.classNameTarget.getElement().getClassList().remove(className);
+        return this.mainLayout.getElement().getClassList().remove(className);
     }
 
     @Override
     public void removeClassNames(String... classNames) {
         for (String className : classNames) {
-            this.classNameTarget.getElement().getClassList().remove(className);
+            this.mainLayout.getElement().getClassList().remove(className);
         }
     }
 }
