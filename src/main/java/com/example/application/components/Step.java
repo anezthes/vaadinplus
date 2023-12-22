@@ -18,18 +18,20 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
     private State state;
     private RouterLink link;
     private Div circle;
+    private Div layout;
     private Span label;
     private Span description;
 
     public Step(String label, String description, Class<? extends Component> navigationTarget) {
-        addClassNames(Overflow.HIDDEN, Position.RELATIVE);
+        addClassNames(MinWidth.NONE, Position.RELATIVE);
 
         this.circle = new Div();
         this.label = new Span(label);
         this.description = new Span(description);
 
-        Div layout = new Div(this.label, this.description);
-        layout.addClassNames(Background.BASE, Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN, Padding.End.SMALL);
+        this.layout = new Div(this.label, this.description);
+        this.layout.addClassNames(Background.BASE, Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN,
+                Padding.End.SMALL);
 
         this.link = new RouterLink();
         this.link.add(this.circle, layout);
