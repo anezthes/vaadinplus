@@ -237,12 +237,14 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
 
     /**
      * Creates a router link and makes it the main layout.
+     * TBD: Extract to a separate class.
      */
     public void setRoute(Class<? extends Component> navigationTarget) {
         if (navigationTarget != null) {
             // Move the content to the router link.
             RouterLink link = new RouterLink(navigationTarget);
             link.add(this.prefix, this.column, this.suffix);
+            link.addClassNames(LumoUtility.TextColor.BODY, "no-underline");
 
             moveClassNames(link);
             add(link);

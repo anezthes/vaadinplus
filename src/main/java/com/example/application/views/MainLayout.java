@@ -2,6 +2,7 @@ package com.example.application.views;
 
 import com.example.application.components.Badge;
 import com.example.application.components.Layout;
+import com.example.application.components.NotificationsMenu;
 import com.example.application.components.UserMenu;
 import com.example.application.utilities.BadgeVariant;
 import com.example.application.utilities.Gap;
@@ -46,13 +47,13 @@ public class MainLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(FontSize.LARGE);
 
-        // NotificationsMenu notificationsMenu = new NotificationsMenu();
+        NotificationsMenu notificationsMenu = new NotificationsMenu();
 
-        Badge badge = new Badge("2");
-        badge.addClassNames("-end-s", Position.ABSOLUTE, "top-0");
+        Badge badge = new Badge("");
+        badge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
         badge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
-        Button notifications = new Button(LineAwesomeIcon.BELL_SOLID.create());
+        Button notifications = new Button(LineAwesomeIcon.BELL_SOLID.create(), e -> notificationsMenu.showModal());
         notifications.addClassNames(Margin.Start.AUTO);
         notifications.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         notifications.setAriaLabel("View notifications (2)");
@@ -66,7 +67,7 @@ public class MainLayout extends AppLayout {
         avatar.getElement().addEventListener("click", e -> userMenu.showModal());
         avatar.setTooltipEnabled(true);
 
-        addToNavbar(true, toggle, viewTitle, notifications, avatar, userMenu);
+        addToNavbar(true, toggle, viewTitle, notifications, notificationsMenu, avatar, userMenu);
     }
 
     private void addDrawerContent() {

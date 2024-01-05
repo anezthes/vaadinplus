@@ -20,7 +20,7 @@ public class NotificationListItem extends ListItem {
             String time
     ) {
         this.author = new Span(author);
-        this.author.addClassNames(LumoUtility.FontWeight.SEMIBOLD, LumoUtility.TextColor.BODY);
+        this.author.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
 
         this.activity = new Span(" " + activity + " ");
         this.activity.addClassNames(LumoUtility.TextColor.SECONDARY);
