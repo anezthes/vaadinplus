@@ -1,4 +1,4 @@
-package com.example.application.components;
+package com.example.application.components.dialogs;
 
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;

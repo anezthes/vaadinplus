@@ -1,6 +1,6 @@
 package com.example.application.views.components;
 
-import com.example.application.components.SearchDialog;
+import com.example.application.components.dialogs.SearchDialog;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;

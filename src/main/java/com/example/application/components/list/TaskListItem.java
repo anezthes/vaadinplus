@@ -20,7 +20,7 @@ public class TaskListItem extends ThreeLineListItem {
         this.name = new Span(name);
         this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
 
-        this.status = new Badge(status, BadgeVariant.PILL);
+        this.status = new Badge(status, BadgeVariant.PILL, BadgeVariant.SMALL);
 
         this.content = new Paragraph(content);
         this.content.addClassNames(LumoUtility.Margin.NONE);

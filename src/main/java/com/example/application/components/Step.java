@@ -158,11 +158,13 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
 
     @Override
     public void afterNavigation(AfterNavigationEvent event) {
-        if (this.link.getHref().equals(event.getLocation().getFirstSegment())) {
+        if (this.link.getHref().equals(event.getLocation().getPath())) {
             this.link.getElement().setAttribute("aria-current", "step");
             setState(State.ACTIVE);
         } else {
             this.link.getElement().removeAttribute("aria-current");
+            // TODO: Check if COMPLETE, ERROR, etc.
+            setState(State.INACTIVE);
         }
     }
 

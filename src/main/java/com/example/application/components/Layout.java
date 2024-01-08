@@ -19,6 +19,7 @@ public class Layout extends FlexLayout {
     private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
     private ColumnGap colGap;
     private RowGap rowGap;
+    private LineClamp lineClamp;
     private Overflow overflow;
     private Position position;
 
@@ -171,6 +172,17 @@ public class Layout extends FlexLayout {
             this.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
+    }
+
+    /**
+     * Sets the line clamp property.
+     */
+    public void setLineClamp(LineClamp lineClamp) {
+        if (this.lineClamp != null) {
+            removeClassName(this.lineClamp.getClassName());
+        }
+        addClassNames(lineClamp.getClassName());
+        this.lineClamp = lineClamp;
     }
 
     /**

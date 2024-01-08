@@ -6,27 +6,25 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class ListItem extends com.vaadin.flow.component.html.ListItem {
 
     // Style
-    private AlignItems alignItems;
-    private FlexDirection flexDirection;
-    private ColumnGap colGap;
-    private RowGap rowGap;
+    protected AlignItems alignItems;
+    protected FlexDirection flexDirection;
+    protected ColumnGap colGap;
+    protected RowGap rowGap;
+    protected LineClamp secondaryLineClamp;
 
     // Components
-    private Component mainLayout;
-    private Layout prefix;
-    private Layout column;
-    private Layout primary;
-    private Layout secondary;
-    private Layout suffix;
+    protected Layout prefix;
+    protected Layout column;
+    protected Layout primary;
+    protected Layout secondary;
+    protected Layout suffix;
 
     public ListItem() {
-        this.mainLayout = this;
         addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Background.BASE, LumoUtility.Display.FLEX,
                 LumoUtility.Gap.MEDIUM, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL,
                 LumoUtility.Position.RELATIVE);
@@ -143,7 +141,6 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
         this.secondary.setVisible(this.secondary.getComponentCount() > 0);
     }
 
-
     /**
      * Sets the suffix.
      */
@@ -220,7 +217,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void removeColumnGap() {
         if (this.colGap != null) {
-            this.mainLayout.removeClassName(this.colGap.getClassName());
+            this.removeClassName(this.colGap.getClassName());
         }
         this.colGap = null;
     }
@@ -230,68 +227,9 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
      */
     public void removeRowGap() {
         if (this.rowGap != null) {
-            this.mainLayout.removeClassName(this.rowGap.getClassName());
+            this.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
     }
 
-    /**
-     * Creates a router link and makes it the main layout.
-     * TBD: Extract to a separate class.
-     */
-    public void setRoute(Class<? extends Component> navigationTarget) {
-        if (navigationTarget != null) {
-            // Move the content to the router link.
-            RouterLink link = new RouterLink(navigationTarget);
-            link.add(this.prefix, this.column, this.suffix);
-            link.addClassNames(LumoUtility.TextColor.BODY, "no-underline");
-
-            moveClassNames(link);
-            add(link);
-
-        } else {
-            // Move the content to the list item.
-            removeAll();
-            add(this.prefix, this.column, this.suffix);
-
-            moveClassNames(this);
-        }
-    }
-
-    /**
-     * Moves the class names from the old to the new main layout.
-     */
-    private void moveClassNames(Component mainLayout) {
-        if (this.mainLayout != null) {
-            for (String className : this.mainLayout.getClassNames()) {
-                mainLayout.addClassName(className);
-            }
-        }
-        this.mainLayout.getClassNames().clear();
-        this.mainLayout = mainLayout;
-    }
-
-    @Override
-    public void addClassName(String className) {
-        this.mainLayout.getElement().getClassList().add(className);
-    }
-
-    @Override
-    public void addClassNames(String... classNames) {
-        for (String className : classNames) {
-            this.mainLayout.getElement().getClassList().add(className);
-        }
-    }
-
-    @Override
-    public boolean removeClassName(String className) {
-        return this.mainLayout.getElement().getClassList().remove(className);
-    }
-
-    @Override
-    public void removeClassNames(String... classNames) {
-        for (String className : classNames) {
-            this.mainLayout.getElement().getClassList().remove(className);
-        }
-    }
 }

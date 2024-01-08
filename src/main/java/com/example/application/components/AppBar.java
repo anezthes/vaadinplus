@@ -1,6 +1,7 @@
 package com.example.application.components;
 
 import com.example.application.utilities.Gap;
+import com.example.application.utilities.Overflow;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Header;
@@ -23,6 +24,7 @@ public class AppBar extends Header implements HasTheme {
         this.start = new Layout();
         this.start.setAlignItems(FlexComponent.Alignment.CENTER);
         this.start.setGap(Gap.LARGE);
+        this.start.setOverflow(Overflow.HIDDEN);
 
         this.middle = new Layout();
         this.middle.setAlignItems(FlexComponent.Alignment.CENTER);

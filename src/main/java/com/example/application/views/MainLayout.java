@@ -2,8 +2,9 @@ package com.example.application.views;
 
 import com.example.application.components.Badge;
 import com.example.application.components.Layout;
-import com.example.application.components.NotificationsMenu;
-import com.example.application.components.UserMenu;
+import com.example.application.components.dialogs.MessagesDialog;
+import com.example.application.components.dialogs.NotificationsDialog;
+import com.example.application.components.dialogs.UserDialog;
 import com.example.application.utilities.BadgeVariant;
 import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
@@ -47,27 +48,41 @@ public class MainLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(FontSize.LARGE);
 
-        NotificationsMenu notificationsMenu = new NotificationsMenu();
+        MessagesDialog messagesMenu = new MessagesDialog();
 
-        Badge badge = new Badge("");
-        badge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
-        badge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
+        Badge messageBadge = new Badge("");
+        messageBadge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
+        messageBadge.addThemeVariants(BadgeVariant.SUCCESS, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
-        Button notifications = new Button(LineAwesomeIcon.BELL_SOLID.create(), e -> notificationsMenu.showModal());
-        notifications.addClassNames(Margin.Start.AUTO);
-        notifications.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-        notifications.setAriaLabel("View notifications (2)");
-        notifications.setSuffixComponent(badge);
-        notifications.setTooltipText("View notifications (2)");
+        Button messageButton = new Button(LineAwesomeIcon.COMMENTS.create(), e -> messagesMenu.showModal());
+        messageButton.addClassNames(Margin.Start.AUTO);
+        messageButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        messageButton.setAriaLabel("View messages (4)");
+        messageButton.setSuffixComponent(messageBadge);
+        messageButton.setTooltipText("View messages (4)");
 
-        UserMenu userMenu = new UserMenu();
+        NotificationsDialog notificationsMenu = new NotificationsDialog();
+
+        Badge notificationsBadge = new Badge("");
+        notificationsBadge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
+        notificationsBadge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
+
+        Button notificationsButton = new Button(LineAwesomeIcon.BELL_SOLID.create(), e -> notificationsMenu.showModal());
+        notificationsButton.addClassNames(Margin.Start.XSMALL);
+        notificationsButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        notificationsButton.setAriaLabel("View notifications (2)");
+        notificationsButton.setSuffixComponent(notificationsBadge);
+        notificationsButton.setTooltipText("View notifications (2)");
+
+        UserDialog userMenu = new UserDialog();
 
         Avatar avatar = new Avatar("John Smith");
         avatar.addClassNames(Margin.Horizontal.SMALL);
         avatar.getElement().addEventListener("click", e -> userMenu.showModal());
         avatar.setTooltipEnabled(true);
 
-        addToNavbar(true, toggle, viewTitle, notifications, notificationsMenu, avatar, userMenu);
+        addToNavbar(true, toggle, viewTitle, messageButton, messagesMenu, notificationsButton,
+                notificationsMenu, avatar, userMenu);
     }
 
     private void addDrawerContent() {

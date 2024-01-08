@@ -1,6 +1,7 @@
 package com.example.application.views.components;
 
 import com.example.application.components.AppBar;
+import com.example.application.components.TopNav;
 import com.example.application.utilities.IconSize;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
@@ -80,12 +81,12 @@ public class AppBarsView extends ComponentView {
     }
 
     private SideNav createAppNav() {
-        SideNav nav = new SideNav();
+        TopNav nav = new TopNav();
+        nav.addClassNames(LumoUtility.Overflow.AUTO);
         nav.addItem(new SideNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
         nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
         nav.addItem(new SideNavItem("Empty States", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
-        nav.getChildren().forEach(navItem -> navItem.addClassNames(LumoUtility.Display.INLINE_BLOCK));
         return nav;
     }
 

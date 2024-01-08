@@ -1,6 +1,5 @@
-package com.example.application.components;
+package com.example.application.components.dialogs;
 
-import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 

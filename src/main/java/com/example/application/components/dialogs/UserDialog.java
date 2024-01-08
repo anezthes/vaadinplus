@@ -1,5 +1,6 @@
-package com.example.application.components;
+package com.example.application.components.dialogs;
 
+import com.example.application.components.Item;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.views.templates.ProfileView;
 import com.vaadin.flow.component.Component;
@@ -14,12 +15,12 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-public class UserMenu extends NativeDialog {
+public class UserDialog extends NativeDialog {
 
     private String theme = "";
     private String density = "";
 
-    public UserMenu() {
+    public UserDialog() {
         setAriaLabel("User menu");
         setWidth(16, Unit.REM);
 

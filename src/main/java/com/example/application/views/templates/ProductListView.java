@@ -2,8 +2,8 @@ package com.example.application.views.templates;
 
 import com.example.application.components.Badge;
 import com.example.application.components.Layout;
-import com.example.application.components.NativeDialog;
 import com.example.application.components.PriceRange;
+import com.example.application.components.dialogs.NativeDialog;
 import com.example.application.components.list.List;
 import com.example.application.components.list.ProductListItem;
 import com.example.application.themes.RadioButtonTheme;
