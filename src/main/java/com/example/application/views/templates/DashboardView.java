@@ -1,10 +1,13 @@
 package com.example.application.views.templates;
 
-import com.example.application.components.*;
 import com.example.application.components.Header;
+import com.example.application.components.*;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
 import com.example.application.themes.RadioButtonTheme;
+import com.example.application.utilities.FontSize;
+import com.example.application.utilities.Gap;
+import com.example.application.utilities.TextColor;
 import com.example.application.utilities.*;
 import com.example.application.views.MainLayout;
 import com.example.application.views.components.HighlightsView;
@@ -28,16 +31,9 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
-import com.vaadin.flow.theme.lumo.LumoUtility.Border;
-import com.vaadin.flow.theme.lumo.LumoUtility.BorderRadius;
 import com.vaadin.flow.theme.lumo.LumoUtility.Display;
 import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
-import com.vaadin.flow.theme.lumo.LumoUtility.Height;
-import com.vaadin.flow.theme.lumo.LumoUtility.JustifyContent;
-import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
-import com.vaadin.flow.theme.lumo.LumoUtility.MaxWidth;
-import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
-import com.vaadin.flow.theme.lumo.LumoUtility.Width;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
@@ -49,7 +45,6 @@ import java.util.Locale;
 @Route(value = "dashboard", layout = MainLayout.class)
 public class DashboardView extends Main {
 
-    private Layout layout;
     public static final String ORDERS = "Orders";
     public static final String ORDERS_VALUE = "42,719";
     public static final String ORDERS_CHANGE = "16.38%";
@@ -59,6 +54,7 @@ public class DashboardView extends Main {
     public static final String VISITORS = "Visitors";
     public static final String VISITORS_VALUE = "62,806";
     public static final String VISITORS_CHANGE = "13.35%";
+    private Layout layout;
 
     public DashboardView() {
         this.layout = new Layout(
