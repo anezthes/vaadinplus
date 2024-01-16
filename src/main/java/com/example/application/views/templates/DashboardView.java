@@ -137,8 +137,8 @@ public class DashboardView extends Main {
         i.getStyle().set("--_size", com.example.application.utilities.IconSize.LARGE);
 
         Layout container = new Layout(i);
-        container.addClassNames(backgroundColor.getClassName(), BorderRadius.LARGE,
-                Height.XLARGE, textColor.getClassName(), Width.XLARGE);
+        container.addClassNames(backgroundColor.getClassName(), Height.XLARGE, "rounded-full", textColor.getClassName(),
+                Width.XLARGE);
         container.setAlignItems(FlexComponent.Alignment.CENTER);
         container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         return container;

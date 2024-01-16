@@ -104,10 +104,8 @@ public class HighlightsView extends ComponentView {
         i.getStyle().set("--_size", IconSize.LARGE);
 
         Layout container = new Layout(i);
-        container.addClassNames(
-                backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE, LumoUtility.Height.XLARGE,
-                textColor.getClassName(), LumoUtility.Width.XLARGE
-        );
+        container.addClassNames(backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE,
+                LumoUtility.Height.XLARGE, textColor.getClassName(), LumoUtility.Width.XLARGE);
         container.setAlignItems(FlexComponent.Alignment.CENTER);
         container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         return container;
