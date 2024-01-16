@@ -43,7 +43,7 @@ public class WizardLayout extends Main implements RouterLayout, AfterNavigationO
 
     private Div createContent() {
         this.content = new Div();
-        this.content.addClassNames(Border.BOTTOM, "flex-1", Overflow.AUTO);
+        this.content.addClassNames("flex-1", Overflow.AUTO);
         return this.content;
     }
 
@@ -82,7 +82,7 @@ public class WizardLayout extends Main implements RouterLayout, AfterNavigationO
             this.next.setRoute(Step2View.class);
 
         } else if (event.getLocation().getPath().contains("wizard/2")) {
-            this.previous.setRoute(Step2View.class);
+            this.previous.setRoute(Step1View.class);
             this.next.setRoute(Step3View.class);
 
         } else if (event.getLocation().getPath().contains("wizard/3")) {

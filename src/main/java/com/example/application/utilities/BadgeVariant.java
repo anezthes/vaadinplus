@@ -1,12 +1,13 @@
 package com.example.application.utilities;
 
 public enum BadgeVariant {
-    SMALL("small"),
-    PRIMARY("primary"),
-    SUCCESS("success"),
-    ERROR("error"),
     CONTRAST("contrast"),
-    PILL("pill");
+    ERROR("error"),
+    PILL("pill"),
+    PRIMARY("primary"),
+    SMALL("small"),
+    SUCCESS("success"),
+    WARNING("warning");
 
     private final String variant;
 

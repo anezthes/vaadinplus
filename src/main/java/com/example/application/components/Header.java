@@ -2,7 +2,6 @@ package com.example.application.components;
 
 import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -61,10 +60,8 @@ public class Header extends Layout implements HasTheme {
         setActions(null);
 
         this.row = new Layout(this.prefix, this.column, this.actions);
-        this.row.addClassNames(
-                LumoUtility.Margin.Vertical.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL
-        );
+        this.row.addClassNames(LumoUtility.Margin.Vertical.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
+                LumoUtility.Padding.Vertical.SMALL);
         this.row.setAlignItems(FlexComponent.Alignment.CENTER);
         this.row.setFlexWrap(FlexWrap.WRAP);
         this.row.setGap(Gap.MEDIUM);
@@ -102,7 +99,7 @@ public class Header extends Layout implements HasTheme {
                 }
             }
         }
-        this.breadcrumb.setVisible(this.breadcrumb.getComponentCount() > 0);
+        this.breadcrumb.setVisible(items != null);
     }
 
     /**
@@ -146,9 +143,9 @@ public class Header extends Layout implements HasTheme {
      */
     public void setHeadingTextColor(TextColor textColor) {
         if (this.headingTextColor != null) {
-            ((HasStyle) this.heading).removeClassName(this.headingTextColor.getClassName());
+            this.heading.removeClassName(this.headingTextColor.getClassName());
         }
-        ((HasStyle) this.heading).addClassNames(textColor.getClassName());
+        this.heading.addClassNames(textColor.getClassName());
         this.headingTextColor = textColor;
     }
 
@@ -157,9 +154,9 @@ public class Header extends Layout implements HasTheme {
      */
     public void setHeadingFontSize(FontSize fontSize) {
         if (this.headingFontSize != null) {
-            ((HasStyle) this.heading).removeClassName(this.headingFontSize.getClassName());
+            this.heading.removeClassName(this.headingFontSize.getClassName());
         }
-        ((HasStyle) this.heading).addClassNames(fontSize.getClassName());
+        this.heading.addClassNames(fontSize.getClassName());
         this.headingFontSize = fontSize;
     }
 
@@ -168,9 +165,9 @@ public class Header extends Layout implements HasTheme {
      */
     public void setHeadingFontWeight(FontWeight fontWeight) {
         if (this.headingFontWeight != null) {
-            ((HasStyle) this.heading).removeClassName(this.headingFontWeight.getClassName());
+            this.heading.removeClassName(this.headingFontWeight.getClassName());
         }
-        ((HasStyle) this.heading).addClassNames(fontWeight.getClassName());
+        this.heading.addClassNames(fontWeight.getClassName());
         this.headingFontWeight = fontWeight;
     }
 
@@ -239,4 +236,10 @@ public class Header extends Layout implements HasTheme {
         return this.column;
     }
 
+    /**
+     * Returns the row layout.
+     */
+    public Layout getRowLayout() {
+        return row;
+    }
 }

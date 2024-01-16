@@ -161,11 +161,9 @@ public class HighlightsView extends ComponentView {
         icon.getStyle().set("--_size", IconSize.SMALL);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
-        link.addClassNames(
-                LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
-                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM
-        );
         link.add(icon);
+        link.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
+                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
         return link;

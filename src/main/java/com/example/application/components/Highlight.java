@@ -36,9 +36,8 @@ public class Highlight extends Layout {
     }
 
     public Highlight(Component prefix, String label, String value, Component suffix) {
-        addClassNames(
-                LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
-        );
+        addClassNames(LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM,
+                LumoUtility.Padding.Vertical.SMALL);
         setAlignItems(FlexComponent.Alignment.CENTER);
         setGap(Gap.MEDIUM);
         setPosition(Position.RELATIVE);

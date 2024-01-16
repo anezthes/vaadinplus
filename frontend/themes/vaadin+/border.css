@@ -13,7 +13,51 @@
 .divide-x > * + * {
   border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
 }
-
 .divide-y > * + * {
   border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+}
+
+@media (min-width: 640px) {
+  .sm\:divide-x > * + * {
+    border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+  .sm\:divide-y > * + * {
+    border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:divide-x > * + * {
+    border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+  .md\:divide-y > * + * {
+    border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:divide-x > * + * {
+    border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+  .lg\:divide-y > * + * {
+    border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:divide-x > * + * {
+    border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+  .xl\:divide-y > * + * {
+    border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:divide-x > * + * {
+    border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
+  .\32xl\:divide-y > * + * {
+    border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
+  }
 }

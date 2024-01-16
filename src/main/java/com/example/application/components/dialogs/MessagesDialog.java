@@ -13,6 +13,7 @@ public class MessagesDialog extends NativeDialog {
         setAriaLabel("Messages");
         setMaxWidth(30, Unit.REM);
 
+        // TODO: Mobile positioning
         // Position
         setRight(0.5f, Unit.REM);
         setTop(3.5f, Unit.REM);

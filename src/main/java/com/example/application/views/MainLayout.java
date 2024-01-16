@@ -9,6 +9,7 @@ import com.example.application.utilities.BadgeVariant;
 import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
 import com.example.application.views.templates.*;
+import com.example.application.views.templates.wizard.Step1View;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -50,7 +51,7 @@ public class MainLayout extends AppLayout {
 
         MessagesDialog messagesMenu = new MessagesDialog();
 
-        Badge messageBadge = new Badge("");
+        Badge messageBadge = new Badge();
         messageBadge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
         messageBadge.addThemeVariants(BadgeVariant.SUCCESS, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
@@ -63,7 +64,7 @@ public class MainLayout extends AppLayout {
 
         NotificationsDialog notificationsMenu = new NotificationsDialog();
 
-        Badge notificationsBadge = new Badge("");
+        Badge notificationsBadge = new Badge();
         notificationsBadge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
         notificationsBadge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
@@ -126,10 +127,12 @@ public class MainLayout extends AppLayout {
     private SideNav createTemplatesNavigation() {
         SideNav nav = new SideNav("Templates");
         nav.addItem(new SideNavItem("Checkout", CheckoutView.class, LineAwesomeIcon.CREDIT_CARD.create()));
+        nav.addItem(new SideNavItem("Dashboard (WIP)", DashboardView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
         nav.addItem(new SideNavItem("Product details", ProductDetailsView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
         nav.addItem(new SideNavItem("Product list", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
         nav.addItem(new SideNavItem("Shopping cart", ShoppingCartView.class, LineAwesomeIcon.SHOPPING_CART_SOLID.create()));
+        nav.addItem(new SideNavItem("Wizard (WIP)", Step1View.class, LineAwesomeIcon.HAT_WIZARD_SOLID.create()));
         return nav;
     }
 

@@ -13,6 +13,7 @@ public class NotificationsDialog extends NativeDialog {
         setAriaLabel("Notifications");
         setMaxWidth(30, Unit.REM);
 
+        // TODO: Mobile positioning
         // Position
         setRight(0.5f, Unit.REM);
         setTop(3.5f, Unit.REM);

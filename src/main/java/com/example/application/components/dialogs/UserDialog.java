@@ -24,6 +24,7 @@ public class UserDialog extends NativeDialog {
         setAriaLabel("User menu");
         setWidth(16, Unit.REM);
 
+        // TODO: Mobile positioning
         // Position
         setRight(0.5f, Unit.REM);
         setTop(3.5f, Unit.REM);

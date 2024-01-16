@@ -14,6 +14,70 @@
   grid-column: 1 / -1;
 }
 
+/* Margin */
+
+.-mx-xs {
+  margin-inline: calc(var(--lumo-size-xs) / -1)
+}
+
+.-mx-s {
+  margin-inline: calc(var(--lumo-space-s) / -1)
+}
+
+.-mx-m {
+  margin-inline: calc(var(--lumo-space-m) / -1)
+}
+
+.-mx-l {
+  margin-inline: calc(var(--lumo-space-l) / -1)
+}
+
+.-mx-xl {
+  margin-inline: calc(var(--lumo-space-xl) / -1)
+}
+
+.-my-xs {
+  margin-block: calc(var(--lumo-size-xs) / -1)
+}
+
+.-my-s {
+  margin-block: calc(var(--lumo-space-s) / -1)
+}
+
+.-my-m {
+  margin-block: calc(var(--lumo-space-m) / -1)
+}
+
+.-my-l {
+  margin-block: calc(var(--lumo-space-l) / -1)
+}
+
+.-my-xl {
+  margin-block: calc(var(--lumo-space-xl) / -1)
+}
+
+/* Min height */
+
+.min-h-xs {
+  min-height: var(--lumo-size-xs);
+}
+
+.min-h-s {
+  min-height: var(--lumo-size-s);
+}
+
+.min-h-m {
+  min-height: var(--lumo-size-m);
+}
+
+.min-h-l {
+  min-height: var(--lumo-size-l);
+}
+
+.min-h-xl {
+  min-height: var(--lumo-size-xl);
+}
+
 /* Position */
 
 .-bottom-full {
