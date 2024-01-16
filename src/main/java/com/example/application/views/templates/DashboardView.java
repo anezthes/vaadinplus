@@ -73,7 +73,7 @@ public class DashboardView extends Main {
         this.layout.setGap(Gap.LARGE);
         add(this.layout);
 
-        // TODO: Add list, improve mobile experience
+        // TODO: Add list, comments, collaborative features, improve mobile experience
     }
 
     private Component createTitleDescription() {
