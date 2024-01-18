@@ -8,6 +8,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Main;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
@@ -62,8 +63,8 @@ public class WizardLayout extends Main implements RouterLayout, AfterNavigationO
     }
 
     private Component createSmallIcon(LineAwesomeIcon icon) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL);
+        SvgIcon i = icon.create();
+        i.addClassNames(IconSize.SMALL);
         return i;
     }
 

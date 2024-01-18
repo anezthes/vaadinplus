@@ -11,7 +11,8 @@ import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
 @PageTitle("Radio buttons")
 @Route(value = "radio-buttons", layout = MainLayout.class)
@@ -58,7 +59,7 @@ public class RadioButtonsView extends ComponentView {
         Span primary = new Span(item);
 
         Span secondary = new Span(LOREM_IPSUM);
-        secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        secondary.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         FlexLayout layout = new FlexLayout(primary, secondary);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);

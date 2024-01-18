@@ -7,6 +7,7 @@ import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class AppBar extends Header implements HasTheme {
 
@@ -15,10 +16,8 @@ public class AppBar extends Header implements HasTheme {
     private Layout end;
 
     public AppBar(Component... components) {
-        addClassNames(
-                LumoUtility.Background.BASE, LumoUtility.BoxSizing.BORDER, LumoUtility.Display.FLEX,
-                LumoUtility.Gap.LARGE, LumoUtility.Height.XLARGE, LumoUtility.Padding.Horizontal.MEDIUM
-        );
+        addClassNames(Background.BASE, BoxSizing.BORDER, Display.FLEX, LumoUtility.Gap.LARGE, Height.XLARGE,
+                Padding.Horizontal.MEDIUM);
         setWidthFull();
 
         this.start = new Layout();

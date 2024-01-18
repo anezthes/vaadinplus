@@ -2,12 +2,7 @@ package com.example.application.views.templates;
 
 import com.example.application.components.Header;
 import com.example.application.components.*;
-import com.example.application.themes.ButtonTheme;
-import com.example.application.themes.InputTheme;
 import com.example.application.themes.RadioButtonTheme;
-import com.example.application.utilities.FontSize;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.TextColor;
 import com.example.application.utilities.*;
 import com.example.application.views.MainLayout;
 import com.example.application.views.components.HighlightsView;
@@ -20,6 +15,7 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
@@ -30,10 +26,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
-import com.vaadin.flow.theme.lumo.LumoUtility.Display;
-import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
-import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
@@ -64,7 +56,8 @@ public class DashboardView extends Main {
                 createMarketSummary(),
                 createTransactions()
         );
-        this.layout.addClassNames(Margin.Horizontal.AUTO, MaxWidth.SCREEN_LARGE, Padding.LARGE);
+        this.layout.addClassNames(LumoUtility.Margin.Horizontal.AUTO, LumoUtility.MaxWidth.SCREEN_LARGE,
+                LumoUtility.Padding.LARGE);
         this.layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         this.layout.setGap(Gap.LARGE);
         add(this.layout);
@@ -76,7 +69,7 @@ public class DashboardView extends Main {
         H2 heading = new H2("Zoomblix data vista");
 
         Paragraph paragraph = new Paragraph("Information coalescing into kaleidoscopic insights, painting the canvas of cognition with ineffable splendor");
-        paragraph.addClassNames(Margin.Bottom.NONE, LumoUtility.TextColor.SECONDARY);
+        paragraph.addClassNames(LumoUtility.Margin.Bottom.NONE, LumoUtility.TextColor.SECONDARY);
 
         return new Div(heading, paragraph);
     }
@@ -86,7 +79,7 @@ public class DashboardView extends Main {
         group.setItems("1 day", "1 week", "1 month");
         group.setRenderer(new ComponentRenderer<>(item -> {
             Span span = new Span(item);
-            span.addClassNames(Padding.Horizontal.SMALL);
+            span.addClassNames(LumoUtility.Padding.Horizontal.SMALL);
             return span;
         }));
         group.setValue("1 day");
@@ -103,7 +96,7 @@ public class DashboardView extends Main {
 
     private Component createHighlights() {
         Highlights highlights = new Highlights();
-        highlights.addClassNames(Border.ALL, BorderRadius.LARGE, "md:divide-x");
+        highlights.addClassNames(LumoUtility.Border.ALL, LumoUtility.BorderRadius.LARGE, "md:divide-x");
 
         Highlight highlight = new Highlight(
                 createIcon(LineAwesomeIcon.CUBES_SOLID, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
@@ -133,26 +126,25 @@ public class DashboardView extends Main {
     }
 
     private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, com.example.application.utilities.TextColor textColor) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", com.example.application.utilities.IconSize.LARGE);
+        SvgIcon i = icon.create();
+        i.addClassNames(LumoUtility.IconSize.LARGE);
 
         Layout container = new Layout(i);
-        container.addClassNames(backgroundColor.getClassName(), Height.XLARGE, "rounded-full", textColor.getClassName(),
-                Width.XLARGE);
+        container.addClassNames(backgroundColor.getClassName(), LumoUtility.Height.XLARGE, "rounded-full",
+                textColor.getClassName(), LumoUtility.Width.XLARGE);
         container.setAlignItems(FlexComponent.Alignment.CENTER);
         container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         return container;
     }
 
     private RouterLink createSuffix(String label) {
-        Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        icon.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL);
+        SvgIcon icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
+        icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
-        link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM,
-                JustifyContent.CENTER, Width.MEDIUM);
+        link.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
+                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
         return link;
@@ -164,13 +156,11 @@ public class DashboardView extends Main {
 
     private Component createChartHeader() {
         Button details = new Button("Details", LineAwesomeIcon.INFO_CIRCLE_SOLID.create());
-        details.addClassNames(Padding.Horizontal.MEDIUM);
-        details.addThemeName(ButtonTheme.OUTLINE);
-        details.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        Button comments = new Button(LineAwesomeIcon.COMMENTS.create());
 
         Header header = new Header("Market summary");
-        header.setActions(details);
-        header.removeClassName(Border.BOTTOM);
+        header.setActions(details, comments);
+        header.removeClassName(LumoUtility.Border.BOTTOM);
         header.setHeadingFontSize(FontSize.XLARGE);
         return header;
     }
@@ -229,11 +219,9 @@ public class DashboardView extends Main {
 
     private Component[] getContextActions() {
         Button share = new Button("Share", LineAwesomeIcon.SHARE_SOLID.create());
-        share.addClassNames(Padding.Horizontal.MEDIUM);
         share.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         Button download = new Button("Download", LineAwesomeIcon.DOWNLOAD_SOLID.create());
-        download.addClassNames(Padding.Horizontal.MEDIUM);
         download.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         return new Component[]{share, download};
@@ -241,15 +229,11 @@ public class DashboardView extends Main {
 
     private Component[] getDefaultActions() {
         TextField search = new TextField();
-        search.addThemeName(InputTheme.OUTLINE);
         search.setAriaLabel("Search");
         search.setPlaceholder("Search");
         search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
 
         Button filter = new Button("Filter", LineAwesomeIcon.FILTER_SOLID.create());
-        filter.addClassNames(Padding.Horizontal.MEDIUM);
-        filter.addThemeName(ButtonTheme.OUTLINE);
-        filter.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         return new Component[]{search, filter};
     }
@@ -285,13 +269,13 @@ public class DashboardView extends Main {
 
     private Component renderName(DashboardItem item) {
         Image img = new Image(item.getImgUrl(), item.getName() + " logo");
-        img.addClassNames(Height.MEDIUM, Width.MEDIUM);
+        img.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
 
         Span span = new Span(item.getName());
-        span.addClassNames(FontWeight.SEMIBOLD);
+        span.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
 
         Layout layout = new Layout(img, span);
-        layout.addClassNames(Padding.Vertical.SMALL);
+        layout.addClassNames(LumoUtility.Padding.Vertical.SMALL);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
         layout.setGap(Gap.SMALL);
         return layout;

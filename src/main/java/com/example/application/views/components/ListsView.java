@@ -3,9 +3,11 @@ package com.example.application.views.components;
 import com.example.application.components.Badge;
 import com.example.application.components.Tag;
 import com.example.application.components.list.*;
-import com.example.application.utilities.*;
+import com.example.application.utilities.BackgroundColor;
+import com.example.application.utilities.BadgeVariant;
+import com.example.application.utilities.Gap;
+import com.example.application.utilities.TextColor;
 import com.example.application.views.MainLayout;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -14,10 +16,14 @@ import com.vaadin.flow.component.avatar.AvatarGroup.AvatarGroupItem;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Display;
+import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Lists")
@@ -35,18 +41,6 @@ public class ListsView extends ComponentView {
     public static final String PERSON_3 = "Mia Williams";
     public static final String PERSON_3_EMAIL = "mia.williams@company.com";
     public static final String PERSON_3_IMG = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160";
-
-    public static final String PERSON_4 = "Olivia Brown";
-    public static final String PERSON_4_EMAIL = "olivia.brown@company.com";
-
-    public static final String PERSON_5 = "Amelia Jones";
-    public static final String PERSON_5_EMAIL = "amelia.jones@company.com";
-
-    public static final String PERSON_6 = "Charlotte Miller";
-    public static final String PERSON_6_EMAIL = "charlotte.miller@company.com";
-
-    public static final String PERSON_7 = "Sophia Davis";
-    public static final String PERSON_7_EMAIL = "sophia.davis@company.com";
 
     public static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
@@ -112,13 +106,12 @@ public class ListsView extends ComponentView {
     }
 
     private RouterLink createSuffix(String label) {
-        Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        icon.getStyle().set("--_size", IconSize.SMALL);
+        SvgIcon icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
+        icon.addClassNames(IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
-        link.addClassNames(LumoUtility.Display.FLEX, LumoUtility.Padding.SMALL);
+        link.addClassNames(Display.FLEX, Padding.SMALL);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
         return link;

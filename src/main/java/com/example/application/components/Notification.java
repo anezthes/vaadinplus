@@ -2,7 +2,6 @@ package com.example.application.components;
 
 import com.example.application.utilities.BorderColor;
 import com.example.application.utilities.Gap;
-import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
@@ -11,7 +10,9 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 // TODO: Needs a new name to avoid clashing with the default.
@@ -40,21 +41,18 @@ public class Notification extends Layout implements HasTheme {
     }
 
     public Notification(String title, Component description, Type type) {
-        addClassNames(
-                "notification", LumoUtility.Background.BASE, LumoUtility.BorderRadius.MEDIUM,
-                LumoUtility.Padding.SMALL
-        );
+        addClassNames("notification", Background.BASE, BorderRadius.MEDIUM, Padding.SMALL);
         setGap(Gap.SMALL);
         setType(type);
 
         this.title = new Span(title);
-        this.title.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        this.title.addClassNames(FontWeight.SEMIBOLD);
 
         this.description = new Div(description);
-        this.description.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.description.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         this.column = new Layout(this.title, this.description);
-        this.column.addClassNames(LumoUtility.Margin.Vertical.XSMALL);
+        this.column.addClassNames(Margin.Vertical.XSMALL);
         this.column.setFlexDirection(FlexDirection.COLUMN);
 
         this.actions = new Layout();
@@ -75,9 +73,9 @@ public class Notification extends Layout implements HasTheme {
      */
     public void setBorder(boolean border) {
         if (border) {
-            addClassNames(LumoUtility.Border.ALL);
+            addClassNames(Border.ALL);
         } else {
-            removeClassNames(LumoUtility.Border.ALL);
+            removeClassNames(Border.ALL);
         }
     }
 
@@ -89,11 +87,11 @@ public class Notification extends Layout implements HasTheme {
         if (border) {
             getStyle().set("border-inline-start-style", "solid");
             getStyle().set("border-inline-start-width", "var(--lumo-space-xs)");
-            this.icon.removeClassName(LumoUtility.Margin.Start.XSMALL);
+            this.icon.removeClassName(Margin.Start.XSMALL);
         } else {
             getStyle().remove("border-inline-start-style");
             getStyle().remove("border-inline-start-width");
-            this.icon.addClassName(LumoUtility.Margin.Start.XSMALL);
+            this.icon.addClassName(Margin.Start.XSMALL);
         }
     }
 
@@ -150,14 +148,12 @@ public class Notification extends Layout implements HasTheme {
      * Sets the icon.
      */
     public void setIcon(LineAwesomeIcon icon, TextColor color) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL);
+        SvgIcon i = icon.create();
+        i.addClassNames(IconSize.SMALL);
 
         this.icon = new Layout(i);
-        this.icon.addClassNames(
-                color.getClassName(), LumoUtility.Flex.SHRINK_NONE, LumoUtility.Height.XSMALL,
-                LumoUtility.Margin.Top.XSMALL, LumoUtility.Margin.Start.XSMALL, LumoUtility.Width.XSMALL
-        );
+        this.icon.addClassNames(color.getClassName(), Flex.SHRINK_NONE, Height.XSMALL, Margin.Top.XSMALL,
+                Margin.Start.XSMALL, Width.XSMALL);
         this.icon.setAlignItems(Alignment.CENTER);
         this.icon.setJustifyContentMode(JustifyContentMode.CENTER);
     }

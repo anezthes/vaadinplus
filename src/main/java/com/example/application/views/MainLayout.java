@@ -82,7 +82,7 @@ public class MainLayout extends AppLayout {
         avatar.getElement().addEventListener("click", e -> userMenu.showModal());
         avatar.setTooltipEnabled(true);
 
-        addToNavbar(true, toggle, viewTitle, messageButton, messagesMenu, notificationsButton,
+        addToNavbar(toggle, viewTitle, messageButton, messagesMenu, notificationsButton,
                 notificationsMenu, avatar, userMenu);
     }
 

@@ -1,12 +1,11 @@
 package com.example.application.components;
 
 import com.example.application.utilities.HeadingLevel;
-import com.example.application.utilities.IconSize;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class EmptyState extends Layout {
@@ -21,7 +20,7 @@ public class EmptyState extends Layout {
     }
 
     public EmptyState(String title, HeadingLevel level, String description, String cta) {
-        addClassNames(LumoUtility.Padding.XLARGE);
+        addClassNames(Padding.XLARGE);
         setAlignItems(Alignment.CENTER);
         setFlexDirection(FlexDirection.COLUMN);
         setJustifyContentMode(JustifyContentMode.CENTER);
@@ -29,11 +28,11 @@ public class EmptyState extends Layout {
         setHeading(title, level);
 
         this.description = new Paragraph(description);
-        this.description.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY, LumoUtility.Margin.Bottom.NONE);
+        this.description.addClassNames(FontSize.SMALL, TextColor.SECONDARY, Margin.Bottom.NONE);
 
         this.button = new Button(cta, LineAwesomeIcon.PLUS_SOLID.create());
         this.button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        this.button.addClassName(LumoUtility.Margin.Top.LARGE);
+        this.button.addClassName(Margin.Top.LARGE);
 
         add(this.heading, this.description, this.button);
     }
@@ -65,15 +64,14 @@ public class EmptyState extends Layout {
             replace(this.heading, heading);
         }
         this.heading = heading;
-        this.heading.addClassNames(LumoUtility.FontSize.LARGE);
+        this.heading.addClassNames(FontSize.LARGE);
     }
 
     public void setIcon(Component icon) {
         if (this.icon != null) {
             replace(this.icon, icon);
         } else {
-            icon.addClassNames(LumoUtility.Margin.Bottom.MEDIUM, LumoUtility.TextColor.SECONDARY);
-            icon.getStyle().set("--_size", IconSize.LARGE);
+            icon.addClassNames(IconSize.LARGE, Margin.Bottom.MEDIUM, TextColor.SECONDARY);
             addComponentAsFirst(icon);
         }
         this.icon = icon;

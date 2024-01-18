@@ -5,7 +5,7 @@ import com.example.application.utilities.FontWeight;
 import com.example.application.utilities.HeadingLevel;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Background;
 
 public class GridHeader extends Header {
 
@@ -71,7 +71,7 @@ public class GridHeader extends Header {
         this.actions.removeAll();
         addActions(this.defaultActions);
         addActions(this.contextActions);
-        updateActionsVisibility(grid.getSelectedItems().size());
+        updateActionsVisibility(this.grid.getSelectedItems().size());
     }
 
     private void updateActionsVisibility(int size) {
@@ -79,14 +79,17 @@ public class GridHeader extends Header {
             setHeading(this.title);
             setHeadingFontSize(FontSize.LARGE);
             setHeadingFontWeight(FontWeight.SEMIBOLD);
-            removeClassNames(LumoUtility.Background.PRIMARY_10);
+
+            removeClassNames(Background.PRIMARY_10);
             setDefaultActionsVisible(true);
             setContextActionsVisible(false);
+
         } else {
             setHeading(size + " items selected");
             setHeadingFontSize(FontSize.MEDIUM);
             setHeadingFontWeight(FontWeight.NORMAL);
-            addClassNames(LumoUtility.Background.PRIMARY_10);
+
+            addClassNames(Background.PRIMARY_10);
             setDefaultActionsVisible(false);
             setContextActionsVisible(true);
         }

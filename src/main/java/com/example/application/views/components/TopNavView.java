@@ -5,7 +5,7 @@ import com.example.application.components.TopNavItem;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Top navigation")
@@ -13,7 +13,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class TopNavView extends ComponentView {
 
     public TopNavView() {
-        addClassNames(LumoUtility.Padding.Top.LARGE);
+        addClassNames(Padding.Top.LARGE);
         addPreview(createSideNav());
     }
 

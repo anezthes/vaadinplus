@@ -8,6 +8,7 @@ import com.example.application.utilities.*;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ItemLabelGenerator;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
@@ -100,8 +101,8 @@ public class HighlightsView extends ComponentView {
     }
 
     private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.LARGE);
+        SvgIcon i = icon.create();
+        i.addClassNames(LumoUtility.IconSize.LARGE);
 
         Layout container = new Layout(i);
         container.addClassNames(backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE,
@@ -155,8 +156,7 @@ public class HighlightsView extends ComponentView {
 
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.TextColor.SECONDARY);
-        icon.getStyle().set("--_size", IconSize.SMALL);
+        icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
@@ -219,6 +219,7 @@ public class HighlightsView extends ComponentView {
 
         RadioButtonGroup<Breakpoint> rbc = new RadioButtonGroup<>("Breakpoint", Breakpoint.values());
         rbc.addThemeVariants(RadioGroupVariant.LUMO_HELPER_ABOVE_FIELD);
+        rbc.addValueChangeListener(event -> highlights.setBreakpoint(event.getValue()));
         rbc.setHelperText("Resize the browser to see the difference");
         rbc.setItemLabelGenerator((ItemLabelGenerator<Breakpoint>) item -> {
             String label;
@@ -242,7 +243,6 @@ public class HighlightsView extends ComponentView {
             }
             return label;
         });
-        rbc.addValueChangeListener(event -> highlights.setBreakpoint(event.getValue()));
 
         return new Component[]{rbc, highlights};
     }

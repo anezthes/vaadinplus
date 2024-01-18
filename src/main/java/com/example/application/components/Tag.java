@@ -1,6 +1,5 @@
 package com.example.application.components;
 
-import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -8,7 +7,8 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.component.icon.SvgIcon;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class Tag extends Span {
@@ -18,10 +18,7 @@ public class Tag extends Span {
     private Text text;
 
     public Tag(Component prefix, String text, TextColor textColor) {
-        addClassNames(
-                LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.FontSize.SMALL,
-                LumoUtility.Gap.SMALL
-        );
+        addClassNames(AlignItems.CENTER, Display.FLEX, FontSize.SMALL, Gap.SMALL);
         setTextColor(textColor);
 
         this.prefix = new Layout();
@@ -50,8 +47,8 @@ public class Tag extends Span {
     }
 
     private static Component createIcon(LineAwesomeIcon icon) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL);
+        SvgIcon i = icon.create();
+        i.addClassNames(IconSize.SMALL);
         return i;
     }
 
@@ -64,7 +61,7 @@ public class Tag extends Span {
             for (Component component : components) {
                 if (component != null) {
                     if (component instanceof Icon) {
-                        ((Icon) component).addClassNames(LumoUtility.IconSize.SMALL);
+                        component.addClassNames(IconSize.SMALL);
                     }
                     if (component instanceof Avatar) {
                         ((Avatar) component).addThemeVariants(AvatarVariant.LUMO_XSMALL);

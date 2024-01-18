@@ -1,11 +1,10 @@
 package com.example.application.components;
 
 import com.example.application.utilities.BadgeVariant;
-import com.example.application.utilities.IconSize;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.stream.Collectors;
@@ -34,8 +33,7 @@ public class Badge extends Span implements HasTheme {
             remove(this.icon);
         }
         this.icon = icon.create();
-        this.icon.getStyle().set("--_size", IconSize.SMALL);
-        this.icon.addClassNames(LumoUtility.Margin.End.XSMALL, "-my-xs");
+        this.icon.addClassNames(Padding.XSMALL);
         addComponentAsFirst(this.icon);
     }
 

@@ -13,10 +13,12 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 public class Header extends Layout implements HasTheme {
 
     protected Layout actions;
+
     // Style
     private TextColor headingTextColor;
     private FontSize headingFontSize;
     private FontWeight headingFontWeight;
+
     // Components
     private Layout row;
     private Layout prefix;
@@ -236,10 +238,4 @@ public class Header extends Layout implements HasTheme {
         return this.column;
     }
 
-    /**
-     * Returns the row layout.
-     */
-    public Layout getRowLayout() {
-        return row;
-    }
 }

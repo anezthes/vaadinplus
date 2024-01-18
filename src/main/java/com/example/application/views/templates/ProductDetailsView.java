@@ -14,6 +14,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
@@ -21,7 +22,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -207,14 +207,14 @@ public class ProductDetailsView extends Main {
     }
 
     private Component createStar() {
-        Component star = LineAwesomeIcon.STAR_SOLID.create();
-        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL);
+        SvgIcon star = LineAwesomeIcon.STAR_SOLID.create();
+        star.addClassNames(IconSize.SMALL);
         return star;
     }
 
     private Component createHalfStar() {
-        Component star = LineAwesomeIcon.STAR_HALF_SOLID.create();
-        star.getStyle().set("--_size", com.example.application.utilities.IconSize.SMALL);
+        SvgIcon star = LineAwesomeIcon.STAR_HALF_SOLID.create();
+        star.addClassNames(IconSize.SMALL);
         return star;
     }
 
@@ -222,7 +222,7 @@ public class ProductDetailsView extends Main {
         Span primary = new Span(title);
 
         Span secondary = new Span(desc);
-        secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        secondary.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         Layout layout = new Layout(primary, secondary);
         layout.addClassNames(Padding.SMALL);

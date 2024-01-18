@@ -14,7 +14,7 @@ import com.vaadin.flow.component.menubar.MenuBarVariant;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Background;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class GridsView extends ComponentView {
         header.setContextActions(createContextMenuBar());
 
         Layout layout = new Layout(header, grid);
-        layout.addClassNames(LumoUtility.Background.BASE);
+        layout.addClassNames(Background.BASE);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         return layout;
     }

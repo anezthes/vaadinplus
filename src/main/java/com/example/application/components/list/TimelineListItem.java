@@ -3,7 +3,6 @@ package com.example.application.components.list;
 import com.example.application.components.Layout;
 import com.example.application.utilities.BackgroundColor;
 import com.example.application.utilities.BoxSizing;
-import com.example.application.utilities.IconSize;
 import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
@@ -11,8 +10,10 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class TimelineListItem extends ListItem {
@@ -38,7 +39,7 @@ public class TimelineListItem extends ListItem {
         setContent(content);
 
         this.time = new Span(time);
-        this.time.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.time.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         setPrefix(this.icon);
         setPrimary(this.content);
@@ -72,13 +73,13 @@ public class TimelineListItem extends ListItem {
         this.avatar.addThemeVariants(AvatarVariant.LUMO_XSMALL);
 
         this.author = new Span(author);
-        this.author.addClassNames(LumoUtility.FontWeight.SEMIBOLD, LumoUtility.TextColor.BODY);
+        this.author.addClassNames(FontWeight.SEMIBOLD, LumoUtility.TextColor.BODY);
 
         this.activity = new Span(activity);
         this.activity.addClassNames(LumoUtility.TextColor.SECONDARY);
 
         this.time = new Span(time);
-        this.time.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.time.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         setPrefix(this.icon);
         setPrimary(this.avatar, new Span(this.author, this.activity));
@@ -86,13 +87,13 @@ public class TimelineListItem extends ListItem {
     }
 
     public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
-        Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL);
+        SvgIcon i = icon.create();
+        i.addClassNames(IconSize.SMALL);
 
         this.icon = new Layout(i);
         this.icon.addClassNames(
-                background.getClassName(), LumoUtility.Border.ALL, LumoUtility.BorderColor.CONTRAST_30,
-                color.getClassName(), LumoUtility.Height.MEDIUM, "rounded-full", LumoUtility.Width.MEDIUM
+                background.getClassName(), Border.ALL, BorderColor.CONTRAST_30,
+                color.getClassName(), Height.MEDIUM, "rounded-full", Width.MEDIUM
         );
         this.icon.setAlignItems(FlexComponent.Alignment.CENTER);
         this.icon.setBoxSizing(BoxSizing.BORDER);
@@ -100,10 +101,10 @@ public class TimelineListItem extends ListItem {
     }
 
     public void setContent(String content) {
-        this.content = new Html("<span class='" + LumoUtility.TextColor.SECONDARY + "'>" +
+        this.content = new Html("<span class='" + TextColor.SECONDARY + "'>" +
                 content
-                        .replace("<b>", "<span class='" + LumoUtility.FontWeight.SEMIBOLD +
-                                " " + LumoUtility.TextColor.BODY + "'>")
+                        .replace("<b>", "<span class='" + FontWeight.SEMIBOLD +
+                                " " + TextColor.BODY + "'>")
                         .replace("</b>", "</span>")
                 + "</span>"
         );

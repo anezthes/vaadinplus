@@ -5,14 +5,14 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Display;
 
 public class BreadcrumbItem extends ListItem implements AfterNavigationObserver {
 
     private RouterLink link;
 
     public BreadcrumbItem(String text, Class<? extends Component> navigationTarget) {
-        addClassNames(LumoUtility.Display.FLEX);
+        addClassNames(Display.FLEX);
 
         this.link = new RouterLink(text, navigationTarget);
         add(this.link);

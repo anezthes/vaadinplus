@@ -5,18 +5,18 @@ import com.example.application.components.Header;
 import com.example.application.components.Tag;
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.HeadingLevel;
-import com.example.application.utilities.IconSize;
 import com.example.application.views.MainLayout;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Headers")
@@ -117,15 +117,12 @@ public class HeadersView extends ComponentView {
     }
 
     private RouterLink createBackButton() {
-        Component icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
-        icon.getStyle().set("--_size", IconSize.MEDIUM);
+        SvgIcon icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
+        icon.addClassNames(IconSize.MEDIUM);
 
         RouterLink link = new RouterLink("", HomeView.class);
-        link.addClassNames(
-                LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
-                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM
-        );
         link.add(icon);
+        link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER, Width.MEDIUM);
         link.getElement().setAttribute("aria-label", "Home");
         link.getElement().setAttribute("title", "Home");
         return link;
@@ -135,7 +132,7 @@ public class HeadersView extends ComponentView {
         Avatar avatar = new Avatar("John Smith");
 
         Span details = new Span("john.smith@company.com");
-        details.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        details.addClassNames(LumoUtility.FontSize.SMALL, TextColor.SECONDARY);
 
         Button button = new Button("Edit", LineAwesomeIcon.EDIT.create());
 

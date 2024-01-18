@@ -2,15 +2,14 @@ package com.example.application.views.components;
 
 import com.example.application.components.Layout;
 import com.example.application.utilities.Gap;
-import com.example.application.utilities.IconSize;
 import com.example.application.utilities.LineClamp;
 import com.example.application.views.MainLayout;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -60,9 +59,8 @@ public class NotificationsView extends ComponentView {
     }
 
     private Notification createNotificationWithIconDescription() {
-        Component icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
-        icon.addClassNames(TextColor.SUCCESS);
-        icon.getStyle().set("--_size", IconSize.SMALL);
+        SvgIcon icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
+        icon.addClassNames(IconSize.SMALL, TextColor.SUCCESS);
 
         Span title = new Span("Lorem ipsum");
         title.addClassNames(FontSize.SMALL, FontWeight.SEMIBOLD);
@@ -96,9 +94,8 @@ public class NotificationsView extends ComponentView {
     }
 
     private Notification createNotificationWithIconDescriptionActions() {
-        Component icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
-        icon.addClassNames(TextColor.SUCCESS);
-        icon.getStyle().set("--_size", IconSize.SMALL);
+        SvgIcon icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
+        icon.addClassNames(IconSize.SMALL, TextColor.SUCCESS);
 
         Span title = new Span("Lorem ipsum");
         title.addClassNames(FontSize.SMALL, FontWeight.SEMIBOLD);

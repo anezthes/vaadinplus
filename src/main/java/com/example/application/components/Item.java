@@ -1,10 +1,10 @@
 package com.example.application.components;
 
 import com.example.application.utilities.Gap;
-import com.example.application.utilities.IconSize;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 /**
@@ -16,9 +16,9 @@ public class Item extends Layout {
         setAlignItems(FlexComponent.Alignment.CENTER);
         setGap(Gap.SMALL);
 
-        Component i = icon.create();
-        i.getStyle().set("--_size", IconSize.SMALL);
-        add(i, new Text(text));
+        SvgIcon svgIcon = icon.create();
+        svgIcon.addClassNames(IconSize.SMALL);
+        add(svgIcon, new Text(text));
     }
 
 }

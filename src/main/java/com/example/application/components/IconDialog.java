@@ -1,15 +1,19 @@
 package com.example.application.components;
 
-import com.example.application.utilities.*;
-import com.vaadin.flow.component.Component;
+import com.example.application.utilities.BackgroundColor;
+import com.example.application.utilities.Gap;
+import com.example.application.utilities.Size;
+import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class IconDialog extends Dialog {
@@ -18,7 +22,7 @@ public class IconDialog extends Dialog {
     private Layout iconLayout;
     private BackgroundColor iconBackgroundColor;
     private TextColor iconTextColor;
-    private Component icon;
+    private SvgIcon icon;
     private Layout textLayout;
     private H2 title;
     private Span message;
@@ -28,16 +32,16 @@ public class IconDialog extends Dialog {
         this.icon = icon.create();
 
         this.iconLayout = new Layout(this.icon);
-        this.iconLayout.addClassNames(LumoUtility.Flex.SHRINK_NONE, "rounded-full");
+        this.iconLayout.addClassNames(Flex.SHRINK_NONE, "rounded-full");
         this.iconLayout.setAlignItems(FlexComponent.Alignment.CENTER);
         this.iconLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         // Text
         this.title = new H2(title);
-        this.title.addClassNames(LumoUtility.FontSize.MEDIUM);
+        this.title.addClassNames(FontSize.MEDIUM);
 
         this.message = new Span(message);
-        this.message.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.message.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
 
         this.textLayout = new Layout(this.title, this.message);
         this.textLayout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
@@ -93,14 +97,14 @@ public class IconDialog extends Dialog {
         switch (position) {
             case START:
                 setIconSize(Size.MEDIUM);
-                this.textLayout.removeClassNames(LumoUtility.TextAlignment.CENTER);
+                this.textLayout.removeClassNames(TextAlignment.CENTER);
                 this.layout.setAlignItems(FlexComponent.Alignment.START);
                 this.layout.setFlexDirection(FlexLayout.FlexDirection.ROW);
                 this.layout.setGap(Gap.MEDIUM);
                 break;
             case TOP:
                 setIconSize(Size.LARGE);
-                this.textLayout.addClassNames(LumoUtility.TextAlignment.CENTER);
+                this.textLayout.addClassNames(TextAlignment.CENTER);
                 this.layout.setAlignItems(FlexComponent.Alignment.CENTER);
                 this.layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
                 this.layout.setGap(Gap.LARGE);
@@ -110,14 +114,14 @@ public class IconDialog extends Dialog {
 
     private void setIconSize(String size) {
         if (size.equals(Size.MEDIUM)) {
-            this.icon.getStyle().set("--_size", IconSize.SMALL);
-            this.iconLayout.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
-            this.iconLayout.removeClassNames(LumoUtility.Height.LARGE, LumoUtility.Width.LARGE);
+            this.icon.addClassNames(IconSize.SMALL);
+            this.iconLayout.addClassNames(Height.MEDIUM, Width.MEDIUM);
+            this.iconLayout.removeClassNames(Height.LARGE, Width.LARGE);
 
         } else if (size.equals(Size.LARGE)) {
-            this.icon.getStyle().set("--_size", IconSize.MEDIUM);
-            this.iconLayout.addClassNames(LumoUtility.Height.LARGE, LumoUtility.Width.LARGE);
-            this.iconLayout.removeClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
+            this.icon.addClassNames(IconSize.MEDIUM);
+            this.iconLayout.addClassNames(Height.LARGE, Width.LARGE);
+            this.iconLayout.removeClassNames(Height.MEDIUM, Width.MEDIUM);
         }
     }
 
