@@ -2,16 +2,17 @@ package com.example.application.components;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasEnabled;
+import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-public class Sidebar extends Section implements HasEnabled {
+public class Sidebar extends Section implements HasEnabled, HasTheme {
 
     private Header header;
     private H2 title;
@@ -23,12 +24,13 @@ public class Sidebar extends Section implements HasEnabled {
     private Button save;
     private Button cancel;
 
+    public Sidebar(String title, Component... components) {
+        this(title, null, components);
+    }
+
     public Sidebar(String title, String description, Component... components) {
-        addClassNames(
-                LumoUtility.Background.BASE, LumoUtility.BoxShadow.MEDIUM, LumoUtility.Display.FLEX,
-                LumoUtility.FlexDirection.COLUMN, LumoUtility.Overflow.HIDDEN, LumoUtility.Position.FIXED,
-                "bottom-0", "top-0", "transition-all", "z-10"
-        );
+        addClassNames(Background.BASE, BoxShadow.MEDIUM, Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN,
+                Position.FIXED, "bottom-0", "top-0", "transition-all", "z-10");
         setMaxWidth(100, Unit.PERCENTAGE);
         setWidth(480, Unit.PIXELS);
 
@@ -41,36 +43,38 @@ public class Sidebar extends Section implements HasEnabled {
 
     private void createHeader(String title, String description) {
         this.title = new H2(title);
-        this.title.addClassNames(LumoUtility.FontSize.XLARGE);
+        this.title.addClassNames(FontSize.XLARGE);
 
-        this.description = new Span(description);
-        this.description.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
-
-        FlexLayout layout = new FlexLayout(this.title, this.description);
-        layout.addClassNames(LumoUtility.Gap.SMALL);
+        Layout layout = new Layout(this.title);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setGap(com.example.application.utilities.Gap.SMALL);
+
+        if (description != null) {
+            this.description = new Span(description);
+            this.description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
+            layout.add(this.description);
+        }
 
         Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create(), e -> close());
-        close.addClassNames(LumoUtility.Margin.NONE);
+        close.addClassNames(Margin.NONE);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close sidebar");
         close.setTooltipText("Close sidebar");
 
         this.header = new Header(layout, close);
-        this.header.addClassNames(
-                LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10, LumoUtility.Display.FLEX,
-                LumoUtility.JustifyContent.BETWEEN, LumoUtility.Padding.End.MEDIUM, LumoUtility.Padding.Start.LARGE,
-                LumoUtility.Padding.Vertical.MEDIUM
-        );
+        this.header.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Display.FLEX, JustifyContent.BETWEEN,
+                Padding.End.MEDIUM, Padding.Start.LARGE, Padding.Vertical.MEDIUM);
+
+        if (description == null) {
+            this.header.addClassNames(AlignItems.CENTER);
+        }
+
         add(this.header);
     }
 
     private void createContent(Component... components) {
         this.content = new FlexLayout(components);
-        this.content.addClassNames(
-                LumoUtility.Flex.GROW, LumoUtility.Padding.Bottom.MEDIUM, LumoUtility.Padding.Horizontal.LARGE,
-                LumoUtility.Padding.Top.SMALL
-        );
+        this.content.addClassNames(Flex.GROW, Padding.Bottom.MEDIUM, Padding.Horizontal.LARGE, Padding.Top.SMALL);
         this.content.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         add(this.content);
     }
@@ -82,10 +86,8 @@ public class Sidebar extends Section implements HasEnabled {
         this.cancel = new Button("Cancel");
 
         this.footer = new Footer(this.cancel, this.save);
-        this.footer.addClassNames(
-                LumoUtility.Background.CONTRAST_5, LumoUtility.Display.FLEX, LumoUtility.Gap.SMALL,
-                LumoUtility.JustifyContent.END, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL
-        );
+        this.footer.addClassNames(Background.CONTRAST_5, Display.FLEX, Gap.SMALL, JustifyContent.END,
+                Padding.Horizontal.MEDIUM, Padding.Vertical.SMALL);
         add(this.footer);
     }
 
@@ -101,11 +103,15 @@ public class Sidebar extends Section implements HasEnabled {
         setEnabled(true);
     }
 
-    public void addHeaderTheme(String theme) {
+    public void addHeaderThemeName(String theme) {
         this.header.getElement().getThemeList().add(theme);
     }
 
-    public void removeHeaderTheme(String theme) {
+    public void removeHeaderThemeName(String theme) {
         this.header.getElement().getThemeList().remove(theme);
+    }
+
+    public Footer getFooter() {
+        return footer;
     }
 }

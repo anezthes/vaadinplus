@@ -4,7 +4,7 @@ import com.example.application.utilities.HeadingLevel;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -38,28 +38,7 @@ public class EmptyState extends Layout {
     }
 
     public void setHeading(String title, HeadingLevel level) {
-        Component heading;
-        switch (level) {
-            case H1:
-                heading = new H1(title);
-                break;
-            case H2:
-            default:
-                heading = new H2(title);
-                break;
-            case H3:
-                heading = new H3(title);
-                break;
-            case H4:
-                heading = new H4(title);
-                break;
-            case H5:
-                heading = new H5(title);
-                break;
-            case H6:
-                heading = new H6(title);
-                break;
-        }
+        Component heading = level.getComponent(title);
         if (this.heading != null) {
             replace(this.heading, heading);
         }

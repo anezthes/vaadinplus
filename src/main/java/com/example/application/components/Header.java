@@ -3,7 +3,6 @@ package com.example.application.components;
 import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
-import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -108,28 +107,7 @@ public class Header extends Layout implements HasTheme {
      * Sets the heading text & level.
      */
     public void setHeading(String title, HeadingLevel level) {
-        Component heading;
-        switch (level) {
-            case H1:
-                heading = new H1(title);
-                break;
-            case H2:
-            default:
-                heading = new H2(title);
-                break;
-            case H3:
-                heading = new H3(title);
-                break;
-            case H4:
-                heading = new H4(title);
-                break;
-            case H5:
-                heading = new H5(title);
-                break;
-            case H6:
-                heading = new H6(title);
-                break;
-        }
+        Component heading = level.getComponent(title);
         if (this.heading != null) {
             this.column.replace(this.heading, heading);
         }
@@ -138,17 +116,6 @@ public class Header extends Layout implements HasTheme {
 
     public void setHeading(String title) {
         this.heading.getElement().setText(title);
-    }
-
-    /**
-     * Sets the heading's text color.
-     */
-    public void setHeadingTextColor(TextColor textColor) {
-        if (this.headingTextColor != null) {
-            this.heading.removeClassName(this.headingTextColor.getClassName());
-        }
-        this.heading.addClassNames(textColor.getClassName());
-        this.headingTextColor = textColor;
     }
 
     /**
@@ -172,6 +139,25 @@ public class Header extends Layout implements HasTheme {
         this.heading.addClassNames(fontWeight.getClassName());
         this.headingFontWeight = fontWeight;
     }
+
+    /**
+     * Sets the heading id.
+     */
+    public void setHeadingId(String id) {
+        this.heading.setId(id);
+    }
+
+    /**
+     * Sets the heading's text color.
+     */
+    public void setHeadingTextColor(TextColor textColor) {
+        if (this.headingTextColor != null) {
+            this.heading.removeClassName(this.headingTextColor.getClassName());
+        }
+        this.heading.addClassNames(textColor.getClassName());
+        this.headingTextColor = textColor;
+    }
+
 
     /**
      * Sets the details.

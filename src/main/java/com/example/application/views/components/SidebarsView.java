@@ -33,9 +33,9 @@ public class SidebarsView extends ComponentView {
         mode.addValueChangeListener(e -> getChildren().forEach(component -> {
             if (component instanceof Sidebar) {
                 if (e.getValue().equals("Dark")) {
-                    ((Sidebar) component).addHeaderTheme(Lumo.DARK);
+                    ((Sidebar) component).addHeaderThemeName(Lumo.DARK);
                 } else {
-                    ((Sidebar) component).removeHeaderTheme(Lumo.DARK);
+                    ((Sidebar) component).removeHeaderThemeName(Lumo.DARK);
                 }
             }
         }));

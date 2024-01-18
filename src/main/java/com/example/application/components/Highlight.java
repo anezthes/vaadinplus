@@ -2,9 +2,10 @@ package com.example.application.components;
 
 import com.example.application.utilities.FontSize;
 import com.example.application.utilities.Gap;
+import com.example.application.utilities.HeadingLevel;
 import com.example.application.utilities.Position;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
@@ -18,24 +19,24 @@ public class Highlight extends Layout {
     // Components
     private Layout prefix;
     private Layout column;
-    private Component label;
+    private Component heading;
     private Component value;
     private Layout details;
     private Layout suffix;
 
-    public Highlight(String label, String value) {
-        this(null, label, value, null);
+    public Highlight(String heading, String value) {
+        this(null, heading, value, null);
     }
 
-    public Highlight(Component prefix, String label, String value) {
-        this(prefix, label, value, null);
+    public Highlight(Component prefix, String heading, String value) {
+        this(prefix, heading, value, null);
     }
 
-    public Highlight(String label, String value, Component suffix) {
-        this(null, label, value, suffix);
+    public Highlight(String heading, String value, Component suffix) {
+        this(null, heading, value, suffix);
     }
 
-    public Highlight(Component prefix, String label, String value, Component suffix) {
+    public Highlight(Component prefix, String heading, String value, Component suffix) {
         addClassNames(LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM,
                 LumoUtility.Padding.Vertical.SMALL);
         setAlignItems(FlexComponent.Alignment.CENTER);
@@ -45,11 +46,12 @@ public class Highlight extends Layout {
         this.prefix = new Layout();
         setPrefix(prefix);
 
-        this.label = new Span(label);
-        ((HasStyle) this.label).addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.heading = new H3(heading);
+        this.heading.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.NORMAL,
+                LumoUtility.TextColor.SECONDARY);
 
         this.value = new Span(value);
-        ((HasStyle) this.value).addClassNames(LumoUtility.FontWeight.MEDIUM);
+        this.value.addClassNames(LumoUtility.FontWeight.MEDIUM);
         setValueFontSize(FontSize.XLARGE);
 
         this.details = new Layout();
@@ -57,7 +59,7 @@ public class Highlight extends Layout {
         this.details.setGap(Gap.SMALL);
         setDetails(null);
 
-        this.column = new Layout(this.label, this.value, this.details);
+        this.column = new Layout(this.heading, this.value, this.details);
         this.column.addClassNames(LumoUtility.Padding.Vertical.XSMALL);
         this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         this.column.setFlexGrow(1, this.column);
@@ -84,13 +86,36 @@ public class Highlight extends Layout {
     }
 
     /**
+     * Sets the label.
+     */
+    public void setHeading(String heading) {
+        this.heading.getElement().setText(heading);
+    }
+
+    public void setHeadingLevel(HeadingLevel level) {
+        Component heading = level.getComponent(this.heading.getElement().getText());
+        if (this.heading != null) {
+            replace(this.heading, heading);
+        }
+        this.heading = heading;
+        this.heading.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+    }
+
+    /**
+     * Sets the value.
+     */
+    public void setValue(String value) {
+        this.value.getElement().setText(value);
+    }
+
+    /**
      * Sets the value's font size.
      */
     public void setValueFontSize(FontSize fontSize) {
         if (this.valueFontSize != null) {
-            ((HasStyle) this.value).removeClassName(this.valueFontSize.getClassName());
+            this.value.removeClassName(this.valueFontSize.getClassName());
         }
-        ((HasStyle) this.value).addClassNames(fontSize.getClassName());
+        this.value.addClassNames(fontSize.getClassName());
         this.valueFontSize = fontSize;
     }
 

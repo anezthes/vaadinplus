@@ -2,7 +2,6 @@ package com.example.application.components;
 
 import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 
 import java.util.HashMap;
@@ -16,7 +15,7 @@ public class Layout extends FlexLayout {
     private com.example.application.utilities.FlexDirection flexDirection;
     private GridColumns gridColumns;
     private HashMap<Breakpoint, GridColumns> responsiveGridColumns;
-    private HashMap<HasStyle, GridColumnSpan> gridColumnSpans;
+    private HashMap<Component, GridColumnSpan> gridColumnSpans;
     private ColumnGap colGap;
     private RowGap rowGap;
     private LineClamp lineClamp;
@@ -110,8 +109,8 @@ public class Layout extends FlexLayout {
         this.responsiveGridColumns.put(breakpoint, gridColumns);
     }
 
-    public void setGridColumnSpan(GridColumnSpan gridColumnSpan, HasStyle... components) {
-        for (HasStyle component : components) {
+    public void setGridColumnSpan(GridColumnSpan gridColumnSpan, Component... components) {
+        for (Component component : components) {
             if (this.gridColumnSpans.get(component) != null) {
                 component.removeClassName(this.gridColumnSpans.get(component).getClassName());
             }

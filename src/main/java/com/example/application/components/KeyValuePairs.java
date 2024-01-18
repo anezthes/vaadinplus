@@ -4,7 +4,7 @@ import com.example.application.utilities.BackgroundColor;
 import com.example.application.utilities.Breakpoint;
 import com.example.application.utilities.GridColumnSpan;
 import com.example.application.utilities.GridColumns;
-import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.html.DescriptionList;
@@ -18,7 +18,7 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
     public static final String STRIPES = "stripes";
 
     private GridColumns columns;
-    private HashMap<HasStyle, GridColumnSpan> columnSpans;
+    private HashMap<Component, GridColumnSpan> columnSpans;
     private KeyValuePair[] pairs;
 
     private BackgroundColor backgroundColor;
@@ -84,8 +84,8 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
     /**
      * Sets the column span for the given components.
      */
-    public void setColumnSpan(GridColumnSpan columnSpan, HasStyle... components) {
-        for (HasStyle component : components) {
+    public void setColumnSpan(GridColumnSpan columnSpan, Component... components) {
+        for (Component component : components) {
             if (this.columnSpans.get(component) != null) {
                 component.removeClassName(this.columnSpans.get(component).getClassName());
             }

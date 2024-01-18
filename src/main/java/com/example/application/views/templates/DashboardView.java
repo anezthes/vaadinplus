@@ -25,6 +25,7 @@ import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -37,6 +38,11 @@ import java.util.Locale;
 @Route(value = "dashboard", layout = MainLayout.class)
 public class DashboardView extends Main {
 
+    public static final String ARIA_LABEL = "aria-label";
+    public static final String ARIA_LABELLEDBY = "aria-labelledby";
+    public static final String STATISTICS_ID = "statistics";
+    public static final String MARKET_SUMMARY_ID = "market-summary";
+    public static final String TRANSACTIONS_ID = "transactions";
     public static final String ORDERS = "Orders";
     public static final String ORDERS_VALUE = "42,719";
     public static final String ORDERS_CHANGE = "16.38%";
@@ -47,6 +53,7 @@ public class DashboardView extends Main {
     public static final String VISITORS_VALUE = "62,806";
     public static final String VISITORS_CHANGE = "13.35%";
     private Layout layout;
+    private Sidebar chartSidebar;
 
     public DashboardView() {
         this.layout = new Layout(
@@ -122,7 +129,9 @@ public class DashboardView extends Main {
         highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, TextColor.SUCCESS));
         highlights.add(highlight);
 
-        return highlights;
+        Section section = new Section(highlights);
+        section.getElement().setAttribute(ARIA_LABEL, STATISTICS_ID);
+        return section;
     }
 
     private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, com.example.application.utilities.TextColor textColor) {
@@ -151,18 +160,36 @@ public class DashboardView extends Main {
     }
 
     private Component createMarketSummary() {
-        return new Div(createChartHeader(), createChart());
+        Section section = new Section(createChartHeader(), createChartSidebar(), createChart());
+        section.getElement().setAttribute(ARIA_LABELLEDBY, MARKET_SUMMARY_ID);
+        return section;
     }
 
     private Component createChartHeader() {
         Button details = new Button("Details", LineAwesomeIcon.INFO_CIRCLE_SOLID.create());
-        Button comments = new Button(LineAwesomeIcon.COMMENTS.create());
+
+        Badge commentsBadge = new Badge();
+        commentsBadge.addClassNames("end-xs", LumoUtility.Position.ABSOLUTE, "top-xs");
+        commentsBadge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
+
+        Button comments = new Button(LineAwesomeIcon.COMMENT_ALT.create(), e -> this.chartSidebar.open());
+        comments.setAriaLabel("View comments (4)");
+        comments.setSuffixComponent(commentsBadge);
+        comments.setTooltipText("View comments (4)");
 
         Header header = new Header("Market summary");
         header.setActions(details, comments);
-        header.removeClassName(LumoUtility.Border.BOTTOM);
         header.setHeadingFontSize(FontSize.XLARGE);
+        header.setHeadingId(MARKET_SUMMARY_ID);
+        header.removeClassName(LumoUtility.Border.BOTTOM);
         return header;
+    }
+
+    private Component createChartSidebar() {
+        this.chartSidebar = new Sidebar("Comments (4)");
+        this.chartSidebar.addThemeName(Lumo.DARK);
+        this.chartSidebar.getFooter().setVisible(false);
+        return this.chartSidebar;
     }
 
     private Component createChart() {
@@ -207,13 +234,16 @@ public class DashboardView extends Main {
         Grid<DashboardItem> grid = createGrid();
         header.setGrid(grid);
 
-        return new Div(header, grid);
+        Section section = new Section(header, grid);
+        section.getElement().setAttribute(ARIA_LABELLEDBY, TRANSACTIONS_ID);
+        return section;
     }
 
     private GridHeader createGridHeader() {
         GridHeader header = new GridHeader("Transactions (8)", createGrid());
         header.setContextActions(getContextActions());
         header.setDefaultActions(getDefaultActions());
+        header.setHeadingId(TRANSACTIONS_ID);
         return header;
     }
 
@@ -233,9 +263,13 @@ public class DashboardView extends Main {
         search.setPlaceholder("Search");
         search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
 
-        Button filter = new Button("Filter", LineAwesomeIcon.FILTER_SOLID.create());
+        Badge filtersBadge = new Badge("2");
+        filtersBadge.addThemeVariants(BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
-        return new Component[]{search, filter};
+        Button filters = new Button("Filters");
+        filters.setSuffixComponent(filtersBadge);
+
+        return new Component[]{search, filters};
     }
 
     private Grid<DashboardItem> createGrid() {
