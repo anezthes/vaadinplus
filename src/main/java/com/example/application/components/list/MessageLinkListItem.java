@@ -1,5 +1,7 @@
 package com.example.application.components.list;
 
+import com.example.application.utilities.LineClamp;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -8,23 +10,13 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class MessageListItem extends ListItem {
+public class MessageLinkListItem extends RouterLinkListItem {
 
-    private Avatar avatar;
     private Span name;
     private Span time;
 
-    public MessageListItem(String src, String name, String message, LocalDateTime dateTime) {
-        this(name, message, dateTime);
-        this.avatar.setImage(src);
-    }
-
-    public MessageListItem(String name, String message, LocalDateTime dateTime) {
-        removeClassName(LumoUtility.AlignItems.CENTER);
-
-        this.avatar = new Avatar(name);
-        this.avatar.addClassNames(LumoUtility.Margin.Top.XSMALL);
-        setPrefix(this.avatar);
+    public MessageLinkListItem(String name, String message, LocalDateTime dateTime, Class<? extends Component> navigationTarget) {
+        setPrefix(new Avatar(name));
 
         this.name = new Span(name);
         this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
@@ -38,6 +30,9 @@ public class MessageListItem extends ListItem {
 
         setSecondary(message);
         this.secondary.removeClassName(LumoUtility.TextColor.SECONDARY);
+        this.secondary.setLineClamp(LineClamp.LINE_CLAMP_2);
+
+        setRoute(navigationTarget);
     }
 
     public static String formatTimeAgo(LocalDateTime dateTime) {

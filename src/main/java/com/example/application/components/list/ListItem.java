@@ -15,7 +15,6 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     protected FlexDirection flexDirection;
     protected ColumnGap colGap;
     protected RowGap rowGap;
-    protected LineClamp secondaryLineClamp;
 
     // Components
     protected Layout prefix;

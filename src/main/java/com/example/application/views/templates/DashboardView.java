@@ -2,6 +2,8 @@ package com.example.application.views.templates;
 
 import com.example.application.components.Header;
 import com.example.application.components.*;
+import com.example.application.components.list.List;
+import com.example.application.components.list.MessageListItem;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.utilities.*;
 import com.example.application.views.MainLayout;
@@ -30,6 +32,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -52,6 +55,11 @@ public class DashboardView extends Main {
     public static final String VISITORS = "Visitors";
     public static final String VISITORS_VALUE = "62,806";
     public static final String VISITORS_CHANGE = "13.35%";
+
+    public static final String PERSON_1_IMG = "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=160";
+    public static final String PERSON_2_IMG = "https://images.unsplash.com/photo-1553514029-1318c9127859?w=160";
+    public static final String PERSON_3_IMG = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160";
+
     private Layout layout;
     private Sidebar chartSidebar;
 
@@ -186,10 +194,32 @@ public class DashboardView extends Main {
     }
 
     private Component createChartSidebar() {
-        this.chartSidebar = new Sidebar("Comments (4)");
+        this.chartSidebar = new Sidebar("Comments (4)", createChartSidebarContent());
         this.chartSidebar.addThemeName(Lumo.DARK);
+
+        // Remove the content padding
+        // TODO: API? Variant?
+        this.chartSidebar.getContent().removeClassNames(LumoUtility.Padding.Bottom.MEDIUM,
+                LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Top.SMALL);
+
+        // Hide the footer
+        // TODO: Footer component? Should it be added by default?
         this.chartSidebar.getFooter().setVisible(false);
         return this.chartSidebar;
+    }
+
+    private List createChartSidebarContent() {
+        List list = new List(
+                new MessageListItem(PERSON_1_IMG, "Sarah Anderson", "Impressive market resilience reflected in this chart! Positive trends across sectors indicate a robust and promising outlook.",
+                        LocalDateTime.now().minusMinutes(12)),
+                new MessageListItem(PERSON_2_IMG, "Daniella Parker", "The upward trajectory showcased in the market summary is truly encouraging, signaling strength and stability for investors.",
+                        LocalDateTime.now().minusMinutes(36)),
+                new MessageListItem(PERSON_3_IMG, "Rachel Hughes", "Noteworthy performance across the board! This market summary paints a picture of growth and opportunity for savvy investors.",
+                        LocalDateTime.now().minusMinutes(42)),
+                new MessageListItem("Andrew Murphy", "A stellar representation of market dynamics! The positive indicators are a testament to the thriving conditions within the market.",
+                        LocalDateTime.now().minusMinutes(56))
+        );
+        return list;
     }
 
     private Component createChart() {

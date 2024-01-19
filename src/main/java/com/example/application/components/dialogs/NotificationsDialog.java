@@ -1,7 +1,7 @@
 package com.example.application.components.dialogs;
 
 import com.example.application.components.list.List;
-import com.example.application.components.list.MessageListItem;
+import com.example.application.components.list.MessageLinkListItem;
 import com.example.application.views.components.HomeView;
 import com.vaadin.flow.component.Unit;
 
@@ -20,9 +20,9 @@ public class NotificationsDialog extends NativeDialog {
 
         // Links
         List list = new List(
-                new MessageListItem("Sam Rivers", "tagged you in Project Horizon",
+                new MessageLinkListItem("Sam Rivers", "tagged you in Project Horizon",
                         LocalDateTime.now().minusHours(2), HomeView.class),
-                new MessageListItem("Marcus Peters", "commented on Eclipse Estimates Q1",
+                new MessageLinkListItem("Marcus Peters", "commented on Eclipse Estimates Q1",
                         LocalDateTime.now().minusHours(4), HomeView.class)
         );
         add(list);

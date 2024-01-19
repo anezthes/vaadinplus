@@ -91,6 +91,7 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
         add(this.footer);
     }
 
+    // TODO: Refocus the component that opened the sidebar after closing
     public void close() {
         addClassNames("-end-full");
         removeClassName("end-0");
@@ -111,7 +112,11 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
         this.header.getElement().getThemeList().remove(theme);
     }
 
+    public FlexLayout getContent() {
+        return this.content;
+    }
+
     public Footer getFooter() {
-        return footer;
+        return this.footer;
     }
 }
