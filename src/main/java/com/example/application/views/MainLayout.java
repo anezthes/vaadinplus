@@ -132,6 +132,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Product list", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
         nav.addItem(new SideNavItem("Shopping cart", ShoppingCartView.class, LineAwesomeIcon.SHOPPING_CART_SOLID.create()));
+        nav.addItem(new SideNavItem("Validation Form", ValidationView.class, LineAwesomeIcon.CHECK_CIRCLE.create()));
         nav.addItem(new SideNavItem("Wizard (WIP)", Step1View.class, LineAwesomeIcon.HAT_WIZARD_SOLID.create()));
         return nav;
     }
