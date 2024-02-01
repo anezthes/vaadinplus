@@ -6,7 +6,7 @@ import com.example.application.utilities.GridColumnSpan;
 import com.example.application.utilities.GridColumns;
 import com.example.application.views.MainLayout;
 import com.example.application.views.templates.validation.ContactBean;
-import com.example.application.views.templates.validation.ErrorMessages;
+import com.example.application.views.templates.validation.ErrorSummary;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.button.Button;
@@ -79,6 +79,7 @@ public class ValidationView extends Main {
         this.submit.addClassNames(Margin.Top.LARGE);
         this.submit.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
+        // Set IDs
         for (Component component : new Component[]{this.address, this.city, this.state, this.zip, phone, this.email}) {
             component.setId(formatId(((HasLabel) component).getLabel()));
         }
@@ -90,6 +91,7 @@ public class ValidationView extends Main {
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         layout.setGridColumns(GridColumns.COLUMNS_4);
 
+        // Column spans
         layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, this.city, this.phone, this.email);
         layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, this.errorSummary, this.address);
 
@@ -144,7 +146,7 @@ public class ValidationView extends Main {
 
         } else {
             // Display the error message
-            Optional<ErrorMessages> errorNotification = ErrorMessages.createErrorNotification(validationStatus);
+            Optional<ErrorSummary> errorNotification = ErrorSummary.createErrorNotification(validationStatus);
             errorNotification.ifPresentOrElse(notification -> {
                 this.errorSummary.add(notification);
                 this.errorSummary.setVisible(true);
