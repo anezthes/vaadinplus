@@ -33,8 +33,8 @@ import java.util.Locale;
 public class CheckoutView extends Main {
 
     public CheckoutView() {
-        addClassNames(Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Medium.ROW, Margin.Horizontal.AUTO,
-                MaxWidth.SCREEN_LARGE);
+        addClassNames(BoxSizing.BORDER, Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Medium.ROW,
+                Margin.Horizontal.AUTO, MaxWidth.SCREEN_LARGE);
         add(createForm(), createSummary());
     }
 

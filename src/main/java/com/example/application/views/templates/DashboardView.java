@@ -71,8 +71,8 @@ public class DashboardView extends Main {
                 createMarketSummary(),
                 createTransactions()
         );
-        this.layout.addClassNames(LumoUtility.Margin.Horizontal.AUTO, LumoUtility.MaxWidth.SCREEN_LARGE,
-                LumoUtility.Padding.LARGE);
+        this.layout.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Margin.Horizontal.AUTO,
+                LumoUtility.MaxWidth.SCREEN_LARGE, LumoUtility.Padding.LARGE);
         this.layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         this.layout.setGap(Gap.LARGE);
         add(this.layout);

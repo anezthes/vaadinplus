@@ -1,7 +1,6 @@
 package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
-import com.example.application.components.Notification;
 import com.example.application.utilities.Breakpoint;
 import com.example.application.utilities.GridColumnSpan;
 import com.example.application.utilities.GridColumns;
@@ -9,144 +8,146 @@ import com.example.application.views.MainLayout;
 import com.example.application.views.templates.validation.ContactBean;
 import com.example.application.views.templates.validation.ErrorMessages;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Html;
-import com.vaadin.flow.component.avatar.Avatar;
-import com.vaadin.flow.component.avatar.AvatarVariant;
+import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.checkbox.CheckboxGroup;
-import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.BinderValidationStatus;
-import com.vaadin.flow.data.binder.BindingValidationStatus;
-import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.validator.EmailValidator;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-@PageTitle("Validation Form")
+@PageTitle("Validation form")
 @Route(value = "validation-form", layout = MainLayout.class)
 public class ValidationView extends Main {
 
-    private final Div errorContainer;
-    private ContactBean contactBean = new ContactBean();
-
-    private final Binder<ContactBean> binder = new Binder<>();
+    private ContactBean bean = new ContactBean();
+    private Binder<ContactBean> binder = new Binder<>();
+    private Div errorSummary;
     private TextField address;
     private TextField city;
     private ComboBox<String> state;
     private TextField zip;
     private TextField phone;
     private TextField email;
-
-    private Button submitButton;
+    private Button submit;
 
     public ValidationView() {
-        addClassNames(AlignItems.STRETCH, Display.FLEX, JustifyContent.CENTER, MaxWidth.SCREEN_SMALL, Padding.LARGE, FlexDirection.COLUMN);
-        errorContainer = new Div();
-        add(errorContainer, createContactInformation());
+        addClassNames(BoxSizing.BORDER, Display.FLEX, FlexDirection.COLUMN, MaxWidth.SCREEN_SMALL, Padding.LARGE);
+
+        add(createContactInformation());
         configureBinder();
-        binder.setBean(contactBean);
     }
 
     public Component createContactInformation() {
         H2 title = new H2("Contact information");
-        title.addClassNames(FontSize.XLARGE, Margin.Top.XLARGE);
-        title.setId(title.getText().replace(" ", "-").toLowerCase());
+        title.addClassNames(FontSize.XLARGE, Margin.Bottom.SMALL);
+        title.setId(formatId(title.getText()));
 
-        Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
-        description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
+        this.errorSummary = new Div();
+        this.errorSummary.addClassNames(Margin.Vertical.SMALL);
+        this.errorSummary.setVisible(false);
 
-        address = new TextField("Address");
-        city = new TextField("City");
-        city.setHelperText("You must enter a city that starts with a T");
-        state = new ComboBox<>("State");
-        state.setItems("State 1", "State 2");
-        zip = new TextField("ZIP");
+        this.address = new TextField("Address");
 
-        phone = new TextField("Phone");
-        phone.setPrefixComponent(LineAwesomeIcon.PHONE_SOLID.create());
+        this.city = new TextField("City");
+        this.city.setHelperText("You must enter a city that starts with a T");
 
-        email = new TextField("Email");
-        email.setPrefixComponent(LineAwesomeIcon.ENVELOPE.create());
+        this.state = new ComboBox<>("State");
+        this.state.setItems("State 1", "State 2");
 
-        submitButton = new Button("Submit");
-        submitButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        submitButton.addClickListener(event -> {
-            submitForm();
-        });
+        this.zip = new TextField("ZIP");
 
-        Layout layout = new Layout(title, description, address, city, state, zip, phone, email, submitButton);
-        // Viewport < 1024px
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
+        this.phone = new TextField("Phone");
+        this.phone.setPrefixComponent(LineAwesomeIcon.PHONE_SOLID.create());
+
+        this.email = new TextField("Email");
+        this.email.setPrefixComponent(LineAwesomeIcon.ENVELOPE.create());
+
+        this.submit = new Button("Submit", e -> submit());
+        this.submit.addClassNames(Margin.Top.LARGE);
+        this.submit.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        for (Component component : new Component[]{this.address, this.city, this.state, this.zip, phone, this.email}) {
+            component.setId(formatId(((HasLabel) component).getLabel()));
+        }
+
+        Layout layout = new Layout(title, this.errorSummary, this.address, this.city, this.state, this.zip, phone,
+                this.email, this.submit);
         layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
+        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
+        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         layout.setGridColumns(GridColumns.COLUMNS_4);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, description, address);
+
+        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, this.city, this.phone, this.email);
+        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, this.errorSummary, this.address);
+
         return layout;
     }
 
+    private String formatId(String id) {
+        return id.replace(" ", "-").toLowerCase();
+    }
+
     private void configureBinder() {
-        binder.forField(address)
+        this.binder.forField(this.address)
                 .asRequired("The address cannot be empty")
                 .bind(ContactBean::getAddress, ContactBean::setAddress);
-        binder.forField(city)
+        this.binder.forField(this.city)
                 .asRequired("The city cannot be empty")
                 .withValidator(value -> {
                     return (value != null) && value.startsWith("T");
                 }, "The city should start with a T")
                 .bind(ContactBean::getCity, ContactBean::setCity);
-        binder.forField(state)
+        this.binder.forField(this.state)
                 .asRequired("The state cannot be empty")
                 .bind(ContactBean::getState, ContactBean::setState);
-        binder.forField(zip)
+        this.binder.forField(this.zip)
                 .asRequired("The zip code cannot be empty")
                 .bind(ContactBean::getZip, ContactBean::setZip);
-        binder.forField(phone)
+        this.binder.forField(this.phone)
                 .asRequired("The phone cannot be empty")
                 .bind(ContactBean::getPhone, ContactBean::setPhone);
-        binder.forField(email)
+        this.binder.forField(this.email)
                 .asRequired("The email address cannot be empty")
                 .withValidator(new EmailValidator("Enter a valid email address"))
                 .bind(ContactBean::getEmail, ContactBean::setEmail);
-        binder.withValidator(contactBean -> {
+        this.binder.withValidator(contactBean -> {
             return contactBean.getCity().equals("Turku");
         }, "The city must be Turku");
+
+        this.binder.setBean(this.bean);
     }
 
-    private void submitForm() {
-        BinderValidationStatus<ContactBean> validationStatus = binder.validate();
-        errorContainer.removeAll();
-        errorContainer.setVisible(false);
+    private void submit() {
+        BinderValidationStatus<ContactBean> validationStatus = this.binder.validate();
+
+        this.errorSummary.removeAll();
+        this.errorSummary.setVisible(false);
+
         if (validationStatus.isOk()) {
-            //Everything is fine, do your action
+            // Everything is fine, do your action
             Dialog dialog = new Dialog();
             dialog.add("The form is valid");
             dialog.open();
+
         } else {
-            // display the error message
-            Optional<ErrorMessages> optionalNotification = ErrorMessages.createErrorNotification(validationStatus);
-            optionalNotification.ifPresentOrElse(notification -> {
-                errorContainer.setVisible(true);
-                errorContainer.add(notification);
+            // Display the error message
+            Optional<ErrorMessages> errorNotification = ErrorMessages.createErrorNotification(validationStatus);
+            errorNotification.ifPresentOrElse(notification -> {
+                this.errorSummary.add(notification);
+                this.errorSummary.setVisible(true);
             }, () -> {
             });
         }

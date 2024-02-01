@@ -36,7 +36,7 @@ public class ProfileView extends Main {
     public Component createForm() {
         Layout layout = new Layout(createPublicInformation(), createContactInformation(), createPassword(),
                 createNotifications());
-        layout.addClassNames(MaxWidth.SCREEN_SMALL, Padding.LARGE);
+        layout.addClassNames(BoxSizing.BORDER, MaxWidth.SCREEN_SMALL, Padding.LARGE);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         return layout;
     }

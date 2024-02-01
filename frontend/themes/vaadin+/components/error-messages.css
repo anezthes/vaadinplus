@@ -1,8 +1,0 @@
-.error-messages button.error-messages__button {
-    all:unset;
-    padding-inline: var(--lumo-space-xs);
-}
-
-.error-messages button:focus.error-messages__button {
-   outline: 2px solid var(--lumo-primary-color);
-}
