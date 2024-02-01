@@ -200,7 +200,7 @@ public class ProductDetailsView extends Main {
 
         Layout layout = new Layout(breadcrumb, title, price, reviewLayout, description, color, intensity, effects,
                 details, quantityLayout);
-        layout.addClassNames(MaxWidth.SCREEN_SMALL, Padding.LARGE);
+        layout.addClassNames(BoxSizing.BORDER, MaxWidth.SCREEN_SMALL, Padding.LARGE);
         layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
         layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
         return layout;

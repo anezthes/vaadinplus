@@ -36,7 +36,7 @@ public class WizardLayout extends Main implements RouterLayout, AfterNavigationO
         Step step4 = new Step("Step 4", Step4View.class);
 
         this.stepper = new Stepper(step1, step2, step3, step4);
-        this.stepper.addClassNames(MaxWidth.SCREEN_SMALL, Padding.MEDIUM);
+        this.stepper.addClassNames(BoxSizing.BORDER, MaxWidth.SCREEN_SMALL, Padding.MEDIUM);
         this.stepper.setOrientation(Stepper.Orientation.HORIZONTAL);
         this.stepper.setSmall(true);
         return this.stepper;

@@ -28,8 +28,8 @@ import com.vaadin.flow.theme.lumo.LumoUtility.*;
 public class ShoppingCartView extends Main {
 
     public ShoppingCartView() {
-        addClassNames(Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Medium.ROW, Margin.Horizontal.AUTO,
-                MaxWidth.SCREEN_LARGE);
+        addClassNames(BoxSizing.BORDER, Display.FLEX, FlexDirection.COLUMN, FlexDirection.Breakpoint.Medium.ROW,
+                Margin.Horizontal.AUTO, MaxWidth.SCREEN_LARGE);
         add(createShoppingCart(), createSummary());
     }
 
