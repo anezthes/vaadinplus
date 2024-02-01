@@ -17,8 +17,9 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class UserDialog extends NativeDialog {
 
-    private String theme = "";
+    private String colorScheme = "";
     private String density = "";
+    private String theme = "";
 
     public UserDialog() {
         setAriaLabel("User menu");
@@ -41,18 +42,18 @@ public class UserDialog extends NativeDialog {
         hr.addClassNames(Margin.Vertical.XSMALL);
 
         // Theme
-        RadioButtonGroup<String> theme = new RadioButtonGroup<>();
-        theme.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
-        theme.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
-        theme.addValueChangeListener(e -> setTheme(e.getValue().equals(Lumo.DARK)));
+        RadioButtonGroup<String> colorScheme = new RadioButtonGroup<>();
+        colorScheme.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
+        colorScheme.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
+        colorScheme.addValueChangeListener(e -> setColorScheme(e.getValue().equals(Lumo.DARK)));
 
-        theme.setAriaLabel("Appearance");
-        theme.setItems(Lumo.LIGHT, Lumo.DARK);
-        theme.setRenderer(new ComponentRenderer<>(item -> renderTheme(item)));
-        theme.setValue(Lumo.LIGHT);
-        theme.setWidthFull();
+        colorScheme.setAriaLabel("Color scheme");
+        colorScheme.setItems(Lumo.LIGHT, Lumo.DARK);
+        colorScheme.setRenderer(new ComponentRenderer<>(item -> renderColorScheme(item)));
+        colorScheme.setValue(Lumo.LIGHT);
+        colorScheme.setWidthFull();
 
-        theme.getChildren().forEach(component -> {
+        colorScheme.getChildren().forEach(component -> {
             component.getElement().getThemeList().add(RadioButtonTheme.PRIMARY);
             component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE);
         });
@@ -74,7 +75,24 @@ public class UserDialog extends NativeDialog {
             component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE);
         });
 
-        add(list, hr, theme, density);
+        // Theme
+        RadioButtonGroup<String> theme = new RadioButtonGroup<>();
+        theme.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
+        theme.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.PRIMARY, RadioButtonTheme.TOGGLE);
+        theme.addValueChangeListener(e -> setTheme(e.getValue().equals("Lumo")));
+
+        theme.setAriaLabel("Theme");
+        theme.setItems("Lumo", "Aero");
+        theme.setRenderer(new ComponentRenderer<>(item -> renderTheme(item)));
+        theme.setValue("Lumo");
+        theme.setWidthFull();
+
+        theme.getChildren().forEach(component -> {
+            component.getElement().getThemeList().add(RadioButtonTheme.PRIMARY);
+            component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE);
+        });
+
+        add(list, hr, colorScheme, density, theme);
     }
 
     private ListItem createListItem(String text, LineAwesomeIcon icon, Class<? extends Component> navigationTarget) {
@@ -88,7 +106,7 @@ public class UserDialog extends NativeDialog {
         return new ListItem(link);
     }
 
-    private Component renderTheme(String theme) {
+    private Component renderColorScheme(String theme) {
         String text = theme.substring(0, 1).toUpperCase() + theme.substring(1);
         LineAwesomeIcon icon = theme.equals(Lumo.DARK) ? LineAwesomeIcon.MOON : LineAwesomeIcon.SUN;
 
@@ -97,8 +115,8 @@ public class UserDialog extends NativeDialog {
         return item;
     }
 
-    private void setTheme(boolean dark) {
-        this.theme = dark ? Lumo.DARK : Lumo.LIGHT;
+    private void setColorScheme(boolean dark) {
+        this.colorScheme = dark ? Lumo.DARK : Lumo.LIGHT;
         updateTheme();
     }
 
@@ -115,9 +133,22 @@ public class UserDialog extends NativeDialog {
         updateTheme();
     }
 
+    private Component renderTheme(String theme) {
+        LineAwesomeIcon icon = theme.equals("Lumo") ? LineAwesomeIcon.VAADIN : LineAwesomeIcon.ADJUST_SOLID;
+
+        Item item = new Item(theme, icon);
+        item.addClassNames(Margin.Horizontal.AUTO);
+        return item;
+    }
+
+    private void setTheme(boolean lumo) {
+        this.theme = lumo ? "" : "aero";
+        updateTheme();
+    }
+
     private void updateTheme() {
         var js = "document.documentElement.setAttribute('theme', $0)";
-        getElement().executeJs(js, this.theme + " " + this.density);
+        getElement().executeJs(js, this.colorScheme + " " + this.density + " " + this.theme);
     }
 
 }

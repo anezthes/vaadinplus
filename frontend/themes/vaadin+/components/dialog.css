@@ -1,0 +1,36 @@
+dialog {
+    animation: 0.1s 0.03s vaadin-dialog-exit cubic-bezier(0.55, 0.055, 0.675, 0.19) both;
+}
+
+dialog[open] {
+    animation: 0.12s 0.05s vaadin-dialog-enter cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+::backdrop {
+    animation: 0.2s lumo-overlay-backdrop-enter both;
+    background-color: var(--lumo-shade-20pct, hsla(214, 53%, 23%, 0.16));
+    will-change: opacity;
+}
+
+/* TODO: Import from https://github.com/vaadin/web-components/blob/v24.4.0-alpha3/packages/dialog/theme/lumo/vaadin-dialog-styles.js,
+    https://github.com/vaadin/web-components/blob/v24.4.0-alpha3/packages/vaadin-lumo-styles/mixins/overlay.js */
+
+@keyframes vaadin-dialog-enter {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes vaadin-dialog-exit {
+    100% {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes lumo-overlay-backdrop-enter {
+    0% {
+        opacity: 0;
+    }
+}
