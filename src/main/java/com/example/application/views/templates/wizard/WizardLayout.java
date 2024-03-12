@@ -87,7 +87,7 @@ public class WizardLayout extends Main implements RouterLayout, AfterNavigationO
             this.next.setRoute(Step3View.class);
 
         } else if (event.getLocation().getPath().contains("wizard/3")) {
-            this.previous.setRoute(Step3View.class);
+            this.previous.setRoute(Step2View.class);
             this.next.setRoute(Step4View.class);
 
         } else if (event.getLocation().getPath().contains("wizard/4")) {

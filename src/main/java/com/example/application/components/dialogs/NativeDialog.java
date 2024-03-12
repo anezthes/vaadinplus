@@ -1,6 +1,7 @@
 package com.example.application.components.dialogs;
 
 import com.vaadin.flow.component.*;
+import com.vaadin.flow.dom.DomEventListener;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 @Tag("dialog")
@@ -18,7 +19,9 @@ public class NativeDialog extends HtmlContainer implements HasAriaLabel {
                         "}" +
                         "})", getElement());
 
-        // Prevent click & focus events
+        // Prevent click & focus events when closed
+        getElement().addEventListener("close", (DomEventListener) event ->
+                getElement().setAttribute("inert", true));
         getElement().setAttribute("inert", true);
 
         // Default position
@@ -29,19 +32,16 @@ public class NativeDialog extends HtmlContainer implements HasAriaLabel {
     }
 
     public void showModal() {
-        // Allow click & focus events
-        getElement().removeAttribute("inert");
-
         // Not needed after initial rendering
         getStyle().remove("opacity");
+
+        // Re-enable click & focus events
+        getElement().removeAttribute("inert");
 
         getElement().executeJs("$0.showModal()", getElement());
     }
 
     public void close() {
-        // Prevent click & focus events
-        getElement().setAttribute("inert", true);
-
         getElement().executeJs("$0.close()", getElement());
     }
 
