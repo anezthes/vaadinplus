@@ -1,8 +1,11 @@
 package com.example.application.components;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.OrderedList;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
+
+import java.util.Collection;
 
 public class Breadcrumb extends Nav {
 
@@ -22,11 +25,11 @@ public class Breadcrumb extends Nav {
         this.list.add(items);
     }
 
-    public void add(BreadcrumbItem... items) {
+    public void add(Collection<Component> items) {
         this.list.add(items);
     }
 
-    public void remove(BreadcrumbItem... items) {
+    public void remove(Collection<Component> items) {
         this.list.remove(items);
     }
 
