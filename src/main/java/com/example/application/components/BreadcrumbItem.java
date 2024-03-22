@@ -11,11 +11,15 @@ public class BreadcrumbItem extends ListItem implements AfterNavigationObserver 
 
     private RouterLink link;
 
-    public BreadcrumbItem(String text, Class<? extends Component> navigationTarget) {
+    public BreadcrumbItem(RouterLink link) {
         addClassNames(Display.FLEX);
 
-        this.link = new RouterLink(text, navigationTarget);
+        this.link = link;
         add(this.link);
+    }
+
+    public BreadcrumbItem(String text, Class<? extends Component> navigationTarget) {
+        this(new RouterLink(text, navigationTarget));
     }
 
     @Override
