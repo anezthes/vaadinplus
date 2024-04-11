@@ -1,11 +1,8 @@
 package com.example.application.components;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.OrderedList;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-
-import java.util.Collection;
 
 public class Breadcrumb extends Nav {
 
