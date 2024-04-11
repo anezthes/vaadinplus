@@ -17,7 +17,7 @@ public class Breadcrumb extends Nav {
 
         this.list = new OrderedList();
         this.list.addClassNames(Display.FLEX, FontSize.SMALL, ListStyleType.NONE, Margin.NONE, Padding.NONE);
-        super.add(this.list);
+        add(this.list);
     }
 
     public Breadcrumb(BreadcrumbItem... items) {
@@ -25,11 +25,11 @@ public class Breadcrumb extends Nav {
         this.list.add(items);
     }
 
-    public void add(Collection<Component> items) {
+    public void add(BreadcrumbItem... items) {
         this.list.add(items);
     }
 
-    public void remove(Collection<Component> items) {
+    public void remove(BreadcrumbItem... items) {
         this.list.remove(items);
     }
 
