@@ -4,18 +4,18 @@ import com.example.application.components.Highlight;
 import com.example.application.components.Highlights;
 import com.example.application.components.Layout;
 import com.example.application.components.Tag;
-import com.example.application.utilities.*;
+import com.example.application.utilities.Breakpoint;
+import com.example.application.utilities.Color;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ItemLabelGenerator;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Highlights")
@@ -80,19 +80,19 @@ public class HighlightsView extends ComponentView {
         Highlights highlights = new Highlights();
 
         Highlight highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CUBE_SOLID, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
+                createIcon(LineAwesomeIcon.CUBE_SOLID, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
                 ORDERS, ORDERS_VALUE
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
+                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
                 SALES, SALES_VALUE
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.USER_SOLID, BackgroundColor.ERROR_10, TextColor.ERROR),
+                createIcon(LineAwesomeIcon.USER_SOLID, Color.Background.ERROR_10, Color.Text.ERROR),
                 VISITORS, VISITORS_VALUE
         );
         highlights.add(highlight);
@@ -100,15 +100,15 @@ public class HighlightsView extends ComponentView {
         return highlights;
     }
 
-    private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, TextColor textColor) {
+    private Component createIcon(LineAwesomeIcon icon, Color.Background background, Color.Text color) {
         SvgIcon i = icon.create();
-        i.addClassNames(LumoUtility.IconSize.LARGE);
+        i.addClassNames(IconSize.LARGE);
 
         Layout container = new Layout(i);
-        container.addClassNames(backgroundColor.getClassName(), LumoUtility.BorderRadius.LARGE,
-                LumoUtility.Height.XLARGE, textColor.getClassName(), LumoUtility.Width.XLARGE);
-        container.setAlignItems(FlexComponent.Alignment.CENTER);
-        container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        container.addClassNames(background.getClassName(), BorderRadius.LARGE, Height.XLARGE, color.getClassName(),
+                Width.XLARGE);
+        container.setAlignItems(Layout.AlignItems.CENTER);
+        container.setJustifyContent(Layout.JustifyContent.CENTER);
         return container;
     }
 
@@ -117,21 +117,21 @@ public class HighlightsView extends ComponentView {
 
         Highlight highlight = new Highlight(ORDERS, ORDERS_VALUE);
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, Color.Text.SUCCESS),
                 new Tag(ORDERS_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(SALES, SALES_VALUE);
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, Color.Text.SUCCESS),
                 new Tag(SALES_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(VISITORS, VISITORS_VALUE);
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS),
                 new Tag(VISITORS_WEEKLY)
         );
         highlights.add(highlight);
@@ -156,12 +156,11 @@ public class HighlightsView extends ComponentView {
 
     private RouterLink createSuffix(String label) {
         Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        icon.addClassNames(IconSize.SMALL, TextColor.SECONDARY);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
-        link.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
-                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM);
+        link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER, Width.MEDIUM);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
         return link;
@@ -171,31 +170,31 @@ public class HighlightsView extends ComponentView {
         Highlights highlights = new Highlights();
 
         Highlight highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CUBES_SOLID, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
+                createIcon(LineAwesomeIcon.CUBES_SOLID, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
                 ORDERS, ORDERS_VALUE, createSuffix(ORDERS)
         );
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, Color.Text.SUCCESS),
                 new Tag(ORDERS_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
+                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
                 SALES, SALES_VALUE, createSuffix(SALES)
         );
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, Color.Text.SUCCESS),
                 new Tag(SALES_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.USER, BackgroundColor.ERROR_10, TextColor.ERROR),
+                createIcon(LineAwesomeIcon.USER, Color.Background.ERROR_10, Color.Text.ERROR),
                 VISITORS, VISITORS_VALUE, createSuffix(VISITORS)
         );
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, TextColor.SUCCESS),
+                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS),
                 new Tag(VISITORS_WEEKLY)
         );
         highlights.add(highlight);
@@ -209,8 +208,8 @@ public class HighlightsView extends ComponentView {
         // Add a fourth item for a nice 2x2 grid
         highlights.add(new Highlight(RATING, RATING_VALUE));
 
-        highlights.setDisplay(Display.GRID);
-        highlights.setGridColumns(GridColumns.COLUMNS_2);
+        highlights.setDisplay(Layout.Display.GRID);
+        highlights.setColumns(Layout.GridColumns.COLUMNS_2);
         return highlights;
     }
 
@@ -221,27 +220,12 @@ public class HighlightsView extends ComponentView {
         rbc.addThemeVariants(RadioGroupVariant.LUMO_HELPER_ABOVE_FIELD);
         rbc.addValueChangeListener(event -> highlights.setBreakpoint(event.getValue()));
         rbc.setHelperText("Resize the browser to see the difference");
-        rbc.setItemLabelGenerator((ItemLabelGenerator<Breakpoint>) item -> {
-            String label;
-            switch (item) {
-                case SMALL:
-                    label = "S";
-                    break;
-                case MEDIUM:
-                default:
-                    label = "M";
-                    break;
-                case LARGE:
-                    label = "L";
-                    break;
-                case XLARGE:
-                    label = "XL";
-                    break;
-                case XXLARGE:
-                    label = "XXL";
-                    break;
-            }
-            return label;
+        rbc.setItemLabelGenerator((ItemLabelGenerator<Breakpoint>) item -> switch (item) {
+            case SMALL -> "S";
+            default -> "M";
+            case LARGE -> "L";
+            case XLARGE -> "XL";
+            case XXLARGE -> "XXL";
         });
 
         return new Component[]{rbc, highlights};
@@ -250,28 +234,13 @@ public class HighlightsView extends ComponentView {
     private Component[] createHighlightsWithGap() {
         Highlights highlights = createHighlights();
 
-        RadioButtonGroup<Gap> rbc = new RadioButtonGroup<>("Gap", Gap.values());
-        rbc.setItemLabelGenerator((ItemLabelGenerator<Gap>) item -> {
-            String label;
-            switch (item) {
-                case XSMALL:
-                    label = "XS";
-                    break;
-                case SMALL:
-                    label = "S";
-                    break;
-                case MEDIUM:
-                default:
-                    label = "M";
-                    break;
-                case LARGE:
-                    label = "L";
-                    break;
-                case XLARGE:
-                    label = "XL";
-                    break;
-            }
-            return label;
+        RadioButtonGroup<Layout.Gap> rbc = new RadioButtonGroup<>("Gap", Layout.Gap.values());
+        rbc.setItemLabelGenerator((ItemLabelGenerator<Layout.Gap>) item -> switch (item) {
+            case XSMALL -> "XS";
+            case SMALL -> "S";
+            default -> "M";
+            case LARGE -> "L";
+            case XLARGE -> "XL";
         });
         rbc.addValueChangeListener(event -> highlights.setGap(event.getValue()));
 

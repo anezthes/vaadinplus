@@ -2,6 +2,7 @@ package com.example.application.views.components;
 
 import com.example.application.components.CreditCardField;
 import com.example.application.components.InputGroup;
+import com.example.application.components.Layout;
 import com.example.application.components.PriceField;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
@@ -9,11 +10,11 @@ import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoIcon;
+import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Input groups")
@@ -21,7 +22,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class InputGroupsView extends ComponentView {
 
     public InputGroupsView() {
-        addClassNames(LumoUtility.AlignItems.START);
+        addClassNames(AlignItems.START);
 
         addH2("Theme: inset label");
         add(createTextField(InputTheme.INSET_LABEL));
@@ -86,7 +87,7 @@ public class InputGroupsView extends ComponentView {
         TextField textField = new TextField("Search");
         textField.addThemeNames(outline ? InputTheme.OUTLINE : "");
 
-        Button button = new Button("Advanced", LineAwesomeIcon.SEARCH_SOLID.create());
+        Button button = new Button("Advanced", LumoIcon.SEARCH.create());
         button.addThemeNames(outline ? ButtonTheme.OUTLINE : "");
 
         return new InputGroup(textField, button);
@@ -108,7 +109,7 @@ public class InputGroupsView extends ComponentView {
         endDate.addThemeNames(InputTheme.OUTLINE);
 
         InputGroup inputGroup = new InputGroup(startDate, endDate);
-        inputGroup.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        inputGroup.setFlexDirection(Layout.FlexDirection.COLUMN);
         return inputGroup;
     }
 

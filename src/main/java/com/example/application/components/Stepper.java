@@ -15,7 +15,8 @@ public class Stepper extends Nav implements HasTheme {
         addClassName("stepper");
 
         this.list = new UnorderedList(steps);
-        this.list.addClassNames(Display.FLEX, FlexDirection.COLUMN, ListStyleType.NONE, Margin.NONE, Padding.NONE);
+        this.list.addClassNames(Display.FLEX, FlexDirection.COLUMN, Gap.Column.LARGE, ListStyleType.NONE,
+                Margin.Vertical.NONE, Padding.Start.NONE);
         add(this.list);
 
         setOrientation(Orientation.VERTICAL);

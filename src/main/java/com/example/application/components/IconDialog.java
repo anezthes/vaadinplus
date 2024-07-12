@@ -1,18 +1,13 @@
 package com.example.application.components;
 
-import com.example.application.utilities.BackgroundColor;
-import com.example.application.utilities.Gap;
+import com.example.application.utilities.Color;
 import com.example.application.utilities.Size;
-import com.example.application.utilities.TextColor;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -20,8 +15,8 @@ public class IconDialog extends Dialog {
 
     private Layout layout;
     private Layout iconLayout;
-    private BackgroundColor iconBackgroundColor;
-    private TextColor iconTextColor;
+    private Color.Background background;
+    private Color.Text color;
     private SvgIcon icon;
     private Layout textLayout;
     private H2 title;
@@ -33,19 +28,19 @@ public class IconDialog extends Dialog {
 
         this.iconLayout = new Layout(this.icon);
         this.iconLayout.addClassNames(Flex.SHRINK_NONE, "rounded-full");
-        this.iconLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        this.iconLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        this.iconLayout.setAlignItems(Layout.AlignItems.CENTER);
+        this.iconLayout.setJustifyContent(Layout.JustifyContent.CENTER);
 
         // Text
         this.title = new H2(title);
         this.title.addClassNames(FontSize.MEDIUM);
 
         this.message = new Span(message);
-        this.message.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.message.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         this.textLayout = new Layout(this.title, this.message);
-        this.textLayout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.textLayout.setGap(Gap.SMALL);
+        this.textLayout.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.textLayout.setGap(Layout.Gap.SMALL);
 
         // Main layout
         this.layout = new Layout(this.iconLayout, this.textLayout);
@@ -67,30 +62,30 @@ public class IconDialog extends Dialog {
     public void setIconTheme(Theme theme) {
         switch (theme) {
             case PRIMARY:
-                setIconBackgroundColor(BackgroundColor.PRIMARY_10);
-                setIconTextColor(TextColor.PRIMARY);
+                setIconBackgroundColor(Color.Background.PRIMARY_10);
+                setIconTextColor(Color.Text.PRIMARY);
                 break;
             case SUCCESS:
-                setIconBackgroundColor(BackgroundColor.SUCCESS_10);
-                setIconTextColor(TextColor.SUCCESS);
+                setIconBackgroundColor(Color.Background.SUCCESS_10);
+                setIconTextColor(Color.Text.SUCCESS);
                 break;
             case ERROR:
-                setIconBackgroundColor(BackgroundColor.ERROR_10);
-                setIconTextColor(TextColor.ERROR);
+                setIconBackgroundColor(Color.Background.ERROR_10);
+                setIconTextColor(Color.Text.ERROR);
                 break;
         }
     }
 
-    private void setIconBackgroundColor(BackgroundColor iconBackgroundColor) {
-        if (this.iconBackgroundColor != null) this.iconLayout.removeClassNames(this.iconBackgroundColor.getClassName());
-        this.iconLayout.addClassNames(iconBackgroundColor.getClassName());
-        this.iconBackgroundColor = iconBackgroundColor;
+    private void setIconBackgroundColor(Color.Background background) {
+        if (this.background != null) this.iconLayout.removeClassNames(this.background.getClassName());
+        this.iconLayout.addClassNames(background.getClassName());
+        this.background = background;
     }
 
-    private void setIconTextColor(TextColor iconTextColor) {
-        if (this.iconTextColor != null) this.icon.removeClassNames(this.iconTextColor.getClassName());
-        this.icon.addClassNames(iconTextColor.getClassName());
-        this.iconTextColor = iconTextColor;
+    private void setIconTextColor(Color.Text color) {
+        if (this.color != null) this.icon.removeClassNames(this.color.getClassName());
+        this.icon.addClassNames(color.getClassName());
+        this.color = color;
     }
 
     public void setIconPosition(Position position) {
@@ -98,16 +93,16 @@ public class IconDialog extends Dialog {
             case START:
                 setIconSize(Size.MEDIUM);
                 this.textLayout.removeClassNames(TextAlignment.CENTER);
-                this.layout.setAlignItems(FlexComponent.Alignment.START);
-                this.layout.setFlexDirection(FlexLayout.FlexDirection.ROW);
-                this.layout.setGap(Gap.MEDIUM);
+                this.layout.setAlignItems(Layout.AlignItems.START);
+                this.layout.setFlexDirection(Layout.FlexDirection.ROW);
+                this.layout.setGap(Layout.Gap.MEDIUM);
                 break;
             case TOP:
                 setIconSize(Size.LARGE);
                 this.textLayout.addClassNames(TextAlignment.CENTER);
-                this.layout.setAlignItems(FlexComponent.Alignment.CENTER);
-                this.layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-                this.layout.setGap(Gap.LARGE);
+                this.layout.setAlignItems(Layout.AlignItems.CENTER);
+                this.layout.setFlexDirection(Layout.FlexDirection.COLUMN);
+                this.layout.setGap(Layout.Gap.LARGE);
                 break;
         }
     }

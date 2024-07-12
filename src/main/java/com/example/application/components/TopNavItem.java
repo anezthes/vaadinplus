@@ -3,6 +3,7 @@ package com.example.application.components;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.dom.DomListenerRegistration;
+import com.vaadin.flow.dom.Element;
 
 public class TopNavItem extends SideNavItem {
 
@@ -11,28 +12,23 @@ public class TopNavItem extends SideNavItem {
 
     public TopNavItem(String label) {
         super(label);
-        initMouseEventListeners();
     }
 
     public TopNavItem(String label, String path) {
         super(label, path);
-        initMouseEventListeners();
     }
 
     public TopNavItem(String label, Class<? extends Component> view) {
         super(label, view);
-        initMouseEventListeners();
     }
 
     public TopNavItem(String label, String path, Component prefixComponent) {
         super(label, path, prefixComponent);
-        initMouseEventListeners();
     }
 
     public TopNavItem(String label, Class<? extends Component> view,
                       Component prefixComponent) {
         super(label, view, prefixComponent);
-        initMouseEventListeners();
     }
 
     @Override
@@ -42,10 +38,9 @@ public class TopNavItem extends SideNavItem {
     }
 
     private void initMouseEventListeners() {
-        if (getItems().size() > 0 && this.mouseover == null && this.mouseout == null) {
-            this.mouseover = getElement().addEventListener("mouseover", e -> setExpanded(true));
-            this.mouseout = getElement().addEventListener("mouseout", e -> setExpanded(false));
-        }
+        Element element = getElement();
+        this.mouseover = element.addEventListener("mouseover", e -> setExpanded(true));
+        this.mouseout = element.addEventListener("mouseout", e -> setExpanded(false));
     }
 
 }

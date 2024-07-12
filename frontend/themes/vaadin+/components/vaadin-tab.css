@@ -33,10 +33,10 @@
 }
 
 :host([theme~="segmented"][focus-ring]) {
-    box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct);
+    box-shadow: 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
     z-index: 1;
 }
 
 :host([theme~="segmented"][selected][focus-ring]) {
-    box-shadow: var(--lumo-box-shadow-xs), 0 0 0 2px var(--lumo-primary-color-50pct);
+    box-shadow: var(--lumo-box-shadow-xs), 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
 }

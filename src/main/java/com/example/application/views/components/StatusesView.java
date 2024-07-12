@@ -1,14 +1,15 @@
 package com.example.application.views.components;
 
 import com.example.application.components.Notification;
-import com.example.application.utilities.TextColor;
+import com.example.application.utilities.Color;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 @PageTitle("Statuses")
 @Route(value = "statuses", layout = MainLayout.class)
@@ -39,7 +40,7 @@ public class StatusesView extends ComponentView {
 
         addH2("Custom text color");
         notification = createErrorNotification();
-        notification.setTextColor(TextColor.ERROR);
+        notification.setTextColor(Color.Text.ERROR);
         add(notification);
     }
 
@@ -62,7 +63,7 @@ public class StatusesView extends ComponentView {
                 new ListItem(LOREM_IPSUM_PT1),
                 new ListItem(LOREM_IPSUM_PT2)
         );
-        list.addClassNames(LumoUtility.Margin.NONE, LumoUtility.Padding.Start.MEDIUM);
+        list.addClassNames(Margin.Vertical.NONE, Padding.Start.MEDIUM);
         return new Notification("There are 2 errors:", list, Notification.Type.ERROR);
     }
 

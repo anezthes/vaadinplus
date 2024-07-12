@@ -2,13 +2,11 @@ package com.example.application.components;
 
 import com.example.application.utilities.Breakpoint;
 import com.example.application.utilities.FlexRowBreakpoint;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.Position;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.html.DescriptionList;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class KeyValuePair extends Layout {
 
@@ -28,16 +26,15 @@ public class KeyValuePair extends Layout {
 
     public KeyValuePair(Component key, Component value) {
         this.key = new DescriptionList.Term(key);
-        this.key.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.MEDIUM,
-                LumoUtility.TextColor.SECONDARY);
+        this.key.addClassNames(FontSize.SMALL, FontWeight.MEDIUM, TextColor.SECONDARY);
 
         this.value = new DescriptionList.Description(value);
-        this.value.addClassNames(LumoUtility.Margin.NONE);
+        this.value.addClassNames(Margin.Start.NONE);
 
         add(this.key, this.value);
 
-        addClassNames(LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL);
-        setAlignItems(Alignment.BASELINE);
+        addClassNames(Padding.Horizontal.MEDIUM, Padding.Vertical.SMALL);
+        setAlignItems(AlignItems.BASELINE);
         setBreakpoint(Breakpoint.MEDIUM);
         setColumnGap(Gap.MEDIUM);
         setKeyPosition(KeyPosition.SIDE);
@@ -68,16 +65,16 @@ public class KeyValuePair extends Layout {
 
     public void setKeyWidth(float width, Unit unit) {
         this.key.setMinWidth(width, unit);
-        this.key.removeClassNames(LumoUtility.Flex.GROW);
+        this.key.removeClassNames(Flex.GROW);
     }
 
     public void setKeyWidthFull() {
         this.key.setMinWidth(null);
-        this.key.addClassNames(LumoUtility.Flex.GROW);
+        this.key.addClassNames(Flex.GROW);
     }
 
     public void removeHorizontalPadding() {
-        removeClassName(LumoUtility.Padding.Horizontal.MEDIUM);
+        removeClassName(Padding.Horizontal.MEDIUM);
     }
 
     private void updateClassNames() {

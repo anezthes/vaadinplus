@@ -22,13 +22,12 @@ import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Section;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -38,8 +37,8 @@ import java.util.Random;
 @Route(value = "product-list", layout = MainLayout.class)
 public class ProductListView extends Main {
 
+    private final Random random = new Random();
     private Section sidebar;
-    private Random random = new Random();
 
     public ProductListView() {
         addClassNames(Display.FLEX, Height.FULL, Overflow.HIDDEN);
@@ -58,8 +57,8 @@ public class ProductListView extends Main {
 
         Layout header = new Layout(title, close);
         header.addClassNames(Padding.End.MEDIUM, Padding.Start.LARGE, Padding.Vertical.SMALL);
-        header.setAlignItems(FlexComponent.Alignment.CENTER);
-        header.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
+        header.setAlignItems(Layout.AlignItems.CENTER);
+        header.setJustifyContent(Layout.JustifyContent.BETWEEN);
 
         CheckboxGroup<String> brands = new CheckboxGroup("Brands");
         brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
@@ -96,10 +95,10 @@ public class ProductListView extends Main {
 
         Layout form = new Layout(brands, priceRange, rating, availability);
         form.addClassNames(Padding.Horizontal.LARGE);
-        form.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        form.setFlexDirection(Layout.FlexDirection.COLUMN);
 
         this.sidebar = new Section(header, form);
-        this.sidebar.addClassNames("backdrop-blur-sm", "bg-tint-90", Border.RIGHT, BorderColor.CONTRAST_10,
+        this.sidebar.addClassNames("backdrop-blur-sm", "bg-tint-90", Border.RIGHT,
                 Display.FLEX, FlexDirection.COLUMN, Position.ABSOLUTE, "lg:static", "bottom-0", "top-0",
                 "transition-all", "z-10");
         this.sidebar.setWidth(20, Unit.REM);
@@ -132,8 +131,8 @@ public class ProductListView extends Main {
     public Component createContent() {
         Layout content = new Layout(createToolbar(), createList());
         content.addClassNames(Flex.GROW);
-        content.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        content.setOverflow(com.example.application.utilities.Overflow.HIDDEN);
+        content.setFlexDirection(Layout.FlexDirection.COLUMN);
+        content.setOverflow(Layout.Overflow.HIDDEN);
         return content;
     }
 
@@ -142,7 +141,7 @@ public class ProductListView extends Main {
         search.addClassNames(Flex.GROW, MinWidth.NONE);
         search.setAriaLabel("Search");
         search.setPlaceholder("Search...");
-        search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
+        search.setPrefixComponent(LumoIcon.SEARCH.create());
 
         MultiSelectComboBox brands = new MultiSelectComboBox<>();
         brands.addClassNames(Display.HIDDEN, "lg:inline-flex", MinWidth.NONE);
@@ -176,9 +175,9 @@ public class ProductListView extends Main {
         setRadioButtonGroupTheme(mode, RadioButtonTheme.TOGGLE);
 
         Layout toolbar = new Layout(search, brands, price, priceDialog, filters, mode);
-        toolbar.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Padding.Horizontal.LARGE, Padding.Vertical.SMALL);
-        toolbar.setAlignItems(FlexComponent.Alignment.CENTER);
-        toolbar.setGap(com.example.application.utilities.Gap.MEDIUM);
+        toolbar.addClassNames(Border.BOTTOM, Padding.Horizontal.LARGE, Padding.Vertical.SMALL);
+        toolbar.setAlignItems(Layout.AlignItems.CENTER);
+        toolbar.setGap(Layout.Gap.MEDIUM);
         return toolbar;
     }
 
@@ -221,65 +220,66 @@ public class ProductListView extends Main {
     public Component createList() {
         List list = new List();
         list.setAutoFill(320, Unit.PIXELS);
-        list.setOverflow(com.example.application.utilities.Overflow.AUTO);
+        list.setOverflow(Layout.Overflow.AUTO);
 
         list.add(
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=640",
                         "Aerial shot of forest",
                         "SparkleClean", "8,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite SparkleClean")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?w=640",
                         "Photo of green grass field at sunrise",
                         "FlexiFit", "24,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite FlexiFit")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=640",
                         "Brown wooden dock between lavender flower field near body of water during golden hour",
                         "ChillBliss", "11.99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite ChillBliss")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=640",
                         "Three brown wooden boat on blue lake water taken at daytime",
                         "BrewMist", "16,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite BrewMist")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=640",
                         "Brown house near body of water",
                         "SnapTunes", "59,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite SnapTunes")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1433838552652-f9a46b332c40?w=640",
                         "Hot air balloon contest",
                         "PetPawfect", "99,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite PetPawfect")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=640",
                         "Silhouette photo of mountain during night time",
                         "PowerGlide", "379,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite PowerGlide")
                 ),
                 new ProductListItem(
                         "https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?w=640",
                         "Milky way above body of water",
                         "DreamScent", "21,99 €",
-                        createIconButton(LineAwesomeIcon.HEART, "Favourite")
+                        createIconButton(LineAwesomeIcon.HEART, "Favourite DreamScent")
                 )
         );
         return list;
     }
 
-    private Button createIconButton(LineAwesomeIcon icon, String ariaLabel) {
+    private Button createIconButton(LineAwesomeIcon icon, String label) {
         Button button = new Button(icon.create());
-        button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-        button.setAriaLabel(ariaLabel);
+        button.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_TERTIARY);
+        button.setAriaLabel(label);
+        button.setTooltipText(label);
         return button;
     }
 

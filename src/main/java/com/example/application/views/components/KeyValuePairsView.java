@@ -2,8 +2,7 @@ package com.example.application.views.components;
 
 import com.example.application.components.KeyValuePair;
 import com.example.application.components.KeyValuePairs;
-import com.example.application.utilities.GridColumnSpan;
-import com.example.application.utilities.GridColumns;
+import com.example.application.components.Layout;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.router.PageTitle;
@@ -57,9 +56,9 @@ public class KeyValuePairsView extends ComponentView {
 
     private KeyValuePairs createKeyValuePairsWithColumnSpan() {
         KeyValuePairs pairs = createKeyValuePairs();
-        pairs.setColumns(GridColumns.COLUMNS_2);
+        pairs.setColumns(Layout.GridColumns.COLUMNS_2);
         pairs.setColumnSpan(
-                GridColumnSpan.COLUMN_SPAN_2,
+                Layout.ColumnSpan.COLUMN_SPAN_2,
                 // Just beautiful...
                 pairs.getChildren().skip(2).findFirst().get()
         );

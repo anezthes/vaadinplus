@@ -15,6 +15,7 @@ import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -93,12 +94,12 @@ public class AppBarsView extends ComponentView {
         TextField textField = new TextField();
         textField.setAriaLabel("Search");
         textField.setPlaceholder("Search");
-        textField.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
+        textField.setPrefixComponent(LumoIcon.SEARCH.create());
         return textField;
     }
 
     private Button createButton() {
-        Button button = new Button(LineAwesomeIcon.BELL.create());
+        Button button = new Button(LumoIcon.BELL.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel("Notifications");
         return button;

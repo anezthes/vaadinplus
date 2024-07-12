@@ -4,9 +4,6 @@ import com.example.application.components.Layout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
@@ -24,14 +21,14 @@ public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
     }
 
     public ProductListItem(Image image, Component primary, Component secondary, Component... actions) {
-        addClassNames(Background.BASE, Border.BOTTOM, Border.RIGHT, BorderColor.CONTRAST_10, Display.FLEX,
-                FlexDirection.COLUMN, Gap.MEDIUM, Padding.Bottom.MEDIUM, Padding.Horizontal.LARGE, Padding.Top.LARGE);
+        addClassNames(Background.BASE, Border.BOTTOM, Border.RIGHT, Display.FLEX, FlexDirection.COLUMN, Gap.MEDIUM,
+                Padding.Bottom.MEDIUM, Padding.Horizontal.LARGE, Padding.Top.LARGE);
 
         this.image = new Layout(image);
         this.image.addClassNames("aspect-video", BorderRadius.MEDIUM);
-        this.image.setAlignItems(Alignment.CENTER);
-        this.image.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        this.image.setOverflow(com.example.application.utilities.Overflow.HIDDEN);
+        this.image.setAlignItems(Layout.AlignItems.CENTER);
+        this.image.setJustifyContent(Layout.JustifyContent.CENTER);
+        this.image.setOverflow(Layout.Overflow.HIDDEN);
         setImage(image);
 
         this.primary = new Layout();
@@ -43,14 +40,14 @@ public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
         setSecondary(secondary);
 
         this.column = new Layout(this.primary, this.secondary);
-        this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.column.setFlexGrow(1, this.column);
+        this.column.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.column.setFlexGrow();
 
         this.actions = new Layout();
         setActions(actions);
 
         this.row = new Layout(this.column, this.actions);
-        this.row.setAlignItems(Alignment.CENTER);
+        this.row.setAlignItems(Layout.AlignItems.CENTER);
 
         add(this.image, this.row);
     }

@@ -1,0 +1,75 @@
+.not-sr-only {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    padding: 0;
+    position: static;
+    white-space: normal;
+    width: auto;
+}
+
+@media (min-width: 640px) {
+    .sm\:not-sr-only {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:not-sr-only {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:not-sr-only {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+}
+
+@media (min-width: 1280px) {
+    .xl\:not-sr-only {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+}
+
+@media (min-width: 1536px) {
+    .\32xl\:not-sr-only {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+}

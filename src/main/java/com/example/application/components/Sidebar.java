@@ -8,7 +8,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -18,7 +17,7 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
     private H2 title;
     private Span description;
 
-    private FlexLayout content;
+    private Layout content;
 
     private Footer footer;
     private Button save;
@@ -46,8 +45,8 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
         this.title.addClassNames(FontSize.XLARGE);
 
         Layout layout = new Layout(this.title);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setGap(com.example.application.utilities.Gap.SMALL);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
+        layout.setGap(Layout.Gap.SMALL);
 
         if (description != null) {
             this.description = new Span(description);
@@ -56,13 +55,13 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
         }
 
         Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create(), e -> close());
-        close.addClassNames(Margin.NONE);
+        close.addClassNames(Margin.Vertical.NONE);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close sidebar");
         close.setTooltipText("Close sidebar");
 
         this.header = new Header(layout, close);
-        this.header.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Display.FLEX, JustifyContent.BETWEEN,
+        this.header.addClassNames(Border.BOTTOM, Display.FLEX, JustifyContent.BETWEEN,
                 Padding.End.MEDIUM, Padding.Start.LARGE, Padding.Vertical.MEDIUM);
 
         if (description == null) {
@@ -73,9 +72,9 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
     }
 
     private void createContent(Component... components) {
-        this.content = new FlexLayout(components);
+        this.content = new Layout(components);
         this.content.addClassNames(Flex.GROW, Padding.Bottom.MEDIUM, Padding.Horizontal.LARGE, Padding.Top.SMALL);
-        this.content.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        this.content.setFlexDirection(Layout.FlexDirection.COLUMN);
         add(this.content);
     }
 
@@ -112,7 +111,7 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
         this.header.getElement().getThemeList().remove(theme);
     }
 
-    public FlexLayout getContent() {
+    public Layout getContent() {
         return this.content;
     }
 

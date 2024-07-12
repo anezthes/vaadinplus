@@ -2,20 +2,7 @@
   border-width: 2px;
 }
 
-/* Border radius */
-
-.rounded-full {
-  border-radius: 9999px;
-}
-
 /* Divide */
-
-.divide-x > * + * {
-  border-inline-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
-}
-.divide-y > * + * {
-  border-block-start: 1px var(--lumo-utility-border-style, solid) var(--lumo-utility-border-color, var(--lumo-contrast-10pct));
-}
 
 @media (min-width: 640px) {
   .sm\:divide-x > * + * {

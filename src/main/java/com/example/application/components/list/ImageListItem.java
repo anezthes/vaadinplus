@@ -4,8 +4,6 @@ import com.example.application.components.Layout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
@@ -25,7 +23,7 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
         addClassNames(Background.BASE, BorderRadius.MEDIUM, Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN);
 
         this.image = new Layout();
-        this.image.setFlexGrow(1, this.image);
+        this.image.setFlexGrow();
         setImage(image);
 
         this.primary = new Layout();
@@ -37,14 +35,14 @@ public class ImageListItem extends com.vaadin.flow.component.html.ListItem {
 
         this.column = new Layout(this.primary, this.secondary);
         this.column.addClassNames(Padding.Start.XSMALL);
-        this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.column.setFlexGrow(1, this.column);
+        this.column.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.column.setFlexGrow();
 
         this.actions = new Layout();
         setActions(actions);
 
         this.row = new Layout(this.column, this.actions);
-        this.row.setAlignItems(Alignment.CENTER);
+        this.row.setAlignItems(Layout.AlignItems.CENTER);
         this.row.addClassNames(Padding.End.XSMALL, Padding.Start.SMALL, Padding.Vertical.SMALL);
 
         add(this.image, this.row);

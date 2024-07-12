@@ -3,8 +3,9 @@ package com.example.application.views.components;
 import com.example.application.components.BreadcrumbItem;
 import com.example.application.components.Header;
 import com.example.application.components.Tag;
-import com.example.application.utilities.FontSize;
+import com.example.application.utilities.Font;
 import com.example.application.utilities.HeadingLevel;
+import com.example.application.views.HomeView;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
@@ -137,11 +138,11 @@ public class HeadersView extends ComponentView {
         Button button = new Button("Edit", LineAwesomeIcon.EDIT.create());
 
         Header header = new Header("John Smith", HeadingLevel.H3);
-        header.setPrefix(avatar);
         header.getColumnLayout().removeGap();
-        header.setHeadingFontSize(FontSize.LARGE);
-        header.setDetails(details);
         header.setActions(button);
+        header.setDetails(details);
+        header.setHeadingFontSize(Font.Size.LARGE);
+        header.setPrefix(avatar);
         return header;
     }
 

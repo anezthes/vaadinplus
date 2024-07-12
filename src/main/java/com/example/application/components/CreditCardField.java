@@ -1,7 +1,6 @@
 package com.example.application.components;
 
 import com.vaadin.flow.component.customfield.CustomField;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
 
 public class CreditCardField extends CustomField<CreditCardField.CreditCard> {
@@ -30,7 +29,7 @@ public class CreditCardField extends CustomField<CreditCardField.CreditCard> {
 
         InputGroup row = new InputGroup(expiration, csc);
         InputGroup col = new InputGroup(number, row);
-        col.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        col.setFlexDirection(Layout.FlexDirection.COLUMN);
         add(col);
     }
 

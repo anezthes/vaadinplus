@@ -1,9 +1,9 @@
 package com.example.application.components.list;
 
+import com.example.application.components.Layout;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -20,24 +20,24 @@ public class MessageListItem extends ListItem {
     }
 
     public MessageListItem(String name, String message, LocalDateTime dateTime) {
-        removeClassName(LumoUtility.AlignItems.CENTER);
+        removeClassName(AlignItems.CENTER);
 
         this.avatar = new Avatar(name);
-        this.avatar.addClassNames(LumoUtility.Margin.Top.XSMALL);
+        this.avatar.addClassNames(Margin.Top.XSMALL);
         setPrefix(this.avatar);
 
         this.name = new Span(name);
-        this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        this.name.addClassNames(FontWeight.SEMIBOLD);
 
         this.time = new Span(formatTimeAgo(dateTime));
-        this.time.addClassNames(LumoUtility.TextColor.SECONDARY);
+        this.time.addClassNames(TextColor.SECONDARY);
 
         setPrimary(this.name, this.time);
-        this.primary.addClassNames(LumoUtility.FontSize.SMALL);
-        this.primary.setAlignItems(FlexComponent.Alignment.BASELINE);
+        this.primary.addClassNames(FontSize.SMALL);
+        this.primary.setAlignItems(Layout.AlignItems.BASELINE);
 
         setSecondary(message);
-        this.secondary.removeClassName(LumoUtility.TextColor.SECONDARY);
+        this.secondary.removeClassName(TextColor.SECONDARY);
     }
 
     public static String formatTimeAgo(LocalDateTime dateTime) {

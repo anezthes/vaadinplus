@@ -1,12 +1,11 @@
 package com.example.application.views.components;
 
 import com.example.application.components.Badge;
+import com.example.application.components.Layout;
 import com.example.application.components.Tag;
 import com.example.application.components.list.*;
-import com.example.application.utilities.BackgroundColor;
 import com.example.application.utilities.BadgeVariant;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.TextColor;
+import com.example.application.utilities.Color;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
@@ -20,10 +19,10 @@ import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.Display;
 import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Lists")
@@ -107,7 +106,7 @@ public class ListsView extends ComponentView {
 
     private RouterLink createSuffix(String label) {
         SvgIcon icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        icon.addClassNames(IconSize.SMALL, TextColor.SECONDARY);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
@@ -128,14 +127,14 @@ public class ListsView extends ComponentView {
     private List createGridList() {
         List list = createList();
         list.setAutoFill(200, Unit.PIXELS);
-        list.setGap(Gap.MEDIUM);
+        list.setGap(Layout.Gap.MEDIUM);
         return list;
     }
 
     private List createImageList() {
         List list = new List();
         list.setAutoFill(200, Unit.PIXELS);
-        list.setGap(Gap.MEDIUM);
+        list.setGap(Layout.Gap.MEDIUM);
 
         list.add(
                 new ImageListItem(
@@ -194,6 +193,7 @@ public class ListsView extends ComponentView {
         Button button = new Button(icon.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel(ariaLabel);
+        button.setTooltipText(ariaLabel);
         return button;
     }
 
@@ -252,13 +252,13 @@ public class ListsView extends ComponentView {
 
     private List createTimeline() {
         TimelineListItem item1 = new TimelineListItem(
-                LineAwesomeIcon.CHECK_SOLID, BackgroundColor.SUCCESS, TextColor.SUCCESS_CONTRAST,
+                LineAwesomeIcon.CHECK_SOLID, Color.Background.SUCCESS, Color.Text.SUCCESS_CONTRAST,
                 PERSON_1, "marked issue as fixed", "1d ago"
         );
         item1.setAvatarImage(PERSON_1_IMG);
 
         TimelineListItem item2 = new TimelineListItem(
-                LineAwesomeIcon.TAG_SOLID, BackgroundColor.PRIMARY, TextColor.PRIMARY_CONTRAST,
+                LineAwesomeIcon.TAG_SOLID, Color.Background.PRIMARY, Color.Text.PRIMARY_CONTRAST,
                 PERSON_2, new Span(
                 new Text(" added labels "),
                 new Badge("bug", BadgeVariant.ERROR, BadgeVariant.PILL),
@@ -269,7 +269,7 @@ public class ListsView extends ComponentView {
         item2.setAvatarImage(PERSON_2_IMG);
 
         TimelineListItem item3 = new TimelineListItem(
-                LineAwesomeIcon.PEN_ALT_SOLID, BackgroundColor.CONTRAST, TextColor.PRIMARY_CONTRAST,
+                LineAwesomeIcon.PEN_ALT_SOLID, Color.Background.CONTRAST, Color.Text.PRIMARY_CONTRAST,
                 PERSON_3, "changed the title", "5d ago"
         );
         item3.setAvatarImage(PERSON_3_IMG);

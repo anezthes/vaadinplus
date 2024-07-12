@@ -2,7 +2,7 @@ package com.example.application.components.dialogs;
 
 import com.example.application.components.list.List;
 import com.example.application.components.list.MessageLinkListItem;
-import com.example.application.views.components.HomeView;
+import com.example.application.views.HomeView;
 import com.vaadin.flow.component.Unit;
 
 import java.time.LocalDateTime;

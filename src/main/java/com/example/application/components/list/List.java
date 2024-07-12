@@ -1,25 +1,28 @@
 package com.example.application.components.list;
 
-import com.example.application.utilities.*;
+import com.example.application.components.Layout;
+import com.example.application.utilities.Color;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Unit;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.ListStyleType;
+import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 public class List extends com.vaadin.flow.component.html.UnorderedList implements HasTheme {
 
     // Style
-    private BackgroundColor backgroundColor;
-    private Display display;
-    private ColumnGap colGap;
-    private RowGap rowGap;
-    private Overflow overflow;
+    private Color.Background background;
+    private Layout.Display display;
+    private Layout.ColumnGap colGap;
+    private Layout.RowGap rowGap;
+    private Layout.Overflow overflow;
 
     public List(Component... components) {
         add(components);
-        addClassNames(LumoUtility.ListStyleType.NONE, LumoUtility.Margin.NONE, LumoUtility.Padding.NONE);
-        setDisplay(Display.GRID);
-        setOverflow(Overflow.HIDDEN);
+        addClassNames(ListStyleType.NONE, Margin.Vertical.NONE, Padding.Start.NONE);
+        setDisplay(Layout.Display.GRID);
+        setOverflow(Layout.Overflow.HIDDEN);
     }
 
     /**
@@ -32,26 +35,26 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     /**
      * Sets the background color.
      */
-    public void setBackgroundColor(BackgroundColor backgroundColor) {
+    public void setBackground(Color.Background background) {
         removeBackgroundColor();
-        addClassNames(backgroundColor.getClassName());
-        this.backgroundColor = backgroundColor;
+        addClassNames(background.getClassName());
+        this.background = background;
     }
 
     /**
      * Removes the background color.
      */
     public void removeBackgroundColor() {
-        if (this.backgroundColor != null) {
-            this.removeClassName(this.backgroundColor.getClassName());
+        if (this.background != null) {
+            this.removeClassName(this.background.getClassName());
         }
-        this.backgroundColor = null;
+        this.background = null;
     }
 
     /**
      * Sets the display property.
      */
-    public void setDisplay(Display display) {
+    public void setDisplay(Layout.Display display) {
         if (this.display != null) {
             removeClassNames(this.display.getClassName());
         }
@@ -62,7 +65,7 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     /**
      * Sets both the column (horizontal) and row (vertical) gap between components.
      */
-    public void setGap(Gap gap) {
+    public void setGap(Layout.Gap gap) {
         setColumnGap(gap);
         setRowGap(gap);
     }
@@ -70,7 +73,7 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     /**
      * Sets the column (horizontal) gap between components.
      */
-    public void setColumnGap(Gap gap) {
+    public void setColumnGap(Layout.Gap gap) {
         removeColumnGap();
         this.addClassNames(gap.getColumnGap().getClassName());
         this.colGap = gap.getColumnGap();
@@ -79,7 +82,7 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     /**
      * Sets the row (vertical) gap between components.
      */
-    public void setRowGap(Gap gap) {
+    public void setRowGap(Layout.Gap gap) {
         removeRowGap();
         this.addClassNames(gap.getRowGap().getClassName());
         this.rowGap = gap.getRowGap();
@@ -116,7 +119,7 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     /**
      * Sets the overflow property.
      */
-    public void setOverflow(Overflow overflow) {
+    public void setOverflow(Layout.Overflow overflow) {
         if (this.overflow != null) {
             removeClassNames(this.overflow.getClassName());
         }

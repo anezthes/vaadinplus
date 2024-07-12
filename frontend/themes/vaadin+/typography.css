@@ -4,33 +4,8 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-/* Line clamp */
-
-[class*="line-clamp-"] {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-}
-
-.line-clamp-1 {
-  -webkit-line-clamp: 1;
-}
-
-.line-clamp-2 {
-  -webkit-line-clamp: 2;
-}
-
-.line-clamp-3 {
-  -webkit-line-clamp: 3;
-}
-
-.line-clamp-4 {
-  -webkit-line-clamp: 4;
-}
-
 /* Text decoration */
 
-.no-underline,
 .no-underline:hover {
   text-decoration-line: none;
 }

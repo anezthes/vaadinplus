@@ -11,9 +11,9 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.menubar.MenuBarVariant;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.Background;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -55,7 +55,7 @@ public class GridsView extends ComponentView {
 
         Layout layout = new Layout(header, grid);
         layout.addClassNames(Background.BASE);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 
@@ -70,8 +70,8 @@ public class GridsView extends ComponentView {
         columnsIcon.addClassNames("rotate-90");
 
         MenuItem columns = menuBar.addItem(columnsIcon);
+        columns.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
         columns.setAriaLabel("Columns");
-        columns.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
 
         List<Grid.Column> cols = grid.getColumns();
         for (Grid.Column col : cols) {
@@ -81,10 +81,10 @@ public class GridsView extends ComponentView {
         }
 
         MenuItem more = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
+        more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
         more.setAriaLabel("More");
-        more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
 
-        more.getSubMenu().addItem(new Item("Search", LineAwesomeIcon.SEARCH_SOLID));
+        more.getSubMenu().addItem(new Item("Search", LumoIcon.SEARCH));
         more.getSubMenu().addItem(new Item("Filter", LineAwesomeIcon.FILTER_SOLID));
 
         return menuBar;
@@ -94,11 +94,12 @@ public class GridsView extends ComponentView {
         MenuBar menuBar = new MenuBar();
         menuBar.addThemeNames(MenuBarTheme.ROUNDED, MenuBarTheme.GAP_MEDIUM);
 
-        menuBar.addItem(new Item("Delete", LineAwesomeIcon.TRASH_SOLID));
+        MenuItem delete = menuBar.addItem(new Item("Delete", LineAwesomeIcon.TRASH_SOLID));
+        delete.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
 
         MenuItem more = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
         more.setAriaLabel("More");
-        more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName());
+        more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
 
         more.getSubMenu().addItem(new Item("Favourite", LineAwesomeIcon.HEART));
         more.getSubMenu().addItem(new Item("Label", LineAwesomeIcon.TAG_SOLID));

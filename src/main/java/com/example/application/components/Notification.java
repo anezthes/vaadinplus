@@ -1,8 +1,7 @@
 package com.example.application.components;
 
 import com.example.application.utilities.BorderColor;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.TextColor;
+import com.example.application.utilities.Color;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Text;
@@ -11,7 +10,6 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -42,30 +40,31 @@ public class Notification extends Layout implements HasTheme {
 
     public Notification(String title, Component description, Type type) {
         addClassNames("notification", Background.BASE, BorderRadius.MEDIUM, Padding.SMALL);
-        setGap(Gap.SMALL);
+        setGap(Layout.Gap.SMALL);
         setType(type);
 
         this.title = new Span(title);
         this.title.addClassNames(FontWeight.SEMIBOLD);
 
         this.description = new Div(description);
-        this.description.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         this.column = new Layout(this.title, this.description);
         this.column.addClassNames(Margin.Vertical.XSMALL);
         this.column.setFlexDirection(FlexDirection.COLUMN);
+        this.column.setFlexGrow();
+        this.column.setGap(Gap.XSMALL);
 
         this.actions = new Layout();
-        this.actions.setGap(Gap.SMALL);
+        this.actions.setGap(Layout.Gap.SMALL);
         setActions(null);
 
         this.row = new Layout(this.column, this.actions);
-        this.row.setFlexGrow(1, this.column);
+        this.row.setFlexGrow();
         this.row.setFlexWrap(FlexWrap.WRAP);
-        this.row.setGap(Gap.XSMALL);
+        this.row.setGap(Layout.Gap.XSMALL);
 
         add(this.icon, this.row);
-        setFlexGrow(1, this.row);
     }
 
     /**
@@ -85,12 +84,10 @@ public class Notification extends Layout implements HasTheme {
      */
     public void setAccentBorder(boolean border) {
         if (border) {
-            getStyle().set("border-inline-start-style", "solid");
-            getStyle().set("border-inline-start-width", "var(--lumo-space-xs)");
+            getStyle().setBorderLeft("var(--lumo-space-xs) solid var(--lumo-utility-border-color)");
             this.icon.removeClassName(Margin.Start.XSMALL);
         } else {
-            getStyle().remove("border-inline-start-style");
-            getStyle().remove("border-inline-start-width");
+            getStyle().remove("border-left");
             this.icon.addClassName(Margin.Start.XSMALL);
         }
     }
@@ -109,8 +106,8 @@ public class Notification extends Layout implements HasTheme {
     /**
      * Sets the text color.
      */
-    public void setTextColor(TextColor color) {
-        this.description.removeClassName(LumoUtility.TextColor.SECONDARY);
+    public void setTextColor(Color.Text color) {
+        this.description.removeClassName(TextColor.SECONDARY);
 
         this.title.addClassNames(color.getClassName());
         this.description.addClassNames(color.getClassName());
@@ -127,19 +124,19 @@ public class Notification extends Layout implements HasTheme {
                 setBorderColor(BorderColor.PRIMARY_50);
                 getElement().setAttribute("role", "status");
                 getStyle().set("background-image", "linear-gradient(var(--lumo-primary-color-10pct), var(--lumo-primary-color-10pct))");
-                setIcon(LineAwesomeIcon.INFO_CIRCLE_SOLID, TextColor.PRIMARY);
+                setIcon(LineAwesomeIcon.INFO_CIRCLE_SOLID, Color.Text.PRIMARY);
                 break;
             case SUCCESS:
                 setBorderColor(BorderColor.SUCCESS_50);
                 getElement().setAttribute("role", "status");
                 getStyle().set("background-image", "linear-gradient(var(--lumo-success-color-10pct), var(--lumo-success-color-10pct))");
-                setIcon(LineAwesomeIcon.CHECK_CIRCLE, TextColor.SUCCESS);
+                setIcon(LineAwesomeIcon.CHECK_CIRCLE, Color.Text.SUCCESS);
                 break;
             case ERROR:
                 setBorderColor(BorderColor.ERROR_50);
                 getElement().setAttribute("role", "alert");
                 getStyle().set("background-image", "linear-gradient(var(--lumo-error-color-10pct), var(--lumo-error-color-10pct))");
-                setIcon(LineAwesomeIcon.EXCLAMATION_CIRCLE_SOLID, TextColor.ERROR);
+                setIcon(LineAwesomeIcon.EXCLAMATION_CIRCLE_SOLID, Color.Text.ERROR);
                 break;
         }
     }
@@ -147,15 +144,14 @@ public class Notification extends Layout implements HasTheme {
     /**
      * Sets the icon.
      */
-    public void setIcon(LineAwesomeIcon icon, TextColor color) {
+    public void setIcon(LineAwesomeIcon icon, Color.Text color) {
         SvgIcon i = icon.create();
-        i.addClassNames(IconSize.SMALL);
 
         this.icon = new Layout(i);
         this.icon.addClassNames(color.getClassName(), Flex.SHRINK_NONE, Height.XSMALL, Margin.Top.XSMALL,
                 Margin.Start.XSMALL, Width.XSMALL);
-        this.icon.setAlignItems(Alignment.CENTER);
-        this.icon.setJustifyContentMode(JustifyContentMode.CENTER);
+        this.icon.setAlignItems(AlignItems.CENTER);
+        this.icon.setJustifyContent(JustifyContent.CENTER);
     }
 
     /**
@@ -204,6 +200,8 @@ public class Notification extends Layout implements HasTheme {
         } else if (this.type.equals(Notification.Type.ERROR)) {
             button.addThemeVariants(ButtonVariant.LUMO_ERROR);
         }
+        button.addClassNames(Margin.Vertical.NONE, Padding.Horizontal.MEDIUM);
+        button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
     }
 
     public enum Type {

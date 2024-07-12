@@ -1,8 +1,8 @@
 package com.example.application.components;
 
-import com.example.application.utilities.Gap;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.customfield.CustomField;
+import com.vaadin.flow.shared.Registration;
 
 public class ExpirationDateField extends CustomField {
 
@@ -29,8 +29,8 @@ public class ExpirationDateField extends CustomField {
         this.year.getStyle().set("--vaadin-field-default-width", "auto");
 
         Layout layout = new Layout(this.month, this.year);
-        layout.setFlexGrow(1, this.month, this.year);
-        layout.setGap(Gap.SMALL);
+        layout.setFlexGrow(this.month, this.year);
+        layout.setGap(Layout.Gap.SMALL);
         add(layout);
     }
 
@@ -44,4 +44,8 @@ public class ExpirationDateField extends CustomField {
 
     }
 
+    @Override
+    public Registration addValueChangeListener(ValueChangeListener valueChangeListener) {
+        return null;
+    }
 }

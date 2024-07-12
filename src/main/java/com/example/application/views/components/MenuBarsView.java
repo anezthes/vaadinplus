@@ -6,14 +6,14 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 @PageTitle("Menu bars")
 @Route(value = "menu-bars", layout = MainLayout.class)
 public class MenuBarsView extends ComponentView {
 
     public MenuBarsView() {
-        addClassNames(LumoUtility.Padding.Top.LARGE);
+        addClassNames(Padding.Top.LARGE);
 
         addH2("Theme: rounded");
         add(createMenuBar(MenuBarTheme.ROUNDED));

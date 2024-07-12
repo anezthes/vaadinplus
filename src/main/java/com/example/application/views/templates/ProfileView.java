@@ -2,8 +2,6 @@ package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
 import com.example.application.utilities.Breakpoint;
-import com.example.application.utilities.GridColumnSpan;
-import com.example.application.utilities.GridColumns;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -14,8 +12,6 @@ import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
@@ -37,7 +33,7 @@ public class ProfileView extends Main {
         Layout layout = new Layout(createPublicInformation(), createContactInformation(), createPassword(),
                 createNotifications());
         layout.addClassNames(BoxSizing.BORDER, MaxWidth.SCREEN_SMALL, Padding.LARGE);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 
@@ -66,8 +62,8 @@ public class ProfileView extends Main {
 
         Layout avatarLayout = new Layout(avatar, upload, delete);
         avatarLayout.addClassNames(Margin.Bottom.XSMALL, Margin.Top.MEDIUM);
-        avatarLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        avatarLayout.setGap(com.example.application.utilities.Gap.LARGE);
+        avatarLayout.setAlignItems(Layout.AlignItems.CENTER);
+        avatarLayout.setGap(Layout.Gap.LARGE);
 
         TextField username = new TextField("Username");
         TextField firstName = new TextField("First name");
@@ -75,12 +71,12 @@ public class ProfileView extends Main {
 
         Layout layout = new Layout(title, description, avatarLayout, username, firstName, lastName);
         // Viewport < 1024px
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
-        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setGridColumns(Breakpoint.LARGE, GridColumns.COLUMNS_2);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, description, avatarLayout, username);
+        layout.setDisplay(Breakpoint.LARGE, Layout.Display.GRID);
+        layout.setColumns(Layout.GridColumns.COLUMNS_2);
+        layout.setColumnGap(Layout.Gap.MEDIUM);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_FULL, title, description, avatarLayout, username);
         return layout;
     }
 
@@ -105,13 +101,13 @@ public class ProfileView extends Main {
 
         Layout layout = new Layout(title, description, address, city, state, zip, phone, email);
         // Viewport < 1024px
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
-        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setGridColumns(GridColumns.COLUMNS_4);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, description, address);
+        layout.setDisplay(Breakpoint.LARGE, Layout.Display.GRID);
+        layout.setColumns(Layout.GridColumns.COLUMNS_4);
+        layout.setColumnGap(Layout.Gap.MEDIUM);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_2, city, phone, email);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_FULL, title, description, address);
         return layout;
     }
 
@@ -128,7 +124,7 @@ public class ProfileView extends Main {
         TextField confirmPassword = new TextField("Confirm password");
 
         Layout layout = new Layout(title, description, currentPassword, newPassword, confirmPassword);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 
@@ -149,7 +145,7 @@ public class ProfileView extends Main {
         pushNotifications.setItems("New messages", "Friend requests", "Activity updates", "Order status updates", "Reminders or alerts");
 
         Layout layout = new Layout(title, description, emailNotifications, pushNotifications);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 

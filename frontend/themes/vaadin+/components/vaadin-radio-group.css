@@ -97,7 +97,7 @@
 }
 
 :host([theme~="segmented"]) [part='group-field'] {
-    background-color: var(--lumo-contrast-20pct);
+    background-color: var(--lumo-contrast-5pct);
     border-radius: var(--lumo-border-radius-m);
     box-sizing: border-box;
     height: var(--lumo-size-m);

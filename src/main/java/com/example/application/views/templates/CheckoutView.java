@@ -12,7 +12,6 @@ import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
@@ -50,8 +49,8 @@ public class CheckoutView extends Main {
     private Component createForm() {
         Layout layout = new Layout(createShippingInformation(), createDeliveryMethod(), createPaymentInformation());
         layout.addClassNames(Padding.LARGE);
-        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setBoxSizing(Layout.BoxSizing.BORDER);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 
@@ -72,13 +71,13 @@ public class CheckoutView extends Main {
 
         Layout layout = new Layout(title, address, city, state, zip, phone, email);
         // Viewport < 1024px
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
-        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setGridColumns(com.example.application.utilities.GridColumns.COLUMNS_4);
-        layout.setGridColumnSpan(com.example.application.utilities.GridColumnSpan.COLUMN_SPAN_2, city, phone, email);
-        layout.setGridColumnSpan(com.example.application.utilities.GridColumnSpan.COLUMN_SPAN_FULL, title, address);
+        layout.setDisplay(Breakpoint.LARGE, Layout.Display.GRID);
+        layout.setColumns(Layout.GridColumns.COLUMNS_4);
+        layout.setColumnGap(Layout.Gap.MEDIUM);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_2, city, phone, email);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_FULL, title, address);
         return layout;
     }
 
@@ -93,7 +92,7 @@ public class CheckoutView extends Main {
         setRadioButtonGroupTheme(deliveryMethod, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.TOGGLE);
 
         Layout layout = new Layout(title, deliveryMethod);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 
@@ -147,12 +146,12 @@ public class CheckoutView extends Main {
 
         Layout layout = new Layout(title, paymentMethod, creditCard, expiration, securityCode);
         // Viewport < 1024px
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         // Viewport > 1024px
-        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
-        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setGridColumns(com.example.application.utilities.GridColumns.COLUMNS_2);
-        layout.setGridColumnSpan(com.example.application.utilities.GridColumnSpan.COLUMN_SPAN_FULL, title, paymentMethod, creditCard);
+        layout.setDisplay(Breakpoint.LARGE, Layout.Display.GRID);
+        layout.setColumns(Layout.GridColumns.COLUMNS_2);
+        layout.setColumnGap(Layout.Gap.MEDIUM);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_FULL, title, paymentMethod, creditCard);
         return layout;
     }
 
@@ -236,9 +235,9 @@ public class CheckoutView extends Main {
 
         Layout layout = new Layout(title, pairs, inputGroup, confirmOrder);
         layout.addClassNames(Background.CONTRAST_5, BorderRadius.LARGE, Padding.LARGE);
-        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setGap(com.example.application.utilities.Gap.MEDIUM);
+        layout.setBoxSizing(Layout.BoxSizing.BORDER);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
+        layout.setGap(Layout.Gap.MEDIUM);
 
         Section section = new Section(layout);
         section.addClassNames(BoxSizing.BORDER, Padding.LARGE);

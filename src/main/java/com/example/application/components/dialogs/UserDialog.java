@@ -35,7 +35,7 @@ public class UserDialog extends NativeDialog {
                 createListItem("Manage account", LineAwesomeIcon.USER_CIRCLE, ProfileView.class),
                 createListItem("Sign out", LineAwesomeIcon.SIGN_OUT_ALT_SOLID, ProfileView.class)
         );
-        list.addClassNames(ListStyleType.NONE, Margin.NONE, Padding.XSMALL);
+        list.addClassNames(ListStyleType.NONE, Margin.Vertical.NONE, Padding.XSMALL);
 
         // Divider
         Hr hr = new Hr();
@@ -82,7 +82,7 @@ public class UserDialog extends NativeDialog {
         theme.addValueChangeListener(e -> setTheme(e.getValue().equals("Lumo")));
 
         theme.setAriaLabel("Theme");
-        theme.setItems("Lumo", "Aero");
+        theme.setItems("Lumo", "StarPass");
         theme.setRenderer(new ComponentRenderer<>(item -> renderTheme(item)));
         theme.setValue("Lumo");
         theme.setWidthFull();
@@ -142,7 +142,7 @@ public class UserDialog extends NativeDialog {
     }
 
     private void setTheme(boolean lumo) {
-        this.theme = lumo ? "" : "aero";
+        this.theme = lumo ? "" : "starpass";
         updateTheme();
     }
 

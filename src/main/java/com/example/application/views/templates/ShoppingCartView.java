@@ -8,7 +8,6 @@ import com.example.application.components.list.List;
 import com.example.application.components.list.ShoppingCartListItem;
 import com.example.application.themes.ButtonTheme;
 import com.example.application.themes.InputTheme;
-import com.example.application.utilities.Gap;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
@@ -16,7 +15,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Section;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -97,9 +95,9 @@ public class ShoppingCartView extends Main {
 
         Layout layout = new Layout(title, pairs, inputGroup, checkout);
         layout.addClassNames(Background.CONTRAST_5, BorderRadius.LARGE, Padding.LARGE);
-        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setGap(Gap.MEDIUM);
+        layout.setBoxSizing(Layout.BoxSizing.BORDER);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
+        layout.setGap(Layout.Gap.MEDIUM);
 
         Section section = new Section(layout);
         section.addClassNames(BoxSizing.BORDER, Padding.LARGE);

@@ -1,59 +1,7 @@
-/* Aspect ratio */
+/* Display */
 
-.aspect-square {
-  aspect-ratio: 1 / 1;
-}
-
-.aspect-video {
-  aspect-ratio: 16 / 9;
-}
-
-/* Grid column */
-
-.col-span-full {
-  grid-column: 1 / -1;
-}
-
-/* Margin */
-
-.-mx-xs {
-  margin-inline: calc(var(--lumo-size-xs) / -1)
-}
-
-.-mx-s {
-  margin-inline: calc(var(--lumo-space-s) / -1)
-}
-
-.-mx-m {
-  margin-inline: calc(var(--lumo-space-m) / -1)
-}
-
-.-mx-l {
-  margin-inline: calc(var(--lumo-space-l) / -1)
-}
-
-.-mx-xl {
-  margin-inline: calc(var(--lumo-space-xl) / -1)
-}
-
-.-my-xs {
-  margin-block: calc(var(--lumo-size-xs) / -1)
-}
-
-.-my-s {
-  margin-block: calc(var(--lumo-space-s) / -1)
-}
-
-.-my-m {
-  margin-block: calc(var(--lumo-space-m) / -1)
-}
-
-.-my-l {
-  margin-block: calc(var(--lumo-space-l) / -1)
-}
-
-.-my-xl {
-  margin-block: calc(var(--lumo-space-xl) / -1)
+.contents {
+  display: contents;
 }
 
 /* Min height */
@@ -78,278 +26,99 @@
   min-height: var(--lumo-size-xl);
 }
 
-/* Position */
-
-.-bottom-full {
-  bottom: -100%;
-}
-
-.bottom-0 {
-  bottom: 0;
-}
-
-.bottom-full {
-  bottom: 100%;
-}
-
-.-end-s {
-  inset-inline-end: calc(var(--lumo-space-s) / -1);
-}
-
-.-end-full {
-  inset-inline-end: -100%;
-}
-
-.end-0 {
-  inset-inline-end: 0;
-}
-
-.end-full {
-  inset-inline-end: 100%;
-}
-
-.-start-full {
-  inset-inline-start: -100%;
-}
-
-.start-0 {
-  inset-inline-start: 0;
-}
-
-.start-full {
-  inset-inline-start: 100%;
-}
-
-.-top-full {
-  top: -100%;
-}
-
-.top-0 {
-  top: 0;
-}
-
-.top-full {
-  top: 100%;
-}
-
 /* Responsive design */
 
 @media (min-width: 640px) {
-  /* Display */
-  .sm\:block {
-    display: block;
+  /* TODO: Workaround until contents is part of the utility classes */
+  .sm\:flex {
+    display: flex;
   }
-  .sm\:grid {
-    display: grid;
-  }
-  .sm\:inline {
-    display: inline;
-  }
-  .sm\:inline-block {
-    display: inline-block;
-  }
-  .sm\:inline-flex {
-    display: inline-flex;
-  }
-  .sm\:inline-grid {
-    display: inline-grid;
-  }
-
   /* Overflow */
   .sm\:overflow-hidden {
     overflow: hidden;
   }
-
   /* Position */
-  .sm\:absolute {
-    position: absolute;
+  .sm\:top-s {
+    top: var(--lumo-space-s);
   }
-  .sm\:fixed {
-    position: fixed;
-  }
-  .sm\:relative {
-    position: relative;
-  }
-  .sm\:static {
-    position: static;
-  }
-  .sm\:sticky {
-    position: sticky;
+  /* Width */
+  .sm\:w-auto {
+    width: auto;
   }
 }
 
 @media (min-width: 768px) {
-  /* Display */
-  .md\:block {
-    display: block;
+  /* TODO: Workaround until contents is part of the utility classes */
+  .md\:flex {
+    display: flex;
   }
-  .md\:grid {
-    display: grid;
-  }
-  .md\:inline {
-    display: inline;
-  }
-  .md\:inline-block {
-    display: inline-block;
-  }
-  .md\:inline-flex {
-    display: inline-flex;
-  }
-  .md\:inline-grid {
-    display: inline-grid;
-  }
-
   /* Overflow */
   .md\:overflow-hidden {
     overflow: hidden;
   }
-
   /* Position */
-  .md\:absolute {
-    position: absolute;
+  .md\:top-s {
+    top: var(--lumo-space-s);
   }
-  .md\:fixed {
-    position: fixed;
-  }
-  .md\:relative {
-    position: relative;
-  }
-  .md\:static {
-    position: static;
-  }
-  .md\:sticky {
-    position: sticky;
+  /* Width */
+  .md\:w-auto {
+    width: auto;
   }
 }
 
 @media (min-width: 1024px) {
-  /* Display */
-  .lg\:block {
-    display: block;
+  /* TODO: Workaround until contents is part of the utility classes */
+  .lg\:flex {
+    display: flex;
   }
-  .lg\:grid {
-    display: grid;
-  }
-  .lg\:inline {
-    display: inline;
-  }
-  .lg\:inline-block {
-    display: inline-block;
-  }
-  .lg\:inline-flex {
-    display: inline-flex;
-  }
-  .lg\:inline-grid {
-    display: inline-grid;
-  }
-
   /* Overflow */
   .lg\:overflow-hidden {
     overflow: hidden;
   }
-
   /* Position */
-  .lg\:absolute {
-    position: absolute;
+  .lg\:top-s {
+    top: var(--lumo-space-s);
   }
-  .lg\:fixed {
-    position: fixed;
-  }
-  .lg\:relative {
-    position: relative;
-  }
-  .lg\:static {
-    position: static;
-  }
-  .lg\:sticky {
-    position: sticky;
+  /* Width */
+  .lg\:w-auto {
+    width: auto;
   }
 }
 
 @media (min-width: 1280px) {
-  /* Display */
-  .xl\:block {
-    display: block;
+  /* TODO: Workaround until contents is part of the utility classes */
+  .xl\:flex {
+    display: flex;
   }
-  .xl\:grid {
-    display: grid;
-  }
-  .xl\:inline {
-    display: inline;
-  }
-  .xl\:inline-block {
-    display: inline-block;
-  }
-  .xl\:inline-flex {
-    display: inline-flex;
-  }
-  .xl\:inline-grid {
-    display: inline-grid;
-  }
-
   /* Overflow */
   .xl\:overflow-hidden {
     overflow: hidden;
   }
-
   /* Position */
-  .xl\:absolute {
-    position: absolute;
+  .xl\:top-s {
+    top: var(--lumo-space-s);
   }
-  .xl\:fixed {
-    position: fixed;
-  }
-  .xl\:relative {
-    position: relative;
-  }
-  .xl\:static {
-    position: static;
-  }
-  .xl\:sticky {
-    position: sticky;
+  /* Width */
+  .xl\:w-auto {
+    width: auto;
   }
 }
 
 @media (min-width: 1536px) {
-  /* Display */
-  .\32xl\:block {
-    display: block;
+  /* TODO: Workaround until contents is part of the utility classes */
+  .\32xl\:flex {
+    display: flex;
   }
-  .\32xl\:grid {
-    display: grid;
-  }
-  .\32xl\:inline {
-    display: inline;
-  }
-  .\32xl\:inline-block {
-    display: inline-block;
-  }
-  .\32xl\:inline-flex {
-    display: inline-flex;
-  }
-  .\32xl\:inline-grid {
-    display: inline-grid;
-  }
-
   /* Overflow */
   .\32xl\:overflow-hidden {
     overflow: hidden;
   }
-
   /* Position */
-  .\32xl\:absolute {
-    position: absolute;
+  .\32xl\:top-s {
+    top: var(--lumo-space-s);
   }
-  .\32xl\:fixed {
-    position: fixed;
-  }
-  .\32xl\:relative {
-    position: relative;
-  }
-  .\32xl\:static {
-    position: static;
-  }
-  .\32xl\:sticky {
-    position: sticky;
+  /* Width */
+  .\32xl\:w-auto {
+    width: auto;
   }
 }

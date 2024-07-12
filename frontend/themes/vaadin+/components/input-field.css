@@ -5,7 +5,7 @@
 /* Theme: outline */
 
 :host([theme~='outline']) {
-    --vaadin-input-field-border-color: var(--lumo-contrast-50pct);
+    --vaadin-input-field-border-color: var(--lumo-utility-border-color, var(--lumo-contrast-50pct));
     --vaadin-input-field-border-width: 1px;
 }
 

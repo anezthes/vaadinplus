@@ -1,12 +1,12 @@
 package com.example.application.components.list;
 
 import com.example.application.components.Badge;
+import com.example.application.components.Layout;
 import com.example.application.utilities.BadgeVariant;
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.LineClamp;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
+import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
 public class TaskListItem extends ThreeLineListItem {
 
@@ -15,20 +15,20 @@ public class TaskListItem extends ThreeLineListItem {
     private Paragraph content;
 
     public TaskListItem(String name, String status, String content, String date) {
-        setGap(Gap.SMALL);
+        setGap(Layout.Gap.SMALL);
 
         this.name = new Span(name);
-        this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        this.name.addClassNames(FontWeight.SEMIBOLD);
 
         this.status = new Badge(status, BadgeVariant.PILL, BadgeVariant.SMALL);
 
         this.content = new Paragraph(content);
-        this.content.addClassNames(LumoUtility.Margin.NONE);
+        this.content.addClassNames(Margin.Vertical.NONE);
 
         setPrimary(this.name, this.status);
         setSecondary(date);
         setContent(content);
-        setContentLineClap(LineClamp.LINE_CLAMP_2);
+        setLineClamp(Layout.LineClamp.LINE_CLAMP_2);
     }
 
 }

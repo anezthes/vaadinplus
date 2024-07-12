@@ -2,8 +2,6 @@ package com.example.application.views.templates;
 
 import com.example.application.components.Layout;
 import com.example.application.utilities.Breakpoint;
-import com.example.application.utilities.GridColumnSpan;
-import com.example.application.utilities.GridColumns;
 import com.example.application.views.MainLayout;
 import com.example.application.views.templates.validation.ContactBean;
 import com.example.application.views.templates.validation.ErrorSummary;
@@ -16,7 +14,6 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.BinderValidationStatus;
@@ -86,14 +83,12 @@ public class ValidationView extends Main {
 
         Layout layout = new Layout(title, this.errorSummary, this.address, this.city, this.state, this.zip, phone,
                 this.email, this.submit);
-        layout.setColumnGap(com.example.application.utilities.Gap.MEDIUM);
-        layout.setDisplay(Breakpoint.LARGE, com.example.application.utilities.Display.GRID);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setGridColumns(GridColumns.COLUMNS_4);
-
-        // Column spans
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_2, this.city, this.phone, this.email);
-        layout.setGridColumnSpan(GridColumnSpan.COLUMN_SPAN_FULL, title, this.errorSummary, this.address);
+        layout.setColumns(Layout.GridColumns.COLUMNS_4);
+        layout.setColumnGap(Layout.Gap.MEDIUM);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_2, this.city, this.phone, this.email);
+        layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_FULL, title, this.errorSummary, this.address);
+        layout.setDisplay(Breakpoint.LARGE, Layout.Display.GRID);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
 
         return layout;
     }

@@ -1,7 +1,7 @@
 package com.example.application.components;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.MinWidth;
 
 public class InputGroup extends Layout {
 
@@ -13,7 +13,7 @@ public class InputGroup extends Layout {
         setFlexDirection(FlexDirection.ROW);
 
         for (Component component : components) {
-            component.addClassNames(LumoUtility.MinWidth.NONE);
+            component.addClassNames(MinWidth.NONE);
         }
     }
 
@@ -21,9 +21,9 @@ public class InputGroup extends Layout {
     public void setFlexDirection(FlexDirection flexDirection) {
         super.setFlexDirection(flexDirection);
         if (flexDirection.equals(FlexDirection.COLUMN)) {
-            setAlignItems(Alignment.STRETCH);
+            setAlignItems(AlignItems.STRETCH);
         } else {
-            setAlignItems(Alignment.BASELINE);
+            setAlignItems(AlignItems.BASELINE);
         }
     }
 }

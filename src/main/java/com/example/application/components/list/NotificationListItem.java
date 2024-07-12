@@ -4,7 +4,8 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
+import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
 public class NotificationListItem extends ListItem {
 
@@ -20,10 +21,10 @@ public class NotificationListItem extends ListItem {
             String time
     ) {
         this.author = new Span(author);
-        this.author.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        this.author.addClassNames(FontWeight.SEMIBOLD);
 
         this.activity = new Span(" " + activity + " ");
-        this.activity.addClassNames(LumoUtility.TextColor.SECONDARY);
+        this.activity.addClassNames(TextColor.SECONDARY);
 
         this.link = new RouterLink(linkText, navigationTarget);
 

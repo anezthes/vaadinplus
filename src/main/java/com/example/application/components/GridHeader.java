@@ -1,7 +1,6 @@
 package com.example.application.components;
 
-import com.example.application.utilities.FontSize;
-import com.example.application.utilities.FontWeight;
+import com.example.application.utilities.Font;
 import com.example.application.utilities.HeadingLevel;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
@@ -16,7 +15,7 @@ public class GridHeader extends Header {
 
     public GridHeader(String title) {
         this(title, HeadingLevel.H2);
-        setHeadingFontSize(FontSize.LARGE);
+        setHeadingFontSize(Font.Size.LARGE);
     }
 
     public GridHeader(String title, Grid grid) {
@@ -27,7 +26,7 @@ public class GridHeader extends Header {
     public GridHeader(String title, HeadingLevel level) {
         super(title, level);
         this.title = title;
-        setHeadingFontSize(FontSize.LARGE);
+        setHeadingFontSize(Font.Size.LARGE);
     }
 
     public GridHeader(String title, HeadingLevel level, Grid grid) {
@@ -77,8 +76,9 @@ public class GridHeader extends Header {
     private void updateActionsVisibility(int size) {
         if (size == 0) {
             setHeading(this.title);
-            setHeadingFontSize(FontSize.LARGE);
-            setHeadingFontWeight(FontWeight.SEMIBOLD);
+            setHeadingFontSize(Font.Size.LARGE);
+            setHeadingFontWeight(Font.Weight.SEMIBOLD);
+            // setHeadingLineHeight(Font.LineHeight.XSMALL);
 
             removeClassNames(Background.PRIMARY_10);
             setDefaultActionsVisible(true);
@@ -86,8 +86,9 @@ public class GridHeader extends Header {
 
         } else {
             setHeading(size + " items selected");
-            setHeadingFontSize(FontSize.MEDIUM);
-            setHeadingFontWeight(FontWeight.NORMAL);
+            setHeadingFontSize(Font.Size.MEDIUM);
+            setHeadingFontWeight(Font.Weight.NORMAL);
+            // setHeadingLineHeight(Font.LineHeight.MEDIUM);
 
             addClassNames(Background.PRIMARY_10);
             setDefaultActionsVisible(false);

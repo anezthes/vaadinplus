@@ -1,20 +1,16 @@
 package com.example.application.components;
 
-import com.example.application.utilities.FontSize;
-import com.example.application.utilities.Gap;
+import com.example.application.utilities.Font;
 import com.example.application.utilities.HeadingLevel;
-import com.example.application.utilities.Position;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class Highlight extends Layout {
 
     // Style
-    private FontSize valueFontSize;
+    private Font.Size valueFontSize;
 
     // Components
     private Layout prefix;
@@ -37,32 +33,30 @@ public class Highlight extends Layout {
     }
 
     public Highlight(Component prefix, String heading, String value, Component suffix) {
-        addClassNames(LumoUtility.Background.BASE, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL);
-        setAlignItems(FlexComponent.Alignment.CENTER);
-        setGap(Gap.MEDIUM);
+        addClassNames(Background.BASE, Padding.Horizontal.MEDIUM, Padding.Vertical.SMALL);
+        setAlignItems(Layout.AlignItems.CENTER);
+        setGap(Layout.Gap.MEDIUM);
         setPosition(Position.RELATIVE);
 
         this.prefix = new Layout();
         setPrefix(prefix);
 
         this.heading = new H3(heading);
-        this.heading.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.FontWeight.NORMAL,
-                LumoUtility.TextColor.SECONDARY);
+        this.heading.addClassNames(FontSize.SMALL, FontWeight.NORMAL, TextColor.SECONDARY);
 
         this.value = new Span(value);
-        this.value.addClassNames(LumoUtility.FontWeight.MEDIUM);
-        setValueFontSize(FontSize.XLARGE);
+        this.value.addClassNames(FontWeight.MEDIUM);
+        setValueFontSize(Font.Size.XLARGE);
 
         this.details = new Layout();
         this.details.setFlexWrap(FlexWrap.WRAP);
-        this.details.setGap(Gap.SMALL);
+        this.details.setGap(Layout.Gap.SMALL);
         setDetails(null);
 
         this.column = new Layout(this.heading, this.value, this.details);
-        this.column.addClassNames(LumoUtility.Padding.Vertical.XSMALL);
-        this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.column.setFlexGrow(1, this.column);
+        this.column.addClassNames(Padding.Vertical.XSMALL);
+        this.column.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.column.setFlexGrow();
 
         this.suffix = new Layout();
         setSuffix(suffix);
@@ -98,7 +92,7 @@ public class Highlight extends Layout {
             replace(this.heading, heading);
         }
         this.heading = heading;
-        this.heading.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.heading.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
     }
 
     /**
@@ -111,7 +105,7 @@ public class Highlight extends Layout {
     /**
      * Sets the value's font size.
      */
-    public void setValueFontSize(FontSize fontSize) {
+    public void setValueFontSize(Font.Size fontSize) {
         if (this.valueFontSize != null) {
             this.value.removeClassName(this.valueFontSize.getClassName());
         }

@@ -1,12 +1,8 @@
 package com.example.application.components;
 
-import com.example.application.utilities.Gap;
-import com.example.application.utilities.Overflow;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Header;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class AppBar extends Header implements HasTheme {
@@ -16,23 +12,23 @@ public class AppBar extends Header implements HasTheme {
     private Layout end;
 
     public AppBar(Component... components) {
-        addClassNames(Background.BASE, BoxSizing.BORDER, Display.FLEX, LumoUtility.Gap.LARGE, Height.XLARGE,
+        addClassNames(Background.BASE, BoxSizing.BORDER, Display.FLEX, Gap.LARGE, Height.XLARGE,
                 Padding.Horizontal.MEDIUM);
         setWidthFull();
 
         this.start = new Layout();
-        this.start.setAlignItems(FlexComponent.Alignment.CENTER);
-        this.start.setGap(Gap.LARGE);
-        this.start.setOverflow(Overflow.HIDDEN);
+        this.start.setAlignItems(Layout.AlignItems.CENTER);
+        this.start.setGap(Layout.Gap.LARGE);
+        this.start.setOverflow(Layout.Overflow.HIDDEN);
 
         this.middle = new Layout();
-        this.middle.setAlignItems(FlexComponent.Alignment.CENTER);
-        this.middle.setFlexGrow(1, this.middle);
-        this.middle.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        this.middle.setAlignItems(Layout.AlignItems.CENTER);
+        this.middle.setFlexGrow();
+        this.middle.setJustifyContent(Layout.JustifyContent.CENTER);
 
         this.end = new Layout();
-        this.end.setAlignItems(FlexComponent.Alignment.CENTER);
-        this.end.setGap(Gap.SMALL);
+        this.end.setAlignItems(Layout.AlignItems.CENTER);
+        this.end.setGap(Layout.Gap.SMALL);
 
         add(this.start, this.middle, this.end);
 

@@ -1,9 +1,7 @@
 package com.example.application.components.list;
 
 import com.example.application.components.Layout;
-import com.example.application.utilities.BackgroundColor;
-import com.example.application.utilities.BoxSizing;
-import com.example.application.utilities.TextColor;
+import com.example.application.utilities.Color;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
@@ -11,7 +9,6 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
@@ -25,16 +22,16 @@ public class TimelineListItem extends ListItem {
     private Span activity;
     private Span time;
 
-    private TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor) {
+    private TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor) {
         addClassNames("timeline");
         setIcon(icon, iconBackgroundColor, iconTextColor);
     }
 
     public TimelineListItem(LineAwesomeIcon icon, String content, String time) {
-        this(icon, BackgroundColor.BASE, TextColor.SECONDARY, content, time);
+        this(icon, Color.Background.BASE, Color.Text.SECONDARY, content, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String content, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor, String content, String time) {
         this(icon, iconBackgroundColor, iconTextColor);
         setContent(content);
 
@@ -47,26 +44,26 @@ public class TimelineListItem extends ListItem {
     }
 
     public TimelineListItem(LineAwesomeIcon icon, String author, String activity, String time) {
-        this(icon, BackgroundColor.BASE, TextColor.SECONDARY, author, activity, time);
+        this(icon, Color.Background.BASE, Color.Text.SECONDARY, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, TextColor iconTextColor, String author, String activity, String time) {
-        this(icon, BackgroundColor.BASE, iconTextColor, author, activity, time);
+    public TimelineListItem(LineAwesomeIcon icon, Color.Text iconTextColor, String author, String activity, String time) {
+        this(icon, Color.Background.BASE, iconTextColor, author, activity, time);
     }
 
     public TimelineListItem(LineAwesomeIcon icon, String author, Component activity, String time) {
-        this(icon, BackgroundColor.BASE, TextColor.SECONDARY, author, activity, time);
+        this(icon, Color.Background.BASE, Color.Text.SECONDARY, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, TextColor iconTextColor, String author, Component activity, String time) {
-        this(icon, BackgroundColor.BASE, iconTextColor, author, activity, time);
+    public TimelineListItem(LineAwesomeIcon icon, Color.Text iconTextColor, String author, Component activity, String time) {
+        this(icon, Color.Background.BASE, iconTextColor, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String author, String activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor, String author, String activity, String time) {
         this(icon, iconBackgroundColor, iconTextColor, author, new Text(" " + activity + " "), time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, BackgroundColor iconBackgroundColor, TextColor iconTextColor, String author, Component activity, String time) {
+    public TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor, String author, Component activity, String time) {
         this(icon, iconBackgroundColor, iconTextColor);
 
         this.avatar = new Avatar(author);
@@ -86,18 +83,16 @@ public class TimelineListItem extends ListItem {
         setSuffix(this.time);
     }
 
-    public void setIcon(LineAwesomeIcon icon, BackgroundColor background, TextColor color) {
+    public void setIcon(LineAwesomeIcon icon, Color.Background backgroundColor, Color.Text color) {
         SvgIcon i = icon.create();
         i.addClassNames(IconSize.SMALL);
 
         this.icon = new Layout(i);
-        this.icon.addClassNames(
-                background.getClassName(), Border.ALL, BorderColor.CONTRAST_30,
-                color.getClassName(), Height.MEDIUM, "rounded-full", Width.MEDIUM
-        );
-        this.icon.setAlignItems(FlexComponent.Alignment.CENTER);
-        this.icon.setBoxSizing(BoxSizing.BORDER);
-        this.icon.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        this.icon.addClassNames(backgroundColor.getClassName(), Border.ALL, BorderColor.CONTRAST_30,
+                "rounded-full", Height.MEDIUM, color.getClassName(), Width.MEDIUM);
+        this.icon.setAlignItems(Layout.AlignItems.CENTER);
+        this.icon.setBoxSizing(Layout.BoxSizing.BORDER);
+        this.icon.setJustifyContent(Layout.JustifyContent.CENTER);
     }
 
     public void setContent(String content) {

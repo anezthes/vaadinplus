@@ -1,22 +1,18 @@
 package com.example.application.components.list;
 
 import com.example.application.components.Layout;
-import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.component.orderedlayout.FlexLayout.FlexWrap;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
 
     // Style
-    private AlignItems alignItems;
-    private FlexDirection flexDirection;
-    private ColumnGap colGap;
-    private RowGap rowGap;
-    private LineClamp contentLineClamp;
+    private Layout.AlignItems alignItems;
+    private Layout.FlexDirection flexDirection;
+    private Layout.ColumnGap colGap;
+    private Layout.RowGap rowGap;
+    private Layout.LineClamp lineClamp;
 
     // Components
     private Layout row;
@@ -28,40 +24,39 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
     private Layout content;
 
     public ThreeLineListItem() {
-        addClassNames(LumoUtility.Background.BASE, LumoUtility.Display.FLEX, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL);
-        setFlexDirection(FlexDirection.COLUMN);
+        addClassNames(Background.BASE, Display.FLEX, Padding.Horizontal.MEDIUM, Padding.Vertical.SMALL);
+        setFlexDirection(Layout.FlexDirection.COLUMN);
 
         this.prefix = new Layout();
         this.prefix.setVisible(false);
 
         this.primary = new Layout();
-        this.primary.setAlignItems(Alignment.CENTER);
-        this.primary.setGap(Gap.SMALL);
+        this.primary.setAlignItems(Layout.AlignItems.CENTER);
+        this.primary.setGap(Layout.Gap.SMALL);
         this.primary.setVisible(false);
 
         this.secondary = new Layout();
-        this.secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.secondary.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
         this.secondary.setVisible(false);
 
         this.column = new Layout(this.primary, this.secondary);
-        this.column.addClassNames(LumoUtility.Padding.Top.XSMALL);
-        this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.column.setFlexGrow(1, this.column);
+        this.column.addClassNames(Padding.Top.XSMALL);
+        this.column.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.column.setFlexGrow();
 
         this.suffix = new Layout();
-        this.suffix.setAlignItems(Alignment.CENTER);
-        this.suffix.setGap(Gap.SMALL);
+        this.suffix.setAlignItems(Layout.AlignItems.CENTER);
+        this.suffix.setGap(Layout.Gap.SMALL);
         this.suffix.setVisible(false);
 
         this.row = new Layout(this.prefix, this.column, this.suffix);
-        this.row.setAlignItems(Alignment.CENTER);
-        this.row.setColumnGap(Gap.MEDIUM);
-        this.row.setFlexWrap(FlexWrap.WRAP);
-        this.row.setRowGap(Gap.SMALL);
+        this.row.setAlignItems(Layout.AlignItems.CENTER);
+        this.row.setColumnGap(Layout.Gap.MEDIUM);
+        this.row.setFlexWrap(Layout.FlexWrap.WRAP);
+        this.row.setRowGap(Layout.Gap.SMALL);
 
         this.content = new Layout();
-        this.content.addClassNames(LumoUtility.Padding.Bottom.XSMALL);
+        this.content.addClassNames(Padding.Bottom.XSMALL);
         this.content.setVisible(false);
 
         add(this.row, this.content);
@@ -169,29 +164,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
         this.content.setVisible(this.content.getComponentCount() > 0);
     }
 
-    /**
-     * Sets the line clamp for the content layout.
-     */
-    public void setContentLineClap(LineClamp lineClamp) {
-        removeContentLineClamp();
-        this.content.addClassNames(lineClamp.getClassName());
-        this.contentLineClamp = lineClamp;
-    }
-
-    /**
-     * Removes the line clamp.
-     */
-    public void removeContentLineClamp() {
-        if (this.contentLineClamp != null) {
-            this.content.removeClassName(this.contentLineClamp.getClassName());
-        }
-        this.contentLineClamp = null;
-    }
-
-    /**
-     * Sets the item alignment.
-     */
-    public void setAlignItems(AlignItems alignItems) {
+    public void setAlignItems(Layout.AlignItems alignItems) {
         if (this.alignItems != null) {
             removeClassNames(this.alignItems.getClassName());
         }
@@ -199,10 +172,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
         this.alignItems = alignItems;
     }
 
-    /**
-     * Sets the flex direction.
-     */
-    public void setFlexDirection(FlexDirection flexDirection) {
+    public void setFlexDirection(Layout.FlexDirection flexDirection) {
         if (this.flexDirection != null) {
             removeClassNames(this.flexDirection.getClassName());
         }
@@ -210,10 +180,16 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
         this.flexDirection = flexDirection;
     }
 
+    public void setFlexGrow(Component... components) {
+        for (Component component : components) {
+            component.addClassNames(Flex.GROW);
+        }
+    }
+
     /**
      * Sets both the column (horizontal) and row (vertical) gap between components.
      */
-    public void setGap(Gap gap) {
+    public void setGap(Layout.Gap gap) {
         setColumnGap(gap);
         setRowGap(gap);
     }
@@ -221,7 +197,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets the column (horizontal) gap between components.
      */
-    public void setColumnGap(Gap gap) {
+    public void setColumnGap(Layout.Gap gap) {
         removeColumnGap();
         this.addClassNames(gap.getColumnGap().getClassName());
         this.colGap = gap.getColumnGap();
@@ -230,7 +206,7 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets the row (vertical) gap between components.
      */
-    public void setRowGap(Gap gap) {
+    public void setRowGap(Layout.Gap gap) {
         removeRowGap();
         this.addClassNames(gap.getRowGap().getClassName());
         this.rowGap = gap.getRowGap();
@@ -262,6 +238,17 @@ public class ThreeLineListItem extends com.vaadin.flow.component.html.ListItem {
             this.removeClassName(this.rowGap.getClassName());
         }
         this.rowGap = null;
+    }
+
+    /**
+     * Sets the line clamp property.
+     */
+    public void setLineClamp(Layout.LineClamp lineClamp) {
+        if (this.lineClamp != null) {
+            this.content.removeClassName(this.lineClamp.getClassName());
+        }
+        this.content.addClassNames(lineClamp.getClassName());
+        this.lineClamp = lineClamp;
     }
 
 }

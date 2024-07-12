@@ -1,7 +1,7 @@
 /* Theme: segmented */
 
 :host([theme~="segmented"]) {
-    background-color: var(--lumo-contrast-20pct);
+    background-color: var(--lumo-contrast-5pct);
     border-radius: var(--lumo-border-radius-m);
     box-shadow: none;
 }

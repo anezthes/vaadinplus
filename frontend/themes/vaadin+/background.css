@@ -1,7 +1,3 @@
-.bg-tint-90 {
-  background-color: var(--lumo-tint-90pct);
-}
-
 /* Hover */
 
 .hover\:bg-contrast-5:hover {

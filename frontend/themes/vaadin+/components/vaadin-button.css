@@ -1,7 +1,7 @@
 /* Theme: outline */
 
 :host([theme~="outline"]) {
-    outline: 1px solid var(--lumo-contrast-50pct);
+    outline: 1px solid var(--lumo-utility-border-color, var(--lumo-contrast-50pct));
     outline-offset: -1px;
 }
 

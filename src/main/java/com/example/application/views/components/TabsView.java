@@ -16,9 +16,7 @@ public class TabsView extends ComponentView {
 
         Tabs tabs = new Tabs(new Tab("Tab 1"), new Tab("Tab 2"), new Tab("Tab 3"));
         tabs.addThemeName(TabTheme.SEGMENTED);
-        tabs.getChildren().forEach(component -> {
-            component.getElement().getThemeList().add(TabTheme.SEGMENTED);
-        });
+        tabs.getChildren().forEach(component -> component.getElement().getThemeList().add(TabTheme.SEGMENTED));
         add(tabs);
     }
 

@@ -30,8 +30,7 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         this.description = new Span(description);
 
         this.layout = new Div(this.label, this.description);
-        this.layout.addClassNames(Background.BASE, Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN,
-                Padding.End.SMALL);
+        this.layout.addClassNames(Display.FLEX, FlexDirection.COLUMN, Overflow.HIDDEN);
 
         this.link = new RouterLink();
         this.link.add(this.circle, layout);
@@ -61,7 +60,6 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
     }
 
     private void updateClassNames() {
-        updateStepClassNames();
         updateLinkClassNames();
         updateCircleIcon();
         updateCircleClassNames();
@@ -69,20 +67,9 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         updateDescriptionClassNames();
     }
 
-    private void updateStepClassNames() {
-        if (this.orientation != null) {
-            if (this.orientation.equals(Stepper.Orientation.HORIZONTAL)) {
-                addClassNames("flex-1");
-            } else {
-                removeClassNames("flex-1");
-            }
-        }
-    }
-
     private void updateLinkClassNames() {
         this.link.getClassNames().clear();
-        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, "no-underline", Padding.SMALL,
-                Position.RELATIVE, "z-10");
+        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, "no-underline", Padding.SMALL);
 
         if (this.small) {
             this.link.addClassNames(Gap.SMALL);

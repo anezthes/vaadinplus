@@ -1,20 +1,17 @@
 package com.example.application.components.list;
 
 import com.example.application.components.Layout;
-import com.example.application.utilities.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 public class ListItem extends com.vaadin.flow.component.html.ListItem {
 
     // Style
-    protected AlignItems alignItems;
-    protected FlexDirection flexDirection;
-    protected ColumnGap colGap;
-    protected RowGap rowGap;
+    protected Layout.AlignItems alignItems;
+    protected Layout.FlexDirection flexDirection;
+    protected Layout.ColumnGap colGap;
+    protected Layout.RowGap rowGap;
 
     // Components
     protected Layout prefix;
@@ -24,29 +21,28 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     protected Layout suffix;
 
     public ListItem() {
-        addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Background.BASE, LumoUtility.Display.FLEX,
-                LumoUtility.Gap.MEDIUM, LumoUtility.Padding.Horizontal.MEDIUM, LumoUtility.Padding.Vertical.SMALL,
-                LumoUtility.Position.RELATIVE);
+        addClassNames(AlignItems.CENTER, Background.BASE, Display.FLEX, Gap.MEDIUM, Padding.Horizontal.MEDIUM,
+                Padding.Vertical.SMALL, Position.RELATIVE);
 
         this.prefix = new Layout();
         this.prefix.setVisible(false);
 
         this.primary = new Layout();
-        this.primary.setAlignItems(Alignment.CENTER);
-        this.primary.setGap(Gap.SMALL);
+        this.primary.setAlignItems(Layout.AlignItems.CENTER);
+        this.primary.setGap(Layout.Gap.SMALL);
         this.primary.setVisible(false);
 
         this.secondary = new Layout();
-        this.secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        this.secondary.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
         this.secondary.setVisible(false);
 
         this.column = new Layout(this.primary, this.secondary);
-        this.column.addClassNames(LumoUtility.Padding.Vertical.XSMALL);
-        this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.column.setFlexGrow(1, this.column);
+        this.column.addClassNames(Padding.Vertical.XSMALL);
+        this.column.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.column.setFlexGrow();
 
         this.suffix = new Layout();
-        this.suffix.setGap(Gap.SMALL);
+        this.suffix.setGap(Layout.Gap.SMALL);
         this.suffix.setVisible(false);
 
         add(this.prefix, this.column, this.suffix);
@@ -158,7 +154,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets the item alignment.
      */
-    public void setAlignItems(AlignItems alignItems) {
+    public void setAlignItems(Layout.AlignItems alignItems) {
         if (this.alignItems != null) {
             removeClassNames(this.alignItems.getClassName());
         }
@@ -169,7 +165,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets the flex direction.
      */
-    public void setFlexDirection(FlexDirection flexDirection) {
+    public void setFlexDirection(Layout.FlexDirection flexDirection) {
         if (this.flexDirection != null) {
             removeClassNames(this.flexDirection.getClassName());
         }
@@ -180,7 +176,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets both the column (horizontal) and row (vertical) gap between components.
      */
-    public void setGap(Gap gap) {
+    public void setGap(Layout.Gap gap) {
         setColumnGap(gap);
         setRowGap(gap);
     }
@@ -188,7 +184,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets the column (horizontal) gap between components.
      */
-    public void setColumnGap(Gap gap) {
+    public void setColumnGap(Layout.Gap gap) {
         removeColumnGap();
         addClassNames(gap.getColumnGap().getClassName());
         this.colGap = gap.getColumnGap();
@@ -197,7 +193,7 @@ public class ListItem extends com.vaadin.flow.component.html.ListItem {
     /**
      * Sets the row (vertical) gap between components.
      */
-    public void setRowGap(Gap gap) {
+    public void setRowGap(Layout.Gap gap) {
         removeRowGap();
         addClassNames(gap.getRowGap().getClassName());
         this.rowGap = gap.getRowGap();

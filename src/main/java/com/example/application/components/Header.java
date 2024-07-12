@@ -1,22 +1,24 @@
 package com.example.application.components;
 
-import com.example.application.utilities.*;
+import com.example.application.utilities.Color;
+import com.example.application.utilities.Font;
+import com.example.application.utilities.HeadingLevel;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
+
 
 public class Header extends Layout implements HasTheme {
 
     protected Layout actions;
 
     // Style
-    private TextColor headingTextColor;
-    private FontSize headingFontSize;
-    private FontWeight headingFontWeight;
+    private Color.Text headingTextColor;
+    private Font.Size headingFontSize;
+    private Font.Weight headingFontWeight;
+    private Font.LineHeight headingLineHeight;
 
     // Components
     private Layout row;
@@ -32,40 +34,39 @@ public class Header extends Layout implements HasTheme {
     }
 
     public Header(String title, HeadingLevel level) {
-        addClassNames(LumoUtility.Background.BASE, LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
+        addClassNames(Background.BASE, Border.BOTTOM, Width.FULL);
         setBoxSizing(BoxSizing.BORDER);
         setFlexDirection(FlexDirection.COLUMN);
-        setWidthFull();
 
         this.prefix = new Layout();
         setPrefix(null);
 
         this.breadcrumb = new Breadcrumb();
+        this.breadcrumb.addClassNames(Margin.Bottom.MEDIUM);
         setBreadcrumb(null);
 
         setHeading(title, level);
-        setHeadingFontSize(FontSize.XLARGE);
+        setHeadingFontSize(Font.Size.XLARGE);
 
         this.details = new Layout();
+        this.details.addClassNames(Margin.Top.XSMALL);
         this.details.setFlexWrap(FlexWrap.WRAP);
         this.details.setColumnGap(Gap.MEDIUM);
         setDetails(null);
 
         this.column = new Layout(this.breadcrumb, this.heading, this.details);
-        this.column.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.column.setFlexGrow(1, this.column);
-        this.column.setGap(Gap.SMALL);
+        this.column.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.column.setFlexGrow();
 
         this.actions = new Layout();
-        this.actions.setGap(Gap.SMALL);
+        this.actions.setGap(Layout.Gap.SMALL);
         setActions(null);
 
         this.row = new Layout(this.prefix, this.column, this.actions);
-        this.row.addClassNames(LumoUtility.Margin.Vertical.XSMALL, LumoUtility.Padding.Horizontal.MEDIUM,
-                LumoUtility.Padding.Vertical.SMALL);
-        this.row.setAlignItems(FlexComponent.Alignment.CENTER);
+        this.row.addClassNames(Padding.MEDIUM);
+        this.row.setAlignItems(Layout.AlignItems.CENTER);
         this.row.setFlexWrap(FlexWrap.WRAP);
-        this.row.setGap(Gap.MEDIUM);
+        this.row.setGap(Layout.Gap.MEDIUM);
 
         this.tabs = new Tabs();
         setTabs(null);
@@ -121,7 +122,7 @@ public class Header extends Layout implements HasTheme {
     /**
      * Sets the heading's font size.
      */
-    public void setHeadingFontSize(FontSize fontSize) {
+    public void setHeadingFontSize(Font.Size fontSize) {
         if (this.headingFontSize != null) {
             this.heading.removeClassName(this.headingFontSize.getClassName());
         }
@@ -132,7 +133,7 @@ public class Header extends Layout implements HasTheme {
     /**
      * Sets the heading's font weight.
      */
-    public void setHeadingFontWeight(FontWeight fontWeight) {
+    public void setHeadingFontWeight(Font.Weight fontWeight) {
         if (this.headingFontWeight != null) {
             this.heading.removeClassName(this.headingFontWeight.getClassName());
         }
@@ -148,9 +149,20 @@ public class Header extends Layout implements HasTheme {
     }
 
     /**
+     * Sets the heading's line height.
+     */
+    public void setHeadingLineHeight(Font.LineHeight lineHeight) {
+        if (this.headingLineHeight != null) {
+            this.heading.removeClassName(this.headingLineHeight.getClassName());
+        }
+        this.heading.addClassNames(lineHeight.getClassName());
+        this.headingLineHeight = lineHeight;
+    }
+
+    /**
      * Sets the heading's text color.
      */
-    public void setHeadingTextColor(TextColor textColor) {
+    public void setHeadingTextColor(Color.Text textColor) {
         if (this.headingTextColor != null) {
             this.heading.removeClassName(this.headingTextColor.getClassName());
         }
@@ -172,27 +184,6 @@ public class Header extends Layout implements HasTheme {
             }
         }
         this.details.setVisible(this.details.getComponentCount() > 0);
-    }
-
-    /**
-     * Sets the tabs.
-     */
-    public void setTabs(Tab... tabs) {
-        this.tabs.removeAll();
-        if (tabs != null) {
-            for (Tab tab : tabs) {
-                if (tab != null) {
-                    this.tabs.add(tab);
-                }
-            }
-        }
-        if (this.tabs.getComponentCount() > 0) {
-            removeClassNames(LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
-            this.tabs.setVisible(true);
-        } else {
-            addClassNames(LumoUtility.Border.BOTTOM, LumoUtility.BorderColor.CONTRAST_10);
-            this.tabs.setVisible(false);
-        }
     }
 
     /**
@@ -218,10 +209,44 @@ public class Header extends Layout implements HasTheme {
     }
 
     /**
+     * Returns the row layout.
+     */
+    public Layout getRowLayout() {
+        return this.row;
+    }
+
+    /**
      * Returns the column layout.
      */
     public Layout getColumnLayout() {
         return this.column;
     }
 
+    /**
+     * Returns the tabs.
+     */
+    public Tabs getTabs() {
+        return tabs;
+    }
+
+    /**
+     * Sets the tabs.
+     */
+    public void setTabs(Tab... tabs) {
+        this.tabs.removeAll();
+        if (tabs != null) {
+            for (Tab tab : tabs) {
+                if (tab != null) {
+                    this.tabs.add(tab);
+                }
+            }
+        }
+        if (this.tabs.getComponentCount() > 0) {
+            removeClassNames(Border.BOTTOM);
+            this.tabs.setVisible(true);
+        } else {
+            addClassNames(Border.BOTTOM);
+            this.tabs.setVisible(false);
+        }
+    }
 }

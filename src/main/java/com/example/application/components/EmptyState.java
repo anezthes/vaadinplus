@@ -21,9 +21,9 @@ public class EmptyState extends Layout {
 
     public EmptyState(String title, HeadingLevel level, String description, String cta) {
         addClassNames(Padding.XLARGE);
-        setAlignItems(Alignment.CENTER);
+        setAlignItems(AlignItems.CENTER);
         setFlexDirection(FlexDirection.COLUMN);
-        setJustifyContentMode(JustifyContentMode.CENTER);
+        setJustifyContent(JustifyContent.CENTER);
 
         setHeading(title, level);
 

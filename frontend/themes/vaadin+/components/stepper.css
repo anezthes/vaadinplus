@@ -15,34 +15,24 @@ nav.stepper a > *:first-child:empty::before {
 /* Connector lines */
 
 nav.stepper li::before {
-    background-color: var(--lumo-contrast-30pct);
+    border-inline-start: 1px solid var(--lumo-utility-border-color, var(--lumo-contrast-30pct));
     content: "";
-    inset: 0 auto 0 calc(var(--lumo-space-s) + var(--lumo-size-m) / 2);
+    inset: calc(100% - var(--lumo-space-s)) auto calc(var(--lumo-space-s) / -1) calc((var(--lumo-size-m) + var(--lumo-space-m)) / 2);
     position: absolute;
-    width: 1px;
 }
 
 nav.stepper[theme~="small"] li::before {
-    inset-inline-start: calc(var(--lumo-space-s) + var(--lumo-size-xs) / 2);
-}
-
-nav.stepper li:first-child::before {
-    top: 50%;
+    inset: calc(100% - var(--lumo-space-s)) auto calc(var(--lumo-space-s) / -1) calc((var(--lumo-size-xs) + var(--lumo-space-m)) / 2);
 }
 
 nav.stepper li:last-child::before {
-    bottom: 50%;
+    content: none;
 }
 
 @media (min-width: 1024px) {
     nav.stepper[theme~="horizontal"] li::before {
-        height: 1px;
-        inset: 50% 0 auto calc(var(--lumo-size-m) + var(--lumo-space-m) + var(--lumo-space-m));
-        width: auto;
-    }
-
-    nav.stepper[theme~="horizontal"] li:last-child::before {
-        content: none;
+        border-block-end: 1px solid var(--lumo-utility-border-color, var(--lumo-contrast-30pct));
+        inset: 50% calc(var(--lumo-space-l) / -1) auto 100%;
     }
 }
 

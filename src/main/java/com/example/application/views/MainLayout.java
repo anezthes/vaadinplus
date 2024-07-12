@@ -6,7 +6,6 @@ import com.example.application.components.dialogs.MessagesDialog;
 import com.example.application.components.dialogs.NotificationsDialog;
 import com.example.application.components.dialogs.UserDialog;
 import com.example.application.utilities.BadgeVariant;
-import com.example.application.utilities.Gap;
 import com.example.application.views.components.*;
 import com.example.application.views.templates.*;
 import com.example.application.views.templates.wizard.Step1View;
@@ -18,11 +17,11 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.FontSize;
 import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
@@ -68,7 +67,7 @@ public class MainLayout extends AppLayout {
         notificationsBadge.addClassNames("end-xs", Position.ABSOLUTE, "top-xs");
         notificationsBadge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
-        Button notificationsButton = new Button(LineAwesomeIcon.BELL_SOLID.create(), e -> notificationsMenu.showModal());
+        Button notificationsButton = new Button(LumoIcon.BELL.create(), e -> notificationsMenu.showModal());
         notificationsButton.addClassNames(Margin.Start.XSMALL);
         notificationsButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         notificationsButton.setAriaLabel("View notifications (2)");
@@ -91,8 +90,8 @@ public class MainLayout extends AppLayout {
         appName.addClassNames(FontSize.LARGE, FontWeight.SEMIBOLD);
 
         Layout nav = new Layout(createComponentNavigation(), createTemplatesNavigation());
-        nav.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        nav.setGap(Gap.MEDIUM);
+        nav.setFlexDirection(Layout.FlexDirection.COLUMN);
+        nav.setGap(Layout.Gap.MEDIUM);
 
         Scroller scroller = new Scroller(nav);
 
@@ -109,10 +108,11 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Grids", GridsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
         nav.addItem(new SideNavItem("Highlights", HighlightsView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
-        nav.addItem(new SideNavItem("Input groups", InputGroupsView.class, LineAwesomeIcon.KEYBOARD.create()));
+        nav.addItem(new SideNavItem("Input groups", InputGroupsView.class, LineAwesomeIcon.TERMINAL_SOLID.create()));
         nav.addItem(new SideNavItem("Key-value pairs", KeyValuePairsView.class, LineAwesomeIcon.KEY_SOLID.create()));
         nav.addItem(new SideNavItem("Lists", ListsView.class, LineAwesomeIcon.LIST_SOLID.create()));
         nav.addItem(new SideNavItem("Menu bars", MenuBarsView.class, LineAwesomeIcon.ELLIPSIS_V_SOLID.create()));
+        nav.addItem(new SideNavItem("Navigation rail", NavRailView.class, LineAwesomeIcon.BARS_SOLID.create()));
         nav.addItem(new SideNavItem("Notifications", NotificationsView.class, LineAwesomeIcon.BELL.create()));
         nav.addItem(new SideNavItem("Radio buttons", RadioButtonsView.class, LineAwesomeIcon.CHECK_CIRCLE_SOLID.create()));
         nav.addItem(new SideNavItem("Search dialogs", SearchDialogsView.class, LineAwesomeIcon.SEARCH_SOLID.create()));
@@ -127,8 +127,12 @@ public class MainLayout extends AppLayout {
     private SideNav createTemplatesNavigation() {
         SideNav nav = new SideNav("Templates");
         nav.addItem(new SideNavItem("Checkout", CheckoutView.class, LineAwesomeIcon.CREDIT_CARD.create()));
-        nav.addItem(new SideNavItem("Dashboard (WIP)", DashboardView.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
-        nav.addItem(new SideNavItem("Product details", ProductDetailsView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
+        nav.addItem(new SideNavItem("Customers", CustomersView.class, LineAwesomeIcon.HANDSHAKE.create()));
+        nav.addItem(new SideNavItem("Dashboard º1", DashboardView1.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
+        nav.addItem(new SideNavItem("Dashboard º2", DashboardView2.class, LineAwesomeIcon.CHART_LINE_SOLID.create()));
+        nav.addItem(new SideNavItem("Files", FilesView.class, LineAwesomeIcon.FILE.create()));
+        nav.addItem(new SideNavItem("Hotels", HotelsView.class, LineAwesomeIcon.HOTEL_SOLID.create()));
+        nav.addItem(new SideNavItem("Product details", ProductDetailsView.class, LineAwesomeIcon.INFO_CIRCLE_SOLID.create()));
         nav.addItem(new SideNavItem("Product list", ProductListView.class, LineAwesomeIcon.TH_LARGE_SOLID.create()));
         nav.addItem(new SideNavItem("Profile", ProfileView.class, LineAwesomeIcon.USER.create()));
         nav.addItem(new SideNavItem("Shopping cart", ShoppingCartView.class, LineAwesomeIcon.SHOPPING_CART_SOLID.create()));

@@ -13,7 +13,8 @@ public class Breadcrumb extends Nav {
         setAriaLabel("Breadcrumb");
 
         this.list = new OrderedList();
-        this.list.addClassNames(Display.FLEX, FontSize.SMALL, ListStyleType.NONE, Margin.NONE, Padding.NONE);
+        this.list.addClassNames(Display.FLEX, FontSize.SMALL, ListStyleType.NONE, Margin.Vertical.NONE,
+                Padding.Start.NONE);
         add(this.list);
     }
 

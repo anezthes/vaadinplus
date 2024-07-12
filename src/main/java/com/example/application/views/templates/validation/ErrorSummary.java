@@ -7,7 +7,6 @@ import com.vaadin.flow.component.HasAriaLabel;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.OrderedList;
@@ -25,9 +24,10 @@ import java.util.Optional;
 public class ErrorSummary extends Layout implements HasAriaLabel, HasTheme, Focusable<ErrorSummary> {
 
     public ErrorSummary(String title, ListItem... items) {
-        addClassNames(Background.ERROR_10, BorderRadius.MEDIUM, Gap.SMALL, Padding.SMALL);
+        addClassNames(Background.ERROR_10, BorderRadius.MEDIUM, Padding.SMALL);
         getElement().setAttribute("role", "group");
         setAriaLabelledBy(formatId(title));
+        setGap(Gap.SMALL);
         setTabIndex(-1);
 
         H3 heading = new H3(title);
@@ -35,7 +35,7 @@ public class ErrorSummary extends Layout implements HasAriaLabel, HasTheme, Focu
         heading.setId(formatId(title));
 
         OrderedList list = new OrderedList(items);
-        list.addClassNames(FontSize.SMALL, Margin.NONE, Padding.Start.MEDIUM);
+        list.addClassNames(FontSize.SMALL, Margin.Vertical.NONE, Padding.Start.MEDIUM);
 
         Layout content = new Layout(heading, list);
         content.addClassNames(Margin.Vertical.XSMALL);
@@ -91,9 +91,11 @@ public class ErrorSummary extends Layout implements HasAriaLabel, HasTheme, Focu
         SvgIcon svgIcon = LineAwesomeIcon.EXCLAMATION_CIRCLE_SOLID.create();
         svgIcon.addClassNames(IconSize.SMALL);
 
-        Div icon = new Div(svgIcon);
-        icon.addClassNames(AlignItems.CENTER, Display.FLEX, Flex.SHRINK_NONE, Height.XSMALL, JustifyContent.CENTER,
-                Margin.Top.XSMALL, Margin.Start.XSMALL, TextColor.ERROR, Width.XSMALL);
+        Layout icon = new Layout(svgIcon);
+        icon.addClassNames(Flex.SHRINK_NONE, Height.XSMALL, Margin.Top.XSMALL, Margin.Start.XSMALL, TextColor.ERROR,
+                Width.XSMALL);
+        icon.setAlignItems(AlignItems.CENTER);
+        icon.setJustifyContent(JustifyContent.CENTER);
         return icon;
     }
 }

@@ -5,7 +5,9 @@ import com.example.application.components.*;
 import com.example.application.components.list.List;
 import com.example.application.components.list.MessageListItem;
 import com.example.application.themes.RadioButtonTheme;
-import com.example.application.utilities.*;
+import com.example.application.utilities.BadgeVariant;
+import com.example.application.utilities.Color;
+import com.example.application.utilities.Font;
 import com.example.application.views.MainLayout;
 import com.example.application.views.components.HighlightsView;
 import com.vaadin.flow.component.Component;
@@ -18,8 +20,6 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -28,7 +28,9 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
@@ -37,9 +39,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
-@PageTitle("Dashboard")
-@Route(value = "dashboard", layout = MainLayout.class)
-public class DashboardView extends Main {
+@PageTitle("Dashboard º1")
+@Route(value = "dashboard-1", layout = MainLayout.class)
+public class DashboardView1 extends Main {
 
     public static final String ARIA_LABEL = "aria-label";
     public static final String ARIA_LABELLEDBY = "aria-labelledby";
@@ -63,7 +65,7 @@ public class DashboardView extends Main {
     private Layout layout;
     private Sidebar chartSidebar;
 
-    public DashboardView() {
+    public DashboardView1() {
         this.layout = new Layout(
                 createTitleDescription(),
                 createToggle(),
@@ -71,10 +73,10 @@ public class DashboardView extends Main {
                 createMarketSummary(),
                 createTransactions()
         );
-        this.layout.addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Margin.Horizontal.AUTO,
-                LumoUtility.MaxWidth.SCREEN_LARGE, LumoUtility.Padding.LARGE);
-        this.layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        this.layout.setGap(Gap.LARGE);
+        this.layout.addClassNames(Margin.Horizontal.AUTO, MaxWidth.SCREEN_LARGE, Padding.LARGE);
+        this.layout.setBoxSizing(Layout.BoxSizing.BORDER);
+        this.layout.setFlexDirection(Layout.FlexDirection.COLUMN);
+        this.layout.setGap(Layout.Gap.LARGE);
         add(this.layout);
 
         // TODO: Add list, comments, collaborative features, improve mobile experience
@@ -84,7 +86,7 @@ public class DashboardView extends Main {
         H2 heading = new H2("Zoomblix data vista");
 
         Paragraph paragraph = new Paragraph("Information coalescing into kaleidoscopic insights, painting the canvas of cognition with ineffable splendor");
-        paragraph.addClassNames(LumoUtility.Margin.Bottom.NONE, LumoUtility.TextColor.SECONDARY);
+        paragraph.addClassNames(Margin.Bottom.NONE, TextColor.SECONDARY);
 
         return new Div(heading, paragraph);
     }
@@ -94,7 +96,7 @@ public class DashboardView extends Main {
         group.setItems("1 day", "1 week", "1 month");
         group.setRenderer(new ComponentRenderer<>(item -> {
             Span span = new Span(item);
-            span.addClassNames(LumoUtility.Padding.Horizontal.SMALL);
+            span.addClassNames(Padding.Horizontal.SMALL);
             return span;
         }));
         group.setValue("1 day");
@@ -111,30 +113,30 @@ public class DashboardView extends Main {
 
     private Component createHighlights() {
         Highlights highlights = new Highlights();
-        highlights.addClassNames(LumoUtility.Border.ALL, LumoUtility.BorderRadius.LARGE, "md:divide-x");
+        highlights.addClassNames(Border.ALL, BorderRadius.LARGE, "md:divide-x");
 
         Highlight highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CUBES_SOLID, BackgroundColor.PRIMARY_10, TextColor.PRIMARY),
+                createIcon(LineAwesomeIcon.CUBES_SOLID, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
                 ORDERS, ORDERS_VALUE,
                 createSuffix(ORDERS)
         );
-        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, TextColor.SUCCESS));
+        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, Color.Text.SUCCESS));
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, BackgroundColor.SUCCESS_10, TextColor.SUCCESS),
+                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
                 SALES, SALES_VALUE,
                 createSuffix(SALES)
         );
-        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, TextColor.SUCCESS));
+        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, Color.Text.SUCCESS));
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.USER, BackgroundColor.ERROR_10, TextColor.ERROR),
+                createIcon(LineAwesomeIcon.USER, Color.Background.ERROR_10, Color.Text.ERROR),
                 VISITORS, VISITORS_VALUE,
                 createSuffix(VISITORS)
         );
-        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, TextColor.SUCCESS));
+        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS));
         highlights.add(highlight);
 
         Section section = new Section(highlights);
@@ -142,26 +144,25 @@ public class DashboardView extends Main {
         return section;
     }
 
-    private Component createIcon(LineAwesomeIcon icon, BackgroundColor backgroundColor, com.example.application.utilities.TextColor textColor) {
+    private Component createIcon(LineAwesomeIcon icon, Color.Background backgroundColor, Color.Text textColor) {
         SvgIcon i = icon.create();
-        i.addClassNames(LumoUtility.IconSize.LARGE);
+        i.addClassNames(IconSize.LARGE);
 
         Layout container = new Layout(i);
-        container.addClassNames(backgroundColor.getClassName(), LumoUtility.Height.XLARGE, "rounded-full",
-                textColor.getClassName(), LumoUtility.Width.XLARGE);
-        container.setAlignItems(FlexComponent.Alignment.CENTER);
-        container.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        container.addClassNames(backgroundColor.getClassName(), "rounded-full", Height.XLARGE, textColor.getClassName(),
+                Width.XLARGE);
+        container.setAlignItems(Layout.AlignItems.CENTER);
+        container.setJustifyContent(Layout.JustifyContent.CENTER);
         return container;
     }
 
     private RouterLink createSuffix(String label) {
         SvgIcon icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(LumoUtility.IconSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        icon.addClassNames(IconSize.SMALL, TextColor.SECONDARY);
 
         RouterLink link = new RouterLink("", HighlightsView.class);
         link.add(icon);
-        link.addClassNames(LumoUtility.AlignItems.CENTER, LumoUtility.Display.FLEX, LumoUtility.Height.MEDIUM,
-                LumoUtility.JustifyContent.CENTER, LumoUtility.Width.MEDIUM);
+        link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER, Width.MEDIUM);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
         return link;
@@ -177,7 +178,7 @@ public class DashboardView extends Main {
         Button details = new Button("Details", LineAwesomeIcon.INFO_CIRCLE_SOLID.create());
 
         Badge commentsBadge = new Badge();
-        commentsBadge.addClassNames("end-xs", LumoUtility.Position.ABSOLUTE, "top-xs");
+        commentsBadge.addClassNames(LumoUtility.Position.ABSOLUTE, "end-xs", "top-xs");
         commentsBadge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
         Button comments = new Button(LineAwesomeIcon.COMMENT_ALT.create(), e -> this.chartSidebar.open());
@@ -187,9 +188,9 @@ public class DashboardView extends Main {
 
         Header header = new Header("Market summary");
         header.setActions(details, comments);
-        header.setHeadingFontSize(FontSize.XLARGE);
+        header.setHeadingFontSize(Font.Size.XLARGE);
         header.setHeadingId(MARKET_SUMMARY_ID);
-        header.removeClassName(LumoUtility.Border.BOTTOM);
+        header.removeClassName(Border.BOTTOM);
         return header;
     }
 
@@ -199,8 +200,8 @@ public class DashboardView extends Main {
 
         // Remove the content padding
         // TODO: API? Variant?
-        this.chartSidebar.getContent().removeClassNames(LumoUtility.Padding.Bottom.MEDIUM,
-                LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Top.SMALL);
+        this.chartSidebar.getContent().removeClassNames(Padding.Bottom.MEDIUM,
+                Padding.Horizontal.LARGE, Padding.Top.SMALL);
 
         // Hide the footer
         // TODO: Footer component? Should it be added by default?
@@ -259,7 +260,7 @@ public class DashboardView extends Main {
 
     private Component createTransactions() {
         GridHeader header = createGridHeader();
-        header.setHeadingFontSize(FontSize.XLARGE);
+        header.setHeadingFontSize(Font.Size.XLARGE);
 
         Grid<DashboardItem> grid = createGrid();
         header.setGrid(grid);
@@ -291,7 +292,7 @@ public class DashboardView extends Main {
         TextField search = new TextField();
         search.setAriaLabel("Search");
         search.setPlaceholder("Search");
-        search.setPrefixComponent(LineAwesomeIcon.SEARCH_SOLID.create());
+        search.setPrefixComponent(LumoIcon.SEARCH.create());
 
         Badge filtersBadge = new Badge("2");
         filtersBadge.addThemeVariants(BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
@@ -332,16 +333,16 @@ public class DashboardView extends Main {
     }
 
     private Component renderName(DashboardItem item) {
-        Image img = new Image(item.getImgUrl(), item.getName() + " logo");
-        img.addClassNames(LumoUtility.Height.MEDIUM, LumoUtility.Width.MEDIUM);
+        Image img = new Image(item.getImage(), item.getName() + " logo");
+        img.addClassNames(Height.MEDIUM, Width.MEDIUM);
 
         Span span = new Span(item.getName());
-        span.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        span.addClassNames(FontWeight.SEMIBOLD);
 
         Layout layout = new Layout(img, span);
-        layout.addClassNames(LumoUtility.Padding.Vertical.SMALL);
-        layout.setAlignItems(FlexComponent.Alignment.CENTER);
-        layout.setGap(Gap.SMALL);
+        layout.addClassNames(Padding.Vertical.SMALL);
+        layout.setAlignItems(Layout.AlignItems.CENTER);
+        layout.setGap(Layout.Gap.SMALL);
         return layout;
     }
 
@@ -387,26 +388,26 @@ public class DashboardView extends Main {
 
     private class DashboardItem {
 
-        private String imgUrl;
+        private String image;
         private String name;
         private String amount;
         private LocalDate date;
         private String status;
 
-        public DashboardItem(String imgUrl, String name, String amount, LocalDate date, String status) {
-            this.imgUrl = imgUrl;
+        public DashboardItem(String image, String name, String amount, LocalDate date, String status) {
+            this.image = image;
             this.name = name;
             this.amount = amount;
             this.date = date;
             this.status = status;
         }
 
-        public String getImgUrl() {
-            return imgUrl;
+        public String getImage() {
+            return image;
         }
 
-        public void setImgUrl(String imgUrl) {
-            this.imgUrl = imgUrl;
+        public void setImage(String image) {
+            this.image = image;
         }
 
         public String getName() {

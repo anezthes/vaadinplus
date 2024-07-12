@@ -4,9 +4,8 @@ import com.example.application.components.Breadcrumb;
 import com.example.application.components.BreadcrumbItem;
 import com.example.application.components.Layout;
 import com.example.application.themes.RadioButtonTheme;
-import com.example.application.utilities.GridColumns;
+import com.example.application.views.HomeView;
 import com.example.application.views.MainLayout;
-import com.example.application.views.components.HomeView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -15,8 +14,6 @@ import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -52,10 +49,10 @@ public class ProductDetailsView extends Main {
                 createThumbnails()
         );
         images.addClassNames(Padding.LARGE);
-        images.setAlignSelf(FlexComponent.Alignment.END, images);
-        images.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
-        images.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        images.setGap(com.example.application.utilities.Gap.MEDIUM);
+        images.setAlignSelf(Layout.AlignSelf.END);
+        images.setBoxSizing(Layout.BoxSizing.BORDER);
+        images.setFlexDirection(Layout.FlexDirection.COLUMN);
+        images.setGap(Layout.Gap.MEDIUM);
         images.setMaxWidth(24, Unit.REM);
         return images;
     }
@@ -65,9 +62,10 @@ public class ProductDetailsView extends Main {
         img.setWidthFull();
 
         Layout preview = new Layout(img);
-        preview.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
-        preview.setAlignItems(FlexComponent.Alignment.CENTER);
-        preview.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        preview.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL);
+        preview.setAlignItems(Layout.AlignItems.CENTER);
+        preview.setJustifyContent(Layout.JustifyContent.CENTER);
+        preview.setOverflow(Layout.Overflow.HIDDEN);
         preview.setWidthFull();
         return preview;
     }
@@ -80,9 +78,9 @@ public class ProductDetailsView extends Main {
                 createThumbnail(this.img3, this.alt3),
                 createThumbnail(this.img4, this.alt4)
         );
-        thumbnails.setDisplay(com.example.application.utilities.Display.GRID);
-        thumbnails.setGap(com.example.application.utilities.Gap.MEDIUM);
-        thumbnails.setGridColumns(GridColumns.COLUMNS_4);
+        thumbnails.setColumns(Layout.GridColumns.COLUMNS_4);
+        thumbnails.setDisplay(Layout.Display.GRID);
+        thumbnails.setGap(Layout.Gap.MEDIUM);
         return thumbnails;
     }
 
@@ -92,8 +90,8 @@ public class ProductDetailsView extends Main {
 
         Layout thumbnail = new Layout(img);
         thumbnail.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
-        thumbnail.setAlignItems(FlexComponent.Alignment.CENTER);
-        thumbnail.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
+        thumbnail.setAlignItems(Layout.AlignItems.CENTER);
+        thumbnail.setJustifyContent(Layout.JustifyContent.CENTER);
         return thumbnail;
     }
 
@@ -117,8 +115,8 @@ public class ProductDetailsView extends Main {
 
         Layout reviewLayout = new Layout(rating, stars, review);
         reviewLayout.addClassNames(Margin.Bottom.XSMALL, Margin.Top.MEDIUM);
-        reviewLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        reviewLayout.setGap(com.example.application.utilities.Gap.SMALL);
+        reviewLayout.setAlignItems(Layout.AlignItems.CENTER);
+        reviewLayout.setGap(Layout.Gap.SMALL);
 
         H2 title = new H2("Xyloflux");
         title.addClassNames(FontSize.XLARGE, Margin.Bottom.XSMALL, Margin.Top.MEDIUM);
@@ -175,10 +173,10 @@ public class ProductDetailsView extends Main {
         add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Layout quantityLayout = new Layout(quantity, add);
-        quantityLayout.setAlignItems(FlexComponent.Alignment.BASELINE);
-        quantityLayout.setDisplay(com.example.application.utilities.Display.GRID);
-        quantityLayout.setGap(com.example.application.utilities.Gap.SMALL);
-        quantityLayout.setGridColumns(GridColumns.COLUMNS_2);
+        quantityLayout.setAlignItems(Layout.AlignItems.BASELINE);
+        quantityLayout.setColumns(Layout.GridColumns.COLUMNS_2);
+        quantityLayout.setDisplay(Layout.Display.GRID);
+        quantityLayout.setGap(Layout.Gap.SMALL);
 
         Details settings = createDetails("Performance settings", "Users can customize the performance " +
                 "settings of Xyloflux to optimize its speed and responsiveness. They can adjust parameters such as " +
@@ -195,14 +193,14 @@ public class ProductDetailsView extends Main {
                 "tasks, share files, and track project progress directly within the platform.");
 
         Layout details = new Layout(settings, customization, collaboration);
-        details.addClassNames(Border.BOTTOM, BorderColor.CONTRAST_10, Margin.Bottom.MEDIUM, Margin.Top.LARGE);
-        details.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        details.addClassNames(Border.BOTTOM, Margin.Bottom.MEDIUM, Margin.Top.LARGE);
+        details.setFlexDirection(Layout.FlexDirection.COLUMN);
 
         Layout layout = new Layout(breadcrumb, title, price, reviewLayout, description, color, intensity, effects,
                 details, quantityLayout);
         layout.addClassNames(BoxSizing.BORDER, MaxWidth.SCREEN_SMALL, Padding.LARGE);
-        layout.setBoxSizing(com.example.application.utilities.BoxSizing.BORDER);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        layout.setBoxSizing(Layout.BoxSizing.BORDER);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 
@@ -226,8 +224,8 @@ public class ProductDetailsView extends Main {
 
         Layout layout = new Layout(primary, secondary);
         layout.addClassNames(Padding.SMALL);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
-        layout.setGap(com.example.application.utilities.Gap.XSMALL);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
+        layout.setGap(Layout.Gap.XSMALL);
         return layout;
     }
 
@@ -248,7 +246,7 @@ public class ProductDetailsView extends Main {
         content.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
         Details details = new Details(summary, content);
-        details.addClassNames(Border.TOP, BorderColor.CONTRAST_10, Margin.NONE, Padding.Vertical.MEDIUM);
+        details.addClassNames(Border.TOP, Margin.Vertical.NONE, Padding.Vertical.MEDIUM);
         details.addThemeVariants(DetailsVariant.REVERSE);
         return details;
     }

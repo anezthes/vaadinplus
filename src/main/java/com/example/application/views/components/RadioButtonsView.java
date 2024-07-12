@@ -1,11 +1,11 @@
 package com.example.application.views.components;
 
+import com.example.application.components.Layout;
 import com.example.application.themes.RadioButtonTheme;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -61,8 +61,8 @@ public class RadioButtonsView extends ComponentView {
         Span secondary = new Span(LOREM_IPSUM);
         secondary.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
-        FlexLayout layout = new FlexLayout(primary, secondary);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        Layout layout = new Layout(primary, secondary);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 

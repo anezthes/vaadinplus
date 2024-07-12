@@ -1,11 +1,12 @@
 package com.example.application.components.list;
 
-import com.example.application.utilities.LineClamp;
+import com.example.application.components.Layout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
+import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -19,18 +20,18 @@ public class MessageLinkListItem extends RouterLinkListItem {
         setPrefix(new Avatar(name));
 
         this.name = new Span(name);
-        this.name.addClassNames(LumoUtility.FontWeight.SEMIBOLD);
+        this.name.addClassNames(FontWeight.SEMIBOLD);
 
         this.time = new Span(formatTimeAgo(dateTime));
-        this.time.addClassNames(LumoUtility.TextColor.SECONDARY);
+        this.time.addClassNames(TextColor.SECONDARY);
 
         setPrimary(this.name, this.time);
-        this.primary.addClassNames(LumoUtility.FontSize.SMALL);
-        this.primary.setAlignItems(FlexComponent.Alignment.BASELINE);
+        this.primary.addClassNames(FontSize.SMALL);
+        this.primary.setAlignItems(Layout.AlignItems.BASELINE);
 
         setSecondary(message);
-        this.secondary.removeClassName(LumoUtility.TextColor.SECONDARY);
-        this.secondary.setLineClamp(LineClamp.LINE_CLAMP_2);
+        this.secondary.removeClassName(TextColor.SECONDARY);
+        this.secondary.setLineClamp(Layout.LineClamp.LINE_CLAMP_2);
 
         setRoute(navigationTarget);
     }

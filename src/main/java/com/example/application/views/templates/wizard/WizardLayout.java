@@ -2,8 +2,8 @@ package com.example.application.views.templates.wizard;
 
 import com.example.application.components.Step;
 import com.example.application.components.Stepper;
+import com.example.application.views.HomeView;
 import com.example.application.views.MainLayout;
-import com.example.application.views.components.HomeView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.html.Div;

@@ -1,5 +1,6 @@
 package com.example.application.views.components;
 
+import com.example.application.components.Layout;
 import com.example.application.themes.CheckboxTheme;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
@@ -7,11 +8,11 @@ import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
 @PageTitle("Checkboxes")
 @Route(value = "checkboxes", layout = MainLayout.class)
@@ -44,10 +45,10 @@ public class CheckboxesView extends ComponentView {
         Span primary = new Span(item);
 
         Span secondary = new Span(LOREM_IPSUM);
-        secondary.addClassNames(LumoUtility.FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
+        secondary.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
-        FlexLayout layout = new FlexLayout(primary, secondary);
-        layout.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+        Layout layout = new Layout(primary, secondary);
+        layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         return layout;
     }
 

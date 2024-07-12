@@ -1,6 +1,6 @@
 package com.example.application.components;
 
-import com.example.application.utilities.TextColor;
+import com.example.application.utilities.Color;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -13,13 +13,13 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class Tag extends Span {
 
-    private TextColor textColor;
+    private Color.Text color;
     private Layout prefix;
     private Text text;
 
-    public Tag(Component prefix, String text, TextColor textColor) {
+    public Tag(Component prefix, String text, Color.Text color) {
         addClassNames(AlignItems.CENTER, Display.FLEX, FontSize.SMALL, Gap.SMALL);
-        setTextColor(textColor);
+        setTextColor(color);
 
         this.prefix = new Layout();
         this.prefix.setVisible(false);
@@ -31,19 +31,19 @@ public class Tag extends Span {
     }
 
     public Tag(Component prefix, String text) {
-        this(prefix, text, TextColor.SECONDARY);
+        this(prefix, text, Color.Text.SECONDARY);
     }
 
-    public Tag(LineAwesomeIcon icon, String text, TextColor textColor) {
-        this(createIcon(icon), text, textColor);
+    public Tag(LineAwesomeIcon icon, String text, Color.Text color) {
+        this(createIcon(icon), text, color);
     }
 
     public Tag(LineAwesomeIcon icon, String text) {
-        this(icon, text, TextColor.SECONDARY);
+        this(icon, text, Color.Text.SECONDARY);
     }
 
     public Tag(String text) {
-        this((Component) null, text, TextColor.SECONDARY);
+        this((Component) null, text, Color.Text.SECONDARY);
     }
 
     private static Component createIcon(LineAwesomeIcon icon) {
@@ -76,12 +76,12 @@ public class Tag extends Span {
     /**
      * Sets the text color.
      */
-    public void setTextColor(TextColor textColor) {
-        if (this.textColor != null) {
-            removeClassNames(this.textColor.getClassName());
+    public void setTextColor(Color.Text color) {
+        if (this.color != null) {
+            removeClassNames(this.color.getClassName());
         }
-        addClassNames(textColor.getClassName());
-        this.textColor = textColor;
+        addClassNames(color.getClassName());
+        this.color = color;
     }
 
 }

@@ -11,7 +11,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.Lumo;
-import com.vaadin.flow.theme.lumo.LumoUtility;
+import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
+import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 @PageTitle("Sidebars")
 @Route(value = "sidebars", layout = MainLayout.class)
@@ -26,9 +28,9 @@ public class SidebarsView extends ComponentView {
     public static final String DAVID_THOMPSON = "David Thompson";
 
     public SidebarsView() {
-        addClassNames(LumoUtility.AlignItems.START, LumoUtility.Gap.MEDIUM, LumoUtility.Padding.Top.LARGE);
+        addClassNames(AlignItems.START, Gap.MEDIUM, Padding.Top.LARGE);
 
-        RadioButtonGroup mode = new RadioButtonGroup("Header theme");
+        RadioButtonGroup<String> mode = new RadioButtonGroup<>("Header theme");
         mode.setItems("Light", "Dark");
         mode.addValueChangeListener(e -> getChildren().forEach(component -> {
             if (component instanceof Sidebar) {
@@ -57,12 +59,12 @@ public class SidebarsView extends ComponentView {
 
         TextArea description = new TextArea("Description");
 
-        MultiSelectComboBox guests = new MultiSelectComboBox("Guests");
+        MultiSelectComboBox<String> guests = new MultiSelectComboBox<>("Guests");
         guests.setItems(
                 JOHN_SMITH, EMILY_JOHNSON, MICHAEL_DAVIS, SOPHIA_BROWN, DANIEL_WILSON, OLIVIA_MARTINEZ, DAVID_THOMPSON
         );
 
-        RadioButtonGroup visibility = new RadioButtonGroup("Visibility");
+        RadioButtonGroup<String> visibility = new RadioButtonGroup<>("Visibility");
         visibility.setItems("Private", "Public");
         visibility.setValue("Private");
 
