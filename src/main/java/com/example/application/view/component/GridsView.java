@@ -42,7 +42,7 @@ public class GridsView extends ComponentView {
     }
 
     private Component createGridHeaderExample() {
-        Grid<Employee> grid = new Grid();
+        Grid<Employee> grid = new Grid<>();
         grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
         grid.setItems(createEmployees());
         grid.setSelectionMode(Grid.SelectionMode.MULTI);

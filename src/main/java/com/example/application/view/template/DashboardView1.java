@@ -1,8 +1,8 @@
 package com.example.application.view.template;
 
+import com.example.application.component.*;
 import com.example.application.component.Header;
 import com.example.application.component.Span;
-import com.example.application.component.*;
 import com.example.application.component.list.List;
 import com.example.application.component.list.MessageListItem;
 import com.example.application.theme.RadioButtonTheme;
