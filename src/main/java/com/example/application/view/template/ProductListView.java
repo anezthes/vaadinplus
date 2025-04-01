@@ -21,7 +21,6 @@ import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Section;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.popover.Popover;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
@@ -148,9 +147,8 @@ public class ProductListView extends Main {
         brands.setItems("LuxeLiving", "DecoHaven", "CasaCharm", "HomelyCraft", "ArtisanHaus");
         brands.setPlaceholder("Brands");
 
-        Button price = new Button("Price");
+        Button price = new Button("Price", MaterialSymbol.KEYBOARD_ARROW_DOWN.create());
         price.addClassNames(Display.HIDDEN, Display.Breakpoint.Large.INLINE_BLOCK);
-        price.setIcon(new Icon("lumo", "angle-down"));
         price.setIconAfterText(true);
 
         PriceRange priceRange = new PriceRange("Price");

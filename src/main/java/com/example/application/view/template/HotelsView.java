@@ -292,7 +292,7 @@ public class HotelsView extends Main {
         link.addClassNames(AlignItems.CENTER, Background.CONTRAST_5, BorderRadius.MEDIUM, Display.FLEX, FontSize.SMALL,
                 FontWeight.MEDIUM, Gap.SMALL, Height.MEDIUM, Padding.Horizontal.SMALL, "lg:pe-m", TextColor.BODY,
                 "no-underline");
-        link.add(MaterialSymbol.NAVIGATE_BEFORE.create(), label);
+        link.add(MaterialSymbol.NAVIGATE_BEFORE.create(IconSize.SMALL), label);
 
         ListItem item = new ListItem(link);
         item.addClassNames(Margin.End.AUTO);
@@ -336,7 +336,7 @@ public class HotelsView extends Main {
         link.addClassNames(AlignItems.CENTER, Background.CONTRAST_5, BorderRadius.MEDIUM, Display.FLEX, FontSize.SMALL,
                 FontWeight.MEDIUM, Gap.SMALL, Height.MEDIUM, Padding.Horizontal.SMALL, "lg:ps-m", TextColor.BODY,
                 "no-underline");
-        link.add(label, MaterialSymbol.NAVIGATE_NEXT.create());
+        link.add(label, MaterialSymbol.NAVIGATE_NEXT.create(IconSize.SMALL));
 
         ListItem item = new ListItem(link);
         item.addClassNames(Margin.Start.AUTO);
