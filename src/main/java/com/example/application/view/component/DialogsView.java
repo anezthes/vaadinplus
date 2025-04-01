@@ -1,6 +1,7 @@
 package com.example.application.view.component;
 
 import com.example.application.component.IconDialog;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -9,7 +10,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Dialogs")
 @Route(value = "dialogs", layout = MainLayout.class)
@@ -26,7 +27,7 @@ public class DialogsView extends ComponentView {
 
     private Dialog createLeftIconDialog() {
         IconDialog dialog = new IconDialog(
-                LineAwesomeIcon.CHECK_SOLID,
+                MaterialSymbol.CHECK,
                 "Zippity doo dah",
                 "Your wibbly-wobbly task has been triumphantly accomplished, leaving everyone flabbergasted!"
         );
@@ -37,7 +38,7 @@ public class DialogsView extends ComponentView {
 
     private Dialog createTopIconDialog() {
         IconDialog dialog = new IconDialog(
-                LineAwesomeIcon.INFO_CIRCLE_SOLID,
+                MaterialSymbol.INFO,
                 "Zippity doo dah",
                 "Your wibbly-wobbly task has been triumphantly accomplished, leaving everyone flabbergasted!"
         );

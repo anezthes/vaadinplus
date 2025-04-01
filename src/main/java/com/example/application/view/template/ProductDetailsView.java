@@ -3,6 +3,7 @@ package com.example.application.view.template;
 import com.example.application.component.Breadcrumb;
 import com.example.application.component.BreadcrumbItem;
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.theme.RadioButtonTheme;
 import com.example.application.view.HomeView;
 import com.example.application.view.MainLayout;
@@ -13,30 +14,29 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Product details")
 @Route(value = "product-details", layout = MainLayout.class)
 public class ProductDetailsView extends Main {
 
-    private String img1 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
-    private String alt1 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
+    private final String img1 = "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400";
+    private final String alt1 = "Clear glass bulb on human palm ⋅ Rohan Makhecha ⋅ Unsplash";
 
-    private String img2 = "https://images.unsplash.com/photo-1520532622976-1bdf3b7a5af9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt2 = "Clear glass light bulb on sand during daytime ⋅ Glen Carrie ⋅ Unsplash";
+    private final String img2 = "https://images.unsplash.com/photo-1520532622976-1bdf3b7a5af9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
+    private final String alt2 = "Clear glass light bulb on sand during daytime ⋅ Glen Carrie ⋅ Unsplash";
 
-    private String img3 = "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt3 = "Selective focus photography of light bulb ⋅ Ameen Fahmy ⋅ Unsplash";
+    private final String img3 = "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
+    private final String alt3 = "Selective focus photography of light bulb ⋅ Ameen Fahmy ⋅ Unsplash";
 
-    private String img4 = "https://images.unsplash.com/photo-1573621622238-f7ac6ac0429a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
-    private String alt4 = "Hanging black and clear light bulb turned on ⋅ Jonathan Borba ⋅ Unsplash";
+    private final String img4 = "https://images.unsplash.com/photo-1573621622238-f7ac6ac0429a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100";
+    private final String alt4 = "Hanging black and clear light bulb turned on ⋅ Jonathan Borba ⋅ Unsplash";
 
     public ProductDetailsView() {
         addClassNames(Display.FLEX, FlexWrap.WRAP_REVERSE, JustifyContent.CENTER);
@@ -62,7 +62,7 @@ public class ProductDetailsView extends Main {
         img.setWidthFull();
 
         Layout preview = new Layout(img);
-        preview.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL);
+        preview.addClassNames(AspectRatio.SQUARE, BorderRadius.LARGE, BoxShadow.SMALL);
         preview.setAlignItems(Layout.AlignItems.CENTER);
         preview.setJustifyContent(Layout.JustifyContent.CENTER);
         preview.setOverflow(Layout.Overflow.HIDDEN);
@@ -89,7 +89,7 @@ public class ProductDetailsView extends Main {
         img.setWidthFull();
 
         Layout thumbnail = new Layout(img);
-        thumbnail.addClassNames("aspect-square", BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
+        thumbnail.addClassNames(AspectRatio.SQUARE, BorderRadius.LARGE, BoxShadow.SMALL, Overflow.HIDDEN);
         thumbnail.setAlignItems(Layout.AlignItems.CENTER);
         thumbnail.setJustifyContent(Layout.JustifyContent.CENTER);
         return thumbnail;
@@ -128,7 +128,8 @@ public class ProductDetailsView extends Main {
                 "eiusmod tempor incididunt ut labore et dolore magna aliqua.");
         description.addClassNames(Margin.Bottom.LARGE, Margin.Top.MEDIUM);
 
-        RadioButtonGroup<String> color = new RadioButtonGroup("Color scheme");
+        RadioButtonGroup<String> color = new RadioButtonGroup<>("Color scheme");
+        color.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
         color.setItems("Light", "Dark");
         color.setRenderer(new ComponentRenderer<>(item -> {
             if (item.equals("Light")) {
@@ -139,9 +140,9 @@ public class ProductDetailsView extends Main {
                         "strain in low-light environments");
             }
         }));
-        setRadioButtonGroupTheme(color, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
 
-        RadioButtonGroup<String> intensity = new RadioButtonGroup("Sound intensity");
+        RadioButtonGroup<String> intensity = new RadioButtonGroup<>("Sound intensity");
+        intensity.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
         intensity.setItems("Low", "High");
         intensity.setRenderer(new ComponentRenderer<>(item -> {
             if (item.equals("Low")) {
@@ -150,9 +151,9 @@ public class ProductDetailsView extends Main {
                 return renderLabelWithDescription(item, "Produces vibrant and energetic tones");
             }
         }));
-        setRadioButtonGroupTheme(intensity, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
 
-        RadioButtonGroup<String> effects = new RadioButtonGroup("Lighting effects");
+        RadioButtonGroup<String> effects = new RadioButtonGroup<>("Lighting effects");
+        effects.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
         effects.setItems("Solid", "Transitional");
         effects.setRenderer(new ComponentRenderer<>(item -> {
             if (item.equals("Solid")) {
@@ -163,7 +164,6 @@ public class ProductDetailsView extends Main {
                         "mesmerizing visual display");
             }
         }));
-        setRadioButtonGroupTheme(effects, RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
 
         IntegerField quantity = new IntegerField("Quantity");
         quantity.setStepButtonsVisible(true);
@@ -205,15 +205,11 @@ public class ProductDetailsView extends Main {
     }
 
     private Component createStar() {
-        SvgIcon star = LineAwesomeIcon.STAR_SOLID.create();
-        star.addClassNames(IconSize.SMALL);
-        return star;
+        return MaterialSymbol.STAR.create(IconSize.SMALL);
     }
 
     private Component createHalfStar() {
-        SvgIcon star = LineAwesomeIcon.STAR_HALF_SOLID.create();
-        star.addClassNames(IconSize.SMALL);
-        return star;
+        return MaterialSymbol.STAR_HALF.create(IconSize.SMALL);
     }
 
     private Component renderLabelWithDescription(String title, String desc) {
@@ -227,15 +223,6 @@ public class ProductDetailsView extends Main {
         layout.setFlexDirection(Layout.FlexDirection.COLUMN);
         layout.setGap(Layout.Gap.XSMALL);
         return layout;
-    }
-
-    private void setRadioButtonGroupTheme(RadioButtonGroup group, String... themeNames) {
-        group.addThemeNames(themeNames);
-        group.getChildren().forEach(component -> {
-            for (String themeName : themeNames) {
-                component.getElement().getThemeList().add(themeName);
-            }
-        });
     }
 
     private Details createDetails(String title, String description) {

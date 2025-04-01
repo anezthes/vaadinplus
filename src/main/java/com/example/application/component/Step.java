@@ -9,7 +9,7 @@ import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 public class Step extends ListItem implements AfterNavigationObserver, HasTheme {
 
@@ -68,7 +68,7 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
 
     private void updateLinkClassNames() {
         this.link.getClassNames().clear();
-        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, "no-underline", Padding.SMALL);
+        this.link.addClassNames(AlignItems.CENTER, Display.FLEX, Padding.SMALL, "no-underline");
 
         if (this.small) {
             this.link.addClassNames(Gap.SMALL);
@@ -81,15 +81,15 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         this.circle.removeAll();
 
         switch (this.state) {
-            case COMPLETE -> this.circle.add(LineAwesomeIcon.CHECK_SOLID.create());
-            case ERROR -> this.circle.add(LineAwesomeIcon.EXCLAMATION_SOLID.create());
+            case COMPLETE -> this.circle.add(MaterialSymbol.CHECK.create());
+            case ERROR -> this.circle.add(MaterialSymbol.ERROR.create());
         }
     }
 
     private void updateCircleClassNames() {
         this.circle.getClassNames().clear();
-        this.circle.addClassNames(AlignItems.CENTER, Border.ALL, BoxSizing.BORDER, Display.FLEX, Flex.SHRINK_NONE,
-                FontWeight.MEDIUM, JustifyContent.CENTER, "rounded-full");
+        this.circle.addClassNames(AlignItems.CENTER, Border.ALL, BorderRadius.FULL, BoxSizing.BORDER, Display.FLEX,
+                Flex.SHRINK_NONE, FontWeight.MEDIUM, JustifyContent.CENTER);
 
         if (this.small) {
             this.circle.addClassNames(FontSize.XSMALL, Height.XSMALL, Width.XSMALL);
@@ -150,7 +150,7 @@ public class Step extends ListItem implements AfterNavigationObserver, HasTheme 
         } else {
             this.link.getElement().removeAttribute("aria-current");
             // TODO: Check if COMPLETE, ERROR, etc.
-            setState(State.INACTIVE);
+            // setState(State.INACTIVE);
         }
     }
 

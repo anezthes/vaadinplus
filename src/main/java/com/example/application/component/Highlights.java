@@ -10,7 +10,6 @@ public class Highlights extends Layout implements HasTheme {
     private FlexRowBreakpoint breakpoint;
 
     public Highlights(Highlight... highlights) {
-        addClassNames("highlights");
         add(highlights);
         setBreakpoint(Breakpoint.MEDIUM);
         setFlexDirection(FlexDirection.COLUMN);

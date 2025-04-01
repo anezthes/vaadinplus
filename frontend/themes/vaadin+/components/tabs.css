@@ -1,0 +1,35 @@
+/* Theme: segmented */
+
+vaadin-tabs[theme~="segmented"] {
+    box-shadow: none;
+}
+
+vaadin-tabs[theme~="segmented"]::part(tabs) {
+    background-color: var(--lumo-contrast-5pct);
+    border-radius: var(--lumo-border-radius-m);
+    margin: 0;
+    padding: calc(var(--lumo-space-xs) / 2);
+}
+
+vaadin-tabs[theme~="segmented"] vaadin-tab {
+    border-radius: var(--lumo-border-radius-m);
+}
+
+vaadin-tabs[theme~="segmented"] vaadin-tab::after,
+vaadin-tabs[theme~="segmented"] vaadin-tab::before {
+    content: none;
+}
+
+vaadin-tabs[theme~="segmented"] vaadin-tab[selected] {
+    background-color: var(--lumo-base-color);
+    box-shadow: var(--lumo-box-shadow-xs);
+}
+
+vaadin-tabs[theme~="segmented"] vaadin-tab[focus-ring] {
+    box-shadow: 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+    z-index: 1;
+}
+
+vaadin-tabs[theme~="segmented"] vaadin-tab[focus-ring][selected] {
+    box-shadow: var(--lumo-box-shadow-xs), 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+}

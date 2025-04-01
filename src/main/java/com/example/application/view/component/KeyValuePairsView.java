@@ -3,11 +3,13 @@ package com.example.application.view.component;
 import com.example.application.component.KeyValuePair;
 import com.example.application.component.KeyValuePairs;
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+import com.vaadin.flow.theme.lumo.LumoUtility.Divide;
+
 
 @PageTitle("Key-value pairs")
 @Route(value = "key-value-pairs", layout = MainLayout.class)
@@ -38,7 +40,7 @@ public class KeyValuePairsView extends ComponentView {
                 new KeyValuePair("Name", "John Smith"),
                 new KeyValuePair("Email", "john.smith@company.com"),
                 new KeyValuePair("About", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
-                new KeyValuePair("Actions", new Button("Edit", LineAwesomeIcon.EDIT.create()))
+                new KeyValuePair("Actions", new Button("Edit", MaterialSymbol.EDIT.create()))
         );
     }
 
@@ -68,7 +70,7 @@ public class KeyValuePairsView extends ComponentView {
 
     private KeyValuePairs createKeyValuePairsWithDividers() {
         KeyValuePairs pairs = createKeyValuePairs();
-        pairs.addClassNames("divide-y");
+        pairs.addClassNames(Divide.Y);
         return pairs;
     }
 

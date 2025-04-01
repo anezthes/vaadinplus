@@ -1,6 +1,7 @@
 package com.example.application.view.template;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.utility.Breakpoint;
 import com.example.application.view.MainLayout;
 import com.example.application.view.template.validation.ContactBean;
@@ -21,7 +22,6 @@ import com.vaadin.flow.data.validator.EmailValidator;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.Optional;
 
@@ -29,8 +29,8 @@ import java.util.Optional;
 @Route(value = "validation-form", layout = MainLayout.class)
 public class ValidationView extends Main {
 
-    private ContactBean bean = new ContactBean();
-    private Binder<ContactBean> binder = new Binder<>();
+    private final ContactBean bean = new ContactBean();
+    private final Binder<ContactBean> binder = new Binder<>();
     private Div errorSummary;
     private TextField address;
     private TextField city;
@@ -38,7 +38,6 @@ public class ValidationView extends Main {
     private TextField zip;
     private TextField phone;
     private TextField email;
-    private Button submit;
 
     public ValidationView() {
         addClassNames(BoxSizing.BORDER, Display.FLEX, FlexDirection.COLUMN, MaxWidth.SCREEN_SMALL, Padding.LARGE);
@@ -67,14 +66,14 @@ public class ValidationView extends Main {
         this.zip = new TextField("ZIP");
 
         this.phone = new TextField("Phone");
-        this.phone.setPrefixComponent(LineAwesomeIcon.PHONE_SOLID.create());
+        this.phone.setPrefixComponent(MaterialSymbol.PHONE.create());
 
         this.email = new TextField("Email");
-        this.email.setPrefixComponent(LineAwesomeIcon.ENVELOPE.create());
+        this.email.setPrefixComponent(MaterialSymbol.EMAIL.create());
 
-        this.submit = new Button("Submit", e -> submit());
-        this.submit.addClassNames(Margin.Top.LARGE);
-        this.submit.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        Button submit = new Button("Submit", e -> submit());
+        submit.addClassNames(Margin.Top.LARGE);
+        submit.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         // Set IDs
         for (Component component : new Component[]{this.address, this.city, this.state, this.zip, phone, this.email}) {
@@ -82,7 +81,7 @@ public class ValidationView extends Main {
         }
 
         Layout layout = new Layout(title, this.errorSummary, this.address, this.city, this.state, this.zip, phone,
-                this.email, this.submit);
+                this.email, submit);
         layout.setColumns(Layout.GridColumns.COLUMNS_4);
         layout.setColumnGap(Layout.Gap.MEDIUM);
         layout.setColumnSpan(Layout.ColumnSpan.COLUMN_SPAN_2, this.city, this.phone, this.email);
@@ -103,9 +102,7 @@ public class ValidationView extends Main {
                 .bind(ContactBean::getAddress, ContactBean::setAddress);
         this.binder.forField(this.city)
                 .asRequired("The city cannot be empty")
-                .withValidator(value -> {
-                    return (value != null) && value.startsWith("T");
-                }, "The city should start with a T")
+                .withValidator(value -> (value != null) && value.startsWith("T"), "The city should start with a T")
                 .bind(ContactBean::getCity, ContactBean::setCity);
         this.binder.forField(this.state)
                 .asRequired("The state cannot be empty")
@@ -120,9 +117,7 @@ public class ValidationView extends Main {
                 .asRequired("The email address cannot be empty")
                 .withValidator(new EmailValidator("Enter a valid email address"))
                 .bind(ContactBean::getEmail, ContactBean::setEmail);
-        this.binder.withValidator(contactBean -> {
-            return contactBean.getCity().equals("Turku");
-        }, "The city must be Turku");
+        this.binder.withValidator(contactBean -> contactBean.getCity().equals("Turku"), "The city must be Turku");
 
         this.binder.setBean(this.bean);
     }

@@ -2,6 +2,7 @@ package com.example.application.view.component;
 
 import com.example.application.component.Badge;
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.component.Tag;
 import com.example.application.component.list.*;
 import com.example.application.utility.BadgeVariant;
@@ -15,15 +16,11 @@ import com.vaadin.flow.component.avatar.AvatarGroup.AvatarGroupItem;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoUtility.Display;
-import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
-import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
-import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+import com.vaadin.flow.theme.lumo.LumoUtility.*;
+
 
 @PageTitle("Lists")
 @Route(value = "lists", layout = MainLayout.class)
@@ -76,7 +73,7 @@ public class ListsView extends ComponentView {
 
         addH2("Utility class: divide-y");
         List list = createList();
-        list.addClassNames("divide-y");
+        list.addClassNames(Divide.Y);
         addPreview(list);
     }
 
@@ -105,11 +102,8 @@ public class ListsView extends ComponentView {
     }
 
     private RouterLink createSuffix(String label) {
-        SvgIcon icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(IconSize.SMALL, TextColor.SECONDARY);
-
         RouterLink link = new RouterLink("", HighlightsView.class);
-        link.add(icon);
+        link.add(MaterialSymbol.ARROW_RIGHT_ALT.create(IconSize.SMALL, TextColor.SECONDARY));
         link.addClassNames(Display.FLEX, Padding.SMALL);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
@@ -141,56 +135,56 @@ public class ListsView extends ComponentView {
                         "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=640",
                         "Aerial shot of forest",
                         "Pine Watt", "November 28, 2017",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?w=640",
                         "Photo of green grass field at sunrise",
                         "Ales Krivec", "June 19, 2015",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=640",
                         "Brown wooden dock between lavender flower field near body of water during golden hour",
                         "Mark Harpur", "July 22, 2018",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=640",
                         "Three brown wooden boat on blue lake water taken at daytime",
                         "Pietro De Grandi", "August 3, 2017",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=640",
                         "Brown house near body of water",
                         "Luca Bravo", "August 9, 2016",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1433838552652-f9a46b332c40?w=640",
                         "Hot air balloon contest",
                         "Daniela Cuevas", "June 9, 2015",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=640",
                         "Silhouette photo of mountain during night time",
                         "Vincentiu Solomon", "December 22, 2014",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 ),
                 new ImageListItem(
                         "https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?w=640",
                         "Milky way above body of water",
                         "Kristopher Roller", "July 12, 2016",
-                        createIconButton(LineAwesomeIcon.ELLIPSIS_V_SOLID, "Actions")
+                        createIconButton(MaterialSymbol.MORE_VERT, "Actions")
                 )
         );
         return list;
     }
 
-    private Button createIconButton(LineAwesomeIcon icon, String ariaLabel) {
-        Button button = new Button(icon.create());
+    private Button createIconButton(MaterialSymbol symbol, String ariaLabel) {
+        Button button = new Button(symbol.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel(ariaLabel);
         button.setTooltipText(ariaLabel);
@@ -252,13 +246,13 @@ public class ListsView extends ComponentView {
 
     private List createTimeline() {
         TimelineListItem item1 = new TimelineListItem(
-                LineAwesomeIcon.CHECK_SOLID, Color.Background.SUCCESS, Color.Text.SUCCESS_CONTRAST,
+                MaterialSymbol.CHECK, Color.Background.SUCCESS, Color.Text.SUCCESS_CONTRAST,
                 PERSON_1, "marked issue as fixed", "1d ago"
         );
         item1.setAvatarImage(PERSON_1_IMG);
 
         TimelineListItem item2 = new TimelineListItem(
-                LineAwesomeIcon.TAG_SOLID, Color.Background.PRIMARY, Color.Text.PRIMARY_CONTRAST,
+                MaterialSymbol.TAG, Color.Background.PRIMARY, Color.Text.PRIMARY_CONTRAST,
                 PERSON_2, new Span(
                 new Text(" added labels "),
                 new Badge("bug", BadgeVariant.ERROR, BadgeVariant.PILL),
@@ -269,13 +263,13 @@ public class ListsView extends ComponentView {
         item2.setAvatarImage(PERSON_2_IMG);
 
         TimelineListItem item3 = new TimelineListItem(
-                LineAwesomeIcon.PEN_ALT_SOLID, Color.Background.CONTRAST, Color.Text.PRIMARY_CONTRAST,
+                MaterialSymbol.EDIT, Color.Background.CONTRAST, Color.Text.PRIMARY_CONTRAST,
                 PERSON_3, "changed the title", "5d ago"
         );
         item3.setAvatarImage(PERSON_3_IMG);
 
         TimelineListItem item4 = new TimelineListItem(
-                LineAwesomeIcon.LIGHTBULB,
+                MaterialSymbol.LIGHTBULB,
                 "This is an API test by <b>" + PERSON_1 + "</b>", "3d ago"
         );
 

@@ -58,7 +58,7 @@ public class ShoppingCartView extends Main {
                         "650,00 €"
                 )
         );
-        list.addClassNames("divide-y");
+        list.addClassNames(Divide.Y);
 
         Section section = new Section(title, list);
         section.addClassNames(BoxSizing.BORDER, Padding.Horizontal.LARGE);
@@ -74,7 +74,7 @@ public class ShoppingCartView extends Main {
                 new KeyValuePair("Delivery", "0,00 €"),
                 new KeyValuePair("Total", "3 950,00 €")
         );
-        pairs.addClassNames("divide-y");
+        pairs.addClassNames(Divide.Y);
         pairs.setKeyWidthFull();
         pairs.removeBackgroundColor();
         pairs.removeHorizontalPadding();

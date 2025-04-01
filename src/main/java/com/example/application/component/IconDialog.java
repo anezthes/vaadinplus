@@ -6,25 +6,24 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 public class IconDialog extends Dialog {
 
     private final Layout layout;
     private final Layout iconLayout;
-    private final SvgIcon icon;
+    private final Span icon;
     private final Layout textLayout;
     private Color.Background background;
     private Color.Text color;
 
-    public IconDialog(LineAwesomeIcon icon, String title, String message) {
+    public IconDialog(MaterialSymbol symbol, String title, String message) {
         // Icon
-        this.icon = icon.create();
+        this.icon = symbol.create();
 
         this.iconLayout = new Layout(this.icon);
-        this.iconLayout.addClassNames(Flex.SHRINK_NONE, "rounded-full");
+        this.iconLayout.addClassNames(BorderRadius.FULL, Flex.SHRINK_NONE);
         this.iconLayout.setAlignItems(Layout.AlignItems.CENTER);
         this.iconLayout.setJustifyContent(Layout.JustifyContent.CENTER);
 

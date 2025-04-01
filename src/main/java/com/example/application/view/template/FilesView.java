@@ -2,6 +2,7 @@ package com.example.application.view.template;
 
 import com.example.application.component.Header;
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.theme.RadioButtonTheme;
 import com.example.application.theme.UploadTheme;
 import com.example.application.utility.Breakpoint;
@@ -15,9 +16,8 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.shared.Tooltip;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -25,9 +25,7 @@ import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -64,10 +62,11 @@ public class FilesView extends Main {
 
         // Prefix
         RouterLink link = new RouterLink(HomeView.class);
-        link.add(LumoIcon.ARROW_LEFT.create());
+        link.add(MaterialSymbol.WEST.create());
         link.addClassNames(AlignItems.CENTER, BorderRadius.MEDIUM, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER,
                 Width.MEDIUM);
         link.getElement().setAttribute("aria-label", "Home");
+        Tooltip.forComponent(link).setText("Home");
         header.setPrefix(link);
 
         // Details
@@ -76,8 +75,8 @@ public class FilesView extends Main {
         header.setDetails(description);
 
         // Actions
-        Button access = new Button("Access", LineAwesomeIcon.LOCK_OPEN_SOLID.create());
-        Button create = new Button("Create", LumoIcon.PLUS.create());
+        Button access = new Button("Access", MaterialSymbol.LOCK_OPEN.create());
+        Button create = new Button("Create", MaterialSymbol.ADD.create());
         create.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         header.setActions(access, create);
 
@@ -89,23 +88,20 @@ public class FilesView extends Main {
         button.addClassNames(Margin.Bottom.MEDIUM);
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
 
-        SvgIcon svgIcon = LineAwesomeIcon.UPLOAD_SOLID.create();
-        svgIcon.addClassNames(Border.ALL, BorderRadius.LARGE, Height.MEDIUM, Margin.Bottom.SMALL,
-                Margin.Horizontal.AUTO, "order-first", Padding.SMALL, Width.MEDIUM);
+        Span icon = MaterialSymbol.UPLOAD.create(AlignItems.CENTER, Border.ALL, BorderRadius.LARGE, Display.FLEX,
+                Height.MEDIUM, JustifyContent.CENTER, Margin.Bottom.SMALL, Margin.Horizontal.AUTO, "order-first",
+                Padding.SMALL, Width.MEDIUM);
 
         Span label = new Span("or drag and drop");
-        label.addClassNames("-ms-s");
-
-        Icon icon = LumoIcon.UPLOAD.create();
-        icon.addClassNames(Display.HIDDEN);
+        label.addClassNames(Margin.Minus.Start.SMALL);
 
         Upload upload = new Upload();
         upload.addClassNames(Display.FLEX, FlexDirection.COLUMN, Padding.Bottom.NONE, Padding.Top.MEDIUM);
-        upload.getElement().appendChild(svgIcon.getElement());
+        upload.getElement().appendChild(icon.getElement());
         upload.getElement().getThemeList().add(UploadTheme.ALT);
         upload.setUploadButton(button);
         upload.setDropLabel(label);
-        upload.setDropLabelIcon(icon);
+        upload.setDropLabelIcon(MaterialSymbol.HIDE.create(Display.HIDDEN));
         return upload;
     }
 
@@ -113,17 +109,20 @@ public class FilesView extends Main {
         RadioButtonGroup<String> viewMode = new RadioButtonGroup<>();
         viewMode.addClassNames(Padding.NONE, Width.FULL, "md:w-auto");
         viewMode.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.TOGGLE);
+
+        viewMode.setAriaLabel("View mode");
+        viewMode.setTooltipText("View mode");
+
         viewMode.setItems("List", "Columns", "Gallery");
         viewMode.setRenderer(new ComponentRenderer<>(item -> {
             Span span = new Span(item);
             span.addClassNames(FontWeight.MEDIUM, Margin.Horizontal.AUTO, Padding.Horizontal.SMALL, Whitespace.NOWRAP);
             return span;
         }));
-        viewMode.getChildren().forEach(component -> component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE));
         viewMode.setValue("List");
 
-        Button advanced = new Button(LineAwesomeIcon.SLIDERS_H_SOLID.create());
-        advanced.addClassNames("-me-xs", Margin.Vertical.NONE);
+        Button advanced = new Button(MaterialSymbol.TUNE.create());
+        advanced.addClassNames(Margin.Minus.End.XSMALL, Margin.Vertical.NONE);
         advanced.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         advanced.setAriaLabel("Advanced search");
         advanced.setTooltipText("Advanced search");
@@ -133,7 +132,7 @@ public class FilesView extends Main {
         search.setAriaLabel("Search");
         search.setClearButtonVisible(true);
         search.setPlaceholder("Search");
-        search.setPrefixComponent(LumoIcon.SEARCH.create());
+        search.setPrefixComponent(MaterialSymbol.SEARCH.create());
         search.setSuffixComponent(advanced);
 
         Layout toolbar = new Layout(viewMode, search);
@@ -203,7 +202,8 @@ public class FilesView extends Main {
 
     private Component createFileIcon(String fileName) {
         Div corner = new Div();
-        corner.addClassNames(Background.CONTRAST_50, Display.FLEX, Position.ABSOLUTE, "end-0", "top-0");
+        corner.addClassNames(Background.CONTRAST_50, Display.FLEX, Position.ABSOLUTE, Position.End.NONE,
+                Position.Top.NONE);
         corner.setHeight(30, Unit.PERCENTAGE);
         corner.setWidth(30, Unit.PERCENTAGE);
 
@@ -219,7 +219,7 @@ public class FilesView extends Main {
         Person person = item.getOwner();
 
         Image img = new Image(person.getImage(), person.getName());
-        img.addClassNames(Height.MEDIUM, "rounded-full", Width.MEDIUM);
+        img.addClassNames(BorderRadius.FULL, Height.MEDIUM, Width.MEDIUM);
 
         Span name = new Span(person.getName());
 
@@ -235,28 +235,28 @@ public class FilesView extends Main {
     }
 
     private Component renderActions(DummyItem item) {
-        Button share = new Button(LineAwesomeIcon.SHARE_SOLID.create());
+        Button share = new Button(MaterialSymbol.SHARE.create());
         share.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         share.setAriaLabel("Share " + item.getFileName());
         share.setTooltipText("Share " + item.getFileName());
 
-        Button download = new Button(LumoIcon.DOWNLOAD.create());
+        Button download = new Button(MaterialSymbol.DOWNLOAD.create());
         download.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         download.setAriaLabel("Download " + item.getFileName());
         download.setTooltipText("Download " + item.getFileName());
 
-        Button rename = new Button(LumoIcon.EDIT.create());
+        Button rename = new Button(MaterialSymbol.EDIT.create());
         rename.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         rename.setAriaLabel("Rename " + item.getFileName());
         rename.setTooltipText("Rename " + item.getFileName());
 
-        Button favourite = new Button(LineAwesomeIcon.STAR.create());
+        Button favourite = new Button(MaterialSymbol.STAR.create());
         favourite.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         favourite.setAriaLabel("Favourite " + item.getFileName());
         favourite.setTooltipText("Favourite " + item.getFileName());
 
         Div actions = new Div(share, download, rename, favourite);
-        actions.addClassNames(Display.FLEX, "-mx-s");
+        actions.addClassNames(Display.FLEX, Margin.Minus.Horizontal.SMALL);
         return actions;
     }
 

@@ -1,9 +1,8 @@
 li.timeline::before {
-    background-color: var(--lumo-contrast-30pct);
+    border-inline-start: 1px solid var(--lumo-utility-border-color, var(--lumo-contrast-30pct));
     content: "";
     inset: 0 auto 0 calc(var(--lumo-space-m) + (var(--lumo-size-m) / 2));
     position: absolute;
-    width: 1px;
 }
 
 li.timeline > * {

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class MessagesDialog extends Popover {
 
     public MessagesDialog() {
-        addThemeVariants(PopoverVariant.ARROW);
+        addThemeVariants(PopoverVariant.ARROW, PopoverVariant.LUMO_NO_PADDING);
         setAriaLabel("Messages");
 
         // Links

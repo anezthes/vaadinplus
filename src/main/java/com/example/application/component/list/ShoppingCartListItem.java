@@ -1,6 +1,7 @@
 package com.example.application.component.list;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -10,7 +11,7 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 public class ShoppingCartListItem extends ListItem {
 
@@ -42,12 +43,12 @@ public class ShoppingCartListItem extends ListItem {
         quantity.setValue(1);
         quantity.setWidth(6, Unit.REM);
 
-        Button favourite = new Button(LineAwesomeIcon.HEART.create());
+        Button favourite = new Button(MaterialSymbol.FAVORITE.create());
         favourite.addClassNames(TextColor.SECONDARY);
         favourite.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         favourite.setAriaLabel("Favourite");
 
-        Button delete = new Button(LineAwesomeIcon.TRASH_SOLID.create());
+        Button delete = new Button(MaterialSymbol.DELETE.create());
         delete.addClassNames(TextColor.SECONDARY);
         delete.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         delete.setAriaLabel("Delete");

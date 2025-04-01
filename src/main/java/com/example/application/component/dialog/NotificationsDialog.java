@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class NotificationsDialog extends Popover {
 
     public NotificationsDialog() {
-        addThemeVariants(PopoverVariant.ARROW);
+        addThemeVariants(PopoverVariant.ARROW, PopoverVariant.LUMO_NO_PADDING);
         setAriaLabel("Notifications");
 
         // Links

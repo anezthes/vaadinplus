@@ -1,6 +1,7 @@
 package com.example.application.component.dialog;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
@@ -13,9 +14,7 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 public class SearchDialog extends Dialog {
 
@@ -39,7 +38,7 @@ public class SearchDialog extends Dialog {
         this.search.addClassNames(BoxSizing.BORDER, Padding.Vertical.NONE);
         this.search.setAriaLabel("Search");
         this.search.setPlaceholder("Search");
-        this.search.setPrefixComponent(LumoIcon.SEARCH.create());
+        this.search.setPrefixComponent(MaterialSymbol.SEARCH.create());
         this.search.setWidthFull();
 
         this.list = new ListBox<>();
@@ -101,10 +100,10 @@ public class SearchDialog extends Dialog {
             layout.setAlignItems(Layout.AlignItems.CENTER);
             layout.setFlexDirection(Layout.FlexDirection.COLUMN);
 
-            Button message = new Button(LineAwesomeIcon.COMMENTS.create());
+            Button message = new Button(MaterialSymbol.COMMENT.create());
             message.setAriaLabel("Message");
 
-            Button video = new Button(LineAwesomeIcon.VIDEO_SOLID.create());
+            Button video = new Button(MaterialSymbol.VIDEO_CALL.create());
             video.setAriaLabel("Video call");
 
             FlexLayout buttons = new FlexLayout(message, video);

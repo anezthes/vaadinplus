@@ -28,16 +28,13 @@ public class CheckboxesView extends ComponentView {
         addH2("Theme: dividers");
         add(createCheckboxGroup(CheckboxTheme.DIVIDERS));
 
-        addH2("Theme: dividers & align-right");
-        add(createCheckboxGroup(CheckboxTheme.DIVIDERS, CheckboxTheme.ALIGN_RIGHT));
-
         addH2("Theme: switch");
         add(createCheckboxGroup(CheckboxTheme.SWITCH));
     }
 
     private CheckboxGroup<String> createCheckboxGroupWithDescriptions() {
         CheckboxGroup<String> group = createCheckboxGroup();
-        group.setRenderer(new ComponentRenderer<>(item -> renderLabelWithDescription(item)));
+        group.setRenderer(new ComponentRenderer<>(this::renderLabelWithDescription));
         return group;
     }
 
@@ -53,18 +50,11 @@ public class CheckboxesView extends ComponentView {
     }
 
     private CheckboxGroup<String> createCheckboxGroup(String... themeNames) {
-        CheckboxGroup<String> group = new CheckboxGroup("Label");
+        CheckboxGroup<String> group = new CheckboxGroup<>("Label");
         group.addThemeNames(themeNames);
         group.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
         group.setItems("Item 1", "Item 2", "Item 3");
         group.setWidth(320, Unit.PIXELS);
-
-        group.getChildren().forEach(component -> {
-            for (String themeName : themeNames) {
-                component.getElement().getThemeList().add(themeName);
-            }
-        });
-
         return group;
     }
 

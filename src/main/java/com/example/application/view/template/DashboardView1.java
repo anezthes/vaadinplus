@@ -20,7 +20,6 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -29,10 +28,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -93,17 +90,15 @@ public class DashboardView1 extends Main {
 
     private Component createToggle() {
         RadioButtonGroup<String> group = new RadioButtonGroup<>();
+        group.addThemeNames(RadioButtonTheme.TOGGLE);
+
+        group.setAriaLabel("Duration");
+        group.setTooltipText("Duration");
+
         group.setItems("1 day", "1 week", "1 month");
         group.setRenderer(new ComponentRenderer<>(item -> new Span(item, Padding.Horizontal.SMALL)));
         group.setValue("1 day");
 
-        // Accessibility
-        group.setAriaLabel("Duration");
-        group.setTooltipText("Duration");
-
-        // Theme
-        group.addThemeNames(RadioButtonTheme.TOGGLE);
-        group.getChildren().forEach(component -> component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE));
         return group;
     }
 
@@ -112,27 +107,27 @@ public class DashboardView1 extends Main {
         highlights.addClassNames(Border.ALL, BorderRadius.LARGE, "md:divide-x");
 
         Highlight highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CUBES_SOLID, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
+                createIcon(MaterialSymbol.DEPLOYED_CODE, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
                 ORDERS, ORDERS_VALUE,
                 createSuffix(ORDERS)
         );
-        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, Color.Text.SUCCESS));
+        highlight.setDetails(new Tag(MaterialSymbol.ARROW_UPWARD_ALT, ORDERS_CHANGE, Color.Text.SUCCESS));
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
+                createIcon(MaterialSymbol.BAR_CHART, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
                 SALES, SALES_VALUE,
                 createSuffix(SALES)
         );
-        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, Color.Text.SUCCESS));
+        highlight.setDetails(new Tag(MaterialSymbol.ARROW_UPWARD_ALT, SALES_CHANGE, Color.Text.SUCCESS));
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.USER, Color.Background.ERROR_10, Color.Text.ERROR),
+                createIcon(MaterialSymbol.PERSON, Color.Background.ERROR_10, Color.Text.ERROR),
                 VISITORS, VISITORS_VALUE,
                 createSuffix(VISITORS)
         );
-        highlight.setDetails(new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS));
+        highlight.setDetails(new Tag(MaterialSymbol.ARROW_UPWARD_ALT, VISITORS_CHANGE, Color.Text.SUCCESS));
         highlights.add(highlight);
 
         Section section = new Section(highlights);
@@ -140,24 +135,18 @@ public class DashboardView1 extends Main {
         return section;
     }
 
-    private Component createIcon(LineAwesomeIcon icon, Color.Background backgroundColor, Color.Text textColor) {
-        SvgIcon i = icon.create();
-        i.addClassNames(IconSize.LARGE);
-
-        Layout container = new Layout(i);
-        container.addClassNames(backgroundColor.getClassName(), "rounded-full", Height.XLARGE, textColor.getClassName(),
-                Width.XLARGE);
+    private Component createIcon(MaterialSymbol symbol, Color.Background backgroundColor, Color.Text textColor) {
+        Layout container = new Layout(symbol.create(IconSize.LARGE));
+        container.addClassNames(backgroundColor.getClassName(), BorderRadius.FULL, Height.XLARGE,
+                textColor.getClassName(), Width.XLARGE);
         container.setAlignItems(Layout.AlignItems.CENTER);
         container.setJustifyContent(Layout.JustifyContent.CENTER);
         return container;
     }
 
     private RouterLink createSuffix(String label) {
-        SvgIcon icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(IconSize.SMALL, TextColor.SECONDARY);
-
         RouterLink link = new RouterLink("", HighlightsView.class);
-        link.add(icon);
+        link.add(MaterialSymbol.NAVIGATE_NEXT.create(IconSize.SMALL, TextColor.SECONDARY));
         link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER, Width.MEDIUM);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
@@ -171,13 +160,14 @@ public class DashboardView1 extends Main {
     }
 
     private Component createChartHeader() {
-        Button details = new Button("Details", LineAwesomeIcon.INFO_CIRCLE_SOLID.create());
+        Button details = new Button("Details", MaterialSymbol.INFO.create());
 
         Badge commentsBadge = new Badge();
-        commentsBadge.addClassNames(LumoUtility.Position.ABSOLUTE, "end-xs", "top-xs");
+        commentsBadge.addClassNames(LumoUtility.Position.ABSOLUTE, LumoUtility.Position.End.XSMALL,
+                LumoUtility.Position.Top.XSMALL);
         commentsBadge.addThemeVariants(BadgeVariant.ERROR, BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
 
-        Button comments = new Button(LineAwesomeIcon.COMMENT_ALT.create(), e -> this.chartSidebar.open());
+        Button comments = new Button(MaterialSymbol.COMMENT.create(), e -> this.chartSidebar.open());
         comments.setAriaLabel("View comments (4)");
         comments.setSuffixComponent(commentsBadge);
         comments.setTooltipText("View comments (4)");
@@ -274,10 +264,10 @@ public class DashboardView1 extends Main {
     }
 
     private Component[] getContextActions() {
-        Button share = new Button("Share", LineAwesomeIcon.SHARE_SOLID.create());
+        Button share = new Button("Share", MaterialSymbol.SHARE.create());
         share.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
-        Button download = new Button("Download", LineAwesomeIcon.DOWNLOAD_SOLID.create());
+        Button download = new Button("Download", MaterialSymbol.DOWNLOAD.create());
         download.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         return new Component[]{share, download};
@@ -287,7 +277,7 @@ public class DashboardView1 extends Main {
         TextField search = new TextField();
         search.setAriaLabel("Search");
         search.setPlaceholder("Search");
-        search.setPrefixComponent(LumoIcon.SEARCH.create());
+        search.setPrefixComponent(MaterialSymbol.SEARCH.create());
 
         Badge filtersBadge = new Badge("2");
         filtersBadge.addThemeVariants(BadgeVariant.PILL, BadgeVariant.PRIMARY, BadgeVariant.SMALL);
@@ -349,19 +339,19 @@ public class DashboardView1 extends Main {
 
     private Component renderStatus(DashboardItem item) {
         Badge badge = new Badge(item.getStatus());
-        badge.setIcon(LineAwesomeIcon.CLOCK);
+        badge.setIcon(MaterialSymbol.SCHEDULE);
         if (item.getStatus().equals("Completed")) {
             badge.addThemeVariants(BadgeVariant.SUCCESS);
-            badge.setIcon(LineAwesomeIcon.CHECK_SOLID);
+            badge.setIcon(MaterialSymbol.CHECK);
         } else if (item.getStatus().equals("Refunded")) {
             badge.addThemeVariants(BadgeVariant.WARNING);
-            badge.setIcon(LineAwesomeIcon.UNDO_SOLID);
+            badge.setIcon(MaterialSymbol.UNDO);
         }
         return badge;
     }
 
     private Component renderEditButton(DashboardItem item) {
-        Button button = new Button(LineAwesomeIcon.EDIT.create());
+        Button button = new Button(MaterialSymbol.EDIT.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel("Edit " + item.getName());
         button.setTooltipText("Edit " + item.getName());

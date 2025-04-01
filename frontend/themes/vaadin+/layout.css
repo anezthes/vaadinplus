@@ -4,28 +4,6 @@
   display: contents;
 }
 
-/* Min height */
-
-.min-h-xs {
-  min-height: var(--lumo-size-xs);
-}
-
-.min-h-s {
-  min-height: var(--lumo-size-s);
-}
-
-.min-h-m {
-  min-height: var(--lumo-size-m);
-}
-
-.min-h-l {
-  min-height: var(--lumo-size-l);
-}
-
-.min-h-xl {
-  min-height: var(--lumo-size-xl);
-}
-
 /* Responsive design */
 
 @media (min-width: 640px) {

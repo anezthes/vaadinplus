@@ -23,7 +23,7 @@ public class ProductListItem extends com.vaadin.flow.component.html.ListItem {
                 Padding.Bottom.MEDIUM, Padding.Horizontal.LARGE, Padding.Top.LARGE);
 
         this.image = new Layout(image);
-        this.image.addClassNames("aspect-video", BorderRadius.MEDIUM);
+        this.image.addClassNames(AspectRatio.VIDEO, BorderRadius.MEDIUM);
         this.image.setAlignItems(Layout.AlignItems.CENTER);
         this.image.setJustifyContent(Layout.JustifyContent.CENTER);
         this.image.setOverflow(Layout.Overflow.HIDDEN);

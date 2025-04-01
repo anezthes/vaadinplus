@@ -1,6 +1,7 @@
 package com.example.application.view.template.validation;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Focusable;
 import com.vaadin.flow.component.HasAriaLabel;
@@ -10,12 +11,10 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.OrderedList;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.data.binder.BinderValidationStatus;
 import com.vaadin.flow.data.binder.BindingValidationStatus;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,10 +83,7 @@ public class ErrorSummary extends Layout implements HasAriaLabel, HasTheme, Focu
     }
 
     private Component createIcon() {
-        SvgIcon svgIcon = LineAwesomeIcon.EXCLAMATION_CIRCLE_SOLID.create();
-        svgIcon.addClassNames(IconSize.SMALL);
-
-        Layout icon = new Layout(svgIcon);
+        Layout icon = new Layout(MaterialSymbol.ERROR.create(IconSize.SMALL));
         icon.addClassNames(Flex.SHRINK_NONE, Height.XSMALL, Margin.Top.XSMALL, Margin.Start.XSMALL, TextColor.ERROR,
                 Width.XSMALL);
         icon.setAlignItems(AlignItems.CENTER);

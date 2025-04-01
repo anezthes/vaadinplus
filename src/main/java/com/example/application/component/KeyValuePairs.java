@@ -22,7 +22,7 @@ public class KeyValuePairs extends DescriptionList implements HasTheme {
     private Color.Background background;
 
     public KeyValuePairs(KeyValuePair... pairs) {
-        addClassNames("key-value-pairs", Display.GRID, Margin.Vertical.NONE);
+        addClassNames(Display.GRID, Margin.Vertical.NONE);
         setBackground(Color.Background.BASE);
 
         this.columnSpans = new HashMap<>();

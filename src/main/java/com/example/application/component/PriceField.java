@@ -4,6 +4,7 @@ import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
 
 public class PriceField extends CustomField<PriceField.Price> {
 
@@ -51,11 +52,11 @@ public class PriceField extends CustomField<PriceField.Price> {
     private void updateAmountPrefix() {
         Span prefix;
         if (currency.getValue().equals(EUR)) {
-            prefix = new Span("€");
+            prefix = MaterialSymbol.EURO.create(IconSize.SMALL);
         } else if (currency.getValue().equals(GBP)) {
-            prefix = new Span("£");
+            prefix = MaterialSymbol.CURRENCY_POUND.create(IconSize.SMALL);
         } else {
-            prefix = new Span("$");
+            prefix = MaterialSymbol.ATTACH_MONEY.create(IconSize.SMALL);
         }
         amount.setPrefixComponent(prefix);
     }

@@ -26,9 +26,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -62,7 +60,7 @@ public class CustomersView extends Main {
         header.getRowLayout().removeClassName(Padding.MEDIUM);
 
         // Position the tabs along the edge with negative margins
-        header.getTabs().addClassName("-mx-l");
+        header.getTabs().addClassName(Margin.Minus.Horizontal.LARGE);
         header.setTabs(
                 new Tab("All"),
                 new Tab("Recent"),
@@ -81,8 +79,8 @@ public class CustomersView extends Main {
         header.setDetails(description);
 
         // Actions
-        Button create = new Button("Create", LineAwesomeIcon.ROCKET_SOLID.create());
-        Button add = new Button("Customer", LumoIcon.PLUS.create());
+        Button create = new Button("Create", MaterialSymbol.ROCKET_LAUNCH.create());
+        Button add = new Button("Customer", MaterialSymbol.ADD.create());
         add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         header.setActions(create, add);
 
@@ -96,12 +94,12 @@ public class CustomersView extends Main {
         search.setClearButtonVisible(true);
         search.setMaxWidth(35, Unit.REM);
         search.setPlaceholder("Search");
-        search.setPrefixComponent(LumoIcon.SEARCH.create());
+        search.setPrefixComponent(MaterialSymbol.SEARCH.create());
 
-        Button status = new Button("Status", LineAwesomeIcon.TAGS_SOLID.create());
+        Button status = new Button("Status", MaterialSymbol.LABEL.create());
         status.addClassNames(Margin.Vertical.NONE);
 
-        Button advanced = new Button("Advanced", LineAwesomeIcon.SLIDERS_H_SOLID.create());
+        Button advanced = new Button("Advanced", MaterialSymbol.TUNE.create());
         advanced.addClassNames(Margin.Vertical.NONE);
 
         Layout buttons = new Layout(status, advanced);
@@ -192,7 +190,7 @@ public class CustomersView extends Main {
         Person person = item.getContact();
 
         Image img = new Image(person.getImage(), person.getName());
-        img.addClassNames(Height.MEDIUM, "rounded-full", Width.MEDIUM);
+        img.addClassNames(BorderRadius.FULL, Height.MEDIUM, Width.MEDIUM);
 
         Span name = new Span(person.getName());
 
@@ -209,18 +207,18 @@ public class CustomersView extends Main {
     }
 
     private Component renderActions(DummyItem item) {
-        Button edit = new Button(LumoIcon.EDIT.create());
+        Button edit = new Button(MaterialSymbol.EDIT.create());
         edit.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         edit.setAriaLabel("Edit " + item.getPrimary());
         edit.setTooltipText("Edit " + item.getPrimary());
 
-        Button more = new Button(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
+        Button more = new Button(MaterialSymbol.MORE_VERT.create());
         more.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         more.setAriaLabel("More options for " + item.getPrimary());
         more.setTooltipText("More options for " + item.getPrimary());
 
         Layout actions = new Layout(edit, more);
-        actions.addClassNames("-mx-s");
+        actions.addClassNames(Margin.Minus.Horizontal.SMALL);
         return actions;
     }
 
@@ -228,11 +226,11 @@ public class CustomersView extends Main {
         MenuBar menuBar = new MenuBar();
         menuBar.addThemeVariants(MenuBarVariant.LUMO_ICON, MenuBarVariant.LUMO_TERTIARY);
 
-        MenuItem item = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
+        MenuItem item = menuBar.addItem(MaterialSymbol.MORE_VERT.create());
         item.setAriaLabel("More");
 
-        item.getSubMenu().addItem(new Item("Search", LumoIcon.SEARCH));
-        item.getSubMenu().addItem(new Item("Filter", LineAwesomeIcon.ADJUST_SOLID));
+        item.getSubMenu().addItem(new Item("Search", MaterialSymbol.SEARCH));
+        item.getSubMenu().addItem(new Item("Filter", MaterialSymbol.FILTER_LIST));
 
         return menuBar;
     }
@@ -241,11 +239,11 @@ public class CustomersView extends Main {
         MenuBar menuBar = new MenuBar();
         menuBar.addThemeVariants(MenuBarVariant.LUMO_ICON, MenuBarVariant.LUMO_TERTIARY);
 
-        MenuItem item = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
+        MenuItem item = menuBar.addItem(MaterialSymbol.MORE_VERT.create());
         item.setAriaLabel("More");
 
-        item.getSubMenu().addItem(new Item("Edit", LumoIcon.EDIT));
-        item.getSubMenu().addItem(new Item("Delete", LineAwesomeIcon.TRASH_SOLID));
+        item.getSubMenu().addItem(new Item("Edit", MaterialSymbol.EDIT));
+        item.getSubMenu().addItem(new Item("Delete", MaterialSymbol.DELETE));
 
         return menuBar;
     }

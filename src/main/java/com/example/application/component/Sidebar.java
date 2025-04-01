@@ -11,7 +11,7 @@ import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Section;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 public class Sidebar extends Section implements HasEnabled, HasTheme {
 
@@ -48,7 +48,7 @@ public class Sidebar extends Section implements HasEnabled, HasTheme {
             layout.add(new Span(description, FontSize.SMALL, TextColor.SECONDARY));
         }
 
-        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create(), e -> close());
+        Button close = new Button(MaterialSymbol.CLOSE.create(), e -> close());
         close.addClassNames(Margin.Vertical.NONE);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close sidebar");

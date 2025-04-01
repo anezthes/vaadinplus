@@ -13,13 +13,6 @@
 /* Responsive design */
 
 @media (min-width: 640px) {
-  /* Align items */
-  .sm\:items-baseline {
-    align-items: baseline;
-  }
-  .sm\:items-center {
-    align-items: center;
-  }
   /* Flex grow */
   .sm\:flex-grow-0 {
     flex-grow: 0;
@@ -27,13 +20,6 @@
 }
 
 @media (min-width: 768px) {
-  /* Align items */
-  .md\:items-baseline {
-    align-items: baseline;
-  }
-  .md\:items-center {
-    align-items: center;
-  }
   /* Flex grow */
   .md\:flex-grow-0 {
     flex-grow: 0;
@@ -41,13 +27,6 @@
 }
 
 @media (min-width: 1024px) {
-  /* Align items */
-  .lg\:items-baseline {
-    align-items: baseline;
-  }
-  .lg\:items-center {
-    align-items: center;
-  }
   /* Flex grow */
   .lg\:flex-grow-0 {
     flex-grow: 0;
@@ -55,13 +34,6 @@
 }
 
 @media (min-width: 1280px) {
-  /* Align items */
-  .xl\:items-baseline {
-    align-items: baseline;
-  }
-  .xl\:items-center {
-    align-items: center;
-  }
   /* Flex grow */
   .xl\:flex-grow-0 {
     flex-grow: 0;
@@ -69,13 +41,6 @@
 }
 
 @media (min-width: 1536px) {
-  /* Align items */
-  .\32xl\:items-baseline {
-    align-items: baseline;
-  }
-  .\32xl\:items-center {
-    align-items: center;
-  }
   /* Flex grow */
   .\32xl\:flex-grow-0 {
     flex-grow: 0;

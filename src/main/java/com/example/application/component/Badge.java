@@ -4,8 +4,6 @@ import com.example.application.utility.BadgeVariant;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.stream.Stream;
 
@@ -27,12 +25,11 @@ public class Badge extends Span implements HasTheme {
         addThemeVariants(variants);
     }
 
-    public void setIcon(LineAwesomeIcon icon) {
+    public void setIcon(MaterialSymbol symbol) {
         if (this.icon != null) {
             remove(this.icon);
         }
-        this.icon = icon.create();
-        this.icon.addClassNames(Padding.XSMALL);
+        this.icon = symbol.create();
         addComponentAsFirst(this.icon);
     }
 

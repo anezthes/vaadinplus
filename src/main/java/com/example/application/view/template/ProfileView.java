@@ -1,6 +1,7 @@
 package com.example.application.view.template;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.utility.Breakpoint;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Component;
@@ -18,7 +19,7 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Profile")
 @Route(value = "profile", layout = MainLayout.class)
@@ -90,14 +91,14 @@ public class ProfileView extends Main {
 
         TextField address = new TextField("Address");
         TextField city = new TextField("City");
-        ComboBox state = new ComboBox("State");
+        ComboBox<String> state = new ComboBox<>("State");
         TextField zip = new TextField("ZIP");
 
         TextField phone = new TextField("Phone");
-        phone.setPrefixComponent(LineAwesomeIcon.PHONE_SOLID.create());
+        phone.setPrefixComponent(MaterialSymbol.PHONE.create());
 
         EmailField email = new EmailField("Email");
-        email.setPrefixComponent(LineAwesomeIcon.ENVELOPE.create());
+        email.setPrefixComponent(MaterialSymbol.EMAIL.create());
 
         Layout layout = new Layout(title, description, address, city, state, zip, phone, email);
         // Viewport < 1024px
@@ -136,11 +137,11 @@ public class ProfileView extends Main {
         Paragraph description = new Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
         description.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
 
-        CheckboxGroup emailNotifications = new CheckboxGroup("Email notifications");
+        CheckboxGroup<String> emailNotifications = new CheckboxGroup<>("Email notifications");
         emailNotifications.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
         emailNotifications.setItems("Newsletters", "Promotional offers", "Account updates", "New messages or activities", "Events or upcoming appointments");
 
-        CheckboxGroup pushNotifications = new CheckboxGroup("Push notifications");
+        CheckboxGroup<String> pushNotifications = new CheckboxGroup<>("Push notifications");
         pushNotifications.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
         pushNotifications.setItems("New messages", "Friend requests", "Activity updates", "Order status updates", "Reminders or alerts");
 

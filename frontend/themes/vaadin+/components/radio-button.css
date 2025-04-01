@@ -1,0 +1,165 @@
+/* Theme: dividers */
+
+vaadin-radio-group[theme~="dividers"][theme~='vertical'] vaadin-radio-button {
+    position: relative;
+}
+
+vaadin-radio-group[theme~="dividers"][theme~='vertical'] vaadin-radio-button:not(:last-of-type)::after {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    content: "";
+    inset: auto 0 0 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* Theme: toggle */
+
+vaadin-radio-group[has-label][theme~="toggle"]::before {
+    height: var(--lumo-size-m);
+}
+
+vaadin-radio-group[theme~="toggle"]::part(group-field) {
+    flex-wrap: nowrap;
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button {
+    background-color: var(--lumo-base-color);
+    outline: 1px solid var(--lumo-contrast-50pct);
+    outline-offset: -1px;
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button:first-of-type {
+    border-radius: var(--lumo-border-radius-m) 0 0 var(--lumo-border-radius-m);
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button:last-of-type {
+    border-radius: 0 var(--lumo-border-radius-m) var(--lumo-border-radius-m) 0;
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button:not(:first-of-type) {
+    margin: 0 0 0 -1px;
+}
+
+vaadin-radio-group[theme~="toggle"][theme~='vertical'] vaadin-radio-button:first-of-type {
+    border-radius: var(--lumo-border-radius-m) var(--lumo-border-radius-m) 0 0;
+}
+
+vaadin-radio-group[theme~="toggle"][theme~='vertical'] vaadin-radio-button:last-of-type {
+    border-radius: 0 0 var(--lumo-border-radius-m) var(--lumo-border-radius-m);
+}
+
+vaadin-radio-group[theme~="toggle"][theme~='vertical'] vaadin-radio-button:not(:first-of-type) {
+    margin: -1px 0 0 0;
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button::part(radio) {
+    display: none;
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button label {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    min-height: var(--lumo-size-m);
+    padding-inline-start: var(--lumo-space-s);
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button:not([checked]):not([disabled]):hover {
+    background-color: var(--lumo-contrast-5pct);
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button[checked] {
+    --_focus-ring-gap-on: 1;
+    background-color: var(--lumo-primary-color-10pct);
+    color: var(--lumo-primary-color);
+    outline: 2px solid var(--lumo-primary-color);
+    outline-offset: -2px;
+    z-index: 1;
+}
+
+vaadin-radio-group[theme~="toggle"] vaadin-radio-button[focus-ring] {
+    box-shadow: 0 0 0 calc(1px * var(--_focus-ring-gap-on, 0)) var(--_focus-ring-gap-color, var(--lumo-base-color)),
+                0 0 0 calc(var(--vaadin-focus-ring-width, 2px) + 1px * var(--_focus-ring-gap-on, 0)) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+    z-index: 1;
+}
+
+/* Theme: toggle & primary */
+
+vaadin-radio-group[theme~="toggle"][theme~="primary"] vaadin-radio-button[checked] {
+    background-color: var(--lumo-primary-color);
+    color: var(--lumo-primary-contrast-color);
+}
+
+/* Theme: equal width */
+
+vaadin-radio-group[theme~='equal-width']::part(group-field) {
+    display: flex;
+}
+
+vaadin-radio-group[theme~='equal-width'] vaadin-radio-button {
+    flex: 1;
+}
+
+/* Theme: gap */
+
+vaadin-radio-group[theme~='gap']::part(group-field) {
+    display: flex;
+    gap: var(--lumo-space-s);
+}
+
+vaadin-radio-group[theme~='gap']:not([theme~="vertical"])::part(group-field) {
+    flex-direction: column;
+}
+
+vaadin-radio-group[theme~='gap'] vaadin-radio-button {
+    border-radius: var(--lumo-border-radius-m);
+}
+
+/* Theme: segmented */
+
+vaadin-radio-group[has-label][theme~="segmented"]::before {
+    height: var(--lumo-size-m);
+}
+
+vaadin-radio-group[theme~="segmented"]::part(group-field) {
+    background-color: var(--lumo-contrast-5pct);
+    border-radius: var(--lumo-border-radius-m);
+    box-sizing: border-box;
+    padding: calc(var(--lumo-space-xs) / 2);
+    width: fit-content;
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button {
+    border-radius: var(--lumo-border-radius-m);
+    color: var(--lumo-secondary-text-color);
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button::part(radio) {
+    display: none;
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button label {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    min-height: calc(var(--lumo-size-m) - var(--lumo-space-xs));
+    padding-inline-start: var(--lumo-space-s);
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button:not([checked]):not([disabled]):hover {
+    color: var(--lumo-body-text-color);
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button[checked] {
+    background-color: var(--lumo-base-color);
+    box-shadow: var(--lumo-box-shadow-xs);
+    color: var(--lumo-primary-text-color);
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button[focus-ring] {
+    box-shadow: 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+}
+
+vaadin-radio-group[theme~="segmented"] vaadin-radio-button[checked][focus-ring] {
+    box-shadow: var(--lumo-box-shadow-xs), 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+}

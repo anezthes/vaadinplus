@@ -1,0 +1,57 @@
+/* Theme: rail */
+
+vaadin-side-nav[theme~="rail"] {
+    --vaadin-side-nav-child-background-color: var(--lumo-base-color);
+    --vaadin-side-nav-child-border-radius: var(--lumo-border-radius-m);
+    --vaadin-side-nav-child-box-shadow: var(--lumo-box-shadow-xs);
+    --vaadin-side-nav-child-indent: 0px;
+    --vaadin-side-nav-child-margin: calc((var(--vaadin-side-nav-width) + var(--lumo-space-xs)) / -1) 0 0 var(--vaadin-side-nav-width);
+    --vaadin-side-nav-child-min-width: auto;
+    --vaadin-side-nav-child-padding: var(--lumo-space-xs) 0;
+    --vaadin-side-nav-child-position: absolute;
+    --vaadin-side-nav-child-z-index: 1;
+    --vaadin-side-nav-content-padding: 0;
+    --vaadin-side-nav-toggle-display: none;
+    --vaadin-side-nav-width: calc(var(--lumo-icon-size-m) + (var(--lumo-space-s) * 2));
+    width: var(--vaadin-side-nav-width);
+}
+
+/* Theme: top */
+
+vaadin-side-nav[theme~="top"] {
+    --vaadin-side-nav-child-background-color: var(--lumo-base-color);
+    --vaadin-side-nav-child-border-radius: var(--lumo-border-radius-m);
+    --vaadin-side-nav-child-box-shadow: var(--lumo-box-shadow-xs);
+    --vaadin-side-nav-child-indent: 0px;
+    --vaadin-side-nav-child-min-width: -webkit-fill-available;
+    --vaadin-side-nav-child-padding: var(--lumo-space-xs) 0;
+    --vaadin-side-nav-child-position: absolute;
+    --vaadin-side-nav-child-z-index: 1;
+}
+
+vaadin-side-nav[theme~="top"]::part(children) {
+    display: flex;
+}
+
+vaadin-side-nav[theme~="top"] vaadin-side-nav-item {
+    position: relative;
+}
+
+vaadin-side-nav-item[has-children]::part(content) {
+    padding-inline-end: var(--vaadin-side-nav-content-padding, var(--lumo-space-s));
+}
+
+vaadin-side-nav-item::part(toggle-button) {
+    display: var(--vaadin-side-nav-toggle-display, block);
+}
+
+vaadin-side-nav-item::part(children) {
+    background-color: var(--vaadin-side-nav-child-background-color, transparent);
+    border-radius: var(--vaadin-side-nav-child-border-radius, 0px);
+    box-shadow: var(--vaadin-side-nav-child-box-shadow, none);
+    margin: var(--vaadin-side-nav-child-margin, 0);
+    min-width: var(--vaadin-side-nav-child-min-width, auto);
+    padding: var(--vaadin-side-nav-child-padding, 0px);
+    position: var(--vaadin-side-nav-child-position, static);
+    z-index: var(--vaadin-side-nav-child-z-index, auto);
+}

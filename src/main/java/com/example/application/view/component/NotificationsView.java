@@ -1,18 +1,18 @@
 package com.example.application.view.component;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Notifications")
 @Route(value = "notifications", layout = MainLayout.class)
@@ -37,7 +37,7 @@ public class NotificationsView extends ComponentView {
         button.addClassNames(Margin.Vertical.NONE);
         button.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
 
-        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create());
+        Button close = new Button(MaterialSymbol.CLOSE.create());
         close.addClassNames(Margin.Vertical.NONE, TextColor.SECONDARY);
         close.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close");
@@ -56,8 +56,7 @@ public class NotificationsView extends ComponentView {
     }
 
     private Notification createNotificationWithIconDescription() {
-        SvgIcon icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
-        icon.addClassNames(IconSize.SMALL, TextColor.SUCCESS);
+        Span icon = MaterialSymbol.CHECK.create(IconSize.SMALL, TextColor.SUCCESS);
 
         Span title = new Span("Lorem ipsum");
         title.addClassNames(FontSize.SMALL, FontWeight.SEMIBOLD);
@@ -73,7 +72,7 @@ public class NotificationsView extends ComponentView {
         layout.addClassNames(AlignSelf.START, Padding.MEDIUM);
         layout.setGap(Layout.Gap.SMALL);
 
-        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create());
+        Button close = new Button(MaterialSymbol.CLOSE.create());
         close.addClassNames(Margin.Vertical.NONE, TextColor.SECONDARY);
         close.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close");
@@ -91,8 +90,7 @@ public class NotificationsView extends ComponentView {
     }
 
     private Notification createNotificationWithIconDescriptionActions() {
-        SvgIcon icon = LineAwesomeIcon.CHECK_CIRCLE_SOLID.create();
-        icon.addClassNames(IconSize.SMALL, TextColor.SUCCESS);
+        Span icon = MaterialSymbol.CHECK.create(IconSize.SMALL, TextColor.SUCCESS);
 
         Span title = new Span("Lorem ipsum");
         title.addClassNames(FontSize.SMALL, FontWeight.SEMIBOLD);
@@ -118,7 +116,7 @@ public class NotificationsView extends ComponentView {
         layout.addClassNames(AlignSelf.START, Padding.Bottom.XSMALL, Padding.Horizontal.MEDIUM, Padding.Top.MEDIUM);
         layout.setGap(Layout.Gap.SMALL);
 
-        Button close = new Button(LineAwesomeIcon.TIMES_SOLID.create());
+        Button close = new Button(MaterialSymbol.CLOSE.create());
         close.addClassNames(Margin.Vertical.NONE, TextColor.SECONDARY);
         close.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
         close.setAriaLabel("Close");

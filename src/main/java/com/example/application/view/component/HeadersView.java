@@ -2,6 +2,7 @@ package com.example.application.view.component;
 
 import com.example.application.component.BreadcrumbItem;
 import com.example.application.component.Header;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.component.Tag;
 import com.example.application.utility.Font;
 import com.example.application.utility.HeadingLevel;
@@ -11,14 +12,13 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Headers")
 @Route(value = "headers", layout = MainLayout.class)
@@ -72,9 +72,9 @@ public class HeadersView extends ComponentView {
     private Header createHeaderWithDetails() {
         Header header = createHeader();
         header.setDetails(
-                new Tag(LineAwesomeIcon.TOOTH_SOLID, "Dolor sit"),
-                new Tag(LineAwesomeIcon.PAPER_PLANE, "Amet consectetur"),
-                new Tag(LineAwesomeIcon.THUMBS_UP, "Adipiscing elit")
+                new Tag(MaterialSymbol.DENTISTRY, "Dolor sit"),
+                new Tag(MaterialSymbol.TRAVEL, "Amet consectetur"),
+                new Tag(MaterialSymbol.THUMB_UP, "Adipiscing elit")
         );
         return header;
     }
@@ -108,9 +108,9 @@ public class HeadersView extends ComponentView {
                 new BreadcrumbItem("Headers", HeadersView.class)
         );
         header.setDetails(
-                new Tag(LineAwesomeIcon.TOOTH_SOLID, "Dolor sit"),
-                new Tag(LineAwesomeIcon.PAPER_PLANE, "Amet consectetur"),
-                new Tag(LineAwesomeIcon.THUMBS_UP, "Adipiscing elit")
+                new Tag(MaterialSymbol.DENTISTRY, "Dolor sit"),
+                new Tag(MaterialSymbol.TRAVEL, "Amet consectetur"),
+                new Tag(MaterialSymbol.THUMB_UP, "Adipiscing elit")
         );
         header.setTabs(new Tab("Tab 1"), new Tab("Tab 2"), new Tab("Tab 3"));
         header.setActions(button, primaryButton);
@@ -118,11 +118,8 @@ public class HeadersView extends ComponentView {
     }
 
     private RouterLink createBackButton() {
-        SvgIcon icon = LineAwesomeIcon.ARROW_LEFT_SOLID.create();
-        icon.addClassNames(IconSize.MEDIUM);
-
         RouterLink link = new RouterLink("", HomeView.class);
-        link.add(icon);
+        link.add(MaterialSymbol.WEST.create(IconSize.MEDIUM));
         link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER, Width.MEDIUM);
         link.getElement().setAttribute("aria-label", "Home");
         link.getElement().setAttribute("title", "Home");
@@ -135,7 +132,7 @@ public class HeadersView extends ComponentView {
         Span details = new Span("john.smith@company.com");
         details.addClassNames(LumoUtility.FontSize.SMALL, TextColor.SECONDARY);
 
-        Button button = new Button("Edit", LineAwesomeIcon.EDIT.create());
+        Button button = new Button("Edit", MaterialSymbol.EDIT.create());
 
         Header header = new Header("John Smith", HeadingLevel.H3);
         header.getColumnLayout().removeGap();

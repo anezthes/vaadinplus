@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Material Symbols';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/MaterialSymbols.ttf') format('truetype');
+}
+
+.material-symbols {
+  font-family: 'Material Symbols';
+  font-size: var(--material-symbols-font-size, var(--lumo-icon-size-m));
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.material-symbols:is([slot='prefix'], [slot='suffix']) {
+  display: inline-flex;
+  vertical-align: bottom;
+}
+
+.material-symbols:is(.icon-s, .icon-m, .icon-l) {
+  height: auto;
+  width: auto;
+}
+
+.icon-s {
+  --material-symbols-font-size: var(--lumo-icon-size-s);
+}
+
+.icon-m {
+  --material-symbols-font-size: var(--lumo-icon-size-m);
+}
+
+.icon-l {
+  --material-symbols-font-size: var(--lumo-icon-size-l);
+}
+
+vaadin-side-nav-item:not([current]) .material-symbols {
+  color: var(--material-symbols-color, var(--lumo-secondary-text-color));
+}
+
+@media (any-hover: hover) {
+  vaadin-side-nav-item::part(link):hover {
+    --material-symbols-color: var(--lumo-header-text-color);
+  }
+}

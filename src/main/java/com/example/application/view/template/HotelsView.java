@@ -1,9 +1,7 @@
 package com.example.application.view.template;
 
-import com.example.application.component.Badge;
-import com.example.application.component.InputGroup;
-import com.example.application.component.Layout;
-import com.example.application.component.Tag;
+import com.example.application.component.*;
+import com.example.application.component.Span;
 import com.example.application.theme.RadioButtonTheme;
 import com.example.application.utility.BadgeVariant;
 import com.example.application.utility.Breakpoint;
@@ -15,16 +13,13 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.time.LocalDate;
 
@@ -46,16 +41,16 @@ public class HotelsView extends Main {
         Div titleDescription = new Div(title, description);
         titleDescription.addClassNames(Display.FLEX, FlexDirection.COLUMN, Gap.SMALL, Margin.End.AUTO);
 
-        Button follow = new Button("Follow", LumoIcon.PLUS.create());
+        Button follow = new Button("Follow", MaterialSymbol.ADD.create());
 
-        Button save = new Button("Save", LumoIcon.CHECKMARK.create());
+        Button save = new Button("Save", MaterialSymbol.CHECK.create());
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Div actions = new Div(follow, save);
         actions.addClassNames(Display.FLEX, Gap.SMALL);
 
         Div header = new Div(titleDescription, actions);
-        header.addClassNames("sm:items-center", Display.FLEX, FlexDirection.COLUMN,
+        header.addClassNames(AlignItems.Breakpoint.Small.CENTER, Display.FLEX, FlexDirection.COLUMN,
                 FlexDirection.Breakpoint.Small.ROW, Gap.MEDIUM);
 
         return header;
@@ -92,14 +87,14 @@ public class HotelsView extends Main {
 
         TextField priceMin = new TextField();
         priceMin.setAriaLabel("Minimum price");
-        priceMin.setPrefixComponent(LineAwesomeIcon.EURO_SIGN_SOLID.create());
+        priceMin.setPrefixComponent(MaterialSymbol.EURO.create());
         priceMin.setTooltipText("Minimum price");
         priceMin.setValue("80");
         priceMin.setWidth(6, Unit.REM);
 
         TextField priceMax = new TextField();
         priceMax.setAriaLabel("Maximum price");
-        priceMax.setPrefixComponent(LineAwesomeIcon.EURO_SIGN_SOLID.create());
+        priceMax.setPrefixComponent(MaterialSymbol.EURO.create());
         priceMax.setTooltipText("Maximum price");
         priceMax.setValue("420");
         priceMax.setWidth(6, Unit.REM);
@@ -118,11 +113,7 @@ public class HotelsView extends Main {
         RadioButtonGroup<String> sort = new RadioButtonGroup<>();
         sort.setAriaLabel("Sort by");
         sort.setItems("Date", "Price");
-        sort.setRenderer(new ComponentRenderer<>(item -> {
-            Span span = new Span(item);
-            span.addClassNames(Padding.Horizontal.SMALL);
-            return span;
-        }));
+        sort.setRenderer(new ComponentRenderer<>(item -> new Span(item, Padding.Horizontal.SMALL)));
         sort.setTooltipText("Sort by");
         sort.setValue("Date");
 
@@ -130,19 +121,18 @@ public class HotelsView extends Main {
         view.setAriaLabel("View");
         view.setItems("List", "Map");
         view.setRenderer(new ComponentRenderer<>(item -> {
-            Span span = new Span(item);
-            span.addClassNames(Accessibility.SCREEN_READER_ONLY);
-            return new Span(span, item.equals("List") ?
-                    LumoIcon.UNORDERED_LIST.create() : LineAwesomeIcon.MAP.create()
+            Span span = new Span(
+                    new Span(item, Accessibility.SCREEN_READER_ONLY),
+                    item.equals("List") ? MaterialSymbol.VIEW_LIST.create() : MaterialSymbol.MAP.create()
             );
+            span.addClassNames(Display.FLEX);
+            return span;
         }));
         view.setTooltipText("View");
         view.setValue("List");
 
-        for (RadioButtonGroup group : new RadioButtonGroup[]{sort, view}) {
+        for (RadioButtonGroup<String> group : new RadioButtonGroup[]{sort, view}) {
             group.addThemeName(RadioButtonTheme.TOGGLE);
-            group.getChildren().forEach(component ->
-                    component.getElement().getThemeList().add(RadioButtonTheme.TOGGLE));
         }
 
         Layout toggles = new Layout(sort, view);
@@ -188,8 +178,8 @@ public class HotelsView extends Main {
                         "Brown house near body of water"
                 )
         );
-        list.addClassNames(Border.BOTTOM, Border.TOP, Display.FLEX, FlexDirection.COLUMN, ListStyleType.NONE,
-                Margin.Vertical.NONE, Padding.Start.NONE, "divide-y");
+        list.addClassNames(Border.BOTTOM, Border.TOP, Display.FLEX, Divide.Y, FlexDirection.COLUMN, ListStyleType.NONE,
+                Margin.Vertical.NONE, Padding.Start.NONE);
         return list;
     }
 
@@ -198,9 +188,9 @@ public class HotelsView extends Main {
         Image img = new Image(src, alt);
         img.addClassNames(BorderRadius.MEDIUM, MaxWidth.FULL);
 
-        Button button = new Button(LineAwesomeIcon.HEART.create());
-        button.addClassNames(Background.BASE, Margin.NONE, Padding.NONE, Position.ABSOLUTE, "end-s", "top-l",
-                "md:top-s", "rounded-full");
+        Button button = new Button(MaterialSymbol.FAVORITE.create());
+        button.addClassNames(Background.BASE, BorderRadius.FULL, Margin.NONE, Padding.NONE, Position.ABSOLUTE,
+                Position.End.SMALL, Position.Top.LARGE, "md:top-s");
         button.addThemeVariants(ButtonVariant.LUMO_ERROR);
         button.setAriaLabel("Favourite");
         button.setTooltipText("Favourite");
@@ -240,9 +230,9 @@ public class HotelsView extends Main {
         feedback.setGap(Layout.Gap.SMALL);
 
         // Tags
-        Tag parking = new Tag(LineAwesomeIcon.PARKING_SOLID.create(), "Parking");
-        Tag breakfast = new Tag(LineAwesomeIcon.UTENSILS_SOLID.create(), "Breakfast");
-        Tag wifi = new Tag(LineAwesomeIcon.WIFI_SOLID.create(), "Wi-Fi");
+        Tag parking = new Tag(MaterialSymbol.LOCAL_PARKING.create(IconSize.SMALL), "Parking");
+        Tag breakfast = new Tag(MaterialSymbol.FREE_BREAKFAST.create(IconSize.SMALL), "Breakfast");
+        Tag wifi = new Tag(MaterialSymbol.WIFI.create(IconSize.SMALL), "Wi-Fi");
 
         Layout tags = new Layout(parking, breakfast, wifi);
         tags.setGap(Layout.Gap.MEDIUM);
@@ -268,9 +258,7 @@ public class HotelsView extends Main {
     }
 
     private Component createStar() {
-        SvgIcon svgIcon = LineAwesomeIcon.STAR_SOLID.create();
-        svgIcon.addClassNames(IconSize.SMALL);
-        return svgIcon;
+        return MaterialSymbol.STAR.create(IconSize.SMALL);
     }
 
     private Component createFooter() {
@@ -302,8 +290,9 @@ public class HotelsView extends Main {
 
         RouterLink link = new RouterLink(this.getClass());
         link.addClassNames(AlignItems.CENTER, Background.CONTRAST_5, BorderRadius.MEDIUM, Display.FLEX, FontSize.SMALL,
-                FontWeight.MEDIUM, Gap.SMALL, Height.MEDIUM, Padding.Horizontal.SMALL, "lg:pe-m", TextColor.BODY);
-        link.add(LumoIcon.ARROW_LEFT.create(), label);
+                FontWeight.MEDIUM, Gap.SMALL, Height.MEDIUM, Padding.Horizontal.SMALL, "lg:pe-m", TextColor.BODY,
+                "no-underline");
+        link.add(MaterialSymbol.NAVIGATE_BEFORE.create(), label);
 
         ListItem item = new ListItem(link);
         item.addClassNames(Margin.End.AUTO);
@@ -321,7 +310,7 @@ public class HotelsView extends Main {
 
     private ListItem createPaginationLink(String text) {
         RouterLink link = new RouterLink(text, this.getClass());
-        link.addClassNames(AlignItems.CENTER, Background.CONTRAST_5, "rounded-full", Display.FLEX, FontSize.SMALL,
+        link.addClassNames(AlignItems.CENTER, Background.CONTRAST_5, BorderRadius.FULL, Display.FLEX, FontSize.SMALL,
                 FontWeight.MEDIUM, Height.MEDIUM, JustifyContent.CENTER, TextColor.BODY, Width.MEDIUM);
 
         ListItem item = new ListItem(link);
@@ -345,8 +334,9 @@ public class HotelsView extends Main {
 
         RouterLink link = new RouterLink(this.getClass());
         link.addClassNames(AlignItems.CENTER, Background.CONTRAST_5, BorderRadius.MEDIUM, Display.FLEX, FontSize.SMALL,
-                FontWeight.MEDIUM, Gap.SMALL, Height.MEDIUM, Padding.Horizontal.SMALL, "lg:ps-m", TextColor.BODY);
-        link.add(label, LumoIcon.ARROW_RIGHT.create());
+                FontWeight.MEDIUM, Gap.SMALL, Height.MEDIUM, Padding.Horizontal.SMALL, "lg:ps-m", TextColor.BODY,
+                "no-underline");
+        link.add(label, MaterialSymbol.NAVIGATE_NEXT.create());
 
         ListItem item = new ListItem(link);
         item.addClassNames(Margin.Start.AUTO);

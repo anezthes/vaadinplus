@@ -1,0 +1,19 @@
+/* Theme: outline */
+
+vaadin-button[theme~="outline"] {
+    --vaadin-button-border: 1px solid var(--lumo-utility-border-color, var(--lumo-contrast-50pct));
+}
+
+vaadin-button[theme~="outline"][focus-ring] {
+    border-color: 1px solid var(--lumo-primary-color);
+}
+
+vaadin-button[theme~="outline"][theme~='error'][focus-ring] {
+    border-color: 1px solid var(--lumo-error-color);
+    box-shadow: 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-error-color-50pct));
+}
+
+vaadin-button[theme~="outline"][theme~='success'][focus-ring] {
+    border-color: 1px solid var(--lumo-success-color);
+    box-shadow: 0 0 0 var(--vaadin-focus-ring-width, 2px) var(--vaadin-focus-ring-color, var(--lumo-success-color-50pct));
+}

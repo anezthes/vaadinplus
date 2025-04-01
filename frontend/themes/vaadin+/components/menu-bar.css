@@ -1,0 +1,15 @@
+/* Theme: gap */
+
+vaadin-menu-bar[theme~="gap-s"] vaadin-menu-bar-button:not(:nth-last-of-type(2)):not([slot='overflow']) {
+    margin-inline-end: calc(var(--lumo-space-s) / 2);
+}
+
+vaadin-menu-bar[theme~="gap-m"] vaadin-menu-bar-button:not(:nth-last-of-type(2)):not([slot='overflow']) {
+    margin-inline-end: calc(var(--lumo-space-m) / 2);
+}
+
+/* Theme: rounded */
+
+vaadin-menu-bar[theme~="rounded"] vaadin-menu-bar-button {
+    border-radius: var(--lumo-border-radius-m);
+}

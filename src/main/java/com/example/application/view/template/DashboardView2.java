@@ -15,16 +15,13 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +54,7 @@ public class DashboardView2 extends Main {
         header.getRowLayout().removeClassName(Padding.MEDIUM);
 
         // Position the tabs along the edge with negative margins
-        header.getTabs().addClassName("-mx-l");
+        header.getTabs().addClassName(Margin.Minus.Horizontal.LARGE);
         header.setTabs(
                 new Tab("Overview"),
                 new Tab("Reports"),
@@ -87,13 +84,13 @@ public class DashboardView2 extends Main {
     }
 
     private Component createHighlightSuffix() {
-        Button button = new Button(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
-        button.addClassNames(Margin.Bottom.NONE, "-me-s", "-mt-m", TextColor.SECONDARY);
+        Button button = new Button(MaterialSymbol.MORE_VERT.create());
+        button.addClassNames(Margin.Bottom.NONE, Margin.Minus.End.SMALL, Margin.Minus.Top.MEDIUM, TextColor.SECONDARY);
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel("More");
         button.setTooltipText("More");
 
-        Tag tag = new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS);
+        Tag tag = new Tag(MaterialSymbol.ARROW_UPWARD_ALT, VISITORS_CHANGE, Color.Text.SUCCESS);
 
         Div suffix = new Div(button, tag);
         suffix.addClassNames(AlignItems.END, Display.FLEX, FlexDirection.COLUMN, Gap.MEDIUM);
@@ -107,9 +104,9 @@ public class DashboardView2 extends Main {
         search.setClearButtonVisible(true);
         search.setMaxWidth(37, Unit.REM);
         search.setPlaceholder("Search");
-        search.setPrefixComponent(LumoIcon.SEARCH.create());
+        search.setPrefixComponent(MaterialSymbol.SEARCH.create());
 
-        Button filter = new Button("Filter", LumoIcon.DROPDOWN.create());
+        Button filter = new Button("Filter", MaterialSymbol.DROPDOWN.create());
         filter.addClassNames(Margin.Vertical.NONE);
         filter.setIconAfterText(true);
 
@@ -135,14 +132,11 @@ public class DashboardView2 extends Main {
     }
 
     private Component createFilter(String text) {
-        Icon icon = LumoIcon.CROSS.create();
-        icon.getStyle().setMargin("0");
-
-        Button button = new Button(icon);
+        Button button = new Button(MaterialSymbol.CLOSE.create());
+        button.addClassNames(Margin.Minus.End.SMALL, Margin.Minus.Vertical.SMALL, Padding.NONE);
+        button.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel("Clear " + text);
         button.setTooltipText("Clear " + text);
-        button.addClassNames("-me-s", "-my-s", Padding.NONE);
-        button.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
 
         Badge badge = new Badge(text);
         badge.add(button);
@@ -261,12 +255,12 @@ public class DashboardView2 extends Main {
     }
 
     private Component renderActions(DummyItem item) {
-        Button edit = new Button(LumoIcon.EDIT.create());
+        Button edit = new Button(MaterialSymbol.EDIT.create());
         edit.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         edit.setAriaLabel("Edit " + item.getPrimary());
         edit.setTooltipText("Edit " + item.getPrimary());
 
-        Button delete = new Button(LineAwesomeIcon.TRASH_SOLID.create());
+        Button delete = new Button(MaterialSymbol.DELETE.create());
         delete.addThemeVariants(ButtonVariant.LUMO_ERROR, ButtonVariant.LUMO_TERTIARY);
         delete.setAriaLabel("Delete " + item.getPrimary());
         delete.setTooltipText("Delete " + item.getPrimary());

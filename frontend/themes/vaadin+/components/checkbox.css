@@ -1,0 +1,52 @@
+/* Dividers */
+
+vaadin-checkbox-group[theme~="dividers"] vaadin-checkbox {
+    position: relative;
+}
+
+vaadin-checkbox-group[theme~="dividers"] vaadin-checkbox:not(:last-of-type)::after {
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    content: "";
+    inset: auto 0 0 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* Align: Right */
+
+:host([theme~="align-right"]) .vaadin-checkbox-container {
+    grid-template-columns: 1fr auto;
+}
+
+:host([theme~="align-right"]) [part='checkbox'],
+:host([theme~="align-right"]) ::slotted(input) {
+    grid-column: 2;
+}
+
+:host([theme~="align-right"][has-label]) ::slotted(label) {
+    padding-inline-start: 0;
+}
+
+/* Switch */
+
+vaadin-checkbox-group[theme~="switch"] vaadin-checkbox::part(checkbox) {
+    border-radius: 9999px;
+    width: var(--lumo-size-m);
+}
+
+vaadin-checkbox-group[theme~="switch"] vaadin-checkbox::part(checkbox)::after {
+    content: "";
+    height: calc(var(--lumo-size-m) / 3);
+    background-color: var(--lumo-secondary-text-color);
+    border-radius: 9999px;
+    inset: 0;
+    margin: calc(var(--lumo-size-m) / 12);
+    opacity: 1;
+    transition: transform 0.2s;
+    width: calc(var(--lumo-size-m) / 3);
+}
+
+vaadin-checkbox-group[theme~="switch"] vaadin-checkbox[checked]::part(checkbox)::after {
+    background-color: var(--lumo-primary-contrast-color);
+    transform: translateX(calc(var(--lumo-size-m) / 2));
+}

@@ -28,17 +28,8 @@ public class RadioButtonsView extends ComponentView {
         addH2("Theme: dividers");
         add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS));
 
-        addH2("Theme: dividers & align-right");
-        add(createRadioButtonGroup(RadioButtonTheme.DIVIDERS, RadioButtonTheme.ALIGN_RIGHT));
-
-        addH2("Theme: border");
-        add(createRadioButtonGroup(RadioButtonTheme.BORDER));
-
         addH2("Theme: toggle");
         add(createRadioButtonGroup(RadioButtonTheme.TOGGLE));
-
-        addH2("Theme: toggle & tertiary");
-        add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.TERTIARY));
 
         addH2("Theme: toggle & primary");
         add(createRadioButtonGroup(RadioButtonTheme.TOGGLE, RadioButtonTheme.PRIMARY));
@@ -51,7 +42,7 @@ public class RadioButtonsView extends ComponentView {
 
     private RadioButtonGroup<String> createRadioButtonGroupWithDescriptions() {
         RadioButtonGroup<String> group = createRadioButtonGroup();
-        group.setRenderer(new ComponentRenderer<>(item -> renderLabelWithDescription(item)));
+        group.setRenderer(new ComponentRenderer<>(this::renderLabelWithDescription));
         return group;
     }
 
@@ -67,18 +58,11 @@ public class RadioButtonsView extends ComponentView {
     }
 
     private RadioButtonGroup<String> createRadioButtonGroup(String... themeNames) {
-        RadioButtonGroup<String> group = new RadioButtonGroup("Label");
+        RadioButtonGroup<String> group = new RadioButtonGroup<>("Label");
         group.addThemeNames(themeNames);
         group.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
         group.setItems("Item 1", "Item 2", "Item 3");
         group.setWidth(320, Unit.PIXELS);
-
-        group.getChildren().forEach(component -> {
-            for (String themeName : themeNames) {
-                component.getElement().getThemeList().add(themeName);
-            }
-        });
-
         return group;
     }
 

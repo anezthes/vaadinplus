@@ -1,17 +1,16 @@
 package com.example.application.view.template.wizard;
 
+import com.example.application.component.MaterialSymbol;
 import com.example.application.component.Step;
 import com.example.application.component.Stepper;
 import com.example.application.view.HomeView;
 import com.example.application.view.MainLayout;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Main;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.router.*;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Wizard")
 @ParentLayout(MainLayout.class)
@@ -44,28 +43,22 @@ public class WizardLayout extends Main implements RouterLayout, AfterNavigationO
 
     private Div createContent() {
         this.content = new Div();
-        this.content.addClassNames("flex-1", Overflow.AUTO);
+        this.content.addClassNames(Flex.ONE, Overflow.AUTO);
         return this.content;
     }
 
     private Div createFooter() {
         this.previous = new RouterLink("Previous", Step1View.class);
-        this.previous.addComponentAsFirst(createSmallIcon(LineAwesomeIcon.ANGLE_LEFT_SOLID));
+        this.previous.addComponentAsFirst(MaterialSymbol.NAVIGATE_BEFORE.create(IconSize.SMALL));
         this.previous.addClassNames(AlignItems.CENTER, Display.FLEX, Gap.SMALL);
 
         this.next = new RouterLink("Next", Step2View.class);
-        this.next.add(createSmallIcon(LineAwesomeIcon.ANGLE_RIGHT_SOLID));
+        this.next.add(MaterialSymbol.NAVIGATE_NEXT.create(IconSize.SMALL));
         this.next.addClassNames(AlignItems.CENTER, Display.FLEX, Gap.SMALL);
 
         this.footer = new Div(this.previous, this.next);
         this.footer.addClassNames(Display.FLEX, Gap.XLARGE, Padding.Horizontal.LARGE, Padding.Vertical.MEDIUM);
         return this.footer;
-    }
-
-    private Component createSmallIcon(LineAwesomeIcon icon) {
-        SvgIcon i = icon.create();
-        i.addClassNames(IconSize.SMALL);
-        return i;
     }
 
     @Override

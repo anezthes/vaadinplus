@@ -44,43 +44,55 @@
     border-start-start-radius: 0;
 }
 
-.input-group.flex-col > vaadin-combo-box:first-child,
-.input-group.flex-col > vaadin-date-picker:first-child,
-.input-group.flex-col > vaadin-date-time-picker:first-child,
-.input-group.flex-col > vaadin-email-field:first-child,
-.input-group.flex-col > vaadin-number-field:first-child,
-.input-group.flex-col > vaadin-password-field:first-child,
-.input-group.flex-col > vaadin-select:first-child,
-.input-group.flex-col > vaadin-text-area:first-child,
-.input-group.flex-col > vaadin-text-field:first-child,
-.input-group.flex-col > vaadin-time-picker:first-child {
+.input-group.flex-col > :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+):first-child {
     padding-bottom: 0;
 }
 
-.input-group.flex-col > vaadin-combo-box:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-date-picker:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-date-time-picker:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-email-field:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-number-field:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-password-field:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-select:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-text-area:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-text-field:not(:first-child):not(:last-child),
-.input-group.flex-col > vaadin-time-picker:not(:first-child):not(:last-child) {
+.input-group.flex-col > :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+):not(:first-child):not(:last-child) {
     padding-bottom: 0;
     padding-top: 0;
 }
 
-.input-group.flex-col > vaadin-combo-box:last-child,
-.input-group.flex-col > vaadin-date-picker:last-child,
-.input-group.flex-col > vaadin-date-time-picker:last-child,
-.input-group.flex-col > vaadin-email-field:last-child,
-.input-group.flex-col > vaadin-number-field:last-child,
-.input-group.flex-col > vaadin-password-field:last-child,
-.input-group.flex-col > vaadin-select:last-child,
-.input-group.flex-col > vaadin-text-area:last-child,
-.input-group.flex-col > vaadin-text-field:last-child,
-.input-group.flex-col > vaadin-time-picker:last-child {
+.input-group.flex-col > :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+):last-child {
     padding-top: 0;
 }
 
@@ -101,42 +113,54 @@
     border-start-end-radius: 0;
 }
 
-.input-group.flex-col .input-group:first-child > vaadin-combo-box,
-.input-group.flex-col .input-group:first-child > vaadin-date-picker,
-.input-group.flex-col .input-group:first-child > vaadin-date-time-picker,
-.input-group.flex-col .input-group:first-child > vaadin-email-field,
-.input-group.flex-col .input-group:first-child > vaadin-number-field,
-.input-group.flex-col .input-group:first-child > vaadin-password-field,
-.input-group.flex-col .input-group:first-child > vaadin-select,
-.input-group.flex-col .input-group:first-child > vaadin-text-area,
-.input-group.flex-col .input-group:first-child > vaadin-text-field,
-.input-group.flex-col .input-group:first-child > vaadin-time-picker {
+.input-group.flex-col .input-group:first-child > :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+) {
     padding-bottom: 0;
 }
 
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-combo-box,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-date-picker,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-date-time-picker,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-email-field,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-number-field,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-password-field,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-select,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-text-area,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-text-field,
-.input-group.flex-col .input-group:not(:first-child):not(:last-child) > vaadin-time-picker {
+.input-group.flex-col .input-group:not(:first-child):not(:last-child) > :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+) {
     padding-bottom: 0;
     padding-top: 0;
 }
 
-.input-group.flex-col .input-group:last-child > vaadin-combo-box,
-.input-group.flex-col .input-group:last-child > vaadin-date-picker,
-.input-group.flex-col .input-group:last-child > vaadin-date-time-picker,
-.input-group.flex-col .input-group:last-child > vaadin-email-field,
-.input-group.flex-col .input-group:last-child > vaadin-number-field,
-.input-group.flex-col .input-group:last-child > vaadin-password-field,
-.input-group.flex-col .input-group:last-child > vaadin-select,
-.input-group.flex-col .input-group:last-child > vaadin-text-area,
-.input-group.flex-col .input-group:last-child > vaadin-text-field,
-.input-group.flex-col .input-group:last-child > vaadin-time-picker {
+.input-group.flex-col .input-group:last-child > :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+) {
     padding-top: 0;
 }

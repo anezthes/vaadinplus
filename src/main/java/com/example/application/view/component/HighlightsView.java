@@ -1,22 +1,18 @@
 package com.example.application.view.component;
 
-import com.example.application.component.Highlight;
-import com.example.application.component.Highlights;
-import com.example.application.component.Layout;
-import com.example.application.component.Tag;
+import com.example.application.component.*;
 import com.example.application.utility.Breakpoint;
 import com.example.application.utility.Color;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ItemLabelGenerator;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("Highlights")
 @Route(value = "highlights", layout = MainLayout.class)
@@ -64,7 +60,7 @@ public class HighlightsView extends ComponentView {
 
         addH2("Utility class: divide-x");
         Highlights highlights = createHighlights();
-        highlights.addClassNames("divide-x");
+        highlights.addClassNames(Divide.X);
         addPreview(highlights);
     }
 
@@ -80,19 +76,19 @@ public class HighlightsView extends ComponentView {
         Highlights highlights = new Highlights();
 
         Highlight highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CUBE_SOLID, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
+                createIcon(MaterialSymbol.DEPLOYED_CODE, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
                 ORDERS, ORDERS_VALUE
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
+                createIcon(MaterialSymbol.BAR_CHART, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
                 SALES, SALES_VALUE
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.USER_SOLID, Color.Background.ERROR_10, Color.Text.ERROR),
+                createIcon(MaterialSymbol.PERSON, Color.Background.ERROR_10, Color.Text.ERROR),
                 VISITORS, VISITORS_VALUE
         );
         highlights.add(highlight);
@@ -100,11 +96,8 @@ public class HighlightsView extends ComponentView {
         return highlights;
     }
 
-    private Component createIcon(LineAwesomeIcon icon, Color.Background background, Color.Text color) {
-        SvgIcon i = icon.create();
-        i.addClassNames(IconSize.LARGE);
-
-        Layout container = new Layout(i);
+    private Component createIcon(MaterialSymbol symbol, Color.Background background, Color.Text color) {
+        Layout container = new Layout(symbol.create(IconSize.LARGE));
         container.addClassNames(background.getClassName(), BorderRadius.LARGE, Height.XLARGE, color.getClassName(),
                 Width.XLARGE);
         container.setAlignItems(Layout.AlignItems.CENTER);
@@ -117,21 +110,21 @@ public class HighlightsView extends ComponentView {
 
         Highlight highlight = new Highlight(ORDERS, ORDERS_VALUE);
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, Color.Text.SUCCESS),
+                new Tag(MaterialSymbol.ARROW_UPWARD_ALT, ORDERS_CHANGE, Color.Text.SUCCESS),
                 new Tag(ORDERS_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(SALES, SALES_VALUE);
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, Color.Text.SUCCESS),
+                new Tag(MaterialSymbol.ARROW_UPWARD_ALT, SALES_CHANGE, Color.Text.SUCCESS),
                 new Tag(SALES_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(VISITORS, VISITORS_VALUE);
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS),
+                new Tag(MaterialSymbol.ARROW_UPWARD_ALT, VISITORS_CHANGE, Color.Text.SUCCESS),
                 new Tag(VISITORS_WEEKLY)
         );
         highlights.add(highlight);
@@ -155,11 +148,8 @@ public class HighlightsView extends ComponentView {
     }
 
     private RouterLink createSuffix(String label) {
-        Component icon = LineAwesomeIcon.ARROW_RIGHT_SOLID.create();
-        icon.addClassNames(IconSize.SMALL, TextColor.SECONDARY);
-
         RouterLink link = new RouterLink("", HighlightsView.class);
-        link.add(icon);
+        link.add(MaterialSymbol.ARROW_RIGHT_ALT.create(IconSize.SMALL, TextColor.SECONDARY));
         link.addClassNames(AlignItems.CENTER, Display.FLEX, Height.MEDIUM, JustifyContent.CENTER, Width.MEDIUM);
         link.getElement().setAttribute("aria-label", label);
         link.getElement().setAttribute("title", label);
@@ -170,31 +160,31 @@ public class HighlightsView extends ComponentView {
         Highlights highlights = new Highlights();
 
         Highlight highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CUBES_SOLID, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
+                createIcon(MaterialSymbol.DEPLOYED_CODE, Color.Background.PRIMARY_10, Color.Text.PRIMARY),
                 ORDERS, ORDERS_VALUE, createSuffix(ORDERS)
         );
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, ORDERS_CHANGE, Color.Text.SUCCESS),
+                new Tag(MaterialSymbol.ARROW_UPWARD_ALT, ORDERS_CHANGE, Color.Text.SUCCESS),
                 new Tag(ORDERS_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.CHART_BAR_SOLID, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
+                createIcon(MaterialSymbol.BAR_CHART, Color.Background.SUCCESS_10, Color.Text.SUCCESS),
                 SALES, SALES_VALUE, createSuffix(SALES)
         );
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, SALES_CHANGE, Color.Text.SUCCESS),
+                new Tag(MaterialSymbol.ARROW_UPWARD_ALT, SALES_CHANGE, Color.Text.SUCCESS),
                 new Tag(SALES_WEEKLY)
         );
         highlights.add(highlight);
 
         highlight = new Highlight(
-                createIcon(LineAwesomeIcon.USER, Color.Background.ERROR_10, Color.Text.ERROR),
+                createIcon(MaterialSymbol.PERSON, Color.Background.ERROR_10, Color.Text.ERROR),
                 VISITORS, VISITORS_VALUE, createSuffix(VISITORS)
         );
         highlight.setDetails(
-                new Tag(LineAwesomeIcon.ARROW_UP_SOLID, VISITORS_CHANGE, Color.Text.SUCCESS),
+                new Tag(MaterialSymbol.ARROW_UPWARD_ALT, VISITORS_CHANGE, Color.Text.SUCCESS),
                 new Tag(VISITORS_WEEKLY)
         );
         highlights.add(highlight);

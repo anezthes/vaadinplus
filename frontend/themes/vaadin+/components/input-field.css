@@ -1,86 +1,296 @@
-:host {
-    position: relative;
-}
-
 /* Theme: outline */
 
-:host([theme~='outline']) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'] {
+    --vaadin-input-field-background: var(--lumo-base-color);
     --vaadin-input-field-border-color: var(--lumo-utility-border-color, var(--lumo-contrast-50pct));
     --vaadin-input-field-border-width: 1px;
 }
 
-:host([theme~="outline"][disabled]) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][disabled] {
     --vaadin-input-field-border-color: var(--lumo-contrast-10pct);
 }
 
-:host([theme~="outline"][invalid]) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][invalid] {
     --vaadin-input-field-border-color: var(--lumo-error-color-50pct);
 }
 
-:host([theme~="outline"][readonly]) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][readonly] {
     --vaadin-input-field-border-color: transparent;
     --vaadin-input-field-border-width: 0;
 }
 
-:host([theme~='outline'][focus-ring]) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][focus-ring] {
     --vaadin-input-field-border-color: var(--lumo-primary-color);
 }
 
-:host([theme~='outline'][focus-ring]) [part='input-field'] {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][focus-ring]::part(input-field) {
     box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct), inset 0 0 0 var(--vaadin-input-field-border-width, 0) var(--vaadin-input-field-border-color);
 }
 
-:host([theme~='outline'][invalid][focus-ring]) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][focus-ring][invalid] {
     --vaadin-input-field-border-color: var(--lumo-error-color);
 }
 
-:host([theme~='outline'][invalid][focus-ring]) [part='input-field'] {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][focus-ring][invalid]::part(input-field) {
     box-shadow: 0 0 0 2px var(--lumo-error-color-50pct), inset 0 0 0 var(--vaadin-input-field-border-width, 0) var(--vaadin-input-field-border-color);
 }
 
 /* Theme: inset label */
 
-:host([theme~='inset-label']) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label'] {
     --lumo-text-field-size: var(--lumo-size-xl);
+    position: relative;
 }
 
 :host([theme~='inset-label']) [class$='container'] {
     position: relative;
 }
 
-:host([theme~='inset-label']) [part='label'] {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label']::part(label) {
     display: flex;
     font-size: var(--lumo-font-size-m);
-    margin-left: 0;
-    padding-bottom: 0;
+    margin: 0;
+    padding-block: 0;
     pointer-events: none;
     position: absolute;
-    top: calc((var(--lumo-text-field-size) - var(--lumo-font-size-m)) / 2);
+    top: calc(var(--lumo-space-xs) + (var(--lumo-text-field-size) - var(--lumo-font-size-m)) / 2);
     transition: color 0.2s, font-size 0.1s, top 0.1s;
     z-index: 1;
 }
 
-:host([theme~='inset-label']) [part='label']::before {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label']::part(label)::before {
     content: "";
     font-size: var(--lumo-font-size-m);
     padding-left: calc((0.375em + var(--lumo-border-radius-m) / 4 - 1px + 0.25em));
 }
 
-:host([theme~="inset-label"][has-label]) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label'][has-label] {
     padding: var(--lumo-space-xs) 0;
 }
 
-:host([theme~="inset-label"][has-label])::before {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label'][has-label]::before {
     margin-top: 0;
 }
 
-:host([theme~="inset-label"][focused]) [part='label'],
-:host([theme~="inset-label"][has-value]) [part='label'] {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label'][focused]::part(label) {
     font-size: var(--lumo-font-size-xs);
-    top: var(--lumo-space-s);
+    top: calc(var(--lumo-space-s) + var(--lumo-space-xs));
 }
 
-:host([theme~="inset-label"][has-label]) ::slotted(input) {
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label'][has-value]::part(label) {
+    font-size: var(--lumo-font-size-xs);
+    top: calc(var(--lumo-space-s) + var(--lumo-space-xs));
+}
+
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='inset-label'][has-label] input {
     box-sizing: border-box;
     padding-top: var(--lumo-space-m);
 }

@@ -6,7 +6,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 public class EmptyState extends Layout {
 
@@ -28,7 +28,7 @@ public class EmptyState extends Layout {
         Paragraph paragraph = new Paragraph(description);
         paragraph.addClassNames(FontSize.SMALL, TextColor.SECONDARY, Margin.Bottom.NONE);
 
-        Button button = new Button(cta, LineAwesomeIcon.PLUS_SOLID.create());
+        Button button = new Button(cta, MaterialSymbol.ADD.create());
         button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         button.addClassName(Margin.Top.LARGE);
 

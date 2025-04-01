@@ -1,6 +1,7 @@
 package com.example.application.view.component;
 
 import com.example.application.component.AppBar;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.component.TopNav;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Component;
@@ -9,15 +10,13 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 @PageTitle("App bars")
 @Route(value = "app-bars", layout = MainLayout.class)
@@ -48,7 +47,7 @@ public class AppBarsView extends ComponentView {
     }
 
     private AppBar createAppBarWithPrimaryButton() {
-        Button button = new Button("New event", LineAwesomeIcon.PLUS_SOLID.create());
+        Button button = new Button("New event", MaterialSymbol.ADD.create());
         button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         AppBar appBar = createAppBar();
@@ -75,18 +74,17 @@ public class AppBarsView extends ComponentView {
     }
 
     private Component createIcon() {
-        SvgIcon icon = LineAwesomeIcon.FEATHER_ALT_SOLID.create();
-        icon.addClassNames(IconSize.MEDIUM, TextColor.PRIMARY);
-        return icon;
+        return MaterialSymbol.PETS.create(AlignItems.CENTER, Display.FLEX, IconSize.MEDIUM, JustifyContent.CENTER,
+                TextColor.PRIMARY);
     }
 
     private SideNav createAppNav() {
         TopNav nav = new TopNav();
         nav.addClassNames(Overflow.AUTO);
-        nav.addItem(new SideNavItem("App Bars", AppBarsView.class, LineAwesomeIcon.BARS_SOLID.create()));
-        nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, LineAwesomeIcon.CHECK_SQUARE.create()));
-        nav.addItem(new SideNavItem("Empty States", EmptyStatesView.class, LineAwesomeIcon.FILE.create()));
-        nav.addItem(new SideNavItem("Headers", HeadersView.class, LineAwesomeIcon.HEADING_SOLID.create()));
+        nav.addItem(new SideNavItem("App Bars", AppBarsView.class, MaterialSymbol.TOOLBAR.create()));
+        nav.addItem(new SideNavItem("Checkboxes", CheckboxesView.class, MaterialSymbol.CHECK_BOX.create()));
+        nav.addItem(new SideNavItem("Empty States", EmptyStatesView.class, MaterialSymbol.DOCUMENT_SEARCH.create()));
+        nav.addItem(new SideNavItem("Headers", HeadersView.class, MaterialSymbol.TITLE.create()));
         return nav;
     }
 
@@ -94,14 +92,15 @@ public class AppBarsView extends ComponentView {
         TextField textField = new TextField();
         textField.setAriaLabel("Search");
         textField.setPlaceholder("Search");
-        textField.setPrefixComponent(LumoIcon.SEARCH.create());
+        textField.setPrefixComponent(MaterialSymbol.SEARCH.create());
         return textField;
     }
 
     private Button createButton() {
-        Button button = new Button(LumoIcon.BELL.create());
+        Button button = new Button(MaterialSymbol.NOTIFICATIONS.create());
         button.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel("Notifications");
+        button.setTooltipText("Notifications");
         return button;
     }
 

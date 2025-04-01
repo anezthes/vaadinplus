@@ -34,9 +34,9 @@ public class Stepper extends Nav implements HasTheme {
         this.orientation = orientation;
 
         if (orientation.equals(Orientation.HORIZONTAL)) {
-            this.list.addClassNames("lg:items-center", FlexDirection.Breakpoint.Large.ROW);
+            this.list.addClassNames(AlignItems.Breakpoint.Large.CENTER, FlexDirection.Breakpoint.Large.ROW);
         } else {
-            this.list.removeClassNames("lg:items-center", FlexDirection.Breakpoint.Large.ROW);
+            this.list.removeClassNames(AlignItems.Breakpoint.Large.CENTER, FlexDirection.Breakpoint.Large.ROW);
         }
 
         this.list.getChildren().forEach(component -> ((Step) component).setOrientation(orientation));

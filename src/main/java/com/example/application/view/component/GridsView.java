@@ -3,6 +3,7 @@ package com.example.application.view.component;
 import com.example.application.component.GridHeader;
 import com.example.application.component.Item;
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.theme.MenuBarTheme;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Component;
@@ -11,11 +12,10 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.menubar.MenuBarVariant;
+import com.vaadin.flow.component.shared.Tooltip;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility.Background;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,33 +59,31 @@ public class GridsView extends ComponentView {
         return layout;
     }
 
-    private MenuBar createDefaultMenuBar(Grid grid) {
+    private MenuBar createDefaultMenuBar(Grid<Employee> grid) {
         MenuBar menuBar = new MenuBar();
         menuBar.addThemeNames(MenuBarTheme.ROUNDED, MenuBarTheme.GAP_MEDIUM);
 
-        MenuItem add = menuBar.addItem(new Item("New employee", LineAwesomeIcon.PLUS_SOLID));
+        MenuItem add = menuBar.addItem(new Item("New employee", MaterialSymbol.ADD));
         add.addThemeNames(MenuBarVariant.LUMO_PRIMARY.getVariantName());
 
-        Component columnsIcon = LineAwesomeIcon.BARS_SOLID.create();
-        columnsIcon.addClassNames("rotate-90");
-
-        MenuItem columns = menuBar.addItem(columnsIcon);
+        MenuItem columns = menuBar.addItem(MaterialSymbol.VIEW_COLUMN.create());
         columns.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
         columns.setAriaLabel("Columns");
+        Tooltip.forComponent(columns).setText("Columns");
 
-        List<Grid.Column> cols = grid.getColumns();
-        for (Grid.Column col : cols) {
+        List<Grid.Column<Employee>> cols = grid.getColumns();
+        for (Grid.Column<Employee> col : cols) {
             MenuItem menuItem = columns.getSubMenu().addItem(col.getHeaderText(), e -> col.setVisible(!col.isVisible()));
             menuItem.setCheckable(true);
             menuItem.setChecked(true);
         }
 
-        MenuItem more = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
+        MenuItem more = menuBar.addItem(MaterialSymbol.MORE_VERT.create());
         more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
         more.setAriaLabel("More");
 
-        more.getSubMenu().addItem(new Item("Search", LumoIcon.SEARCH));
-        more.getSubMenu().addItem(new Item("Filter", LineAwesomeIcon.FILTER_SOLID));
+        more.getSubMenu().addItem(new Item("Search", MaterialSymbol.SEARCH));
+        more.getSubMenu().addItem(new Item("Filter", MaterialSymbol.FILTER_LIST));
 
         return menuBar;
     }
@@ -94,17 +92,17 @@ public class GridsView extends ComponentView {
         MenuBar menuBar = new MenuBar();
         menuBar.addThemeNames(MenuBarTheme.ROUNDED, MenuBarTheme.GAP_MEDIUM);
 
-        MenuItem delete = menuBar.addItem(new Item("Delete", LineAwesomeIcon.TRASH_SOLID));
+        MenuItem delete = menuBar.addItem(new Item("Delete", MaterialSymbol.DELETE));
         delete.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
 
-        MenuItem more = menuBar.addItem(LineAwesomeIcon.ELLIPSIS_V_SOLID.create());
+        MenuItem more = menuBar.addItem(MaterialSymbol.MORE_VERT.create());
         more.setAriaLabel("More");
         more.addThemeNames(MenuBarVariant.LUMO_ICON.getVariantName(), MenuBarVariant.LUMO_TERTIARY.getVariantName());
 
-        more.getSubMenu().addItem(new Item("Favourite", LineAwesomeIcon.HEART));
-        more.getSubMenu().addItem(new Item("Label", LineAwesomeIcon.TAG_SOLID));
-        more.getSubMenu().addItem(new Item("Print", LineAwesomeIcon.PRINT_SOLID));
-        more.getSubMenu().addItem(new Item("Export", LineAwesomeIcon.FILE_EXPORT_SOLID));
+        more.getSubMenu().addItem(new Item("Favourite", MaterialSymbol.FAVORITE));
+        more.getSubMenu().addItem(new Item("Label", MaterialSymbol.LABEL));
+        more.getSubMenu().addItem(new Item("Print", MaterialSymbol.PRINT));
+        more.getSubMenu().addItem(new Item("Export", MaterialSymbol.FILE_EXPORT));
 
         return menuBar;
     }
@@ -118,7 +116,7 @@ public class GridsView extends ComponentView {
     }
 
 
-    private class Employee {
+    private static class Employee {
         private String firstName;
         private String lastName;
 

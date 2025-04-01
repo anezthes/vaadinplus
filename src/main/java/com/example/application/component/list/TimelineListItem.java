@@ -1,6 +1,7 @@
 package com.example.application.component.list;
 
 import com.example.application.component.Layout;
+import com.example.application.component.MaterialSymbol;
 import com.example.application.utility.Color;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
@@ -8,10 +9,9 @@ import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.SvgIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.*;
-import org.vaadin.lineawesome.LineAwesomeIcon;
+
 
 public class TimelineListItem extends ListItem {
 
@@ -22,18 +22,20 @@ public class TimelineListItem extends ListItem {
     private Span activity;
     private Span time;
 
-    private TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor) {
+    private TimelineListItem(MaterialSymbol symbol, Color.Background iconBackgroundColor, Color.Text iconTextColor) {
         addClassNames("timeline");
-        setIcon(icon, iconBackgroundColor, iconTextColor);
+        setIcon(symbol, iconBackgroundColor, iconTextColor);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, String content, String time) {
-        this(icon, Color.Background.BASE, Color.Text.SECONDARY, content, time);
+    public TimelineListItem(MaterialSymbol symbol, String content, String time) {
+        this(symbol, Color.Background.BASE, Color.Text.SECONDARY, content, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor, String content, String time) {
-        this(icon, iconBackgroundColor, iconTextColor);
+    public TimelineListItem(MaterialSymbol symbol, Color.Background iconBackgroundColor, Color.Text iconTextColor, String content, String time) {
+        this(symbol, iconBackgroundColor, iconTextColor);
         setContent(content);
+
+        this.icon.setPosition(Layout.Position.RELATIVE);
 
         this.time = new Span(time);
         this.time.addClassNames(FontSize.SMALL, LumoUtility.TextColor.SECONDARY);
@@ -43,28 +45,28 @@ public class TimelineListItem extends ListItem {
         setSuffix(this.time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, String author, String activity, String time) {
-        this(icon, Color.Background.BASE, Color.Text.SECONDARY, author, activity, time);
+    public TimelineListItem(MaterialSymbol symbol, String author, String activity, String time) {
+        this(symbol, Color.Background.BASE, Color.Text.SECONDARY, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, Color.Text iconTextColor, String author, String activity, String time) {
-        this(icon, Color.Background.BASE, iconTextColor, author, activity, time);
+    public TimelineListItem(MaterialSymbol symbol, Color.Text iconTextColor, String author, String activity, String time) {
+        this(symbol, Color.Background.BASE, iconTextColor, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, String author, Component activity, String time) {
-        this(icon, Color.Background.BASE, Color.Text.SECONDARY, author, activity, time);
+    public TimelineListItem(MaterialSymbol symbol, String author, Component activity, String time) {
+        this(symbol, Color.Background.BASE, Color.Text.SECONDARY, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, Color.Text iconTextColor, String author, Component activity, String time) {
-        this(icon, Color.Background.BASE, iconTextColor, author, activity, time);
+    public TimelineListItem(MaterialSymbol symbol, Color.Text iconTextColor, String author, Component activity, String time) {
+        this(symbol, Color.Background.BASE, iconTextColor, author, activity, time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor, String author, String activity, String time) {
-        this(icon, iconBackgroundColor, iconTextColor, author, new Text(" " + activity + " "), time);
+    public TimelineListItem(MaterialSymbol symbol, Color.Background iconBackgroundColor, Color.Text iconTextColor, String author, String activity, String time) {
+        this(symbol, iconBackgroundColor, iconTextColor, author, new Text(" " + activity + " "), time);
     }
 
-    public TimelineListItem(LineAwesomeIcon icon, Color.Background iconBackgroundColor, Color.Text iconTextColor, String author, Component activity, String time) {
-        this(icon, iconBackgroundColor, iconTextColor);
+    public TimelineListItem(MaterialSymbol symbol, Color.Background iconBackgroundColor, Color.Text iconTextColor, String author, Component activity, String time) {
+        this(symbol, iconBackgroundColor, iconTextColor);
 
         this.avatar = new Avatar(author);
         this.avatar.addThemeVariants(AvatarVariant.LUMO_XSMALL);
@@ -83,13 +85,10 @@ public class TimelineListItem extends ListItem {
         setSuffix(this.time);
     }
 
-    public void setIcon(LineAwesomeIcon icon, Color.Background backgroundColor, Color.Text color) {
-        SvgIcon i = icon.create();
-        i.addClassNames(IconSize.SMALL);
-
-        this.icon = new Layout(i);
-        this.icon.addClassNames(backgroundColor.getClassName(), Border.ALL, BorderColor.CONTRAST_30,
-                "rounded-full", Height.MEDIUM, color.getClassName(), Width.MEDIUM);
+    public void setIcon(MaterialSymbol symbol, Color.Background backgroundColor, Color.Text color) {
+        this.icon = new Layout(symbol.create(IconSize.SMALL));
+        this.icon.addClassNames(backgroundColor.getClassName(), Border.ALL, BorderColor.CONTRAST_30, BorderRadius.FULL,
+                Height.MEDIUM, color.getClassName(), Width.MEDIUM);
         this.icon.setAlignItems(Layout.AlignItems.CENTER);
         this.icon.setBoxSizing(Layout.BoxSizing.BORDER);
         this.icon.setJustifyContent(Layout.JustifyContent.CENTER);
