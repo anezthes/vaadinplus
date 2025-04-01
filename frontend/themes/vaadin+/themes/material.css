@@ -1,28 +1,190 @@
-[theme~='material'] {
-    --lumo-size-xs: 1.5rem;
-    --lumo-size-s: 1.75rem;
-    --lumo-size-m: 2rem;
-    --lumo-size-l: 2.5rem;
-    --lumo-size-xl: 3rem;
-
-    --lumo-font-size: 1rem;
-    --lumo-font-size-xxs: 0.6875rem;
-    --lumo-font-size-xs: 0.75rem;
-    --lumo-font-size-s: 0.8125rem;
-    --lumo-font-size-m: 0.875rem;
-    --lumo-font-size-l: 1rem;
-    --lumo-font-size-xl: 1.125rem;
-    --lumo-font-size-xxl: 1.375rem;
-    --lumo-font-size-xxxl: 1.75rem;
-
-    --lumo-line-height-xs: 1.1;
-    --lumo-line-height-s: 1.2;
-    --lumo-line-height-m: 1.4;
-
-    --lumo-space-xs: 0.1875rem;
-    --lumo-space-s: 0.3125rem;
-    --lumo-space-m: 0.625rem;
-    --lumo-space-l: 1.25rem;
-    --lumo-space-xl: 1.875rem;
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url("../fonts/Roboto.ttf") format('truetype');
 }
 
+[theme~='material'] {
+    --lumo-font-family: 'Roboto';
+
+    --lumo-border-radius-s: 8px;
+    --lumo-border-radius-m: 12px;
+    --lumo-border-radius-l: 16px;
+
+    --lumo-base-color: light-dark(#F9F9FF, #111318);
+
+    /*
+    --lumo-tint-5pct: hsla(0, 0%, 100%, 0.3);
+    --lumo-tint-10pct: hsla(0, 0%, 100%, 0.37);
+    --lumo-tint-20pct: hsla(0, 0%, 100%, 0.44);
+    --lumo-tint-30pct: hsla(0, 0%, 100%, 0.5);
+    --lumo-tint-40pct: hsla(0, 0%, 100%, 0.57);
+    --lumo-tint-50pct: hsla(0, 0%, 100%, 0.64);
+    --lumo-tint-60pct: hsla(0, 0%, 100%, 0.7);
+    --lumo-tint-70pct: hsla(0, 0%, 100%, 0.77);
+    --lumo-tint-80pct: hsla(0, 0%, 100%, 0.84);
+    --lumo-tint-90pct: hsla(0, 0%, 100%, 0.9);
+    --lumo-tint: #fff;
+
+    --lumo-shade-5pct: hsla(214, 61%, 25%, 0.05);
+    --lumo-shade-10pct: hsla(214, 57%, 24%, 0.1);
+    --lumo-shade-20pct: hsla(214, 53%, 23%, 0.16);
+    --lumo-shade-30pct: hsla(214, 50%, 22%, 0.26);
+    --lumo-shade-40pct: hsla(214, 47%, 21%, 0.38);
+    --lumo-shade-50pct: hsla(214, 45%, 20%, 0.52);
+    --lumo-shade-60pct: hsla(214, 43%, 19%, 0.6);
+    --lumo-shade-70pct: hsla(214, 42%, 18%, 0.69);
+    --lumo-shade-80pct: hsla(214, 41%, 17%, 0.83);
+    --lumo-shade-90pct: hsla(214, 40%, 16%, 0.94);
+    --lumo-shade: hsl(214, 35%, 15%);
+
+    --lumo-contrast-5pct: var(--lumo-shade-5pct);
+    --lumo-contrast-10pct: var(--lumo-shade-10pct);
+    --lumo-contrast-20pct: var(--lumo-shade-20pct);
+    --lumo-contrast-30pct: var(--lumo-shade-30pct);
+    --lumo-contrast-40pct: var(--lumo-shade-40pct);
+    --lumo-contrast-50pct: var(--lumo-shade-50pct);
+    --lumo-contrast-60pct: var(--lumo-shade-60pct);
+    --lumo-contrast-70pct: var(--lumo-shade-70pct);
+    --lumo-contrast-80pct: var(--lumo-shade-80pct);
+    --lumo-contrast-90pct: var(--lumo-shade-90pct);
+    --lumo-contrast: var(--lumo-shade);
+     */
+
+
+    --lumo-header-text-color: light-dark(#191C20, #E2E2E9);
+    --lumo-body-text-color: light-dark(#191C20, #E2E2E9);
+    --lumo-secondary-text-color: light-dark(#44474E, #C4C6D0);
+
+    --lumo-primary-color: light-dark(#415E91, #ABC7FF);
+    --lumo-primary-color-50pct: light-dark(#415E91, #ABC7FF);
+    --lumo-primary-color-10pct: light-dark(#D7E3FF, #284777);
+    --lumo-primary-text-color: light-dark(#415E91, #ABC7FF);
+    --lumo-primary-contrast-color: light-dark(#FFFFFF, #0B305F);
+
+    --lumo-error-color: light-dark(#BA1A1A, #FFB4AB);
+    --lumo-error-color-50pct: light-dark(#BA1A1A, #FFB4AB);
+    --lumo-error-color-10pct: light-dark(#FFDAD6, #93000A);
+    --lumo-error-text-color: light-dark(#BA1A1A, #FFB4AB);
+    --lumo-error-contrast-color: light-dark(#FFFFFF, #690005);
+
+    --lumo-icon-size-s: 1.125rem;
+    --lumo-icon-size-m: 1.5rem;
+
+    --lumo-line-height-m: 1.5;
+
+    --lumo-box-shadow-xs: light-dark(
+            0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15),
+            0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3)
+    );
+    --lumo-box-shadow-s: light-dark(
+            0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15),
+            0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3)
+    );
+    --lumo-box-shadow-m: light-dark(
+            0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3),
+            0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3)
+    );
+    --lumo-box-shadow-l: light-dark(
+            0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3),
+            0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3)
+    );
+    --lumo-box-shadow-xl: light-dark(
+            0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3),
+            0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3)
+    );
+
+    --vaadin-button-border-radius: 9999px;
+
+    --vaadin-checkbox-border-radius: 2px;
+
+    --vaadin-input-field-border-color: light-dark(#74777F, #8E9099);
+    --vaadin-input-field-border-radius: 4px;
+
+    --material-surface-container-low: light-dark(#F3F3FA, #191C20);
+    --material-surface-container: light-dark(#EDEDF4, #1E2025);
+    --material-surface-container-high: light-dark(#E7E8EE, #282A2F);
+
+    --material-inverse-surface: light-dark(#2E3036, #E2E2E9);
+    --material-inverse-on-surface: light-dark(#F0F0F7, #2E3036);
+}
+
+/* App layout */
+[theme~='material'] vaadin-app-layout::part(drawer) {
+    background: var(--material-surface-container-low);
+}
+
+/* Button */
+[theme~='material'] vaadin-button:not([theme~='icon']) {
+    --material-symbols-font-size: var(--lumo-icon-size-s);
+}
+
+[theme~='material'] vaadin-button::part(label),
+[theme~='material'] vaadin-button::part(prefix),
+[theme~='material'] vaadin-button::part(suffix) {
+    line-height: 1;
+}
+
+[theme~='material'] vaadin-button::part(label) {
+    font-size: var(--lumo-font-size-s);
+}
+
+/* Combo box */
+[theme~='material'] :is(vaadin-combo-box-overlay, vaadin-multi-select-combo-box-overlay)::part(overlay) {
+    background-color: var(--material-surface-container);
+    border-radius: 4px;
+    box-shadow: var(--lumo-box-shadow-s);
+}
+
+[theme~='material'] :is(vaadin-combo-box-scroller, vaadin-multi-select-combo-box-scroller) {
+    --_vaadin-combo-box-items-container-border-width: 8px 0;
+    --_vaadin-multi-select-combo-box-items-container-border-width: 8px 0;
+}
+
+[theme~='material'] :is(vaadin-combo-box-item, vaadin-multi-select-combo-box-item) {
+    border-radius: 0;
+}
+
+/* Dialog */
+[theme~='material'] vaadin-dialog-overlay::part(overlay) {
+    background-color: var(--material-surface-container-high);
+    box-shadow: none;
+}
+
+[theme~='material'] vaadin-dialog-overlay::part(footer) {
+    background-color: var(--material-surface-container-high);
+}
+
+/* Date picker */
+[theme~='material'] vaadin-month-calendar::part(date)::before {
+    border-radius: 9999px;
+}
+
+/* Popover */
+[theme~='material'] vaadin-popover-overlay::part(overlay) {
+    background-color: var(--material-surface-container-high);
+}
+
+/* Side nav */
+[theme~='material'] vaadin-side-nav-item::part(content) {
+    border-radius: 9999px;
+}
+
+[theme~='material'] vaadin-side-nav-item::part(link) {
+    border-radius: 9999px;
+}
+
+[theme~='material'] vaadin-side-nav:not([theme~='rail']) vaadin-side-nav-item::part(link) {
+    padding-inline-start: var(--lumo-space-m);
+}
+
+/* Tooltip */
+[theme~='material'] vaadin-tooltip-overlay::part(overlay) {
+    background-color: var(--material-inverse-surface);
+    border-radius: 4px;
+    box-shadow: none;
+    color: var(--material-inverse-on-surface);
+    font-size: var(--lumo-font-size-xxs);
+    line-height: var(--lumo-line-height-xs);
+}

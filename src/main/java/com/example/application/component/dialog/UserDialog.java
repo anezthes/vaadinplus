@@ -11,6 +11,7 @@ import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.popover.Popover;
 import com.vaadin.flow.component.popover.PopoverVariant;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.Lumo;
@@ -21,6 +22,7 @@ public class UserDialog extends Popover {
 
     private String colorScheme = "";
     private String density = "";
+    private String theme = "";
 
     public UserDialog() {
         addThemeVariants(PopoverVariant.ARROW);
@@ -66,7 +68,20 @@ public class UserDialog extends Popover {
         density.setValue("Default");
         density.setWidthFull();
 
-        add(list, hr, colorScheme, density);
+        // Theme
+        RadioButtonGroup<String> theme = new RadioButtonGroup<>();
+        theme.addClassNames(BoxSizing.BORDER, Padding.XSMALL);
+        theme.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
+        theme.addValueChangeListener(e -> setTheme(e.getValue()));
+
+        theme.setAriaLabel("Theme");
+        theme.setTooltipText("Theme");
+
+        theme.setItems("Lumo", "Material", "Carbon", "Radix");
+        theme.setValue("Lumo");
+        theme.setWidthFull();
+
+        add(list, hr, colorScheme, density, theme);
     }
 
     private ListItem createListItem(String text, MaterialSymbol symbol, Class<? extends Component> navigationTarget) {
@@ -107,9 +122,14 @@ public class UserDialog extends Popover {
         updateTheme();
     }
 
+    private void setTheme(String theme) {
+        this.theme = theme.toLowerCase();
+        updateTheme();
+    }
+
     private void updateTheme() {
         var js = "document.documentElement.setAttribute('theme', $0)";
-        getElement().executeJs(js, this.colorScheme + " " + this.density);
+        getElement().executeJs(js, this.colorScheme + " " + this.density + " " + this.theme);
     }
 
 }

@@ -129,7 +129,7 @@ public class ProductDetailsView extends Main {
         description.addClassNames(Margin.Bottom.LARGE, Margin.Top.MEDIUM);
 
         RadioButtonGroup<String> color = new RadioButtonGroup<>("Color scheme");
-        color.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
+        color.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.TOGGLE);
         color.setItems("Light", "Dark");
         color.setRenderer(new ComponentRenderer<>(item -> {
             if (item.equals("Light")) {
@@ -142,7 +142,7 @@ public class ProductDetailsView extends Main {
         }));
 
         RadioButtonGroup<String> intensity = new RadioButtonGroup<>("Sound intensity");
-        intensity.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
+        intensity.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.TOGGLE);
         intensity.setItems("Low", "High");
         intensity.setRenderer(new ComponentRenderer<>(item -> {
             if (item.equals("Low")) {
@@ -153,7 +153,7 @@ public class ProductDetailsView extends Main {
         }));
 
         RadioButtonGroup<String> effects = new RadioButtonGroup<>("Lighting effects");
-        effects.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.GAP, RadioButtonTheme.TOGGLE);
+        effects.addThemeNames(RadioButtonTheme.EQUAL_WIDTH, RadioButtonTheme.TOGGLE);
         effects.setItems("Solid", "Transitional");
         effects.setRenderer(new ComponentRenderer<>(item -> {
             if (item.equals("Solid")) {

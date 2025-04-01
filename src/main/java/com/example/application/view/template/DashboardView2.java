@@ -106,7 +106,7 @@ public class DashboardView2 extends Main {
         search.setPlaceholder("Search");
         search.setPrefixComponent(MaterialSymbol.SEARCH.create());
 
-        Button filter = new Button("Filter", MaterialSymbol.DROPDOWN.create());
+        Button filter = new Button("Filter", MaterialSymbol.FILTER_LIST.create());
         filter.addClassNames(Margin.Vertical.NONE);
         filter.setIconAfterText(true);
 
@@ -132,7 +132,7 @@ public class DashboardView2 extends Main {
     }
 
     private Component createFilter(String text) {
-        Button button = new Button(MaterialSymbol.CLOSE.create());
+        Button button = new Button(MaterialSymbol.CLOSE_SMALL.create());
         button.addClassNames(Margin.Minus.End.SMALL, Margin.Minus.Vertical.SMALL, Padding.NONE);
         button.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_TERTIARY);
         button.setAriaLabel("Clear " + text);

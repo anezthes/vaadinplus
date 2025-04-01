@@ -100,21 +100,6 @@ vaadin-radio-group[theme~='equal-width'] vaadin-radio-button {
     flex: 1;
 }
 
-/* Theme: gap */
-
-vaadin-radio-group[theme~='gap']::part(group-field) {
-    display: flex;
-    gap: var(--lumo-space-s);
-}
-
-vaadin-radio-group[theme~='gap']:not([theme~="vertical"])::part(group-field) {
-    flex-direction: column;
-}
-
-vaadin-radio-group[theme~='gap'] vaadin-radio-button {
-    border-radius: var(--lumo-border-radius-m);
-}
-
 /* Theme: segmented */
 
 vaadin-radio-group[has-label][theme~="segmented"]::before {
