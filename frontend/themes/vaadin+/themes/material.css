@@ -215,7 +215,8 @@
 
 [theme~='material'] vaadin-menu-bar-overlay::part(overlay) {
     background: var(--material-surface-container);
-    box-shadow: none;
+    border-radius: 4px;
+    box-shadow: var(--lumo-box-shadow-s);
 }
 
 [theme~='material'] vaadin-menu-bar-overlay::part(content) {
