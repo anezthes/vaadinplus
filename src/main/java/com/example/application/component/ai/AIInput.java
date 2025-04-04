@@ -32,6 +32,7 @@ public class AIInput extends Layout {
                 new FileListItem("List.txt", "Code ⋅ 2:45 KB"),
                 new FileListItem("List.txt", "Code ⋅ 2:45 KB")
         );
+        list.setFlexWrap(FlexWrap.WRAP);
         list.setDisplay(Display.FLEX);
         list.setGap(Gap.SMALL);
         list.removeBackgroundColor();

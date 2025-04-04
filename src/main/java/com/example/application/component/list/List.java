@@ -14,6 +14,7 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
     // Style
     private Color.Background background;
     private Layout.Display display;
+    private Layout.FlexWrap flexWrap;
     private Layout.ColumnGap colGap;
     private Layout.RowGap rowGap;
     private Layout.Overflow overflow;
@@ -60,6 +61,14 @@ public class List extends com.vaadin.flow.component.html.UnorderedList implement
         }
         addClassNames(display.getClassName());
         this.display = display;
+    }
+
+    public void setFlexWrap(Layout.FlexWrap flexWrap) {
+        if (this.flexWrap != null) {
+            removeClassNames(this.flexWrap.getClassName());
+        }
+        addClassNames(flexWrap.getClassName());
+        this.flexWrap = flexWrap;
     }
 
     /**
