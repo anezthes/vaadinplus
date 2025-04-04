@@ -18,17 +18,6 @@ public class HomeView extends ComponentView {
         addClassNames(Padding.Top.LARGE);
 
         add(new Paragraph("Welcome to Vaadin+!"));
-
-        HorizontalLayout layout = new HorizontalLayout(
-                new TextField("Label"),
-                new TextField("Label"),
-                new TextField("Label"),
-                new Button("Edit"),
-                new Button("Minus")
-        );
-        layout.addClassNames(LumoUtility.Display.GRID);
-        layout.getStyle().set("grid-template-columns", "auto minmax(0, 1fr) minmax(0, 1fr)");
-        add(layout);
     }
 
 }
