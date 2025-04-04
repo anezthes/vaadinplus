@@ -2,7 +2,7 @@ package com.example.application.view.component;
 
 import com.example.application.component.AppBar;
 import com.example.application.component.MaterialSymbol;
-import com.example.application.component.TopNav;
+import com.example.application.component.nav.TopNav;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;

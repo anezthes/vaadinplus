@@ -1,7 +1,7 @@
 package com.example.application.view.component;
 
-import com.example.application.component.Breadcrumb;
-import com.example.application.component.BreadcrumbItem;
+import com.example.application.component.nav.Breadcrumb;
+import com.example.application.component.nav.BreadcrumbItem;
 import com.example.application.view.HomeView;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.router.PageTitle;

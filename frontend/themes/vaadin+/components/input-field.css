@@ -294,3 +294,22 @@
     box-sizing: border-box;
     padding-top: var(--lumo-space-m);
 }
+
+/* Theme: transparent */
+
+:is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='transparent'] {
+    --vaadin-input-field-background: transparent;
+}

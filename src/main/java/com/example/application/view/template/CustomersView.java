@@ -1,6 +1,7 @@
 package com.example.application.view.template;
 
 import com.example.application.component.*;
+import com.example.application.component.nav.BreadcrumbItem;
 import com.example.application.utility.BadgeVariant;
 import com.example.application.utility.Breakpoint;
 import com.example.application.utility.Font;

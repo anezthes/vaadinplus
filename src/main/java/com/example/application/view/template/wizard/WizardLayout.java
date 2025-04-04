@@ -1,8 +1,8 @@
 package com.example.application.view.template.wizard;
 
 import com.example.application.component.MaterialSymbol;
-import com.example.application.component.Step;
-import com.example.application.component.Stepper;
+import com.example.application.component.nav.Step;
+import com.example.application.component.nav.Stepper;
 import com.example.application.view.HomeView;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.component.HasElement;

@@ -1,0 +1,8 @@
+[theme~='material'] vaadin-dialog-overlay::part(overlay) {
+    background: var(--material-surface-container-high);
+    box-shadow: none;
+}
+
+[theme~='material'] vaadin-dialog-overlay::part(footer) {
+    background: var(--material-surface-container-high);
+}

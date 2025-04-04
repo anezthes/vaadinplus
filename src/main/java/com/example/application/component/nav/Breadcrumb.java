@@ -1,4 +1,4 @@
-package com.example.application.component;
+package com.example.application.component.nav;
 
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.OrderedList;

@@ -7,6 +7,7 @@ import com.example.application.component.dialog.MessagesDialog;
 import com.example.application.component.dialog.NotificationsDialog;
 import com.example.application.component.dialog.UserDialog;
 import com.example.application.utility.BadgeVariant;
+import com.example.application.view.ai.InputView;
 import com.example.application.view.component.*;
 import com.example.application.view.template.*;
 import com.example.application.view.template.wizard.Step1View;
@@ -91,7 +92,11 @@ public class MainLayout extends AppLayout {
         Span appName = new Span("Vaadin+");
         appName.addClassNames(FontSize.LARGE, FontWeight.SEMIBOLD);
 
-        Layout nav = new Layout(createComponentNavigation(), createTemplatesNavigation());
+        Layout nav = new Layout(
+                createComponentNavigation(),
+                createAIPatterns(),
+                createTemplatesNavigation()
+        );
         nav.setFlexDirection(Layout.FlexDirection.COLUMN);
         nav.setGap(Layout.Gap.MEDIUM);
 
@@ -123,6 +128,12 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Steppers", SteppersView.class, MaterialSymbol.STEPPERS.create()));
         nav.addItem(new SideNavItem("Tabs", TabsView.class, MaterialSymbol.TAB.create()));
         nav.addItem(new SideNavItem("Top nav", TopNavView.class, MaterialSymbol.TABS.create()));
+        return nav;
+    }
+
+    private SideNav createAIPatterns() {
+        SideNav nav = new SideNav("AI Patterns");
+        nav.addItem(new SideNavItem("Input", InputView.class, MaterialSymbol.PROMPT_SUGGESTION.create()));
         return nav;
     }
 

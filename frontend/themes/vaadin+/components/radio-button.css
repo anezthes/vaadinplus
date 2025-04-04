@@ -127,6 +127,7 @@ vaadin-radio-group[theme~="segmented"] vaadin-radio-button label {
     align-items: center;
     box-sizing: border-box;
     display: flex;
+    font-weight: var(--vaadin-button-font-weight, 500);
     min-height: calc(var(--lumo-size-m) - var(--lumo-space-xs));
     padding-inline-start: var(--lumo-space-s);
 }

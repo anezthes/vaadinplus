@@ -12,7 +12,7 @@ import com.vaadin.flow.router.Route;
 public class MenuBarsView extends ComponentView {
 
     public MenuBarsView() {
-        addH2("Theme: rounded");
+        addH2("Theme: rounded", "Not applicable to the Material theme; all menu items are rounded.");
         add(createMenuBar(MenuBarTheme.ROUNDED));
 
         addH2("Theme: rounded & gap (small)");

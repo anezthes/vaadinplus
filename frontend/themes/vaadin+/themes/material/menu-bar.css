@@ -1,0 +1,22 @@
+[theme~='material'] vaadin-menu-bar-button,
+[theme~='material'] vaadin-menu-bar[theme~="rounded"] vaadin-menu-bar-button {
+    border-radius: 9999px;
+}
+
+[theme~='material'] vaadin-menu-bar-button[theme~='icon'] {
+    padding: 0;
+}
+
+[theme~='material'] vaadin-menu-bar-overlay::part(overlay) {
+    background: var(--material-surface-container);
+    border-radius: 4px;
+    box-shadow: var(--lumo-box-shadow-s);
+}
+
+[theme~='material'] vaadin-menu-bar-overlay::part(content) {
+    padding: var(--lumo-space-s) 0;
+}
+
+[theme~='material'] vaadin-menu-bar-overlay vaadin-menu-bar-item {
+    border-radius: 0;
+}

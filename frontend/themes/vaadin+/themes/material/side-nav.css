@@ -1,0 +1,11 @@
+[theme~='material'] vaadin-side-nav-item::part(content) {
+    border-radius: 9999px;
+}
+
+[theme~='material'] vaadin-side-nav-item::part(link) {
+    border-radius: 9999px;
+}
+
+[theme~='material'] vaadin-side-nav:not([theme~='rail']) vaadin-side-nav-item::part(link) {
+    padding-inline-start: var(--lumo-space-m);
+}

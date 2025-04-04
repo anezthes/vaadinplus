@@ -1,5 +1,6 @@
-package com.example.application.component;
+package com.example.application.component.field;
 
+import com.example.application.component.InputGroup;
 import com.example.application.theme.InputTheme;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.textfield.TextField;
@@ -7,9 +8,9 @@ import com.vaadin.flow.shared.Registration;
 
 import java.util.Optional;
 
-public class PriceRange extends CustomField {
+public class PriceRangeField extends CustomField {
 
-    public PriceRange(String label) {
+    public PriceRangeField(String label) {
         setLabel(label);
 
         TextField minimum = new TextField();

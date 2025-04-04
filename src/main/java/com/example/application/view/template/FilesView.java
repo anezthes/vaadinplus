@@ -208,7 +208,7 @@ public class FilesView extends Main {
         corner.setWidth(30, Unit.PERCENTAGE);
 
         Div fileIcon = new Div(corner, new Span(fileName.substring(fileName.lastIndexOf(".") + 1)));
-        fileIcon.addClassNames(AlignItems.END, Background.PRIMARY, BorderRadius.MEDIUM, Display.FLEX, FontSize.XXSMALL,
+        fileIcon.addClassNames(AlignItems.END, Background.PRIMARY, BorderRadius.SMALL, Display.FLEX, FontSize.XXSMALL,
                 FontWeight.MEDIUM, Height.LARGE, JustifyContent.CENTER, Padding.XSMALL, Position.RELATIVE,
                 TextColor.PRIMARY_CONTRAST, Width.MEDIUM);
         fileIcon.getStyle().set("clip-path", "polygon(0% 0%, 70% 0%, 100% 30%, 100% 100%, 0% 100%)");

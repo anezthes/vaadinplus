@@ -26,3 +26,7 @@
     --lumo-space-xl: 1.875rem;
 }
 
+[theme~='compact'][theme~='material'] {
+    --lumo-icon-size-s: 1rem;
+    --lumo-icon-size-m: 1.25rem;
+}

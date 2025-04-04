@@ -1,0 +1,14 @@
+[theme~='material'] :is(vaadin-combo-box-overlay, vaadin-multi-select-combo-box-overlay)::part(overlay) {
+    background: var(--material-surface-container);
+    border-radius: 4px;
+    box-shadow: var(--lumo-box-shadow-s);
+}
+
+[theme~='material'] :is(vaadin-combo-box-scroller, vaadin-multi-select-combo-box-scroller) {
+    --_vaadin-combo-box-items-container-border-width: 8px 0;
+    --_vaadin-multi-select-combo-box-items-container-border-width: 8px 0;
+}
+
+[theme~='material'] :is(vaadin-combo-box-item, vaadin-multi-select-combo-box-item) {
+    border-radius: 0;
+}

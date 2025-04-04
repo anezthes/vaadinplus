@@ -1,9 +1,9 @@
 package com.example.application.view.component;
 
-import com.example.application.component.BreadcrumbItem;
 import com.example.application.component.Header;
 import com.example.application.component.MaterialSymbol;
 import com.example.application.component.Tag;
+import com.example.application.component.nav.BreadcrumbItem;
 import com.example.application.utility.Font;
 import com.example.application.utility.HeadingLevel;
 import com.example.application.view.HomeView;

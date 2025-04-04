@@ -1,0 +1,8 @@
+[theme~='material'] vaadin-tooltip-overlay::part(overlay) {
+    background: var(--material-inverse-surface);
+    border-radius: 4px;
+    box-shadow: none;
+    color: var(--material-inverse-on-surface);
+    font-size: var(--lumo-font-size-xxs);
+    line-height: var(--lumo-line-height-xs);
+}

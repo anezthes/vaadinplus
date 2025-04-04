@@ -1,5 +1,7 @@
-package com.example.application.component;
+package com.example.application.component.field;
 
+import com.example.application.component.InputGroup;
+import com.example.application.component.Layout;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.textfield.TextField;
 

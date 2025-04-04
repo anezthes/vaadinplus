@@ -1,0 +1,9 @@
+[theme~='material'] vaadin-notification-card::part(overlay) {
+    --lumo-body-text-color: var(--material-inverse-on-surface);
+    --lumo-secondary-text-color: var(--material-inverse-on-surface);
+    --lumo-primary-text-color: var(--material-inverse-primary);
+    background: var(--material-inverse-surface);
+    border-radius: 4px;
+    box-shadow: var(--lumo-box-shadow-m);
+    color: var(--lumo-body-text-color);
+}

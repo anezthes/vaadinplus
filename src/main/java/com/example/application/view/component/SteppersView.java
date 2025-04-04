@@ -1,7 +1,7 @@
 package com.example.application.view.component;
 
-import com.example.application.component.Step;
-import com.example.application.component.Stepper;
+import com.example.application.component.nav.Step;
+import com.example.application.component.nav.Stepper;
 import com.example.application.view.HomeView;
 import com.example.application.view.MainLayout;
 import com.vaadin.flow.router.PageTitle;

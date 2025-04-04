@@ -1,9 +1,9 @@
 package com.example.application.view.template;
 
-import com.example.application.component.Breadcrumb;
-import com.example.application.component.BreadcrumbItem;
 import com.example.application.component.Layout;
 import com.example.application.component.MaterialSymbol;
+import com.example.application.component.nav.Breadcrumb;
+import com.example.application.component.nav.BreadcrumbItem;
 import com.example.application.theme.RadioButtonTheme;
 import com.example.application.view.HomeView;
 import com.example.application.view.MainLayout;

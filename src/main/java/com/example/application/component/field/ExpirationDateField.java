@@ -1,5 +1,6 @@
-package com.example.application.component;
+package com.example.application.component.field;
 
+import com.example.application.component.Layout;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.shared.Registration;

@@ -1,0 +1,3 @@
+[theme~='material'] vaadin-month-calendar::part(date)::before {
+    border-radius: 9999px;
+}

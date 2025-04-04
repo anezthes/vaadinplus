@@ -14,7 +14,7 @@
 @import url('./components/upload.css');
 @import url('./themes/carbon.css');
 @import url('./themes/compact.css');
-@import url('./themes/material.css');
+@import url('./themes/material/styles.css');
 @import url('./themes/radix.css');
 @import url('./accessibility.css');
 @import url('./background.css');
@@ -26,3 +26,4 @@
 @import url('./spacing.css');
 @import url('./transforms.css');
 @import url('./typography.css');
+

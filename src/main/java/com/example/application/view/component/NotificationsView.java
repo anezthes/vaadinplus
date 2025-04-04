@@ -142,6 +142,7 @@ public class NotificationsView extends ComponentView {
 
         Span message = new Span("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
         message.addClassNames(FontSize.SMALL, "line-clamp-2", TextColor.SECONDARY);
+        message.setMaxWidth(20, Unit.REM);
 
         Layout text = new Layout(name, message);
         text.addClassNames(Margin.Start.XSMALL);

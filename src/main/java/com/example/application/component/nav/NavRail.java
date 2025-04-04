@@ -1,4 +1,4 @@
-package com.example.application.component;
+package com.example.application.component.nav;
 
 import com.example.application.theme.SideNavTheme;
 import com.vaadin.flow.component.HasTheme;

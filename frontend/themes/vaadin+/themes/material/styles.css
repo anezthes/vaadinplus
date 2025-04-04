@@ -1,0 +1,175 @@
+@import "app-layout.css";
+@import "button.css";
+@import "combo-box.css";
+@import "date-picker.css";
+@import "dialog.css";
+@import "input-fields.css";
+@import "menu-bar.css";
+@import "notification.css";
+@import "popover.css";
+@import "side-nav.css";
+@import "tooltip.css";
+@import "typography.css";
+
+[theme~='material'] {
+    /* Lumo */
+    --lumo-font-family: 'Roboto';
+
+    --lumo-border-radius-s: 8px;
+    --lumo-border-radius-m: 12px;
+    --lumo-border-radius-l: 16px;
+
+    --lumo-icon-size-s: 1.125rem;
+    --lumo-icon-size-m: 1.5rem;
+
+    --lumo-line-height-m: 1.5;
+
+    --lumo-base-color: #F9F9FF;
+
+    --lumo-tint-5pct: hsla(0, 0%, 100%, 0.5);
+    --lumo-tint-10pct: hsla(0, 0%, 100%, 0.1);
+    --lumo-tint-20pct: hsla(0, 0%, 100%, 0.2);
+    --lumo-tint-30pct: hsla(0, 0%, 100%, 0.3);
+    --lumo-tint-40pct: hsla(0, 0%, 100%, 0.4);
+    --lumo-tint-50pct: hsla(0, 0%, 100%, 0.5);
+    --lumo-tint-60pct: hsla(0, 0%, 100%, 0.6);
+    --lumo-tint-70pct: hsla(0, 0%, 100%, 0.7);
+    --lumo-tint-80pct: hsla(0, 0%, 100%, 0.8);
+    --lumo-tint-90pct: hsla(0, 0%, 100%, 0.9);
+    --lumo-tint: #fff;
+
+    --lumo-shade-5pct: hsla(0, 0%, 0%, 0.05);
+    --lumo-shade-10pct: hsla(0, 0%, 0%, 0.1);
+    --lumo-shade-20pct: hsla(0, 0%, 0%, 0.2);
+    --lumo-shade-30pct: hsla(0, 0%, 0%, 0.3);
+    --lumo-shade-40pct: hsla(0, 0%, 0%, 0.4);
+    --lumo-shade-50pct: hsla(0, 0%, 0%, 0.5);
+    --lumo-shade-60pct: hsla(0, 0%, 0%, 0.6);
+    --lumo-shade-70pct: hsla(0, 0%, 0%, 0.7);
+    --lumo-shade-80pct: hsla(0, 0%, 0%, 0.8);
+    --lumo-shade-90pct: hsla(0, 0%, 0%, 0.9);
+    --lumo-shade: hsl(0, 0%, 0%);
+
+    --lumo-contrast-5pct: var(--lumo-shade-5pct);
+    --lumo-contrast-10pct: var(--lumo-shade-10pct);
+    --lumo-contrast-20pct: var(--lumo-shade-20pct);
+    --lumo-contrast-30pct: var(--lumo-shade-30pct);
+    --lumo-contrast-40pct: var(--lumo-shade-40pct);
+    --lumo-contrast-50pct: var(--lumo-shade-50pct);
+    --lumo-contrast-60pct: var(--lumo-shade-60pct);
+    --lumo-contrast-70pct: var(--lumo-shade-70pct);
+    --lumo-contrast-80pct: var(--lumo-shade-80pct);
+    --lumo-contrast-90pct: var(--lumo-shade-90pct);
+    --lumo-contrast: var(--lumo-shade);
+
+    --lumo-header-text-color: #191C20;
+    --lumo-body-text-color: #191C20;
+    --lumo-secondary-text-color: #44474E;
+
+    --lumo-primary-color: #415E91;
+    --lumo-primary-color-50pct: #415E91;
+    --lumo-primary-color-10pct: #D7E3FF;
+    --lumo-primary-text-color: #415E91;
+    --lumo-primary-contrast-color: #FFFFFF;
+
+    --lumo-error-color: #BA1A1A;
+    --lumo-error-color-50pct: #BA1A1A;
+    --lumo-error-color-10pct: #FFDAD6;
+    --lumo-error-text-color: #BA1A1A;
+    --lumo-error-contrast-color: #FFFFFF;
+
+    --lumo-box-shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --lumo-box-shadow-s: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    --lumo-box-shadow-m: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+    --lumo-box-shadow-l: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3);
+    --lumo-box-shadow-xl: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3);
+
+    /* Vaadin */
+    --vaadin-button-border-radius: 9999px;
+
+    --vaadin-checkbox-border-radius: 2px;
+
+    --vaadin-input-field-background: #E2E2E9;
+    --vaadin-input-field-border-color: #74777F;
+    --vaadin-input-field-border-radius: 4px;
+    --vaadin-input-field-invalid-background: #E2E2E9;
+    --vaadin-input-field-invalid-hover-highlight: transparent;
+
+    /* Material */
+    --material-outline: #74777F;
+
+    --material-surface-container-low: #F3F3FA;
+    --material-surface-container: #EDEDF4;
+    --material-surface-container-high: #E7E8EE;
+
+    --material-inverse-surface: #2E3036;
+    --material-inverse-on-surface: #F0F0F7;
+    --material-inverse-primary: #ABC7FF;
+}
+
+[theme~='material'][theme~='dark'], [theme~='material'] [theme~='dark'] {
+    /* Lumo */
+    --lumo-base-color: #111318;
+
+    --lumo-tint-5pct: hsla(0, 0%, 0%, 0.05);
+    --lumo-tint-10pct: hsla(0, 0%, 0%, 0.1);
+    --lumo-tint-20pct: hsla(0, 0%, 0%, 0.2);
+    --lumo-tint-30pct: hsla(0, 0%, 0%, 0.3);
+    --lumo-tint-40pct: hsla(0, 0%, 0%, 0.4);
+    --lumo-tint-50pct: hsla(0, 0%, 0%, 0.5);
+    --lumo-tint-60pct: hsla(0, 0%, 0%, 0.6);
+    --lumo-tint-70pct: hsla(0, 0%, 0%, 0.7);
+    --lumo-tint-80pct: hsla(0, 0%, 0%, 0.8);
+    --lumo-tint-90pct: hsla(0, 0%, 0%, 0.9);
+    --lumo-tint: hsl(0, 0%, 0%);
+
+    --lumo-shade-5pct: hsla(0, 0%, 100%, 0.05);
+    --lumo-shade-10pct: hsla(0, 0%, 100%, 0.1);
+    --lumo-shade-20pct: hsla(0, 0%, 100%, 0.2);
+    --lumo-shade-30pct: hsla(0, 0%, 100%, 0.3);
+    --lumo-shade-40pct: hsla(0, 0%, 100%, 0.4);
+    --lumo-shade-50pct: hsla(0, 0%, 100%, 0.5);
+    --lumo-shade-60pct: hsla(0, 0%, 100%, 0.6);
+    --lumo-shade-70pct: hsla(0, 0%, 100%, 0.7);
+    --lumo-shade-80pct: hsla(0, 0%, 100%, 0.8);
+    --lumo-shade-90pct: hsla(0, 0%, 100%, 0.9);
+    --lumo-shade: #fff;
+
+    --lumo-header-text-color: #E2E2E9;
+    --lumo-body-text-color: #E2E2E9;
+    --lumo-secondary-text-color: #C4C6D0;
+
+    --lumo-primary-color: #ABC7FF;
+    --lumo-primary-color-50pct: #ABC7FF;
+    --lumo-primary-color-10pct: #284777;
+    --lumo-primary-text-color: #ABC7FF;
+    --lumo-primary-contrast-color: #0B305F;
+
+    --lumo-error-color: #FFB4AB;
+    --lumo-error-color-50pct: #FFB4AB;
+    --lumo-error-color-10pct: #93000A;
+    --lumo-error-text-color: #FFB4AB;
+    --lumo-error-contrast-color: #690005;
+
+    --lumo-box-shadow-xs: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+    --lumo-box-shadow-s: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+    --lumo-box-shadow-m: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+    --lumo-box-shadow-l: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3);
+    --lumo-box-shadow-xl: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3);
+
+    /* Vaadin */
+    --vaadin-input-field-background: #33353A;
+    --vaadin-input-field-border-color: #8E9099;
+    --vaadin-input-field-invalid-background: #33353A;
+
+    /* Material */
+    --material-outline: #8E9099;
+
+    --material-surface-container-low: #191C20;
+    --material-surface-container: #1E2025;
+    --material-surface-container-high: #282A2F;
+
+    --material-inverse-surface: #E2E2E9;
+    --material-inverse-on-surface: #2E3036;
+    --material-inverse-primary: #415E91;
+}

@@ -1,0 +1,54 @@
+[theme~='material'] :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[invalid] {
+    --vaadin-input-field-border-color: var(--lumo-error-color);
+    --vaadin-input-field-label-color: var(--lumo-error-text-color);
+    --vaadin-input-field-focused-label-color: var(--lumo-error-text-color);
+}
+
+[theme~='material'] :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'] {
+    --vaadin-input-field-background: transparent;
+    --vaadin-input-field-border-color: var(--material-outline);
+    --vaadin-input-field-invalid-background: transparent;
+}
+
+[theme~='material'] :is(
+  vaadin-combo-box,
+  vaadin-date-picker,
+  vaadin-date-time-picker,
+  vaadin-email-field,
+  vaadin-integer-field,
+  vaadin-multi-select-combo-box,
+  vaadin-number-field,
+  vaadin-password-field,
+  vaadin-select,
+  vaadin-text-area,
+  vaadin-text-field,
+  vaadin-time-picker
+)[theme~='outline'][invalid] {
+    --vaadin-input-field-border-color: var(--lumo-error-color);
+}

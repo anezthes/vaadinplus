@@ -1,0 +1,17 @@
+[theme~='material'] vaadin-button[theme~='icon'] {
+    padding: 0;
+}
+
+[theme~='material'] vaadin-button:not([theme~='icon']) {
+    --material-symbols-font-size: var(--lumo-icon-size-s);
+}
+
+[theme~='material'] vaadin-button::part(label),
+[theme~='material'] vaadin-button::part(prefix),
+[theme~='material'] vaadin-button::part(suffix) {
+    line-height: 1;
+}
+
+[theme~='material'] vaadin-button::part(label) {
+    font-size: var(--lumo-font-size-s);
+}

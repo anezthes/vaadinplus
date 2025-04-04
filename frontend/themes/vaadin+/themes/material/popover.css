@@ -1,0 +1,4 @@
+[theme~='material'] vaadin-popover-overlay::part(overlay) {
+    background: var(--material-surface-container-high);
+    box-shadow: none;
+}

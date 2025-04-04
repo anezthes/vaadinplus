@@ -3,7 +3,7 @@ package com.example.application.view.template;
 import com.example.application.component.Badge;
 import com.example.application.component.Layout;
 import com.example.application.component.MaterialSymbol;
-import com.example.application.component.PriceRange;
+import com.example.application.component.field.PriceRangeField;
 import com.example.application.component.list.List;
 import com.example.application.component.list.ProductListItem;
 import com.example.application.theme.RadioButtonTheme;
@@ -63,7 +63,7 @@ public class ProductListView extends Main {
         brands.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
         setRenderer(brands);
 
-        PriceRange priceRange = new PriceRange("Price");
+        PriceRangeField priceRangeField = new PriceRangeField("Price");
 
         CheckboxGroup<String> rating = new CheckboxGroup<>("Rating");
         rating.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
@@ -91,7 +91,7 @@ public class ProductListView extends Main {
         availability.setItems("In stock", "Out of stock");
         setRenderer(availability);
 
-        Layout form = new Layout(brands, priceRange, rating, availability);
+        Layout form = new Layout(brands, priceRangeField, rating, availability);
         form.addClassNames(Padding.Horizontal.LARGE);
         form.setFlexDirection(Layout.FlexDirection.COLUMN);
 
@@ -151,11 +151,11 @@ public class ProductListView extends Main {
         price.addClassNames(Display.HIDDEN, Display.Breakpoint.Large.INLINE_BLOCK);
         price.setIconAfterText(true);
 
-        PriceRange priceRange = new PriceRange("Price");
-        priceRange.addClassNames(Margin.SMALL, Padding.Top.XSMALL);
-        priceRange.setWidth(16, Unit.REM);
+        PriceRangeField priceRangeField = new PriceRangeField("Price");
+        priceRangeField.addClassNames(Margin.SMALL, Padding.Top.XSMALL);
+        priceRangeField.setWidth(16, Unit.REM);
 
-        Popover priceDialog = new Popover(priceRange);
+        Popover priceDialog = new Popover(priceRangeField);
         priceDialog.setTarget(price);
 
         // TODO: a11y improvements, opened/closed states
